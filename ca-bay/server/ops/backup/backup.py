@@ -35,6 +35,8 @@ def do_backup(db: Path, out: Path, keep: int) -> Path:
     dst = sqlite3.connect(target)
     with dst:
         src.backup(dst)
+    # Bản sao lưu là một file tự đủ (không kèm -wal/-shm khi mở lại để kiểm tra/khôi phục).
+    dst.execute("PRAGMA journal_mode=DELETE")
     dst.close()
     src.close()
     digest = sha256_file(target)

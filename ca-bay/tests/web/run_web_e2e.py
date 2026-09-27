@@ -46,6 +46,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--scenario", default="fish_loop")
     ap.add_argument("--keep", action="store_true", help="giữ stack chạy sau khi xong (để xem tay)")
+    ap.add_argument("--external-api", help="dùng máy chủ đang chạy sẵn (ví dụ gói server đã giải nén), không tự dựng stack")
+    ap.add_argument("--external-ws")
     a = ap.parse_args()
     if not (ROOT / "build/web/index.pck").exists():
         print("Chưa có build/web — chạy tools/build/export.py web trước")
@@ -53,14 +55,18 @@ def main() -> int:
     steps = json.loads((ROOT / f"tests/web/scenarios/{a.scenario}.json").read_text(encoding="utf-8"))
     user = "e2e" + secrets.token_hex(4)
     text = json.dumps(steps, ensure_ascii=False).replace("{USER}", user).replace("{BASE}", f"http://127.0.0.1:{WEB_PORT}")
+    if a.external_api and a.external_ws:
+        # client đọc ?api=&ws= (chỉ nhận https/wss hoặc localhost)
+        text = text.replace("index.html?autotest=1", f"index.html?autotest=1&api={a.external_api}&ws={a.external_ws}")
     out = ROOT / "tests/web/artifacts" / a.scenario
     out.mkdir(parents=True, exist_ok=True)
     (out / "scenario.json").write_text(text, encoding="utf-8")
     st = Stack(extra_env={"CABAY_DEBUG_INPUT": "1"} if os.environ.get("CABAY_DEBUG_INPUT") == "1" else None)
     httpd = None
     try:
-        st.start_backend()
-        st.start_room_server()
+        if not (a.external_api and a.external_ws):
+            st.start_backend()
+            st.start_room_server()
         httpd = serve_web()
         env = dict(os.environ, NODE_PATH=npm_root())
         r = subprocess.run(["node", str(ROOT / "tests/web/drive.cjs"), str(out / "scenario.json"), str(out)],

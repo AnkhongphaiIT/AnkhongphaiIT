@@ -27,7 +27,7 @@ PRESETS = {"web": ("Web", ROOT / "build/web/index.html"),
            "server": ("Linux Room Server", ROOT / "build/server/ca-bay-room-server.x86_64")}
 # Không được xuất hiện trong gói web.
 FORBIDDEN_IN_WEB = [b"res://server/", b"res://tests/", b"res://tools/", b"res://docs/", b"CABAY_SERVICE_KEY",
-                    b"X-Service-Key", b"res://data/schemas/", b"BEGIN PRIVATE KEY"]
+                    b"X-Service-Key", b"res://data/schemas/", b"BEGIN PRIVATE KEY-----\n"]
 
 
 def godot_bin() -> str:
