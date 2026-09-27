@@ -97,7 +97,11 @@ async function runStep(ctx, s, outDir, mark) {
   if (s.keyup) await page.keyboard.up(s.keyup);
   if (s.hold) { await page.keyboard.down(s.hold); await page.waitForTimeout(s.ms || 500); await page.keyboard.up(s.hold); }
   // waitlog: mặc định tìm trong toàn bộ log của trang; fresh:true chỉ tính từ bước hành động trước
-  if (s.waitlog) await waitLog(page, n, new RegExp(s.waitlog), s.fresh ? prevStart : 0, s.timeout || 60000, s.waitlog);
+  // {BIẾN} trong waitlog được thay bằng giá trị đã capture (thoát ký tự regex)
+  if (s.waitlog) {
+    const pat = s.waitlog.replace(/\{([A-Z_]+)\}/g, (m, k) => (k in vars ? vars[k].replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : m));
+    await waitLog(page, n, new RegExp(pat), s.fresh ? prevStart : 0, s.timeout || 60000, pat);
+  }
   if (s.capture) {
     const re = new RegExp(s.capture.regex);
     const until = Date.now() + (s.capture.timeout || 30000);

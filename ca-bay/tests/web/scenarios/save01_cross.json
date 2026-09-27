@@ -1,0 +1,338 @@
+[
+ {
+  "goto": "{BASE}/index.html?autotest=1",
+  "page": 0
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000,
+  "page": 0
+ },
+ {
+  "wait": 1500,
+  "page": 0
+ },
+ {
+  "click": [
+   640,
+   372
+  ],
+  "page": 0
+ },
+ {
+  "wait": 800,
+  "page": 0
+ },
+ {
+  "click": [
+   634,
+   495
+  ],
+  "page": 0
+ },
+ {
+  "wait": 800,
+  "page": 0
+ },
+ {
+  "type": "{CP_USER}",
+  "page": 0
+ },
+ {
+  "key": "Tab",
+  "page": 0
+ },
+ {
+  "wait": 300,
+  "page": 0
+ },
+ {
+  "type": "{CP_PASS}",
+  "page": 0
+ },
+ {
+  "key": "Enter",
+  "page": 0
+ },
+ {
+  "waitlog": "CABAY_AUTH_SUBMIT",
+  "timeout": 20000,
+  "page": 0
+ },
+ {
+  "waitlog": "CABAY_LOBBY",
+  "timeout": 20000
+ },
+ {
+  "capture": {
+   "regex": "CABAY_LOBBY (.*)",
+   "var": "START"
+  }
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   441,
+   290
+  ]
+ },
+ {
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 30000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "key": "KeyV"
+ },
+ {
+  "walk_until": "CABAY_FOCUS npc npc_co_ba",
+  "face_key": "KeyV",
+  "timeout": 30000
+ },
+ {
+  "key": "KeyE"
+ },
+ {
+  "waitlog": "CABAY_EV dialogue.line_started",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "s01_shop"
+ },
+ {
+  "click": [
+   934,
+   352
+  ]
+ },
+ {
+  "waitlog": "CABAY_EV economy.purchase_succeeded",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "click": [
+   934,
+   456
+  ]
+ },
+ {
+  "waitlog": "CABAY_EV economy.purchase_succeeded",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "s02_bought"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "click": [
+   640,
+   410
+  ]
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "click": [
+   640,
+   388
+  ]
+ },
+ {
+  "waitlog": "CABAY_EV lootbox.opened",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 1800
+ },
+ {
+  "shot": "s03_loot"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "click": [
+   640,
+   303
+  ]
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "s03b_bag"
+ },
+ {
+  "click": [
+   640,
+   330
+  ]
+ },
+ {
+  "wait": 1800
+ },
+ {
+  "shot": "s03c_ate"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "s03c_pause"
+ },
+ {
+  "click": [
+   640,
+   583
+  ]
+ },
+ {
+  "waitlog": "CABAY_LOBBY .*upg_backpack:1.*food=item_rice_ball:1 ",
+  "fresh": true,
+  "timeout": 20000
+ },
+ {
+  "capture": {
+   "regex": "CABAY_LOBBY (.*)",
+   "var": "STATE"
+  }
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "s04_lobby_A"
+ },
+ {
+  "click": [
+   486,
+   492
+  ]
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "s04b_logged_out"
+ },
+ {
+  "goto": "http://localhost:8060/index.html?autotest=1",
+  "page": 1
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000,
+  "page": 1
+ },
+ {
+  "wait": 1500,
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   372
+  ],
+  "page": 1
+ },
+ {
+  "wait": 800,
+  "page": 1
+ },
+ {
+  "click": [
+   634,
+   495
+  ],
+  "page": 1
+ },
+ {
+  "wait": 800,
+  "page": 1
+ },
+ {
+  "type": "{CP_USER}",
+  "page": 1
+ },
+ {
+  "key": "Tab",
+  "page": 1
+ },
+ {
+  "wait": 300,
+  "page": 1
+ },
+ {
+  "type": "{CP_PASS}",
+  "page": 1
+ },
+ {
+  "key": "Enter",
+  "page": 1
+ },
+ {
+  "waitlog": "CABAY_AUTH_SUBMIT",
+  "timeout": 20000,
+  "page": 1
+ },
+ {
+  "waitlog": "CABAY_LOBBY {STATE}$",
+  "timeout": 20000,
+  "page": 1
+ },
+ {
+  "wait": 1200,
+  "page": 1
+ },
+ {
+  "shot": "s05_lobby_B",
+  "page": 1
+ }
+]

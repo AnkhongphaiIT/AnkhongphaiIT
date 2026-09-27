@@ -222,7 +222,27 @@ func enter_lobby() -> void:
 	var r: Dictionary = await api.get_save()
 	if r["ok"]:
 		save = r["data"]["save"]
+		if Endpoints.autotest:
+			print("CABAY_LOBBY %s" % save_digest(save))
 	show_lobby(r["data"].get("lease", {}) if r["ok"] else {})
+
+
+## Tóm tắt save do server trả (chỉ để kiểm thử đổi máy SAVE-01; không chứa dữ liệu cá nhân).
+static func save_digest(sv: Dictionary) -> String:
+	var inv: Dictionary = sv["inventory"]
+	var upg: Array = []
+	for k in (inv.get("upgrades", {}) as Dictionary).keys():
+		upg.append("%s:%d" % [k, int(inv["upgrades"][k])])
+	upg.sort()
+	var food: Array = []
+	for k in (inv.get("food_counts", {}) as Dictionary).keys():
+		food.append("%s:%d" % [k, int(inv["food_counts"][k])])
+	food.sort()
+	var cur: Dictionary = sv["currencies"]
+	return "v=%d money=%d tickets=%d dust=%d bag=%d upg=%s food=%s cos=%d islands=%d" % [
+		int(sv["save_version"]), int(cur["money"]), int(cur["festival_ticket"]), int(cur.get("cosmetic_dust", 0)),
+		(inv["bag"] as Array).size(), ",".join(upg), ",".join(food), (sv["cosmetics"]["owned"] as Array).size(),
+		(sv["progress"]["islands_unlocked"] as Array).size()]
 
 
 func show_lobby(lease: Dictionary = {}) -> void:
