@@ -161,6 +161,14 @@ static func shop_zone(island_id: String) -> Dictionary:
 	return {"zone_id": zid, "shop_id": s["shop_id"], "pos": s["pos"], "npc_id": s["npc_id"]}
 
 
+## Đảo có NPC này ("" nếu không có).
+static func island_of_npc(npc_id: String) -> String:
+	for isl in LAYOUTS:
+		if (LAYOUTS[isl]["npcs"] as Dictionary).has(npc_id):
+			return isl
+	return ""
+
+
 static func npc_position(island_id: String, npc_id: String) -> Vector3:
 	var npcs: Dictionary = LAYOUTS[island_id]["npcs"]
 	if not npcs.has(npc_id):

@@ -385,6 +385,15 @@ Sáu skin cosmetic trong gameplay tái dùng mô hình/cảnh gốc với phối
 | `ico_item_grilled_fish` | P1 | `res://assets/icons/ico_item_grilled_fish.png` | Bake 256×256 RGBA từ mdl_item_grilled_fish; không chứa chữ. | AC-ICO |
 | `ico_item_survey_tag` | P1 | `res://assets/icons/ico_item_survey_tag.png` | Bake 256×256 RGBA từ mdl_item_survey_tag; không chứa chữ. | AC-ICO |
 | `ico_item_festival_medal` | P1 | `res://assets/icons/ico_item_festival_medal.png` | Bake 256×256 RGBA từ mdl_item_festival_medal; không chứa chữ. | AC-ICO |
+| `ico_tool_swatter` | P1 | `res://assets/icons/ico_tool_swatter.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mdl_tool_swatter; ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_tool_slingshot` | P1 | `res://assets/icons/ico_tool_slingshot.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mdl_tool_slingshot; ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_tool_coconut_bomb` | P1 | `res://assets/icons/ico_tool_coconut_bomb.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mdl_tool_coconut_bomb; ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_rod_carbon` | P1 | `res://assets/icons/ico_rod_carbon.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mô hình cần carbon; ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_bait_shrimp_paste` | P1 | `res://assets/icons/ico_bait_shrimp_paste.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mô hình mồi mắm ruốc; ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_bait_crab_mix` | P1 | `res://assets/icons/ico_bait_crab_mix.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mô hình mồi cua trộn; ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_bait_fish_strip` | P1 | `res://assets/icons/ico_bait_fish_strip.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mô hình mồi cá thái; ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_upg_backpack` | P1 | `res://assets/icons/ico_upg_backpack.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mô hình túi (nâng cấp túi); ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
+| `ico_upg_reel_speed` | P1 | `res://assets/icons/ico_upg_reel_speed.png` | CR-007 (thêm trong dự án): bake 256×256 RGBA từ mô hình guồng (nâng cấp guồng); ô sạp/thanh công cụ còn thiếu icon. | AC-ICO |
 
 ### anim_library
 

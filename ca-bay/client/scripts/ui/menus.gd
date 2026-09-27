@@ -89,9 +89,19 @@ static func shop(s, shop_id: String) -> Control:
 	v.add_child(_scroll(list, 260))
 	# nướng cá
 	v.add_child(UIKit.label(Loc.t("ui.shop.cook"), 20, UIKit.C_GOLD))
-	if s.cooking_uid != "":
-		v.add_child(UIKit.button(Loc.t("ui.shop.collect"), func(): s.durable("cooking.collect", {"item_uid": s.cooking_uid, "station_id": shop_id})))
+	if s.cooking_uid != "" and s.cooking_station == shop_id:
+		var ck: Dictionary = ContentDB.balance["cooking"]
+		var el: float = s.cooking_elapsed()
+		var collect := UIKit.button(Loc.t("ui.shop.collect"), func(): s.durable("cooking.collect", {"item_uid": s.cooking_uid, "station_id": shop_id}))
+		if el >= 0.0 and el < float(ck["cook_time_s"]):
+			collect.text = Loc.t("ui.cook.progress", {"s": int(ceil(float(ck["cook_time_s"]) - el))})
+			collect.disabled = true
+		elif el >= 0.0 and el <= float(ck["burn_time_s"]):
+			collect.text = Loc.t("ui.shop.collect_ready", {"s": int(ceil(float(ck["burn_time_s"]) - el))})
+		v.add_child(collect)
 	else:
+		if s.cooking_uid != "":
+			v.add_child(UIKit.label(Loc.t("ui.cook.elsewhere"), 15, UIKit.C_MUTED))
 		var cookrow := UIKit.hbox([], 6)
 		for it in inv["bag"]:
 			if it["def_kind"] == "creature" and it.get("cook_level", "raw") == "raw":
@@ -133,10 +143,11 @@ static func quest_npc(s, npc_id: String) -> Control:
 			for it in save["inventory"]["bag"]:
 				if it["def_id"] == step["target_id"] and uids.size() < int(step["count"]) - have:
 					uids.append(it["uid"])
-			var b := UIKit.button(Loc.t("ui.prompt.deliver", {"count": uids.size(), "name": Loc.name_of(step["target_id"])}), func():
-				s.durable("quest.deliver", {"quest_id": qid, "step_id": step["step_id"], "npc_id": npc_id, "item_uids": uids}))
-			b.disabled = uids.is_empty()
-			v.add_child(b)
+			if uids.is_empty():
+				v.add_child(UIKit.label(Loc.t("ui.quest.need_item", {"name": Loc.name_of(step["target_id"])}), 16, UIKit.C_MUTED))
+			else:
+				v.add_child(UIKit.button(Loc.t("ui.prompt.deliver", {"count": uids.size(), "name": Loc.name_of(step["target_id"])}), func():
+					s.durable("quest.deliver", {"quest_id": qid, "step_id": step["step_id"], "npc_id": npc_id, "item_uids": uids})))
 		elif step["type"] == "defeat_boss":
 			var bait: String = ContentDB.bosses[step["target_id"]]["summon"]["bait_id"]
 			v.add_child(UIKit.label(Loc.t("ui.quest.boss_hint", {"bait": Loc.name_of(bait), "count": int(save["inventory"]["bait_counts"].get(bait, 0))}), 16, UIKit.C_MUTED))
@@ -204,7 +215,7 @@ static func lootbox(s) -> Control:
 		var sw := ColorRect.new()
 		sw.color = Color(cos["color_hex"])
 		sw.custom_minimum_size = Vector2(22, 22)
-		odds.add_child(UIKit.hbox([sw, UIKit.label("%s — %s%s" % [Loc.t(cos["name_key"]), Loc.t("ui.lootbox.odds", {"chance": "%g" % (float(e["weight"]) * 100.0 / total)}), "  ✓" if owned else ""], 16)]))
+		odds.add_child(UIKit.hbox([sw, UIKit.label("%s — %s%s" % [Loc.t(cos["name_key"]), Loc.t("ui.lootbox.odds", {"chance": UIKit.percent(float(e["weight"]) * 100.0 / total)}), "  ✓" if owned else ""], 16)]))
 	v.add_child(odds)
 	v.add_child(UIKit.label("%s: %d · %s: %d" % [Loc.t("ui.currency.ticket"), int(cur["festival_ticket"]), Loc.t("ui.currency.dust"), int(cur["cosmetic_dust"])], 18, UIKit.C_GOLD))
 	var open := UIKit.button(Loc.t("ui.lootbox.open", {"count": int(box["ticket_cost"])}), func(): s.durable("lootbox.open", {"box_id": box["id"], "table_version": box["table_version"]}))

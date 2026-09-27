@@ -380,3 +380,63 @@ def test_pickup_replay_without_server_fields_returns_original(client, svc):
     # ý định khác (uid khác) cùng op_id vẫn bị chặn
     bad = commit(client, svc, lease, "inventory.pickup", {"item_uid": str(uuid.uuid4())}, expected=ver, op_id=op)
     assert bad["error_code"] == "OP_PAYLOAD_MISMATCH"
+
+
+def test_cooking_never_blocks_after_lost_client_state(client, svc, env):
+    """P-025: client mất cooking_uid (tải lại trang/đổi máy) — bếp không bị khóa, cá không mất."""
+    from app.db import connect
+    u = register(client)
+    room = ready_room(client, svc, u)
+    lease = connect_player(client, svc, u, room)
+    a, b = str(uuid.uuid4()), str(uuid.uuid4())
+    for uid in (a, b):
+        assert commit(client, svc, lease, "inventory.pickup", {"item_uid": uid, "fresh_item": fresh_fish("cre_ca_ro")})["status"] == "committed"
+    assert commit(client, svc, lease, "cooking.start", {"item_uid": a, "station_id": "shop_co_ba"})["status"] == "committed"
+    # chưa chín mà vào phòng mới → trả cá sống
+    r = commit(client, svc, lease, "cooking.recover", {}, server=True)
+    assert r["status"] == "committed" and r["events"][0]["payload"]["level"] == "raw"
+    save = client.get("/v1/account/save", headers=u["auth"]).json()["save"]
+    assert a in [i["uid"] for i in save["inventory"]["bag"]]
+    assert commit(client, svc, lease, "cooking.recover", {}, server=True)["error_code"] == "ALREADY_CLAIMED"
+    # nướng a, "quên" 10 s (đã chín) rồi nướng b: a thành cá nướng, b bắt đầu nướng — không COOLDOWN
+    assert commit(client, svc, lease, "cooking.start", {"item_uid": a, "station_id": "shop_co_ba"})["status"] == "committed"
+    conn = connect()
+    conn.execute("UPDATE item_registry SET state_since=state_since-10 WHERE item_uid=?", (a,))
+    conn.commit()
+    conn.close()
+    r2 = commit(client, svc, lease, "cooking.start", {"item_uid": b, "station_id": "shop_co_ba"})
+    assert r2["status"] == "committed", r2
+    assert any(e["name"] == "cooking.level_changed" and e["payload"]["level"] == "cooked" for e in r2["events"])
+    save = client.get("/v1/account/save", headers=u["auth"]).json()["save"]
+    assert save["inventory"]["food_counts"].get("item_grilled_fish") == 1
+    # b để quá giờ khét rồi mới vào phòng mới → cá khét về túi
+    conn = connect()
+    conn.execute("UPDATE item_registry SET state_since=state_since-60 WHERE item_uid=?", (b,))
+    conn.commit()
+    conn.close()
+    r3 = commit(client, svc, lease, "cooking.recover", {}, server=True)
+    assert r3["events"][0]["payload"]["level"] == "burnt"
+    save = client.get("/v1/account/save", headers=u["auth"]).json()["save"]
+    burnt = [i for i in save["inventory"]["bag"] if i["uid"] == b]
+    assert burnt and burnt[0]["cook_level"] == "burnt"
+
+
+def test_accept_at_giver_completes_talk_step(client, svc):
+    """Nhận việc từ Chú Sáu khi đang nói chuyện với chú: bước 'nói chuyện với Chú Sáu' tính luôn."""
+    from app.db import connect
+    import json as _j
+    u = register(client)
+    room = ready_room(client, svc, u)
+    lease = connect_player(client, svc, u, room)
+    conn = connect()
+    row = conn.execute("SELECT state_json FROM account_saves WHERE account_id=?", (lease["account_id"],)).fetchone()
+    s = _j.loads(row[0])
+    s["progress"]["quests"]["quest_02_sua_ben"] = {"state": "available", "step_index": 0, "counts": {}, "reward_claimed": False}
+    conn.execute("UPDATE account_saves SET state_json=? WHERE account_id=?", (_j.dumps(s), lease["account_id"]))
+    conn.commit()
+    conn.close()
+    r = commit(client, svc, lease, "quest.accept", {"quest_id": "quest_02_sua_ben", "npc_id": "npc_nam_sau"})
+    assert r["status"] == "committed"
+    st = r["save"]["progress"]["quests"]["quest_02_sua_ben"]
+    assert st["state"] == "active" and st["step_index"] == 1
+    assert any(e["name"] == "quest.step_progressed" for e in r["events"])

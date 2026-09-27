@@ -97,6 +97,9 @@ func attach_player(peer_id: int, s: Dictionary) -> void:
 	})
 	_broadcast_room_changed()
 	emit("room.player_joined", aid, {"player_id": aid})
+	if not resumed:
+		# cá còn nằm trên bếp từ phiên trước (tải lại trang, đổi máy): backend trả/nướng xong theo thời gian (P-025)
+		server_op(p, "cooking.recover", {})
 	# Người mới vào: gửi metadata các thực thể đang sống (chủ cá, giá trị) để hiển thị đúng.
 	for uid in entities:
 		var e: Dictionary = entities[uid]

@@ -26,6 +26,10 @@ var menu_arg := ""
 var overlay: Control               # màn chờ kết nối lại
 
 var cooking_uid := ""
+var cooking_station := ""
+var cooking_t0 := -1.0               # giờ client lúc bắt đầu nướng (chỉ để hiển thị; server quyết định chín/khét)
+var _cook_alerted := 0
+var _cook_menu_sec := -1
 var last_dialogue: Dictionary = {}
 var last_lootbox: Dictionary = {}
 var my_hunger := 100.0
@@ -121,6 +125,8 @@ func _exit_tree() -> void:
 
 func _build_island(isl: String) -> void:
 	island_id = isl
+	if Endpoints.autotest:
+		print("CABAY_ISLAND %s" % isl)
 	world_view.build(isl)
 	AudioDirector.set_island(isl)
 	for uid in entities.nodes.keys():
@@ -397,9 +403,13 @@ func _on_durable_result(q: Dictionary, r: Dictionary, receipt: Dictionary) -> vo
 				_render_menu()
 		"cooking.start":
 			cooking_uid = String(q["payload"]["item_uid"])
+			cooking_station = String(q["payload"]["station_id"])
+			cooking_t0 = Time.get_ticks_msec() / 1000.0
+			_cook_alerted = 0
 			AudioDirector.start_loop("cook", "sfx_grill_sizzle_loop", "SFX", -8.0)
 		"cooking.collect":
 			cooking_uid = ""
+			cooking_t0 = -1.0
 			AudioDirector.stop_loop("cook")
 			AudioDirector.play_ui("sfx_cook_done")
 		"inventory.sell":
@@ -662,11 +672,20 @@ func _on_event(ev: Dictionary) -> void:
 		"cooking.started":
 			if own:
 				cooking_uid = String(p["item_uid"])
+				cooking_station = String(p["station_id"])
+				if cooking_t0 < 0.0:
+					cooking_t0 = Time.get_ticks_msec() / 1000.0
 		"cooking.level_changed":
 			if own:
+				if Endpoints.autotest:
+					print("CABAY_COOK level=%s" % p["level"])
 				hud.popup(Loc.t("ui.cook.level_" + String(p["level"])), UIKit.C_GOLD)
-				if p["level"] == "burnt":
+				if String(p["item_uid"]) == cooking_uid:
+					cooking_uid = ""
+					cooking_t0 = -1.0
 					AudioDirector.stop_loop("cook")
+					if menu_name == "shop":
+						_render_menu()
 		"hunger.changed":
 			if own:
 				my_hunger = float(p["value"])
@@ -996,6 +1015,22 @@ func _process(_delta: float) -> void:
 		hud.strain_bar.value = clampf(_strain, 0, 1) * 100.0
 		var col := UIKit.C_GREEN if _strain < 0.6 else (UIKit.C_GOLD if _strain < 0.85 else UIKit.C_RED)
 		(hud.strain_bar.get_theme_stylebox("fill") as StyleBoxFlat).bg_color = col
+	# nướng cá: báo chín / sắp khét, cập nhật đồng hồ trong sạp mỗi giây
+	if cooking_uid != "" and cooking_t0 >= 0.0:
+		var ck: Dictionary = ContentDB.balance["cooking"]
+		var el := now - cooking_t0
+		if el >= float(ck["cook_time_s"]) and _cook_alerted < 1:
+			_cook_alerted = 1
+			if Endpoints.autotest:
+				print("CABAY_COOK ready")
+			hud.show_center(Loc.t("ui.cook.ready"), 2.5, UIKit.C_GREEN)
+			AudioDirector.play_ui("sfx_trick_ding")
+		elif el >= float(ck["burn_time_s"]) - 3.0 and _cook_alerted < 2:
+			_cook_alerted = 2
+			hud.popup(Loc.t("ui.cook.burn_soon"), UIKit.C_RED)
+		if menu_name == "shop" and int(el) != _cook_menu_sec:
+			_cook_menu_sec = int(el)
+			_render_menu()
 	# boss
 	if not _boss.is_empty() and _boss.has("end_t"):
 		hud.boss_bar.visible = true
@@ -1104,15 +1139,28 @@ func _objective_text() -> String:
 		var txt := Loc.t(step["objective_key"])
 		if int(step["count"]) > 1:
 			txt += " (%d/%d)" % [int(st["counts"].get(step["step_id"], 0)), int(step["count"])]
-		return txt
+		return txt + _elsewhere(q["giver_npc_id"])
 	for qid in quests:
 		if quests[qid]["state"] == "available":
 			var q2: Dictionary = ContentDB.quests.get(qid, {})
 			if not q2.is_empty():
-				return Loc.t("ui.quest.talk_to", {"name": Loc.name_of(q2["giver_npc_id"])})
+				return Loc.t("ui.quest.talk_to", {"name": Loc.name_of(q2["giver_npc_id"])}) + _elsewhere(q2["giver_npc_id"])
 	if (save["progress"]["bosses_defeated"] as Array).size() >= 3:
 		return Loc.t("ui.campaign.complete")
 	return Loc.t("ui.hud.objective_none")
+
+
+## Số giây đã nướng theo đồng hồ client (-1 nếu không nướng).
+func cooking_elapsed() -> float:
+	return Time.get_ticks_msec() / 1000.0 - cooking_t0 if cooking_uid != "" and cooking_t0 >= 0.0 else -1.0
+
+
+## Nhiệm vụ ở đảo khác: chỉ đường đi đảo (người mới mở đảo 2 vẫn đứng ở đảo 1).
+func _elsewhere(npc_id: String) -> String:
+	var isl := IslandLayout.island_of_npc(npc_id)
+	if isl == "" or isl == island_id:
+		return ""
+	return " — " + Loc.t("ui.quest.on_other_island", {"name": Loc.name_of(isl)})
 
 
 # ------------------------------------------------------------------ hiệu ứng hình theo sự kiện server

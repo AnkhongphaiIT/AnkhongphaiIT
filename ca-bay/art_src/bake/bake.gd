@@ -26,9 +26,12 @@ func _ready() -> void:
 				_bake_model(a["id"], a["path"])
 	if all or "--misc" in args:
 		_bake_misc(reg)
-	if all or "--icons" in args:
+	if all or "--icons" in args or "--missing-icons" in args:
 		for a in reg["assets"]:
 			if a["type"] == "icon":
+				# --missing-icons: chỉ bake icon chưa có file (không sinh lại icon đã duyệt/đã commit)
+				if "--missing-icons" in args and FileAccess.file_exists(a["path"]):
+					continue
 				await _bake_icon(a["id"], a["path"])
 	var f := FileAccess.open("res://art_src/bake/bake_report.json", FileAccess.WRITE)
 	f.store_string(JSON.stringify(report, "  ", true))
@@ -174,7 +177,9 @@ func icon_model(id: String) -> Node3D:
 		"ico_health": return _wrap(Models.heart())
 		"ico_rod_bamboo": return _wrap(Models.tool_model("rod_bamboo"))
 		"ico_bait_milk_tea": return _wrap(Models.bait("bait_milk_tea"))
-	if rest.begins_with("tool_"):
+		"ico_upg_backpack": return _wrap(Models.backpack_display())
+		"ico_upg_reel_speed": return _wrap(Models.reel_display())
+	if rest.begins_with("tool_") or rest.begins_with("rod_"):
 		return _wrap(Models.tool_model(rest))
 	if rest.begins_with("bait_"):
 		return _wrap(Models.bait(rest))
@@ -215,7 +220,7 @@ func _bake_icon(id: String, path: String) -> void:
 	vp.add_child(holder)
 	# khung hình: xoay 3/4, cân theo AABB
 	holder.rotation_degrees = Vector3(0, -125 if id.begins_with("ico_cre_") else -35, 0)
-	if id in ["ico_rod_bamboo", "ico_tool_broom"]:
+	if id in ["ico_rod_bamboo", "ico_rod_carbon", "ico_tool_broom"]:
 		# vật dài mảnh: đặt chéo khung và làm dày để còn đọc được ở 64 px
 		holder.rotation_degrees = Vector3(0, 0, 0)
 		m.rotation_degrees = Vector3(0, 90, 45)

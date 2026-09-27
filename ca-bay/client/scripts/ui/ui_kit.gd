@@ -212,3 +212,11 @@ static func icon(def_id: String, px := 40) -> Control:
 	empty.custom_minimum_size = Vector2(px, px)
 	empty.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return empty
+
+
+## Số phần trăm dễ đọc (tối đa 2 chữ số thập phân, bỏ số 0 thừa; dấu phẩy thập phân khi tiếng Việt).
+## GDScript không hỗ trợ định dạng %g — đừng dùng.
+static func percent(p: float) -> String:
+	var t := "%.2f" % p
+	t = t.rstrip("0").rstrip(".")
+	return t.replace(".", ",") if Loc.locale == "vi" else t

@@ -13,6 +13,9 @@
 - Giao diện Việt/Anh, font Be Vietnam Pro; HUD, menu, cài đặt; tự kết nối lại tới 85 giây, lệnh đang chờ gửi lại không nhân đôi.
 - Âm thanh tự tổng hợp: 65 SFX, 4 nhạc, 3 âm nền, giọng "ú ớ". Thoại có giọng (espeak-ng) chỉ là bản tạm, **không** có trong gói phát hành.
 
+- Nướng cá: đồng hồ "Đang nướng… còn N giây", báo "Cá chín rồi!" kèm âm, cảnh báo sắp khét; tải lại trang/đổi máy giữa lúc nướng không còn làm mất cá hay khóa bếp.
+- Hộp quà: bảng tỉ lệ hiển thị đúng con số (trước đó lỗi "%g%"). Nhận việc ngay tại người giao thì không phải nói chuyện lần hai. Mục tiêu chỉ đường khi việc nằm ở đảo khác. Thêm icon cho vỉ ruồi, ná, dừa nổ, cần carbon, 3 loại mồi, nâng cấp túi/guồng.
+
 **Sửa lỗi an toàn giao dịch (từ kiểm thử bot):** gửi lại lệnh gọi boss cũ không còn mở thêm trận miễn phí; chuyển thiết bị không đá nhầm máy mới; bị server ngắt thì được dọn khỏi phòng đúng cách; gửi lại lệnh nhặt sau khi máy chủ phòng khởi động lại nhận đúng kết quả cũ; nhặt được cá đang nhấp nháy sắp tỉnh.
 
 **Vận hành:** `server/ops/seed_checkpoint.py` tạo tài khoản checkpoint cho buổi chơi thử. Gói web (`tools/build/package_web.py`) và gói máy chủ (`tools/build/package_server.py`) với runbook, sao lưu/khôi phục; bản công khai bị chặn tới khi có host HTTPS/WSS, quyền itch.io và kênh liên hệ.

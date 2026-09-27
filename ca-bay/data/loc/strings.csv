@@ -202,6 +202,12 @@ ui.boss.return_arena,Get back inside the buoys or it swims off!,Quay vào trong 
 ui.campaign.complete,The pier is open. Keep fishing together!,Bến mở lại rồi. Cùng nhau câu tiếp thôi!
 ui.cook.level_burnt,"Oops, it burnt. Still sellable (cheap).","Ối, khét rồi. Vẫn bán được (rẻ)."
 ui.cook.level_cooked,Grilled fish ready! Added to your food.,Cá nướng xong! Đã thêm vào đồ ăn.
+ui.cook.level_raw,Your fish left the grill raw and went back to the bag.,Cá chưa kịp nướng đã được trả lại túi.
+ui.cook.ready,Fish is grilled! Take it before it burns.,Cá chín rồi! Lấy ngay kẻo khét.
+ui.cook.burn_soon,Your fish is about to burn!,Cá sắp khét rồi!
+ui.cook.progress,Grilling… {s}s left,Đang nướng… còn {s} giây
+ui.cook.elsewhere,"Your fish is still on another island's grill; grilling a new one sorts it out.","Cá của bạn còn trên bếp ở đảo khác; nướng con mới sẽ tự xử lý con đó."
+ui.shop.collect_ready,Take the grilled fish ({s}s before it burns),Lấy cá nướng (còn {s} giây là khét)
 ui.coop.create,Create Room,Tạo phòng
 ui.coop.join,Join Room,Vào phòng
 ui.coop.joined,A friend joined the room,Có bạn vừa vào phòng
@@ -313,8 +319,10 @@ ui.quest.boss_hint,Take {bait} ({count}) to the red post and press E.,Mang {bait
 ui.quest.claim,Claim reward,Nhận thưởng
 ui.quest.claim_at,Return to {name} for your reward,Quay lại gặp {name} nhận thưởng
 ui.quest.completed,Done: {name},Hoàn thành: {name}
+ui.quest.need_item,"No {name} in your bag yet — catch some, then come back.","Trong túi chưa có {name} — câu được rồi quay lại nhé."
 ui.quest.started,New task: {name},Việc mới: {name}
 ui.quest.talk_to,Talk to {name},Nói chuyện với {name}
+ui.quest.on_other_island,"on {name}: press Esc, then ""Travel""","ở {name}: bấm Esc, chọn ""Đi đảo khác"""
 ui.save.saving,Saving...,Đang lưu...
 ui.settings.account,Account,Tài khoản
 ui.settings.auto_swap,Auto-swap tool after yank,Tự đổi công cụ sau khi giật

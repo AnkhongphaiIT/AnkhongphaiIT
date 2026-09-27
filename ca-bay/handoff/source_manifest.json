@@ -5207,6 +5207,231 @@
       }
     },
     {
+      "asset_id": "ico_tool_swatter",
+      "status": "in_review",
+      "source_record_id": "src_ico_tool_swatter",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_tool_swatter.png",
+          "bytes": 1598,
+          "sha256": "418e39458b3cd0cbe5c91ec69fc6bbac8e700154632f36f4fd3d5ba3cfb8ad5b"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_tool_slingshot",
+      "status": "in_review",
+      "source_record_id": "src_ico_tool_slingshot",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_tool_slingshot.png",
+          "bytes": 3680,
+          "sha256": "0d01dfed0d8979e46772014ae5e31994c09cc816ce613c92ef8a086440598563"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_tool_coconut_bomb",
+      "status": "in_review",
+      "source_record_id": "src_ico_tool_coconut_bomb",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_tool_coconut_bomb.png",
+          "bytes": 4199,
+          "sha256": "8eea7e8ae17ad196b80719dd7a037ba9f6485bf29685808eda2088c2223de1d8"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_rod_carbon",
+      "status": "in_review",
+      "source_record_id": "src_ico_rod_carbon",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_rod_carbon.png",
+          "bytes": 1449,
+          "sha256": "99e908e3e38f91be9326964f3b698c444d7c0c4c9b5556c7e6c45b9fc5e55253"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_bait_shrimp_paste",
+      "status": "in_review",
+      "source_record_id": "src_ico_bait_shrimp_paste",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_bait_shrimp_paste.png",
+          "bytes": 4071,
+          "sha256": "89f7fdc56cfefd9c5909c81dbf55e6c9351977ec2bc7f8c81aade7724e78f051"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_bait_crab_mix",
+      "status": "in_review",
+      "source_record_id": "src_ico_bait_crab_mix",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_bait_crab_mix.png",
+          "bytes": 4008,
+          "sha256": "bc1b27fd765625de6f12acb876d998b7c22373e02c321823a6cb78af7e2f7b0d"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_bait_fish_strip",
+      "status": "in_review",
+      "source_record_id": "src_ico_bait_fish_strip",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_bait_fish_strip.png",
+          "bytes": 2459,
+          "sha256": "061b915599a20ebe57018453ca8100c4d76cee6432b1325f7ee41975ffdfa1f2"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_upg_backpack",
+      "status": "in_review",
+      "source_record_id": "src_ico_upg_backpack",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_upg_backpack.png",
+          "bytes": 3774,
+          "sha256": "6559918ca5916c732fbb980161d3ae92c1b9975ff7e011c9a2c56b7a56299f9d"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
+      "asset_id": "ico_upg_reel_speed",
+      "status": "in_review",
+      "source_record_id": "src_ico_upg_reel_speed",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/icons/ico_upg_reel_speed.png",
+          "bytes": 5359,
+          "sha256": "3d265dba7715de0bbe75876b6d9ba90f4d99cf757bd3f02097327508bbd63fed"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      },
+      "measure": {
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true
+      }
+    },
+    {
       "asset_id": "mdl_chr_player_remote",
       "status": "in_review",
       "source_record_id": "src_mdl_chr_player_remote",

@@ -118,8 +118,9 @@ class Seeder:
         _isl, q_prep, npc, fish, count, *_ = ISLANDS[idx]
         st = lease["save"]["progress"]["quests"].get(q_prep, {}).get("state")
         if st == "available":
-            self.op(lease, "quest.accept", {"quest_id": q_prep, "npc_id": npc})
-        self.op(lease, "quest.talk", {"npc_id": npc}, server_op=True)
+            self.op(lease, "quest.accept", {"quest_id": q_prep, "npc_id": npc})  # nhận việc tại người giao: tính luôn bước nói chuyện
+        if lease["save"]["progress"]["quests"][q_prep]["step_index"] == 0:
+            self.op(lease, "quest.talk", {"npc_id": npc}, server_op=True)
         step = "step_deliver_ca_ro" if idx == 0 else "step_deliver_fish"
         for _ in range(count):  # túi nhỏ: câu con nào giao con đó, như người chơi làm
             uids = self.catch(lease, fish, 1)

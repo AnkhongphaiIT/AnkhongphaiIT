@@ -39,7 +39,7 @@ class OpContext:
 
 
 # Thao tác do room server tự khởi tạo (không đến từ ý định client) — được phép không có expected_save_version.
-SERVER_OPS = {"bait.consume", "quest.talk", "quest.refill", "npc.gift", "boss.reward", "boss.refund", "tool.consume_ammo",
+SERVER_OPS = {"cooking.recover", "bait.consume", "quest.talk", "quest.refill", "npc.gift", "boss.reward", "boss.refund", "tool.consume_ammo",
               "tutorial.done", "inventory.recover_escrow", "quest.progress_catch"}
 # Thao tác vẫn phải chạy dù lease đã hết (bảo vệ tiến trình: hoàn mồi, trả đồ về inbox).
 LEASE_OPTIONAL_OPS = {"boss.refund", "inventory.recover_escrow"}
@@ -496,13 +496,48 @@ def op_cook_start(ctx: OpContext, p: dict) -> None:
         raise OpError("INVALID_PAYLOAD", "not cookable")
     if station not in ctx.cat.shops:
         raise OpError("INVALID_PAYLOAD", "station")
-    busy = ctx.conn.execute("SELECT 1 FROM item_registry WHERE owner_account_id=? AND state='cooking'", (ctx.account_id,)).fetchone()
-    if busy:
-        raise OpError("COOLDOWN", "đang nấu")
+    # Con đang nằm trên bếp (bị quên, mất kết nối, đổi máy) được giải quyết trước — không bao giờ khóa bếp vĩnh viễn.
+    _resolve_cooking(ctx)
     ctx.save["inventory"]["bag"] = [i for i in ctx.save["inventory"]["bag"] if i["uid"] != uid]
     _set_state(ctx, uid, "cooking", room_id=ctx.room_id, station_id=station)
     ctx.events.append({"name": "cooking.started", "payload": {"item_uid": uid, "station_id": station}})
     ctx.receipt = {"item_uid": uid, "cook_time_s": ctx.cat.balance["cooking"]["cook_time_s"]}
+
+
+def _cook_outcome(ctx: OpContext, reg, elapsed: float) -> str:
+    """Kết quả một cá đang nằm trên bếp theo thời gian đã nướng: raw (trả cá sống), cooked (thêm cá nướng), burnt."""
+    ck = ctx.cat.balance["cooking"]
+    uid = reg["item_uid"]
+    it = json.loads(reg["instance_json"])
+    if elapsed < float(ck["cook_time_s"]):
+        _set_state(ctx, uid, "bag")
+        _give_item(ctx, it)
+        return "raw"
+    if elapsed <= float(ck["burn_time_s"]):
+        _set_state(ctx, uid, "consumed")
+        ctx.save["inventory"]["food_counts"]["item_grilled_fish"] = int(ctx.save["inventory"]["food_counts"].get("item_grilled_fish", 0)) + 1
+        return "cooked"
+    it["cook_level"] = "burnt"
+    ctx.conn.execute("UPDATE item_registry SET instance_json=? WHERE item_uid=?", (json.dumps(it), uid))
+    _set_state(ctx, uid, "bag")
+    _give_item(ctx, it)
+    return "burnt"
+
+
+def _resolve_cooking(ctx: OpContext) -> int:
+    rows = ctx.conn.execute("SELECT * FROM item_registry WHERE owner_account_id=? AND state='cooking'", (ctx.account_id,)).fetchall()
+    for reg in rows:
+        level = _cook_outcome(ctx, reg, now_s() - int(reg["state_since"]))
+        ctx.events.append({"name": "cooking.level_changed", "payload": {"item_uid": reg["item_uid"], "level": level}})
+    return len(rows)
+
+
+def op_cook_recover(ctx: OpContext, p: dict) -> None:
+    """Room server gọi khi người chơi vào phòng mới: cá còn trên bếp từ phiên trước được trả/nướng xong theo thời gian."""
+    n = _resolve_cooking(ctx)
+    if n == 0:
+        raise OpError("ALREADY_CLAIMED", "không có gì trên bếp")
+    ctx.receipt = {"resolved": n}
 
 
 def op_cook_collect(ctx: OpContext, p: dict) -> None:
@@ -513,21 +548,9 @@ def op_cook_collect(ctx: OpContext, p: dict) -> None:
     if reg is None or reg["owner_account_id"] != ctx.account_id or reg["state"] != "cooking" or reg["station_id"] != station:
         raise OpError("ITEM_NOT_OWNED")
     elapsed = now_s() - int(reg["state_since"])
-    ck = ctx.cat.balance["cooking"]
-    if elapsed < float(ck["cook_time_s"]):
+    if elapsed < float(ctx.cat.balance["cooking"]["cook_time_s"]):
         raise OpError("COOLDOWN", "chưa chín")
-    it = json.loads(reg["instance_json"])
-    if elapsed <= float(ck["burn_time_s"]):
-        _set_state(ctx, uid, "consumed")
-        ctx.save["inventory"]["food_counts"]["item_grilled_fish"] = int(ctx.save["inventory"]["food_counts"].get("item_grilled_fish", 0)) + 1
-        level = "cooked"
-    else:
-        it["cook_level"] = "burnt"
-        ctx.conn.execute("UPDATE item_registry SET instance_json=? WHERE item_uid=?", (json.dumps(it), uid))
-        _set_state(ctx, uid, "bag")
-        where = _give_item(ctx, it)
-        level = "burnt"
-        ctx.receipt = {"where": where}
+    level = _cook_outcome(ctx, reg, elapsed)
     ctx.events.append({"name": "cooking.level_changed", "payload": {"item_uid": uid, "level": level}})
     ctx.receipt = {**ctx.receipt, "item_uid": uid, "level": level}
 
@@ -629,6 +652,12 @@ def op_quest_accept(ctx: OpContext, p: dict) -> None:
         raise OpError("UNLOCK_REQUIRED")
     st["state"] = "active"
     ctx.events.append({"name": "quest.started", "payload": {"quest_id": qid}})
+    # Nhận việc ngay khi đang nói chuyện với chính người giao: bước "nói chuyện với <người đó>" tính luôn
+    # (trước đây phải bấm nói chuyện lần nữa — E2E trình duyệt thấy mục tiêu kẹt ở "(0/1)").
+    step = _current_step(q, st)
+    if step and step["type"] == "talk" and step["target_id"] == npc:
+        st["counts"][step["step_id"]] = int(step["count"])
+        _advance_if_done(ctx, q, st)
     ctx.receipt = {"quest_id": qid}
 
 
@@ -910,6 +939,7 @@ HANDLERS: dict[str, Callable[[OpContext, dict], None]] = {
     "food.consume": op_food,
     "cooking.start": op_cook_start,
     "cooking.collect": op_cook_collect,
+    "cooking.recover": op_cook_recover,
     "equipment.equip": op_equip,
     "bait.select": op_bait_select,
     "tool.consume_ammo": op_consume_ammo,

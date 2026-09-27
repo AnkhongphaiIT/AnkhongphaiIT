@@ -2393,6 +2393,96 @@
       "notes": "Bake 256×256 RGBA từ mdl_item_festival_medal; không chứa chữ."
     },
     {
+      "id": "ico_tool_swatter",
+      "type": "icon",
+      "path": "res://assets/icons/ico_tool_swatter.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_tool_slingshot",
+      "type": "icon",
+      "path": "res://assets/icons/ico_tool_slingshot.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_tool_coconut_bomb",
+      "type": "icon",
+      "path": "res://assets/icons/ico_tool_coconut_bomb.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_rod_carbon",
+      "type": "icon",
+      "path": "res://assets/icons/ico_rod_carbon.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_bait_shrimp_paste",
+      "type": "icon",
+      "path": "res://assets/icons/ico_bait_shrimp_paste.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_bait_crab_mix",
+      "type": "icon",
+      "path": "res://assets/icons/ico_bait_crab_mix.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_bait_fish_strip",
+      "type": "icon",
+      "path": "res://assets/icons/ico_bait_fish_strip.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_upg_backpack",
+      "type": "icon",
+      "path": "res://assets/icons/ico_upg_backpack.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
+      "id": "ico_upg_reel_speed",
+      "type": "icon",
+      "path": "res://assets/icons/ico_upg_reel_speed.png",
+      "priority": "P1",
+      "status": "in_review",
+      "owner_role": "ui",
+      "license": "self_made",
+      "notes": "CR-007: bổ sung icon cho công cụ/cần/mồi/nâng cấp có trong sạp nhưng registry gốc chưa có icon."
+    },
+    {
       "id": "mdl_chr_player_remote",
       "type": "model",
       "path": "res://assets/models/chr/mdl_chr_player_remote.tscn",

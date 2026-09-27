@@ -1,0 +1,338 @@
+[
+ {
+  "goto": "{BASE}/index.html?autotest=1"
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   640,
+   372
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   634,
+   495
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "type": "{CP_USER}"
+ },
+ {
+  "key": "Tab"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "type": "{CP_PASS}"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "waitlog": "CABAY_AUTH_SUBMIT",
+  "timeout": 20000
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "click": [
+   441,
+   290
+  ]
+ },
+ {
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 30000
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "shot": "m01_isl2"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "shot": "m02_pause"
+ },
+ {
+  "click": [
+   640,
+   410
+  ]
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "m03_lootbox"
+ },
+ {
+  "click": [
+   640,
+   388
+  ]
+ },
+ {
+  "waitlog": "CABAY_EV lootbox.opened",
+  "fresh": true,
+  "timeout": 15000
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "shot": "m04_reveal"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "hold": "KeyW",
+  "ms": 6500
+ },
+ {
+  "wait": 400
+ },
+ {
+  "repeat": [
+   {
+    "key": "Digit1"
+   },
+   {
+    "wait": 700
+   },
+   {
+    "key": "KeyG"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "mdown": "left"
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "mup": "left"
+   },
+   {
+    "waitlog": "CABAY_EV fishing.lure_landed",
+    "fresh": true,
+    "timeout": 8000
+   },
+   {
+    "reel": {
+     "until": "CABAY_EV fishing.(launched|escaped|cancelled)",
+     "fail": "CABAY_EV fishing.(escaped|cancelled)",
+     "timeout": 90000
+    },
+    "wait_for": "CABAY_EV fishing.bite"
+   },
+   {
+    "hunt": {
+     "until": "CABAY_EV creature.knocked_out",
+     "fail": "CABAY_EV creature.returned_to_water",
+     "timeout": 30000,
+     "interval": 250,
+     "pre_key": "KeyT",
+     "step_key": "KeyW",
+     "step_every": 2,
+     "step_ms": 150
+    }
+   },
+   {
+    "key": "KeyT"
+   },
+   {
+    "hold": "KeyW",
+    "ms": 150
+   },
+   {
+    "key": "KeyE"
+   },
+   {
+    "waitlog": "CABAY_EV item.picked_up",
+    "fresh": true,
+    "timeout": 6000
+   }
+  ],
+  "until": "CABAY_EV item.picked_up",
+  "max": 5
+ },
+ {
+  "wait": 600
+ },
+ {
+  "key": "KeyV"
+ },
+ {
+  "walk_until": "CABAY_FOCUS npc npc_co_ba",
+  "face_key": "KeyV",
+  "timeout": 30000
+ },
+ {
+  "key": "KeyE"
+ },
+ {
+  "waitlog": "CABAY_EV dialogue.line_started",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "m06_shop"
+ },
+ {
+  "click": [
+   342,
+   550
+  ]
+ },
+ {
+  "waitlog": "CABAY_EV cooking.started",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "m06b_cooking"
+ },
+ {
+  "waitlog": "CABAY_COOK ready",
+  "timeout": 15000
+ },
+ {
+  "wait": 300
+ },
+ {
+  "shot": "m06c_ready"
+ },
+ {
+  "click": [
+   640,
+   550
+  ]
+ },
+ {
+  "waitlog": "CABAY_COOK level=cooked",
+  "timeout": 10000
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "m06d_cooked"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "shot": "m07_pause"
+ },
+ {
+  "click": [
+   640,
+   470
+  ]
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   435,
+   368
+  ]
+ },
+ {
+  "waitlog": "CABAY_ISLAND isl_02_rung_dua",
+  "timeout": 20000
+ },
+ {
+  "wait": 3000
+ },
+ {
+  "shot": "m08_isl2"
+ },
+ {
+  "key": "KeyN"
+ },
+ {
+  "walk_until": "CABAY_FOCUS npc npc_nam_sau",
+  "face_key": "KeyN",
+  "timeout": 45000
+ },
+ {
+  "key": "KeyE"
+ },
+ {
+  "waitlog": "CABAY_EV dialogue.line_started",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "m09_nam_sau"
+ },
+ {
+  "click": [
+   640,
+   390
+  ]
+ },
+ {
+  "waitlog": "CABAY_EV quest.started",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "waitlog": "CABAY_EV quest.step_progressed",
+  "fresh": true,
+  "timeout": 10000
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "shot": "m10_quest_accepted"
+ }
+]
