@@ -471,6 +471,8 @@ func _on_auth_failed(code: String) -> void:
 
 
 func _on_closed(reason: String, reconnect_allowed: bool) -> void:
+	if Endpoints.autotest:
+		print("CABAY_NET closed reason=%s reconnect=%s" % [reason, str(reconnect_allowed)])
 	AudioDirector.stop_loop("reel")
 	AudioDirector.stop_loop("strain")
 	hud.set_net(false, Loc.t("ui.coop.reconnecting"))
@@ -490,7 +492,11 @@ func _reconnect_loop() -> void:
 	_show_overlay(Loc.t("ui.coop.reconnecting"), false)
 	var t0 := Time.get_ticks_msec() / 1000.0
 	var wait := 1.0
+	var attempt := 0
 	while _reconnecting and is_inside_tree() and Time.get_ticks_msec() / 1000.0 - t0 < RECONNECT_GRACE_S:
+		attempt += 1
+		if Endpoints.autotest:
+			print("CABAY_NET retry %d after %.1fs" % [attempt, Time.get_ticks_msec() / 1000.0 - t0])
 		var ok: bool = await app.reconnect_session()
 		if ok:
 			# chờ session.accepted (hoặc thất bại)
@@ -502,6 +508,8 @@ func _reconnect_loop() -> void:
 		await get_tree().create_timer(wait).timeout
 		wait = minf(wait * 2.0, 8.0)
 	if is_inside_tree() and _reconnecting:
+		if Endpoints.autotest:
+			print("CABAY_NET gave_up")
 		_show_overlay(Loc.t("ui.network.offline"), true)
 
 
@@ -518,6 +526,7 @@ func _show_overlay(text: String, to_lobby: bool) -> void:
 	var p := UIKit.panel(v)
 	p.custom_minimum_size = Vector2(560, 0)
 	overlay = UIKit.centered(p)
+	overlay.theme = UIKit.theme()  # CanvasLayer không kế thừa theme của root_ui → phông mặc định (lỗi cũ)
 	ui_layer.add_child(overlay)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

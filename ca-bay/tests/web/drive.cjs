@@ -79,6 +79,8 @@ async function runStep(ctx, s, outDir, mark) {
       for (const cb of window.__heldRAF.splice(0)) window.__origRAF(cb);
     });
   }
+  // {signal:"restart_room", down_ms, mode:"term"|"kill"} — nhờ runner Python tắt room server thật rồi bật lại (không chờ)
+  if (s.signal) process.stdout.write(`DRIVE_SIGNAL ${s.signal} ${s.down_ms || 3000} ${s.mode || 'term'}\n`);
   // {perf:"nhãn"} — ghi CABAY_PERF: bộ nhớ wasm, JS heap, tổng dung lượng tài nguyên đã tải, thời gian tải trang
   if (s.perf) {
     const m = await page.evaluate(() => ({

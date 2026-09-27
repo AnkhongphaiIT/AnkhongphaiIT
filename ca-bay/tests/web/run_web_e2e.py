@@ -21,6 +21,7 @@ import secrets
 import subprocess
 import sys
 import threading
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -96,8 +97,41 @@ def main() -> int:
         if a.iframe:
             host = serve_web(ROOT / "tests/web/iframe_host", WEB_PORT + 1)
         env = dict(os.environ, NODE_PATH=npm_root())
-        r = subprocess.run(["node", str(ROOT / "tests/web/drive.cjs"), str(out / "scenario.json"), str(out)],
-                           env=env, capture_output=True, text=True, timeout=900)
+        # chạy driver, đọc stdout từng dòng: DRIVE_SIGNAL restart_room <down_ms> <term|kill> → tắt/bật room server thật
+        proc = subprocess.Popen(["node", str(ROOT / "tests/web/drive.cjs"), str(out / "scenario.json"), str(out)],
+                                env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        stdout_lines: list[str] = []
+        workers: list[threading.Thread] = []
+
+        def restart_room(down_ms: int, mode: str) -> None:
+            import signal as _sig
+            if mode == "kill" and getattr(st, "room", None) and st.room.poll() is None:
+                os.killpg(st.room.pid, _sig.SIGKILL)  # sập đột ngột: không gửi session.closed
+                st.room.wait(10)
+            st.stop_room_server()
+            time.sleep(down_ms / 1000.0)
+            st._room_gen = getattr(st, "_room_gen", 1) + 1
+            st.start_room_server(f"room{st._room_gen}")
+            print(f"[runner] room server bật lại sau {down_ms} ms ({mode})", flush=True)
+
+        deadline = time.time() + 900
+        for line in proc.stdout:
+            stdout_lines.append(line.rstrip("\n"))
+            if line.startswith("DRIVE_SIGNAL restart_room") and not (a.external_api and a.external_ws):
+                _, _, down, mode = line.split()
+                th = threading.Thread(target=restart_room, args=(int(down), mode), daemon=True)
+                th.start()
+                workers.append(th)
+            if time.time() > deadline:
+                proc.kill()
+                break
+        proc.wait(30)
+        for th in workers:
+            th.join(60)
+
+        class _R:  # giữ giao diện cũ (r.stdout) cho phần tổng kết bên dưới
+            stdout = "\n".join(l for l in stdout_lines if not l.startswith("DRIVE_SIGNAL"))
+        r = _R()
         # bộ nhớ tiến trình máy chủ sau buổi chạy (VmRSS hiện tại / VmHWM đỉnh), MB — PERF-01 phía server
         server_mem = {}
         for name, proc in (("room", getattr(st, "room", None)), ("backend", getattr(st, "backend", None))):
