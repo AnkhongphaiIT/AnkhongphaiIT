@@ -51,7 +51,25 @@ static func parse_and_validate(text: String, expected_direction: String) -> Dict
 	if err != "":
 		return {"ok": false, "error": "INVALID_PAYLOAD", "detail": err}
 	env["seq"] = int(env["seq"])
+	# JSON của Godot đọc mọi số thành float; trường "integer" trong schema phải về int thật,
+	# nếu không khi chuyển tiếp sang backend sẽ thành "1.0" và bị từ chối (lỗi shop.buy quantity).
+	env["payload"] = normalize_integers(env["payload"], spec.get("payload_schema", {}))
 	return {"ok": true, "env": env}
+
+
+## Đổi float có giá trị nguyên thành int ở các vị trí schema khai báo "integer" (đệ quy object/array).
+static func normalize_integers(v: Variant, schema: Dictionary) -> Variant:
+	var t: Variant = schema.get("type", null)
+	if (t == "integer" or (t is Array and "integer" in t)) and typeof(v) == TYPE_FLOAT and v == floorf(v):
+		return int(v)
+	if typeof(v) == TYPE_DICTIONARY and schema.has("properties"):
+		for k in (v as Dictionary).keys():
+			if schema["properties"].has(k):
+				v[k] = normalize_integers(v[k], schema["properties"][k])
+	elif typeof(v) == TYPE_ARRAY and schema.has("items") and typeof(schema["items"]) == TYPE_DICTIONARY:
+		for i in (v as Array).size():
+			v[i] = normalize_integers(v[i], schema["items"])
+	return v
 
 
 static func encode(env: Dictionary) -> String:

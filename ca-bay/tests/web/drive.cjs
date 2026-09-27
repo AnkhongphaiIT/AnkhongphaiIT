@@ -21,7 +21,13 @@ async function waitLog(page, re, from, timeout, what) {
   }
 }
 
+let prevStart = 0;
+let curStart = 0;
+
 async function runStep(page, s, outDir, mark) {
+  // fresh:true tính log từ đầu bước TRƯỚC (hành động gây ra sự kiện) — tránh lỡ khi server trả lời nhanh
+  prevStart = curStart;
+  curStart = logs.length;
   mark(s);
   if (s.repeat) {
     const re = new RegExp(s.until);
@@ -52,7 +58,7 @@ async function runStep(page, s, outDir, mark) {
   if (s.keyup) await page.keyboard.up(s.keyup);
   if (s.hold) { await page.keyboard.down(s.hold); await page.waitForTimeout(s.ms || 500); await page.keyboard.up(s.hold); }
   // waitlog: mặc định tìm trong toàn bộ log; fresh:true chỉ tính log sau khi bắt đầu bước (dùng trong khối lặp)
-  if (s.waitlog) await waitLog(page, new RegExp(s.waitlog), s.fresh ? logs.length : 0, s.timeout || 60000, s.waitlog);
+  if (s.waitlog) await waitLog(page, new RegExp(s.waitlog), s.fresh ? prevStart : 0, s.timeout || 60000, s.waitlog);
   if (s.reel) {
     // chờ cá cắn rồi bấm ngay (cửa sổ giật ngắn); giữ chuột kéo, thả khi cá quẫy
     if (s.wait_for) await waitLog(page, new RegExp(s.wait_for), logs.length, 60000, s.wait_for);
