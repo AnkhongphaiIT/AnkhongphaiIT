@@ -8,6 +8,7 @@ const STEP := 2.0
 
 var island_id: String = ""
 var npc_nodes: Dictionary = {}   # npc_id -> Node3D
+var _loc_labels: Array = []      # [[Label3D, Callable trả chữ]] — dựng lại chữ khi đổi ngôn ngữ
 var sun: DirectionalLight3D
 var env: WorldEnvironment
 var water: MeshInstance3D
@@ -28,10 +29,27 @@ const ENVS := {
 }
 
 
+func _ready() -> void:
+	Loc.locale_changed.connect(func(_l): _relabel())
+
+
+## Nhãn 3D có chữ theo ngôn ngữ (tên NPC, biển sạp, biển khu câu): đổi VI↔EN giữa trận thì cập nhật ngay.
+func _track(l: Label3D, text_fn: Callable) -> Label3D:
+	_loc_labels.append([l, text_fn])
+	return l
+
+
+func _relabel() -> void:
+	for pair in _loc_labels:
+		if is_instance_valid(pair[0]):
+			(pair[0] as Label3D).text = (pair[1] as Callable).call()
+
+
 func build(isl: String) -> void:
 	for c in get_children():
 		c.queue_free()
 	npc_nodes.clear()
+	_loc_labels.clear()
 	island_id = isl
 	var L := IslandLayout.layout(isl)
 	var pal: Dictionary = PALETTES.get(L.get("palette", "cu_lao"), PALETTES["cu_lao"])
@@ -251,7 +269,8 @@ func _build_shop(L: Dictionary) -> void:
 	var smoke := VfxPlayer.spawn("vfx_smoke_grill", st, st.global_transform * Vector3(-1.9, 0.8, -0.6))
 	if smoke:
 		smoke.name = "GrillSmoke"
-	var lbl := _label3d(Loc.t("shop.%s.sign" % s["shop_id"]) if Loc.has_key("shop.%s.sign" % s["shop_id"]) else Loc.name_of(s["npc_id"]), 0.9)
+	var sign_fn := func(): return Loc.t("shop.%s.sign" % s["shop_id"]) if Loc.has_key("shop.%s.sign" % s["shop_id"]) else Loc.name_of(s["npc_id"])
+	var lbl := _track(_label3d(sign_fn.call(), 0.9), sign_fn)
 	lbl.position = st.position + Vector3(0, 3.3, 0)
 	add_child(lbl)
 
@@ -271,7 +290,7 @@ func _build_npcs(L: Dictionary) -> void:
 		var spawn: Vector3 = IslandLayout.spawn_point(island_id)
 		var to := Vector2(spawn.x - node.position.x, spawn.z - node.position.z)
 		node.rotation.y = atan2(-to.x, -to.y)
-		var lbl := _label3d(Loc.name_of(npc_id), 0.55)
+		var lbl := _track(_label3d(Loc.name_of(npc_id), 0.55), func(): return Loc.name_of(npc_id))
 		lbl.position = Vector3(0, 2.35, 0)
 		node.add_child(lbl)
 		# hoạt ảnh NPC: thư viện asset anm_lib_npc_basic (thở/nói/vui/chê)
@@ -346,7 +365,7 @@ func _build_zone_signs(L: Dictionary) -> void:
 		var c: Vector2 = f[0]
 		# biển chỉ dẫn đặt trên bờ gần vùng câu
 		var land := IslandLayout.nearest_land(island_id, c)
-		var lbl := _label3d(Loc.t(key), 0.7)
+		var lbl := _track(_label3d(Loc.t(key), 0.7), func(): return Loc.t(key))
 		lbl.position = IslandLayout.v3(island_id, land, 2.6)
 		add_child(lbl)
 

@@ -81,6 +81,12 @@ async function runStep(ctx, s, outDir, mark) {
   }
   // {signal:"restart_room", down_ms, mode:"term"|"kill"} — nhờ runner Python tắt room server thật rồi bật lại (không chờ)
   if (s.signal) process.stdout.write(`DRIVE_SIGNAL ${s.signal} ${s.down_ms || 3000} ${s.mode || 'term'}\n`);
+  // {assert_no_log:"regex"} — log của trang (từ đầu) KHÔNG được có dòng khớp
+  if (s.assert_no_log) {
+    const re = new RegExp(s.assert_no_log);
+    const hit = logs.find((l) => onPage(l, n) && real(l) && re.test(body(l)));
+    if (hit) throw new Error('assert_no_log gặp: ' + body(hit).slice(0, 120));
+  }
   // {perf:"nhãn"} — ghi CABAY_PERF: bộ nhớ wasm, JS heap, tổng dung lượng tài nguyên đã tải, thời gian tải trang
   if (s.perf) {
     const m = await page.evaluate(() => ({

@@ -1,0 +1,197 @@
+[
+ {
+  "goto": "{BASE}/index.html?autotest=1"
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   640,
+   372
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   634,
+   495
+  ]
+ },
+ {
+  "wait": 600
+ },
+ {
+  "click": [
+   566,
+   224
+  ]
+ },
+ {
+  "wait": 600
+ },
+ {
+  "click": [
+   640,
+   198
+  ]
+ },
+ {
+  "type": "{USER}"
+ },
+ {
+  "click": [
+   640,
+   255
+  ]
+ },
+ {
+  "type": "Ban Web"
+ },
+ {
+  "click": [
+   640,
+   312
+  ]
+ },
+ {
+  "type": "songnuoc-2026-xanh"
+ },
+ {
+  "click": [
+   640,
+   369
+  ]
+ },
+ {
+  "type": "songnuoc-2026-xanh"
+ },
+ {
+  "click": [
+   640,
+   518
+  ]
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "click": [
+   640,
+   611
+  ]
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "click": [
+   441,
+   290
+  ]
+ },
+ {
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 30000
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "click": [
+   640,
+   527
+  ]
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "l01_settings"
+ },
+ {
+  "click": [
+   562,
+   147
+  ]
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "l02_settings_en"
+ },
+ {
+  "wheel": [
+   640,
+   400,
+   300,
+   8
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   636,
+   617
+  ]
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "l03_pause_en"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "l04_hud_en"
+ },
+ {
+  "assert_no_log": "CABAY_NET closed"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "click": [
+   640,
+   583
+  ]
+ },
+ {
+  "waitlog": "CABAY_LOBBY v=\\d+ money=0 tickets=0 dust=0 bag=0 upg=upg_backpack:0,upg_reel_speed:0 food=item_rice_ball:1 cos=0 islands=1",
+  "fresh": true,
+  "timeout": 20000
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "l05_lobby_en"
+ }
+]

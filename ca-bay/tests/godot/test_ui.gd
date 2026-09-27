@@ -117,3 +117,24 @@ func test_loc_whole_floats_render_as_int(t) -> void:
 	t.eq(Loc.t("ui.coop.players", {"count": 3.0}), "3/4 người", "3.0 → 3")
 	t.ok(Loc.t("ui.coop.players", {"count": 2.5}).begins_with("2.5"), "số lẻ giữ nguyên")
 	Loc.locale = old
+
+
+func test_world_labels_follow_locale(t) -> Signal:
+	# Lỗi cũ: đổi VI→EN giữa trận, HUD sang tiếng Anh nhưng bảng tên NPC/biển sạp 3D vẫn tiếng Việt.
+	var old := Loc.locale
+	Loc.set_locale("vi")
+	var wv := WorldView.new()
+	add_child(wv)
+	wv.build("isl_01_cu_lao")
+	var vi_name := Loc.name_of("npc_ong_tu")
+	Loc.set_locale("en")
+	var en_name := Loc.name_of("npc_ong_tu")
+	var texts: Array = []
+	for n in wv.find_children("*", "Label3D", true, false):
+		texts.append((n as Label3D).text)
+	t.ok(vi_name != en_name, "tên NPC có bản dịch khác nhau")
+	t.ok(en_name in texts, "nhãn 3D đổi sang tiếng Anh: %s" % en_name)
+	t.ok(vi_name not in texts, "không còn nhãn tiếng Việt cũ")
+	wv.queue_free()
+	Loc.set_locale(old)
+	return get_tree().process_frame
