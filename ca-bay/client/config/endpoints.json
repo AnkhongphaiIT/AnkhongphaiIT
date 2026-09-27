@@ -1,0 +1,5 @@
+{
+  "api_base": "http://127.0.0.1:8787",
+  "ws_url": "ws://127.0.0.1:8910",
+  "note": "Bản build công khai được tools/build ghi đè bằng endpoint HTTPS/WSS thật; không chứa secret."
+}

@@ -24,6 +24,8 @@ class Settings:
     allowed_origins: list[str] = field(default_factory=lambda: [o.strip() for o in (_env("CABAY_ALLOWED_ORIGINS", "") or "").split(",") if o.strip()])
     trust_proxy_headers: bool = field(default_factory=lambda: _env("CABAY_TRUST_PROXY", "0") == "1")
     game_version: str = "0.1.0"
+    # Số phòng đồng thời; mặc định theo network_contract (initial_concurrent_rooms). Đổi khi đã đo tải.
+    max_rooms: int | None = field(default_factory=lambda: int(_env("CABAY_MAX_ROOMS")) if _env("CABAY_MAX_ROOMS") else None)
     # Tham số scrypt theo 07 §4. Chỉ môi trường test mới được giảm để test chạy nhanh.
     scrypt_n: int = 2**17
     scrypt_r: int = 8

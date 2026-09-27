@@ -10,6 +10,7 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
 from ..auth.routes import _revoke_lease
+from ..config import settings
 from ..content import Catalog
 from ..db import immediate, now_s
 from ..deps import AuthSession, api_error, get_cat, get_db, require_access
@@ -19,6 +20,7 @@ router = APIRouter()
 
 INVITE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
 SEAT_RESERVATION_S = 60
+ROOM_HEARTBEAT_STALE_S = 30  # room server gửi room-status mỗi 2 s; im lặng lâu hơn = phòng chết
 
 
 class CreateRoomBody(BaseModel):
@@ -96,11 +98,14 @@ def create_room(body: CreateRoomBody, sess: AuthSession = Depends(require_access
         raise api_error(400, "INVALID_PAYLOAD")
     if island not in save["progress"]["islands_unlocked"]:
         raise api_error(403, "UNLOCK_REQUIRED")
-    active = conn.execute("SELECT COUNT(*) FROM rooms WHERE status!='closed' AND updated_at>?", (now_s() - 3600,)).fetchone()[0]
-    max_rooms = int(cat.limit("initial_concurrent_rooms"))
+    max_rooms = settings.max_rooms or int(cat.limit("initial_concurrent_rooms"))
     room_id = str(uuid.uuid4())
     now = now_s()
     with immediate(conn):
+        # Phòng không còn nhịp tim từ room server (crash/khởi động lại) coi như đã đóng.
+        conn.execute("UPDATE rooms SET status='closed', updated_at=? WHERE status!='closed' AND updated_at<?", (now, now - ROOM_HEARTBEAT_STALE_S))
+        conn.execute("UPDATE room_members SET connected=0 WHERE room_id IN (SELECT room_id FROM rooms WHERE status='closed')")
+        active = conn.execute("SELECT COUNT(*) FROM rooms WHERE status!='closed'").fetchone()[0]
         if active >= max_rooms:
             # Giới hạn phòng đồng thời thấp theo máy 8 GB (15 §3); đóng phòng rỗng quá hạn trước khi báo bận.
             conn.execute("UPDATE rooms SET status='closed', updated_at=? WHERE status!='closed' AND room_id NOT IN (SELECT room_id FROM room_members WHERE connected=1 OR reserved_at>?)", (now, now - SEAT_RESERVATION_S))

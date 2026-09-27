@@ -39,7 +39,7 @@ class OpContext:
 
 
 # Thao tác do room server tự khởi tạo (không đến từ ý định client) — được phép không có expected_save_version.
-SERVER_OPS = {"quest.talk", "quest.refill", "npc.gift", "boss.reward", "boss.refund", "tool.consume_ammo",
+SERVER_OPS = {"bait.consume", "quest.talk", "quest.refill", "npc.gift", "boss.reward", "boss.refund", "tool.consume_ammo",
               "tutorial.done", "inventory.recover_escrow", "quest.progress_catch"}
 # Thao tác vẫn phải chạy dù lease đã hết (bảo vệ tiến trình: hoàn mồi, trả đồ về inbox).
 LEASE_OPTIONAL_OPS = {"boss.refund", "inventory.recover_escrow"}
@@ -543,6 +543,24 @@ def op_bait_select(ctx: OpContext, p: dict) -> None:
     ctx.receipt = {"bait_id": bid}
 
 
+def op_bait_consume(ctx: OpContext, p: dict) -> None:
+    """Mồi bị ăn khi cá dính câu (consumed_on=hook). Mồi vô hạn không trừ."""
+    bid = _get(p, "bait_id", str)
+    bait = ctx.cat.baits.get(bid)
+    if bait is None:
+        raise OpError("INVALID_PAYLOAD")
+    if bait.get("infinite"):
+        ctx.receipt = {"bait_id": bid, "remaining": None}
+        return
+    counts = ctx.save["inventory"]["bait_counts"]
+    if int(counts.get(bid, 0)) <= 0:
+        raise OpError("ITEM_NOT_OWNED")
+    counts[bid] -= 1
+    if counts[bid] == 0 and ctx.save["inventory"]["selected_bait_id"] == bid:
+        ctx.save["inventory"]["selected_bait_id"] = "bait_bread"
+    ctx.receipt = {"bait_id": bid, "remaining": counts[bid]}
+
+
 def op_consume_ammo(ctx: OpContext, p: dict) -> None:
     tid = _get(p, "tool_id", str)
     ammo = ctx.save["inventory"].setdefault("tool_ammo", {})
@@ -882,6 +900,7 @@ HANDLERS: dict[str, Callable[[OpContext, dict], None]] = {
     "equipment.equip": op_equip,
     "bait.select": op_bait_select,
     "tool.consume_ammo": op_consume_ammo,
+    "bait.consume": op_bait_consume,
     "tutorial.done": op_tutorial,
     "quest.accept": op_quest_accept,
     "quest.talk": op_quest_talk,

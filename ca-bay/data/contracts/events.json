@@ -3194,6 +3194,73 @@
           "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
         }
       ]
+    },
+    {
+      "name": "room.ping",
+      "emitter": "NetworkAdapter",
+      "status": "slice",
+      "desc": "CR-003: điểm đánh dấu của một người chơi (không có chữ tự do), server chỉ chuyển trong room.",
+      "payload": [
+        {
+          "name": "kind",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "player.emote",
+      "emitter": "NetworkAdapter",
+      "status": "slice",
+      "desc": "CR-003: biểu cảm cố định (wave/thanks/cheer/sorry).",
+      "payload": [
+        {
+          "name": "emote",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
     }
   ]
 }

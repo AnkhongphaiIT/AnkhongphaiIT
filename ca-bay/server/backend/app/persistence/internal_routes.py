@@ -102,6 +102,8 @@ def consume_ticket(body: ConsumeBody, conn=Depends(get_db), cat: Catalog = Depen
         "account_id": t["account_id"],
         "display_name": acc["display_name"],
         "room_id": t["room_id"],
+        "island_id": room["island_id"],
+        "owner_account_id": room["owner_account_id"],
         "lease_epoch": epoch,
         "save": json.loads(sv["state_json"]),
     }
