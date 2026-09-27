@@ -86,6 +86,7 @@ func attach_player(peer_id: int, s: Dictionary) -> void:
 	p["save"] = s["save"]
 	p["equipped"] = s["save"]["inventory"]["equipped_id"]
 	p["disconnected_tick"] = -1
+	p["input_tick"] = tick_count
 	p["mode"] = "active"
 	p["menu"] = false
 	p["last_active_tick"] = tick_count
@@ -232,6 +233,11 @@ func _tick_player(p: Dictionary) -> void:
 		Fishing.cancel(self, p, "afk")
 	var can_move: bool = p["mode"] == "active"
 	var inp: Dictionary = p["input"]
+	# Input cũ (tab bị ẩn → trình duyệt dừng vòng lặp game; mạng khựng): không tiếp tục đi theo lệnh cuối mãi.
+	# Client gửi ít nhất mỗi 0,25 s nên quá INPUT_STALE_S không có gói mới thì coi như buông phím.
+	if (tick_count - int(p.get("input_tick", tick_count))) * dt > INPUT_STALE_S:
+		inp["move_x"] = 0.0
+		inp["move_z"] = 0.0
 	var st := Movement.step(island_id, {"pos": p["pos"], "vel_y": p["vel_y"], "on_ground": p["on_ground"]},
 		inp["move_x"] if can_move else 0.0, inp["move_z"] if can_move else 0.0, p["yaw"], inp["jump"] and can_move, dt)
 	if st["on_ground"] and not p["on_ground"]:
@@ -394,6 +400,7 @@ func _reject(p: Dictionary, rid: String, op_id: Variant, code: String) -> void:
 
 
 static var _debug := OS.get_environment("CABAY_DEBUG_INPUT") == "1"
+const INPUT_STALE_S := 1.0
 
 
 func _on_input(p: Dictionary, pl: Dictionary, seq: int) -> void:
@@ -409,6 +416,7 @@ func _on_input(p: Dictionary, pl: Dictionary, seq: int) -> void:
 	p["yaw"] = float(pl["look_yaw_rad"])
 	p["pitch"] = float(pl["look_pitch_rad"])
 	p["last_input_seq"] = seq
+	p["input_tick"] = tick_count
 	if meaningful:
 		_touch(p)
 

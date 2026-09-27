@@ -56,6 +56,37 @@ async function runStep(ctx, s, outDir, mark) {
   if (s.goto) await page.goto(subst(s.goto), { waitUntil: 'load', timeout: 120000 });
   if (s.wait) await page.waitForTimeout(s.wait);
   if (s.click) await page.mouse.click(s.click[0], s.click[1]);
+  // {freeze_ms:N} — đóng băng trang như tab nền bị trình duyệt dừng (JS/vòng lặp game ngừng) rồi đánh thức
+  if (s.freeze_ms) {
+    const cdp = await page.context().newCDPSession(page);
+    await cdp.send('Page.enable');
+    await cdp.send('Page.setWebLifecycleState', { state: 'frozen' });
+    await new Promise((r) => setTimeout(r, s.freeze_ms));
+    await cdp.send('Page.setWebLifecycleState', { state: 'active' });
+    await cdp.detach().catch(() => {});
+  }
+  // {pause_raf_ms:N} — như tab bị ẩn: trình duyệt ngừng requestAnimationFrame nên vòng lặp game (Emscripten) dừng hẳn;
+  // WebSocket vẫn nhận gói ở tầng trình duyệt nhưng game không xử lý/gửi gì cho tới khi trả rAF lại
+  if (s.pause_raf_ms) {
+    await page.evaluate(() => {
+      window.__origRAF = window.requestAnimationFrame;
+      window.__heldRAF = [];
+      window.requestAnimationFrame = (cb) => { window.__heldRAF.push(cb); return 0; };
+    });
+    await page.waitForTimeout(s.pause_raf_ms);
+    await page.evaluate(() => {
+      window.requestAnimationFrame = window.__origRAF;
+      for (const cb of window.__heldRAF.splice(0)) window.__origRAF(cb);
+    });
+  }
+  // {assert_near:{a:"BIẾN1", b:"BIẾN2", max:m}} — hai vị trí "x, y, z" đã capture cách nhau (mặt phẳng xz) không quá m
+  if (s.assert_near) {
+    const pa = String(vars[s.assert_near.a] || '').split(',').map(Number);
+    const pb = String(vars[s.assert_near.b] || '').split(',').map(Number);
+    const d = Math.hypot(pa[0] - pb[0], pa[2] - pb[2]);
+    logs.push(`[p${n}] [step] distance ${s.assert_near.a}-${s.assert_near.b}=${d.toFixed(2)} (max ${s.assert_near.max})`);
+    if (!(d <= s.assert_near.max)) throw new Error(`assert_near: ${d.toFixed(2)} > ${s.assert_near.max}`);
+  }
   // {wheel:[x, y, dy, lần]} — cuộn con lăn tại (x,y); dy>0 cuộn xuống
   if (s.wheel) { await page.mouse.move(s.wheel[0], s.wheel[1]); for (let i = 0; i < (s.wheel[3] || 1); i++) { await page.mouse.wheel(0, s.wheel[2]); await page.waitForTimeout(120); } }
   if (s.dbl) await page.mouse.dblclick(s.dbl[0], s.dbl[1]);

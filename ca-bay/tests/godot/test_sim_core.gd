@@ -244,3 +244,24 @@ func test_boss_melee_reach_matches_body(t) -> void:
 		p["pitch"] = atan2(d.y, Vector2(d.x, d.z).length())
 		p["cooldowns"] = {}
 		t.eq(Creatures.use_tool(room, p, uid), pair[1], "boss cách %.1f m" % pair[0])
+
+
+func test_stale_input_stops_movement(t) -> void:
+	# Tab bị ẩn khi đang giữ W: không còn gói input → server dừng nhân vật sau INPUT_STALE_S, không chạy tiếp 120 s.
+	var rs := H.make_room()
+	var room: RefCounted = rs[0]
+	var p := H.add_player(room, 2)
+	p["pos"] = IslandLayout.spawn_point(room.island_id)
+	p["yaw"] = PI  # hướng ra bến như người chơi mới vào: đi được ≥ 25 m nên quãng đường chỉ do input quyết định
+	room._on_input(p, {"move_x": 0.0, "move_z": -1.0, "look_yaw_rad": PI, "look_pitch_rad": 0.0, "jump": false}, 1)
+	var start: Vector3 = p["pos"]
+	H.run(room, 4.0)
+	var moved := Vector2(p["pos"].x - start.x, p["pos"].z - start.z).length()
+	var speed := float(ContentDB.balance["player"]["walk_speed_mps"])
+	t.ok(moved > 0.5 * speed * room.INPUT_STALE_S, "vẫn đi trong khoảng input còn mới (%.2f m)" % moved)
+	t.ok(moved <= speed * (room.INPUT_STALE_S + 0.2), "dừng khi input cũ: đi %.2f m trong 4 s (không phải %.1f m)" % [moved, speed * 4.0])
+	# gói mới tới → đi tiếp bình thường
+	var mid: Vector3 = p["pos"]
+	room._on_input(p, {"move_x": 0.0, "move_z": -1.0, "look_yaw_rad": PI, "look_pitch_rad": 0.0, "jump": false}, 2)
+	H.run(room, 0.5)
+	t.ok(Vector2(p["pos"].x - mid.x, p["pos"].z - mid.z).length() > 0.5, "có input mới thì đi tiếp")

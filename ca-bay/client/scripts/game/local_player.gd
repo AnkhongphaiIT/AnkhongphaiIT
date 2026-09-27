@@ -19,6 +19,7 @@ var pitch := 0.0
 var correction := Vector3.ZERO
 var _hist: Dictionary = {}           # seq -> vị trí dự đoán khi gửi
 var _input_t := 0.0
+var _since_send := 0.0
 var _last_sent := {}
 var jump_queued := false
 var equipped := "rod_bamboo"
@@ -109,6 +110,14 @@ func look_dir() -> Vector3:
 	return Movement.look_dir(yaw, pitch)
 
 
+func _notification(what: int) -> void:
+	# Mất focus cửa sổ/tab: trình duyệt không gửi keyup cho phím đang giữ → nhả hết để không đi/kéo cần mãi.
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		for a in InputMap.get_actions():
+			if Input.is_action_pressed(a):
+				Input.action_release(a)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not session or not session.gameplay_input_enabled():
 		return
@@ -177,14 +186,17 @@ func _physics_process(delta: float) -> void:
 		shake = maxf(0.0, shake - delta * 3.0)
 	rod_tip.global_position = rod_tip_world()
 	_input_t += delta
+	_since_send += delta
 	if _input_t >= 0.05:
 		_input_t = 0.0
 		var payload := {"move_x": mx, "move_z": mz, "look_yaw_rad": yaw, "look_pitch_rad": pitch, "jump": jump_queued}
-		if payload != _last_sent or randi() % 10 == 0:
+		# gửi khi đổi, và ít nhất mỗi 0,25 s để server biết phím vẫn đang giữ (server bỏ input cũ quá 1 s)
+		if payload != _last_sent or _since_send >= 0.25:
 			var rid: String = session.conn.send("player.input", payload)
 			if rid != "":
 				_hist[session.conn.seq] = pos
 				_last_sent = payload
+				_since_send = 0.0
 		jump_queued = false
 	_animate_viewmodel(delta)
 
