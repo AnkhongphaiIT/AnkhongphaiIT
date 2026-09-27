@@ -1,0 +1,210 @@
+{
+  "schema_version": "1.0.0",
+  "actions": [
+    {
+      "action": "move_forward",
+      "desktop": [
+        "W",
+        "Up"
+      ],
+      "touch": "joystick",
+      "gamepad": "left_stick_up",
+      "desc": "Đi tới",
+      "status": "slice"
+    },
+    {
+      "action": "move_back",
+      "desktop": [
+        "S",
+        "Down"
+      ],
+      "touch": "joystick",
+      "gamepad": "left_stick_down",
+      "desc": "Đi lùi",
+      "status": "slice"
+    },
+    {
+      "action": "move_left",
+      "desktop": [
+        "A",
+        "Left"
+      ],
+      "touch": "joystick",
+      "gamepad": "left_stick_left",
+      "desc": "Sang trái",
+      "status": "slice"
+    },
+    {
+      "action": "move_right",
+      "desktop": [
+        "D",
+        "Right"
+      ],
+      "touch": "joystick",
+      "gamepad": "left_stick_right",
+      "desc": "Sang phải",
+      "status": "slice"
+    },
+    {
+      "action": "look",
+      "desktop": [
+        "mouse_motion"
+      ],
+      "touch": "drag_right_half",
+      "gamepad": "right_stick",
+      "desc": "Nhìn",
+      "status": "slice"
+    },
+    {
+      "action": "primary",
+      "desktop": [
+        "mouse_left"
+      ],
+      "touch": "btn_action",
+      "gamepad": "right_trigger",
+      "desc": "Quăng/kéo (cần) · dùng công cụ · ném vật đang cầm",
+      "status": "slice"
+    },
+    {
+      "action": "secondary",
+      "desktop": [
+        "mouse_right"
+      ],
+      "touch": "btn_alt",
+      "gamepad": "left_trigger",
+      "desc": "Hủy câu/thả cá · đặt vật đang cầm xuống",
+      "status": "slice"
+    },
+    {
+      "action": "jump",
+      "desktop": [
+        "Space"
+      ],
+      "touch": "btn_jump",
+      "gamepad": "a",
+      "desc": "Nhảy",
+      "status": "slice"
+    },
+    {
+      "action": "interact",
+      "desktop": [
+        "E"
+      ],
+      "touch": "btn_interact",
+      "gamepad": "x",
+      "desc": "Nhặt, nói chuyện, mua",
+      "status": "slice"
+    },
+    {
+      "action": "store_item",
+      "desktop": [
+        "R"
+      ],
+      "touch": "btn_store",
+      "gamepad": "y",
+      "desc": "Cất vật đang cầm vào túi · tay không: lấy vật cất gần nhất ra",
+      "status": "slice"
+    },
+    {
+      "action": "hotbar_1",
+      "desktop": [
+        "1"
+      ],
+      "touch": "tap_slot_1",
+      "gamepad": "dpad_left",
+      "desc": "Chọn ô 1",
+      "status": "slice"
+    },
+    {
+      "action": "hotbar_2",
+      "desktop": [
+        "2"
+      ],
+      "touch": "tap_slot_2",
+      "gamepad": "dpad_up",
+      "desc": "Chọn ô 2",
+      "status": "slice"
+    },
+    {
+      "action": "hotbar_3",
+      "desktop": [
+        "3"
+      ],
+      "touch": "tap_slot_3",
+      "gamepad": "dpad_right",
+      "desc": "Chọn ô 3",
+      "status": "slice"
+    },
+    {
+      "action": "hotbar_4",
+      "desktop": [
+        "4"
+      ],
+      "touch": "tap_slot_4",
+      "gamepad": "dpad_down",
+      "desc": "Chọn ô 4",
+      "status": "slice"
+    },
+    {
+      "action": "hotbar_next",
+      "desktop": [
+        "wheel_down"
+      ],
+      "touch": "swipe_hotbar_left",
+      "gamepad": "right_bumper",
+      "desc": "Ô kế tiếp",
+      "status": "slice"
+    },
+    {
+      "action": "hotbar_prev",
+      "desktop": [
+        "wheel_up"
+      ],
+      "touch": "swipe_hotbar_right",
+      "gamepad": "left_bumper",
+      "desc": "Ô trước",
+      "status": "slice"
+    },
+    {
+      "action": "bait_cycle",
+      "desktop": [
+        "B"
+      ],
+      "touch": "tap_bait_slot",
+      "gamepad": "right_stick_click",
+      "desc": "Đổi mồi",
+      "status": "slice"
+    },
+    {
+      "action": "open_dex",
+      "desktop": [
+        "Tab"
+      ],
+      "touch": "btn_dex",
+      "gamepad": "select",
+      "desc": "Mở Sổ Cá",
+      "status": "slice"
+    },
+    {
+      "action": "pause",
+      "desktop": [
+        "Escape"
+      ],
+      "touch": "btn_pause",
+      "gamepad": "start",
+      "desc": "Tạm dừng",
+      "status": "slice"
+    },
+    {
+      "action": "debug_overlay",
+      "desktop": [
+        "F3"
+      ],
+      "touch": "three_finger_tap",
+      "gamepad": "",
+      "desc": "Bật/tắt lớp đo hiệu năng",
+      "status": "slice",
+      "debug_only": true
+    }
+  ]
+}

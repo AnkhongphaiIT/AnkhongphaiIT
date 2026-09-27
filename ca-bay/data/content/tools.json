@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design"
+  },
+  "records": [
+    {
+      "id": "tool_hand",
+      "name_key": "tool_hand.name",
+      "status": "slice",
+      "kind": "melee",
+      "damage": 2,
+      "range_m": 1.2,
+      "arc_deg": 60,
+      "cooldown_s": 0.35,
+      "knockback": 1.5,
+      "launch_up": 0.5,
+      "hit_text_key": "vfx.text.bonk",
+      "assets": {
+        "model": "mdl_fp_hands",
+        "icon": "ico_tool_hand"
+      }
+    },
+    {
+      "id": "tool_slipper",
+      "name_key": "tool_slipper.name",
+      "status": "slice",
+      "kind": "throwable",
+      "damage": 6,
+      "range_m": 25,
+      "cooldown_s": 0.4,
+      "knockback": 2.5,
+      "throw_speed_mps": 18,
+      "ammo": {
+        "max": 2,
+        "recover": "pickup"
+      },
+      "auto_return_s": 20,
+      "hit_text_key": "vfx.text.thwack",
+      "assets": {
+        "model": "mdl_tool_slipper",
+        "icon": "ico_tool_slipper"
+      }
+    },
+    {
+      "id": "tool_broom",
+      "name_key": "tool_broom.name",
+      "status": "slice",
+      "kind": "melee",
+      "damage": 5,
+      "range_m": 1.8,
+      "arc_deg": 100,
+      "cooldown_s": 0.6,
+      "knockback": 6.0,
+      "launch_up": 4.0,
+      "hit_text_key": "vfx.text.boing",
+      "assets": {
+        "model": "mdl_tool_broom",
+        "icon": "ico_tool_broom"
+      }
+    },
+    {
+      "id": "tool_slingshot",
+      "name_key": "tool_slingshot.name",
+      "status": "mvp",
+      "kind": "ranged",
+      "damage": 8,
+      "range_m": 30,
+      "cooldown_s": 0.8,
+      "knockback": 2.0,
+      "throw_speed_mps": 35,
+      "ammo": {
+        "max": 0,
+        "recover": "infinite"
+      },
+      "hit_text_key": "vfx.text.thwack",
+      "assets": {
+        "model": "mdl_tool_slingshot",
+        "icon": "ico_tool_slipper"
+      }
+    },
+    {
+      "id": "tool_swatter",
+      "name_key": "tool_swatter.name",
+      "status": "mvp",
+      "kind": "melee",
+      "damage": 12,
+      "range_m": 1.5,
+      "arc_deg": 70,
+      "cooldown_s": 0.7,
+      "knockback": 1.0,
+      "stun_s": 1.5,
+      "hit_text_key": "vfx.text.zap",
+      "assets": {
+        "model": "mdl_tool_swatter",
+        "icon": "ico_tool_broom"
+      }
+    },
+    {
+      "id": "tool_coconut_bomb",
+      "name_key": "tool_coconut_bomb.name",
+      "status": "mvp",
+      "kind": "explosive",
+      "damage": 25,
+      "range_m": 15,
+      "cooldown_s": 1.0,
+      "knockback": 8.0,
+      "radius_m": 3.0,
+      "fuse_s": 2.0,
+      "throw_speed_mps": 12,
+      "ammo": {
+        "max": 3,
+        "recover": "buy"
+      },
+      "hit_text_key": "vfx.text.boom",
+      "assets": {
+        "model": "mdl_tool_coconut_bomb",
+        "icon": "ico_tool_slipper"
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/events.schema.json",
+  "title": "Danh mục sự kiện",
+  "description": "data/contracts/events.json — NGUỒN CHÍNH THỨC tên sự kiện",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "events"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "emitter",
+          "status",
+          "desc",
+          "payload"
+        ],
+        "properties": {
+          "name": {
+            "$ref": "common.schema.json#/$defs/event_name"
+          },
+          "emitter": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "payload": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "type",
+                "required"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[a-z_]+$"
+                },
+                "type": {
+                  "enum": [
+                    "string",
+                    "int",
+                    "float",
+                    "bool",
+                    "vector3",
+                    "array",
+                    "dict"
+                  ]
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "enum": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "desc": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

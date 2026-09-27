@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "level_design"
+  },
+  "records": [
+    {
+      "id": "isl_01_cu_lao",
+      "name_key": "isl_01_cu_lao.name",
+      "status": "slice",
+      "order": 1,
+      "unlock": {
+        "requires_quest_ids": []
+      },
+      "zones": [
+        {
+          "zone_id": "zone_01_spawn",
+          "kind": "player_spawn"
+        },
+        {
+          "zone_id": "zone_01_ben_do",
+          "kind": "fishing",
+          "spawn_table_id": "spt_01_ben_do",
+          "bite_time_mult": 1.0
+        },
+        {
+          "zone_id": "zone_01_bai_bun",
+          "kind": "fishing",
+          "spawn_table_id": "spt_01_bai_bun",
+          "bite_time_mult": 1.1
+        },
+        {
+          "zone_id": "zone_01_boss_spot",
+          "kind": "boss_spot",
+          "boss_id": "boss_ca_loc"
+        },
+        {
+          "zone_id": "zone_01_shop",
+          "kind": "shop",
+          "shop_id": "shop_co_ba"
+        }
+      ],
+      "assets": {
+        "terrain": "mdl_env_isl01_terrain",
+        "music": "mus_isl01_day_loop",
+        "ambience": "amb_river_day_loop",
+        "environment": "env_isl01_day"
+      }
+    },
+    {
+      "id": "isl_02_rung_dua",
+      "name_key": "isl_02_rung_dua.name",
+      "status": "mvp",
+      "order": 2,
+      "unlock": {
+        "requires_quest_ids": [
+          "quest_01_trum_song"
+        ]
+      },
+      "zones": [
+        {
+          "zone_id": "zone_02_spawn",
+          "kind": "player_spawn"
+        },
+        {
+          "zone_id": "zone_02_ben_do",
+          "kind": "fishing",
+          "spawn_table_id": "spt_02_ben_do",
+          "bite_time_mult": 1.0
+        },
+        {
+          "zone_id": "zone_02_bai_bun",
+          "kind": "fishing",
+          "spawn_table_id": "spt_02_bai_bun",
+          "bite_time_mult": 1.1
+        },
+        {
+          "zone_id": "zone_02_boss_spot",
+          "kind": "boss_spot",
+          "boss_id": "boss_cua_bun"
+        },
+        {
+          "zone_id": "zone_02_shop",
+          "kind": "shop",
+          "shop_id": "shop_bay_cho"
+        }
+      ],
+      "assets": {
+        "terrain": "mdl_env_isl02_terrain",
+        "music": "mus_isl02_day_loop",
+        "ambience": "amb_river_day_loop",
+        "environment": "env_isl01_day"
+      }
+    },
+    {
+      "id": "isl_03_mui_da",
+      "name_key": "isl_03_mui_da.name",
+      "status": "mvp",
+      "order": 3,
+      "unlock": {
+        "requires_quest_ids": [
+          "quest_02_cua_cu"
+        ]
+      },
+      "zones": [
+        {
+          "zone_id": "zone_03_spawn",
+          "kind": "player_spawn"
+        },
+        {
+          "zone_id": "zone_03_ben_do",
+          "kind": "fishing",
+          "spawn_table_id": "spt_03_ben_do",
+          "bite_time_mult": 1.0
+        },
+        {
+          "zone_id": "zone_03_bai_bun",
+          "kind": "fishing",
+          "spawn_table_id": "spt_03_bai_bun",
+          "bite_time_mult": 1.1
+        },
+        {
+          "zone_id": "zone_03_boss_spot",
+          "kind": "boss_spot",
+          "boss_id": "boss_ca_bop"
+        },
+        {
+          "zone_id": "zone_03_shop",
+          "kind": "shop",
+          "shop_id": "shop_co_tam"
+        }
+      ],
+      "assets": {
+        "terrain": "mdl_env_isl03_terrain",
+        "music": "mus_isl03_day_loop",
+        "ambience": "amb_river_day_loop",
+        "environment": "env_isl01_day"
+      }
+    }
+  ]
+}

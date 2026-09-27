@@ -1,0 +1,1673 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_version": "1.0.0",
+  "status": "design_specification_not_implemented",
+  "authority": "dedicated_godot_server_with_transactional_persistence",
+  "transport": {
+    "class": "WebSocketMultiplayerPeer",
+    "public_scheme": "wss",
+    "local_scheme": "ws",
+    "rpc_transfer_mode": "reliable",
+    "browser_is_client_only": true,
+    "authentication": "single_use_ticket_in_SceneMultiplayer_auth_message",
+    "secrets_in_url": false
+  },
+  "limits": {
+    "players_per_room": 4,
+    "initial_concurrent_rooms": 1,
+    "simulation_hz": 30,
+    "input_hz": 20,
+    "snapshot_hz": 10,
+    "interpolation_ms": 100,
+    "max_client_payload_bytes": 8192,
+    "max_server_payload_bytes": 65536,
+    "max_pending_messages_per_peer": 64,
+    "max_unacked_snapshot_sets": 2,
+    "max_snapshot_reassembly_bytes": 2097152,
+    "snapshot_chunk_expiry_s": 3,
+    "websocket_auth_timeout_s": 5,
+    "ticket_ttl_s": 30,
+    "heartbeat_interval_s": 5,
+    "heartbeat_timeout_s": 15,
+    "reconnect_grace_s": 90,
+    "afk_timeout_s": 120,
+    "checkpoint_interval_s": 15,
+    "access_token_ttl_s": 900,
+    "refresh_session_max_s": 43200,
+    "idempotency_retention_days": 7
+  },
+  "envelope": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "protocol_version",
+      "type",
+      "request_id",
+      "connection_id",
+      "room_id",
+      "seq",
+      "payload"
+    ],
+    "properties": {
+      "protocol_version": {
+        "const": "1.0.0"
+      },
+      "type": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "request_id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "connection_id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "room_id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "seq": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "payload": {
+        "type": "object"
+      }
+    }
+  },
+  "authentication_payload": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "ticket",
+      "protocol_version",
+      "content_hash"
+    ],
+    "properties": {
+      "ticket": {
+        "type": "string",
+        "minLength": 32,
+        "maxLength": 256
+      },
+      "protocol_version": {
+        "const": "1.0.0"
+      },
+      "content_hash": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    }
+  },
+  "http_endpoints": [
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "auth": "public_rate_limited",
+      "purpose": "Username/password create; recovery codes shown once. No email service assumed."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "auth": "public_rate_limited",
+      "purpose": "Return access/rotating-refresh tokens; do not store plaintext tokens."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "auth": "refresh_token",
+      "purpose": "Rotate refresh token and issue short-lived access token."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "auth": "access_token",
+      "purpose": "Revoke session, tickets and gameplay lease."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/recover",
+      "auth": "recovery_code_rate_limited",
+      "purpose": "Consume recovery code, change password, revoke all sessions, replace recovery codes."
+    },
+    {
+      "method": "GET",
+      "path": "/v1/account/save",
+      "auth": "access_token",
+      "purpose": "Return own validated account_save v2 only; no client PUT/save overwrite."
+    },
+    {
+      "method": "GET",
+      "path": "/v1/rooms",
+      "auth": "access_token",
+      "purpose": "Return public room summaries with seats/status; no other players' private saves."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/rooms",
+      "auth": "access_token",
+      "purpose": "Request create room; Godot lifecycle acknowledgement required before ready."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/rooms/{room_id}/join",
+      "auth": "access_token",
+      "purpose": "Validate invite/unlock/capacity; reserve seat bounded by ticket expiry."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/rooms/{room_id}/ticket",
+      "auth": "access_token",
+      "purpose": "Issue single-use 30-second room/session ticket."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/account/takeover",
+      "auth": "access_token",
+      "purpose": "Explicit UX choice to advance lease epoch and invalidate old gameplay session."
+    },
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "auth": "public",
+      "purpose": "Liveness without secrets, account info or database paths."
+    },
+    {
+      "method": "POST",
+      "path": "/internal/tickets/consume",
+      "auth": "private_service",
+      "purpose": "Atomic consume ticket, allocate gameplay lease, return own save."
+    },
+    {
+      "method": "POST",
+      "path": "/internal/accounts/commit",
+      "auth": "private_service",
+      "purpose": "Validate service identity/lease epoch/version/op id and commit durable mutation."
+    },
+    {
+      "method": "POST",
+      "path": "/internal/accounts/checkpoint",
+      "auth": "private_service",
+      "purpose": "Hunger/safe spawn checkpoint with active lease and expected version."
+    },
+    {
+      "method": "GET",
+      "path": "/internal/room-controls",
+      "auth": "private_service",
+      "purpose": "Godot polls queued create/join/takeover/lifecycle controls."
+    },
+    {
+      "method": "POST",
+      "path": "/internal/room-status",
+      "auth": "private_service",
+      "purpose": "Godot acknowledges controls and reports room/lease heartbeats."
+    },
+    {
+      "method": "DELETE",
+      "path": "/v1/account",
+      "auth": "access_token",
+      "purpose": "Require current password in body and reauthentication within 5 minutes; explicit destructive UX. Atomically revoke all account sessions/tickets/leases and delete own account data only. Existing backups expire under published retention; do not claim instant removal from historical backups."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/password",
+      "auth": "access_token",
+      "purpose": "Require current password and new password validation; change slow hash and revoke all sessions/tickets/leases. User signs in again."
+    }
+  ],
+  "messages": [
+    {
+      "name": "player.input",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 20,
+      "durable": false,
+      "description": "Server simulates movement. No client position or velocity accepted.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "move_x",
+          "move_z",
+          "look_yaw_rad",
+          "look_pitch_rad",
+          "jump"
+        ],
+        "properties": {
+          "move_x": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "move_z": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "look_yaw_rad": {
+            "type": "number",
+            "minimum": -3.141592653589793,
+            "maximum": 3.141592653589793
+          },
+          "look_pitch_rad": {
+            "type": "number",
+            "minimum": -1.5,
+            "maximum": 1.5
+          },
+          "jump": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    {
+      "name": "menu.active",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 2,
+      "durable": false,
+      "description": "Inactive menu player cannot perform gameplay; hunger stops for that player only.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "active"
+        ],
+        "properties": {
+          "active": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    {
+      "name": "fishing.action",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 10,
+      "durable": false,
+      "description": "Server owns charge time, target validation, bite RNG, strain and creature.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "action",
+          "aim_direction"
+        ],
+        "properties": {
+          "action": {
+            "enum": [
+              "charge_start",
+              "cast_release",
+              "hook_set",
+              "reel_start",
+              "reel_stop",
+              "cancel"
+            ]
+          },
+          "aim_direction": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "uniqueItems": false
+          }
+        }
+      }
+    },
+    {
+      "name": "tool.use",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 8,
+      "durable": false,
+      "description": "Target is hint only; server confirms range, ray, ownership and cooldown.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target_uid"
+        ],
+        "properties": {
+          "target_uid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    },
+    {
+      "name": "inventory.pickup",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 5,
+      "durable": true,
+      "description": "Permanent fisher ownership: only owner may collect; no trading or timed public pickup. Atomically claim each unique item once, with server distance checks.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "item_uid"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "item_uid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    },
+    {
+      "name": "inventory.drop",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 5,
+      "durable": true,
+      "description": "Persist owned item to room escrow before world spawn; owner remains unchanged. Teammates cannot collect it; crash recovery returns it once to owner inbox.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "item_uid"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "item_uid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    },
+    {
+      "name": "inventory.sell",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Server computes prices and festival_ticket lifetime sale milestones atomically.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "item_uids",
+          "shop_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "item_uids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 1,
+            "maxItems": 48,
+            "uniqueItems": true
+          },
+          "shop_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "shop.buy",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Free rice allowed only by catalog; no_sell cannot be resold or counted for ticket milestones.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "shop_id",
+          "entry_id",
+          "quantity"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "shop_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "entry_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 99
+          }
+        }
+      }
+    },
+    {
+      "name": "food.consume",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Server owned food count, hunger<100, restore/clamp from hunger.json.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "item_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "item_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "cooking.start",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Server reserves ingredient; prevents sale/eat/drop of the same instance.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "item_uid",
+          "station_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "item_uid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "station_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "cooking.collect",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Server cooking state defines resulting food; same ingredient transformed once.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "item_uid",
+          "station_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "item_uid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "station_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "equipment.equip",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Must already own the rod/tool.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "equipment_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "equipment_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "quest.claim",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Server verifies objectives and first completion; ticket grant and quest flag same transaction.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "quest_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "quest_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "lootbox.open",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 2,
+      "durable": true,
+      "description": "Dedicated earned festival_ticket only. Server RNG, no pity v1. Debit, result, duplicate dust, receipt one transaction.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "box_id",
+          "table_version"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "box_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "table_version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          }
+        }
+      }
+    },
+    {
+      "name": "cosmetic.buy",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 2,
+      "durable": true,
+      "description": "Cosmetic dust only, server catalog fixed price; cannot buy for money or transfer.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "cosmetic_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "cosmetic_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "cosmetic.equip",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Must own cosmetic and target tool/rod; no combat stat bonus.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "equipment_id",
+          "cosmetic_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "equipment_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "cosmetic_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "island.vote",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 2,
+      "durable": false,
+      "description": "Whole room consent and each account unlock checked before scene change.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "island_id",
+          "approve"
+        ],
+        "properties": {
+          "island_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "approve": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    {
+      "name": "room.leave",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 1,
+      "durable": false,
+      "description": "Persist final checkpoint; release gameplay lease; no deleting account.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {}
+      }
+    },
+    {
+      "name": "session.ping",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 1,
+      "durable": false,
+      "description": "Echo only; client timestamp never controls authoritative gameplay.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "client_monotonic_ms"
+        ],
+        "properties": {
+          "client_monotonic_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        }
+      }
+    },
+    {
+      "name": "session.accepted",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "connection_id",
+          "room_id",
+          "account_id",
+          "lease_epoch",
+          "protocol_version",
+          "content_hash"
+        ],
+        "properties": {
+          "connection_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "room_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "lease_epoch": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "protocol_version": {
+            "const": "1.0.0"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    {
+      "name": "command.result",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "Receipt runtime schema is selected by original command; never trust arbitrary receipt fields as executable data.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "request_id",
+          "op_id",
+          "status",
+          "error_code",
+          "save_version",
+          "receipt"
+        ],
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "op_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "committed",
+              "accepted",
+              "rejected"
+            ]
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "receipt": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    {
+      "name": "state.snapshot",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "Room scoped. If encoded size > limit, use snapshot chunks. Self account save is fetched separately.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "server_tick",
+          "snapshot_id",
+          "island_id",
+          "last_ack_input_seq",
+          "players",
+          "entities"
+        ],
+        "properties": {
+          "server_tick": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "snapshot_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "island_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "last_ack_input_seq": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "account_id",
+                "display_name",
+                "position",
+                "yaw_rad",
+                "hp",
+                "hunger",
+                "mode"
+              ],
+              "properties": {
+                "account_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "display_name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "uniqueItems": false
+                },
+                "yaw_rad": {
+                  "type": "number",
+                  "minimum": -3.141592653589793,
+                  "maximum": 3.141592653589793
+                },
+                "hp": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "hunger": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "mode": {
+                  "enum": [
+                    "active",
+                    "menu",
+                    "afk",
+                    "disconnected",
+                    "knocked_out"
+                  ]
+                }
+              }
+            },
+            "minItems": 0,
+            "maxItems": 4,
+            "uniqueItems": false
+          },
+          "entities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "uid",
+                "def_id",
+                "kind",
+                "state",
+                "position",
+                "yaw_rad"
+              ],
+              "properties": {
+                "uid": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "def_id": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$",
+                  "minLength": 3,
+                  "maxLength": 80
+                },
+                "kind": {
+                  "enum": [
+                    "fish",
+                    "boss",
+                    "item",
+                    "npc",
+                    "prop"
+                  ]
+                },
+                "state": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$",
+                  "minLength": 3,
+                  "maxLength": 80
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "uniqueItems": false
+                },
+                "yaw_rad": {
+                  "type": "number",
+                  "minimum": -3.141592653589793,
+                  "maximum": 3.141592653589793
+                }
+              }
+            },
+            "minItems": 0,
+            "maxItems": 128,
+            "uniqueItems": false
+          }
+        }
+      }
+    },
+    {
+      "name": "state.snapshot_chunk",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "Chunks reassembled once by snapshot id, total max 2MiB, expiry 3s; validate decoded snapshot before applying.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "snapshot_id",
+          "chunk_index",
+          "chunk_count",
+          "data_b64"
+        ],
+        "properties": {
+          "snapshot_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "chunk_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 63
+          },
+          "chunk_count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64
+          },
+          "data_b64": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60000
+          }
+        }
+      }
+    },
+    {
+      "name": "account.updated",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "Fetch own GET /v1/account/save; only durable commit causes this notification.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "save_version",
+          "refresh_required"
+        ],
+        "properties": {
+          "save_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "refresh_required": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "name": "room.changed",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "owner_account_id",
+          "members",
+          "island_id",
+          "status"
+        ],
+        "properties": {
+          "owner_account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 0,
+            "maxItems": 4,
+            "uniqueItems": false
+          },
+          "island_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "status": {
+            "enum": [
+              "lobby",
+              "playing",
+              "transitioning",
+              "closing"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "session.pong",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "client_monotonic_ms",
+          "server_tick"
+        ],
+        "properties": {
+          "client_monotonic_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "server_tick": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        }
+      }
+    },
+    {
+      "name": "session.closed",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reason",
+          "reconnect_allowed"
+        ],
+        "properties": {
+          "reason": {
+            "enum": [
+              "expired",
+              "revoked",
+              "takeover",
+              "timeout",
+              "protocol_mismatch",
+              "server_restart",
+              "rate_limit",
+              "room_closed"
+            ]
+          },
+          "reconnect_allowed": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    {
+      "name": "bait.select",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Require owned positive count or catalog infinite free bait; persist selected bait, never trust client bait inventory.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "bait_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "bait_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "npc.interact",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": false,
+      "description": "Server checks same-room island and distance, returns eligible dialogue/shop/quest presentation; interaction alone grants no reward.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "npc_id"
+        ],
+        "properties": {
+          "npc_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "quest.accept",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Server verifies prerequisite and NPC range, transitions available to active once.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "quest_id",
+          "npc_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "quest_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "npc_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "quest.deliver",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 3,
+      "durable": true,
+      "description": "Atomic transfer of owned instances into eligible quest objective. Same item cannot also be sold or eaten; completion tickets are granted at most once.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "quest_id",
+          "step_id",
+          "npc_id",
+          "item_uids"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "quest_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "step_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "npc_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "item_uids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 1,
+            "maxItems": 48,
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    {
+      "name": "boss.summon",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 2,
+      "durable": true,
+      "description": "Check unlocked encounter, correct zone/bait, range and cooldown; reserve/debit bait once. Failure refund and encounter identity must be idempotent.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op_id",
+          "expected_save_version",
+          "boss_id",
+          "zone_id"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_save_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "boss_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "zone_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 3,
+            "maxLength": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "room.ping",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 1,
+      "durable": false,
+      "description": "Server clamps/rejects point outside current island or permitted player range, relays only to this room; no free text.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "position"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "here",
+              "fish",
+              "help",
+              "ready"
+            ]
+          },
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": -100000,
+              "maximum": 100000
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "player.emote",
+      "direction": "client_to_server",
+      "stage": "authenticated",
+      "max_per_second": 1,
+      "durable": false,
+      "description": "Bounded presentation only, server room-scoped and rate-limited; no chat string or reward.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "emote"
+        ],
+        "properties": {
+          "emote": {
+            "enum": [
+              "wave",
+              "thanks",
+              "cheer",
+              "sorry"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "domain.event",
+      "direction": "server_to_client",
+      "stage": "authenticated",
+      "max_per_second": 0,
+      "durable": false,
+      "description": "Catalog-validated domain event from server only. Adapter injects actor/room/event context, deduplicates effects, and applies no client-authority economic mutation. System/world events use null actor.",
+      "payload_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "actor_player_id",
+          "room_id",
+          "event_id",
+          "server_tick",
+          "event_payload"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z]+(?:\\.[a-z_]+)+$",
+            "maxLength": 80
+          },
+          "actor_player_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "room_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "event_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "server_tick": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "event_payload": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ],
+  "errors": [
+    "AUTH_REQUIRED",
+    "AUTH_EXPIRED",
+    "BAD_TICKET",
+    "ROOM_FULL",
+    "ROOM_NOT_FOUND",
+    "INVITE_INVALID",
+    "UNLOCK_REQUIRED",
+    "PROTOCOL_MISMATCH",
+    "CONTENT_MISMATCH",
+    "INVALID_PAYLOAD",
+    "RATE_LIMITED",
+    "STALE_SEQUENCE",
+    "LEASE_EXPIRED",
+    "SESSION_TAKEN_OVER",
+    "SAVE_CONFLICT",
+    "OP_PAYLOAD_MISMATCH",
+    "OP_EXPIRED",
+    "ITEM_NOT_OWNED",
+    "ITEM_ALREADY_CLAIMED",
+    "OUT_OF_RANGE",
+    "COOLDOWN",
+    "INVENTORY_FULL",
+    "INSUFFICIENT_FUNDS",
+    "INSUFFICIENT_TICKETS",
+    "INSUFFICIENT_DUST",
+    "ALREADY_CLAIMED",
+    "ALREADY_OWNED",
+    "PLAYER_INACTIVE",
+    "SERVER_BUSY",
+    "PERSISTENCE_UNAVAILABLE"
+  ],
+  "invariants": [
+    "Client never chooses damage, prices, rewards, RNG result or account authority.",
+    "Account has one active gameplay lease; every durable commit carries fencing epoch.",
+    "Durable operation atomically debits, grants, updates save version and stores receipt.",
+    "Same op_id and same payload returns original result; different payload is conflict.",
+    "Menu/lobby/AFK/offline never drain hunger; inactive state disables gameplay input.",
+    "Room owner has lobby control only; authoritative dedicated server survives owner departure.",
+    "Only server-calculated valid owned fish sales award festival_ticket milestones.",
+    "Lootbox v1 has disclosed fixed odds, no pity and no real-money path.",
+    "Gameplay events.json is an internal presentation contract, not trusted client network messages.",
+    "Caught item permanently belongs to fisher in v1; teammates may assist combat but cannot pick up, sell or transfer that item."
+  ]
+}

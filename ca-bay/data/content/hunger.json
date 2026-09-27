@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Thanh là độ no: 100 no, 0 đói. Server chỉ tick active gameplay, không backfill thời gian offline."
+  },
+  "max_value": 100,
+  "initial_value": 100,
+  "drain_per_active_minute": 2,
+  "low_threshold": 25,
+  "low_reel_speed_multiplier": 0.9,
+  "damage_at_zero": 0,
+  "offline_drain": false,
+  "drain_in_menus": false,
+  "afk_timeout_s": 120,
+  "free_food_max_owned": 3,
+  "foods": [
+    {
+      "item_id": "item_rice_ball",
+      "restore": 35,
+      "heal_hp": 0
+    },
+    {
+      "item_id": "item_grilled_fish",
+      "restore": 60,
+      "heal_hp": 25
+    }
+  ],
+  "pause_during": [
+    "lobby",
+    "loading",
+    "menu",
+    "disconnected",
+    "afk",
+    "boss_encounter"
+  ],
+  "clamp_min": 0,
+  "clamp_max": 100,
+  "consume_at_full": false
+}

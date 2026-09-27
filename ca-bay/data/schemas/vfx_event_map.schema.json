@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/vfx_event_map.schema.json",
+  "title": "Bản đồ sự kiện → hiệu ứng",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event",
+          "asset_id",
+          "attach"
+        ],
+        "properties": {
+          "event": {
+            "$ref": "common.schema.json#/$defs/event_name"
+          },
+          "when": {
+            "type": "object"
+          },
+          "asset_id": {
+            "$ref": "common.schema.json#/$defs/asset_id"
+          },
+          "attach": {
+            "type": "string",
+            "pattern": "^(event_position|creature:socket_[a-z_]+|player_camera)$"
+          },
+          "params_from_payload": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pool_size": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          }
+        }
+      }
+    }
+  }
+}

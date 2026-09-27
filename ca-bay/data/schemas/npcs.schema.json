@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/npcs.schema.json",
+  "title": "NPC",
+  "description": "data/content/npcs.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "role",
+          "island_id",
+          "assets",
+          "lines"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/npc_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "role": {
+            "enum": [
+              "vendor",
+              "quest_giver"
+            ]
+          },
+          "island_id": {
+            "$ref": "common.schema.json#/$defs/island_id"
+          },
+          "shop_id": {
+            "$ref": "common.schema.json#/$defs/shop_id"
+          },
+          "quest_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/quest_id"
+            }
+          },
+          "gift": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "id",
+              "amount",
+              "trigger"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "tool",
+                  "bait",
+                  "item"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "trigger": {
+                "enum": [
+                  "first_talk",
+                  "first_sale",
+                  "first_talk_or_sale"
+                ]
+              }
+            }
+          },
+          "assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "model",
+              "voice"
+            ],
+            "properties": {
+              "model": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              },
+              "voice": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              }
+            }
+          },
+          "lines": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "common.schema.json#/$defs/loc_key"
+            },
+            "description": "Tên tình huống → khóa dịch câu thoại"
+          }
+        }
+      }
+    }
+  }
+}

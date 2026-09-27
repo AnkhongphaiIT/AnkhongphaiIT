@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Miễn phí hoàn toàn. Bảng trọng số version bất biến; thuật toán ánh xạ số nguyên xác định nhưng RNG server không được client chọn/đoán. Không pity, không near-miss, không giao dịch tiền thật."
+  },
+  "ticket_currency": "festival_ticket",
+  "dust_currency": "cosmetic_dust",
+  "monetization_enabled": false,
+  "real_money_trade": false,
+  "earning": {
+    "tickets_per_first_quest_completion": 1,
+    "tickets_per_owned_creatures_sold": 1,
+    "owned_creatures_per_ticket": 10,
+    "repeat_quest_tickets": 0
+  },
+  "cosmetics": [
+    {
+      "id": "cos_slipper_river_blue",
+      "name_key": "cos_slipper_river_blue.name",
+      "target_id": "tool_slipper",
+      "color_hex": "#408AC8",
+      "affects_stats": false,
+      "direct_dust_cost": 30
+    },
+    {
+      "id": "cos_slipper_river_green",
+      "name_key": "cos_slipper_river_green.name",
+      "target_id": "tool_slipper",
+      "color_hex": "#61A78F",
+      "affects_stats": false,
+      "direct_dust_cost": 30
+    },
+    {
+      "id": "cos_broom_sunset",
+      "name_key": "cos_broom_sunset.name",
+      "target_id": "tool_broom",
+      "color_hex": "#E99857",
+      "affects_stats": false,
+      "direct_dust_cost": 30
+    },
+    {
+      "id": "cos_rod_copper",
+      "name_key": "cos_rod_copper.name",
+      "target_id": "rod_bamboo",
+      "color_hex": "#B9794E",
+      "affects_stats": false,
+      "direct_dust_cost": 30
+    },
+    {
+      "id": "cos_rod_river_green",
+      "name_key": "cos_rod_river_green.name",
+      "target_id": "rod_carbon",
+      "color_hex": "#4D9F88",
+      "affects_stats": false,
+      "direct_dust_cost": 30
+    },
+    {
+      "id": "cos_slipper_sunset",
+      "name_key": "cos_slipper_sunset.name",
+      "target_id": "tool_slipper",
+      "color_hex": "#D984A3",
+      "affects_stats": false,
+      "direct_dust_cost": 30
+    }
+  ],
+  "records": [
+    {
+      "id": "lootbox_ben_lang",
+      "name_key": "lootbox_ben_lang.name",
+      "status": "slice",
+      "table_version": "1.0.0",
+      "ticket_cost": 1,
+      "total_weight": 100,
+      "duplicate_dust": 10,
+      "pity_enabled": false,
+      "entries": [
+        {
+          "cosmetic_id": "cos_slipper_river_blue",
+          "weight": 40
+        },
+        {
+          "cosmetic_id": "cos_slipper_river_green",
+          "weight": 25
+        },
+        {
+          "cosmetic_id": "cos_broom_sunset",
+          "weight": 15
+        },
+        {
+          "cosmetic_id": "cos_rod_copper",
+          "weight": 10
+        },
+        {
+          "cosmetic_id": "cos_rod_river_green",
+          "weight": 7
+        },
+        {
+          "cosmetic_id": "cos_slipper_sunset",
+          "weight": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/hunger.schema.json",
+  "title": "hunger",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "max_value": {
+      "const": 100
+    },
+    "initial_value": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "drain_per_active_minute": {
+      "type": "number",
+      "minimum": 0
+    },
+    "low_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "low_reel_speed_multiplier": {
+      "type": "number",
+      "minimum": 0.5,
+      "maximum": 1
+    },
+    "damage_at_zero": {
+      "const": 0
+    },
+    "offline_drain": {
+      "const": false
+    },
+    "drain_in_menus": {
+      "const": false
+    },
+    "afk_timeout_s": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "free_food_max_owned": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "foods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "item_id": {
+            "$ref": "common.schema.json#/$defs/item_id"
+          },
+          "restore": {
+            "type": "number",
+            "minimum": 1
+          },
+          "heal_hp": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "item_id",
+          "restore",
+          "heal_hp"
+        ]
+      }
+    },
+    "pause_during": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "lobby",
+          "loading",
+          "menu",
+          "disconnected",
+          "afk",
+          "boss_encounter"
+        ]
+      }
+    },
+    "clamp_min": {
+      "const": 0
+    },
+    "clamp_max": {
+      "const": 100
+    },
+    "consume_at_full": {
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "meta",
+    "max_value",
+    "initial_value",
+    "drain_per_active_minute",
+    "low_threshold",
+    "low_reel_speed_multiplier",
+    "damage_at_zero",
+    "offline_drain",
+    "drain_in_menus",
+    "afk_timeout_s",
+    "free_food_max_owned",
+    "foods",
+    "pause_during",
+    "clamp_min",
+    "clamp_max",
+    "consume_at_full"
+  ]
+}

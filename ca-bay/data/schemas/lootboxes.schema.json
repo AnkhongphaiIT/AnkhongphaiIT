@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/lootboxes.schema.json",
+  "title": "lootboxes",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "ticket_currency": {
+      "const": "festival_ticket"
+    },
+    "dust_currency": {
+      "const": "cosmetic_dust"
+    },
+    "monetization_enabled": {
+      "const": false
+    },
+    "real_money_trade": {
+      "const": false
+    },
+    "earning": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tickets_per_first_quest_completion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tickets_per_owned_creatures_sold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "owned_creatures_per_ticket": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "repeat_quest_tickets": {
+          "const": 0
+        }
+      },
+      "required": [
+        "tickets_per_first_quest_completion",
+        "tickets_per_owned_creatures_sold",
+        "owned_creatures_per_ticket",
+        "repeat_quest_tickets"
+      ]
+    },
+    "cosmetics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^cos_[a-z0-9_]+$"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "target_id": {
+            "type": "string",
+            "pattern": "^(tool|rod)_[a-z0-9_]+$"
+          },
+          "color_hex": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "affects_stats": {
+            "const": false
+          },
+          "direct_dust_cost": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "name_key",
+          "target_id",
+          "color_hex",
+          "affects_stats",
+          "direct_dust_cost"
+        ]
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^lootbox_[a-z0-9_]+$"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "table_version": {
+            "$ref": "common.schema.json#/$defs/semver"
+          },
+          "ticket_cost": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "total_weight": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "duplicate_dust": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pity_enabled": {
+            "const": false
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "cosmetic_id": {
+                  "type": "string",
+                  "pattern": "^cos_[a-z0-9_]+$"
+                },
+                "weight": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "cosmetic_id",
+                "weight"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "table_version",
+          "ticket_cost",
+          "total_weight",
+          "duplicate_dust",
+          "pity_enabled",
+          "entries"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "meta",
+    "ticket_currency",
+    "dust_currency",
+    "monetization_enabled",
+    "real_money_trade",
+    "earning",
+    "cosmetics",
+    "records"
+  ]
+}

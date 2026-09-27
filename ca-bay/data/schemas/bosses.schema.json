@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/bosses.schema.json",
+  "title": "Boss",
+  "description": "data/content/bosses.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "creature_id",
+          "summon",
+          "escape_timer_s",
+          "escape_warning_s",
+          "stunned_damage_mult",
+          "reward_base_value",
+          "arena_radius_m",
+          "leave_arena_grace_s",
+          "drops",
+          "moves",
+          "phases",
+          "assets"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/boss_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "creature_id": {
+            "$ref": "common.schema.json#/$defs/creature_id"
+          },
+          "summon": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "bait_id",
+              "zone_id"
+            ],
+            "properties": {
+              "bait_id": {
+                "$ref": "common.schema.json#/$defs/bait_id"
+              },
+              "zone_id": {
+                "$ref": "common.schema.json#/$defs/zone_id"
+              }
+            }
+          },
+          "escape_timer_s": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "solo"
+            ],
+            "properties": {
+              "solo": {
+                "type": "number",
+                "minimum": 30
+              },
+              "per_extra_player_mult": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "escape_warning_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "stunned_damage_mult": {
+            "type": "number",
+            "minimum": 1
+          },
+          "reward_base_value": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "arena_radius_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "leave_arena_grace_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "drops": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "kind",
+                "id",
+                "count"
+              ],
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "item",
+                    "bait",
+                    "tool"
+                  ]
+                },
+                "id": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "moves": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "move_id",
+                "telegraph_s",
+                "damage",
+                "recover_s",
+                "stun_on_recover",
+                "anims"
+              ],
+              "properties": {
+                "move_id": {
+                  "$ref": "common.schema.json#/$defs/move_id"
+                },
+                "telegraph_s": {
+                  "type": "number",
+                  "minimum": 0.6,
+                  "description": "REQ-BOSS-002: không dưới 0,6 s"
+                },
+                "damage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "radius_m": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "distance_m": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "speed_mps": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "projectiles": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "projectile_speed_mps": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "projectile_asset_id": {
+                  "$ref": "common.schema.json#/$defs/asset_id"
+                },
+                "spread_deg": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Góc tỏa ngang tổng của loạt đạn (bắn cùng lúc, chia đều)"
+                },
+                "recover_s": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "stun_on_recover": {
+                  "type": "boolean"
+                },
+                "anims": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "common.schema.json#/$defs/asset_id"
+                  }
+                }
+              }
+            }
+          },
+          "phases": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "phase",
+                "hp_below",
+                "move_weights"
+              ],
+              "properties": {
+                "phase": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "hp_below": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 1
+                },
+                "move_weights": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          },
+          "assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "music",
+              "anims"
+            ],
+            "properties": {
+              "music": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              },
+              "anims": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "common.schema.json#/$defs/asset_id"
+                }
+              }
+            }
+          },
+          "cooperative": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "hp_per_extra_player_mult",
+              "max_players",
+              "party_size_locked_on_start",
+              "personal_reward"
+            ],
+            "properties": {
+              "hp_per_extra_player_mult": {
+                "type": "number",
+                "minimum": 0
+              },
+              "max_players": {
+                "const": 4
+              },
+              "party_size_locked_on_start": {
+                "const": true
+              },
+              "personal_reward": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Vật nhiệm vụ là huy hiệu/thẻ do ban tổ chức cấp, không phải bộ phận cắt từ boss. Cơm miễn phí không bán được; thức ăn không tạo vòng kiếm tiền."
+  },
+  "records": [
+    {
+      "id": "item_golden_scale",
+      "name_key": "item_golden_scale.name",
+      "status": "slice",
+      "kind": "quest",
+      "value": 0,
+      "flags": [
+        "quest",
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "model": "mdl_item_golden_scale",
+        "icon": "ico_item_golden_scale"
+      }
+    },
+    {
+      "id": "item_survey_tag",
+      "name_key": "item_survey_tag.name",
+      "status": "mvp",
+      "kind": "quest",
+      "value": 0,
+      "flags": [
+        "quest",
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "model": "mdl_item_survey_tag",
+        "icon": "ico_item_survey_tag"
+      }
+    },
+    {
+      "id": "item_festival_medal",
+      "name_key": "item_festival_medal.name",
+      "status": "mvp",
+      "kind": "quest",
+      "value": 0,
+      "flags": [
+        "quest",
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "model": "mdl_item_festival_medal",
+        "icon": "ico_item_festival_medal"
+      }
+    },
+    {
+      "id": "item_rice_ball",
+      "name_key": "item_rice_ball.name",
+      "status": "slice",
+      "kind": "consumable",
+      "value": 0,
+      "flags": [
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "model": "mdl_item_rice_ball",
+        "icon": "ico_item_rice_ball"
+      }
+    },
+    {
+      "id": "item_grilled_fish",
+      "name_key": "item_grilled_fish.name",
+      "status": "mvp",
+      "kind": "consumable",
+      "value": 0,
+      "flags": [
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "model": "mdl_item_grilled_fish",
+        "icon": "ico_item_grilled_fish"
+      }
+    }
+  ]
+}

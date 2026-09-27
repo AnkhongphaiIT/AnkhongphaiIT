@@ -1,0 +1,45 @@
+{
+  "lock_version": 1,
+  "recorded_at": "2026-09-27",
+  "environment": {
+    "kind": "Claude Code cloud container (ephemeral)",
+    "os": "Ubuntu 24.04.4 LTS x86_64",
+    "cpu_cores": 4,
+    "ram_gb": 15,
+    "note": "Máy Windows 8 GB của chủ dự án KHÔNG truy cập được từ phiên này; mọi số đo ở đây là của container đám mây."
+  },
+  "godot": {
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "git_tag": "4.7.2-stable",
+    "git_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "commit_verified_by": "git ls-remote https://github.com/godotengine/godot refs/tags/4.7.2-stable (khớp hash trong --version)",
+    "binary_path": "/opt/godot/4.7.2/godot",
+    "binary_sha256": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+    "provenance": "Lấy từ layer image Docker Hub barichello/godot-ci:4.7.2 (manifest sha256:cdcca31e9194fd59a68a63f4b1b9c3981716819c520cd6f7966c5d72ca7246bd, layer sha256:8d9c0a57444f08dee259493b893b0f90f24875fe54e1b55c925e15a552e0c85b). Layer này tải file từ github.com/godotengine/godot-builds releases. Chưa đối chiếu được SHA512-SUMS chính thức vì proxy chặn tải release asset GitHub và godotengine.org.",
+    "export_templates": {
+      "dir": "~/.local/share/godot/export_templates/4.7.2.stable",
+      "version_txt": "4.7.2.stable",
+      "installed_files_sha256": {
+        "web_nothreads_release.zip": "d3ee2f08cef0cf3cf6678a6355a92a8db48ccdd35cbd2e8bfd5f0e8a0b4032a0",
+        "web_nothreads_debug.zip": "08962aefef811b603541d7951ac67ef00413aad2d978855183c28adee98f626a",
+        "web_release.zip": "02f0dca13ed3d8343fa68f8f88ac80295562408d71aa67157e8b96ddebaa67a3",
+        "web_debug.zip": "5e6696b42ce07f908fce1698cc227e11807399456b6ab986e69a125eae3596ee",
+        "linux_release.x86_64": "d9f79ab89b5ae369aeed11c6052d402e8218cd503bf85b4a235f9c30c46a7c63",
+        "linux_debug.x86_64": "1a291d3d15e4180b60b0af96cf6458f11fe143636d76575ddf1e23d1a3f24f2e",
+        "icudt_godot.dat": "64e407b570a21a4b740531a14cd95f0cefc46cef3d8224fd09a0dd386fb7016a"
+      },
+      "omitted": "Android/iOS/macOS/Windows templates không cài (ngoài phạm vi web + server Linux)."
+    },
+    "renderer_web": "gl_compatibility",
+    "web_threads": false
+  },
+  "python": {
+    "version": "3.11.15",
+    "validator_requirements": "tools/validate/requirements.txt",
+    "backend_requirements": "server/backend/requirements.lock.txt"
+  },
+  "node": "22.22.2",
+  "browsers": {
+    "chromium": "141.0.7390.37 (Playwright bundle /opt/pw-browsers/chromium-1194)"
+  }
+}

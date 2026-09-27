@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "NPC đảo 2/3 dùng lại base mesh với silhouette/phụ kiện/màu khác do code tạo. Voice hiện trỏ âm ú ớ; câu thoại EN/VI cần line_id -> bản thu riêng trong gói âm thanh."
+  },
+  "records": [
+    {
+      "id": "npc_co_ba",
+      "name_key": "npc_co_ba.name",
+      "status": "slice",
+      "role": "vendor",
+      "island_id": "isl_01_cu_lao",
+      "shop_id": "shop_co_ba",
+      "gift": {
+        "kind": "tool",
+        "id": "tool_slipper",
+        "amount": 2,
+        "trigger": "first_talk_or_sale"
+      },
+      "assets": {
+        "model": "mdl_chr_npc_co_ba",
+        "voice": "vo_npc_gibberish_female"
+      },
+      "lines": {
+        "greet": "npc_co_ba.greet",
+        "gift": "npc_co_ba.gift_slipper",
+        "thanks_good": "npc_co_ba.thanks_good",
+        "thanks_bad": "npc_co_ba.thanks_bad",
+        "no_sell": "npc_co_ba.no_sell",
+        "no_money": "npc_co_ba.no_money"
+      }
+    },
+    {
+      "id": "npc_ong_tu",
+      "name_key": "npc_ong_tu.name",
+      "status": "slice",
+      "role": "quest_giver",
+      "island_id": "isl_01_cu_lao",
+      "quest_ids": [
+        "quest_01_bua_trua",
+        "quest_01_trum_song"
+      ],
+      "assets": {
+        "model": "mdl_chr_npc_ong_tu",
+        "voice": "vo_npc_gibberish_male"
+      },
+      "lines": {
+        "greet": "npc_ong_tu.greet",
+        "quest_lunch": "npc_ong_tu.quest_lunch",
+        "quest_boss": "npc_ong_tu.quest_boss",
+        "refill": "npc_ong_tu.refill",
+        "done": "npc_ong_tu.done"
+      }
+    },
+    {
+      "id": "npc_bay_cho",
+      "name_key": "npc_bay_cho.name",
+      "status": "mvp",
+      "role": "vendor",
+      "island_id": "isl_02_rung_dua",
+      "shop_id": "shop_bay_cho",
+      "assets": {
+        "model": "mdl_chr_npc_co_ba",
+        "voice": "vo_npc_gibberish_female"
+      },
+      "lines": {
+        "greet": "npc_bay_cho.greet",
+        "thanks_good": "npc_bay_cho.thanks_good",
+        "thanks_bad": "npc_bay_cho.thanks_bad",
+        "no_sell": "npc_bay_cho.no_sell",
+        "no_money": "npc_bay_cho.no_money"
+      }
+    },
+    {
+      "id": "npc_co_tam",
+      "name_key": "npc_co_tam.name",
+      "status": "mvp",
+      "role": "vendor",
+      "island_id": "isl_03_mui_da",
+      "shop_id": "shop_co_tam",
+      "assets": {
+        "model": "mdl_chr_npc_co_ba",
+        "voice": "vo_npc_gibberish_female"
+      },
+      "lines": {
+        "greet": "npc_co_tam.greet",
+        "thanks_good": "npc_co_tam.thanks_good",
+        "thanks_bad": "npc_co_tam.thanks_bad",
+        "no_sell": "npc_co_tam.no_sell",
+        "no_money": "npc_co_tam.no_money"
+      }
+    },
+    {
+      "id": "npc_nam_sau",
+      "name_key": "npc_nam_sau.name",
+      "status": "mvp",
+      "role": "quest_giver",
+      "island_id": "isl_02_rung_dua",
+      "quest_ids": [
+        "quest_02_sua_ben",
+        "quest_02_cua_cu"
+      ],
+      "assets": {
+        "model": "mdl_chr_npc_ong_tu",
+        "voice": "vo_npc_gibberish_male"
+      },
+      "lines": {
+        "greet": "npc_nam_sau.greet",
+        "quest_prep": "npc_nam_sau.quest_prep",
+        "quest_boss": "npc_nam_sau.quest_boss",
+        "refill": "npc_nam_sau.refill",
+        "done": "npc_nam_sau.done"
+      }
+    },
+    {
+      "id": "npc_chi_lan",
+      "name_key": "npc_chi_lan.name",
+      "status": "mvp",
+      "role": "quest_giver",
+      "island_id": "isl_03_mui_da",
+      "quest_ids": [
+        "quest_03_hoi_cau",
+        "quest_03_ca_bop"
+      ],
+      "assets": {
+        "model": "mdl_chr_npc_co_ba",
+        "voice": "vo_npc_gibberish_female"
+      },
+      "lines": {
+        "greet": "npc_chi_lan.greet",
+        "quest_prep": "npc_chi_lan.quest_prep",
+        "quest_boss": "npc_chi_lan.quest_boss",
+        "refill": "npc_chi_lan.refill",
+        "done": "npc_chi_lan.done"
+      }
+    }
+  ]
+}

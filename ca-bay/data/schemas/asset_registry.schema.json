@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/asset_registry.schema.json",
+  "title": "Sổ đăng ký tài nguyên",
+  "description": "data/contracts/asset_registry.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "assets"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "path",
+          "priority",
+          "status",
+          "owner_role",
+          "license"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/asset_id"
+          },
+          "type": {
+            "enum": [
+              "model",
+              "material",
+              "shader",
+              "texture",
+              "environment",
+              "vfx",
+              "anim_library",
+              "anim_clip",
+              "ui",
+              "icon",
+              "font",
+              "sfx",
+              "music",
+              "ambience",
+              "voice"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^res://"
+          },
+          "clip": {
+            "type": "string"
+          },
+          "variants": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "priority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2"
+            ]
+          },
+          "status": {
+            "enum": [
+              "planned",
+              "placeholder",
+              "in_review",
+              "approved",
+              "deprecated"
+            ]
+          },
+          "owner_role": {
+            "type": "string"
+          },
+          "license": {
+            "enum": [
+              "tbd",
+              "self_made",
+              "CC0",
+              "CC-BY",
+              "OFL",
+              "verified_custom"
+            ]
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

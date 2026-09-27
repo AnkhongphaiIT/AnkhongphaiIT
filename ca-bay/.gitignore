@@ -1,0 +1,35 @@
+# Godot
+.godot/
+*.import.tmp
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# Build outputs (tạo lại bằng tools/build)
+build/*
+!build/.gitkeep
+release/*
+!release/.gitkeep
+!release/README.md
+# Secrets / local config / DB thật
+.env
+*.env.local
+server/backend/.env
+server/backend/var/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+secrets/
+local.settings.json
+# Người dùng bỏ file ChatGPT vào đây; chỉ giữ README
+incoming/*
+!incoming/README.md
+!incoming/.gdignore
+handoff/incoming/*
+!handoff/incoming/.gitkeep
+# Log/test tạm
+reports/tmp/
+tests/web/artifacts/
+*.log

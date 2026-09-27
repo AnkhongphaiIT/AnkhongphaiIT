@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "world_static",
+      "used_by": "Địa hình, đá, công trình (StaticBody3D)",
+      "mask": []
+    },
+    {
+      "layer": 2,
+      "name": "water",
+      "used_by": "Area3D WaterVolume (is_deep, zone_id)",
+      "mask": [
+        3,
+        4,
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      "layer": 3,
+      "name": "player",
+      "used_by": "CharacterBody3D người chơi",
+      "mask": [
+        1,
+        6
+      ]
+    },
+    {
+      "layer": 4,
+      "name": "creature",
+      "used_by": "RigidBody3D sinh vật còn tỉnh (va vào người chơi nhưng người chơi đi xuyên qua sinh vật)",
+      "mask": [
+        1,
+        3,
+        4,
+        5,
+        8
+      ]
+    },
+    {
+      "layer": 5,
+      "name": "item",
+      "used_by": "RigidBody3D vật phẩm và sinh vật KO",
+      "mask": [
+        1,
+        5
+      ]
+    },
+    {
+      "layer": 6,
+      "name": "npc",
+      "used_by": "NPC",
+      "mask": [
+        1
+      ]
+    },
+    {
+      "layer": 7,
+      "name": "tool_hitbox",
+      "used_by": "Area3D vùng đánh cận chiến",
+      "mask": [
+        4,
+        5,
+        12,
+        13
+      ]
+    },
+    {
+      "layer": 8,
+      "name": "projectile",
+      "used_by": "Vật ném/đạn (dép, ná, trân châu boss)",
+      "mask": [
+        1,
+        3,
+        4,
+        6,
+        12
+      ]
+    },
+    {
+      "layer": 9,
+      "name": "lure",
+      "used_by": "Phao câu",
+      "mask": [
+        1
+      ]
+    },
+    {
+      "layer": 10,
+      "name": "interact",
+      "used_by": "Lớp phụ cho mọi vật tương tác được; raycast của Interactor chỉ quét lớp này",
+      "mask": []
+    },
+    {
+      "layer": 11,
+      "name": "trigger",
+      "used_by": "Area3D: thúng bán, vùng nhiệm vụ, bãi đấu boss",
+      "mask": [
+        3,
+        5
+      ]
+    },
+    {
+      "layer": 12,
+      "name": "thief",
+      "used_by": "Cò trộm (MVP)",
+      "mask": [
+        1,
+        5
+      ]
+    },
+    {
+      "layer": 13,
+      "name": "hitzone",
+      "used_by": "Area3D Hitzone_Head trên sinh vật/boss (chỉ để được phát hiện)",
+      "mask": []
+    }
+  ]
+}

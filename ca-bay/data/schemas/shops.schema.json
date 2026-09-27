@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/shops.schema.json",
+  "title": "Cửa hàng",
+  "description": "data/content/shops.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "npc_id",
+          "entries",
+          "buys"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/shop_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "npc_id": {
+            "$ref": "common.schema.json#/$defs/npc_id"
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "entry_id",
+                "grant",
+                "price",
+                "status"
+              ],
+              "properties": {
+                "entry_id": {
+                  "$ref": "common.schema.json#/$defs/entry_id"
+                },
+                "grant": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "id"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "enum": [
+                        "bait",
+                        "tool",
+                        "rod",
+                        "item",
+                        "upgrade"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "level": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                },
+                "price": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max_purchases": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "display_socket": {
+                  "type": "string",
+                  "pattern": "^socket_display_[0-9]{2}$"
+                },
+                "display_asset_id": {
+                  "$ref": "common.schema.json#/$defs/asset_id"
+                },
+                "status": {
+                  "$ref": "common.schema.json#/$defs/status"
+                }
+              }
+            }
+          },
+          "buys": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "accepts_kinds",
+              "reject_flags"
+            ],
+            "properties": {
+              "accepts_kinds": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "creature",
+                    "item"
+                  ]
+                }
+              },
+              "reject_flags": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "quest",
+                    "no_sell",
+                    "no_steal"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

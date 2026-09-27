@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/quests.schema.json",
+  "title": "Nhiệm vụ",
+  "description": "data/content/quests.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "giver_npc_id",
+          "steps",
+          "rewards"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/quest_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "giver_npc_id": {
+            "$ref": "common.schema.json#/$defs/npc_id"
+          },
+          "auto_start": {
+            "type": "boolean"
+          },
+          "steps": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "step_id",
+                "type",
+                "target_id",
+                "count",
+                "objective_key"
+              ],
+              "properties": {
+                "step_id": {
+                  "$ref": "common.schema.json#/$defs/step_id"
+                },
+                "type": {
+                  "enum": [
+                    "talk",
+                    "deliver_creature",
+                    "deliver_item",
+                    "catch_species",
+                    "defeat_boss"
+                  ]
+                },
+                "target_id": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "deliver_to_npc_id": {
+                  "$ref": "common.schema.json#/$defs/npc_id"
+                },
+                "objective_key": {
+                  "$ref": "common.schema.json#/$defs/loc_key"
+                },
+                "dialogue_key": {
+                  "$ref": "common.schema.json#/$defs/loc_key"
+                },
+                "refill_bait_id": {
+                  "$ref": "common.schema.json#/$defs/bait_id",
+                  "description": "Khi bước đang chạy, người chơi hết mồi này và mục tiêu chưa xong: nói chuyện với NPC giao nhiệm vụ để nhận thêm 1"
+                }
+              }
+            }
+          },
+          "rewards": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "enum": [
+                    "money",
+                    "bait",
+                    "tool",
+                    "item"
+                  ]
+                },
+                "id": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "next_quest_id": {
+            "$ref": "common.schema.json#/$defs/quest_id"
+          },
+          "ends_vertical_slice": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

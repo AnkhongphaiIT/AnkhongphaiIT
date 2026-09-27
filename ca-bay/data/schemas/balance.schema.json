@@ -1,0 +1,446 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/balance.schema.json",
+  "title": "Cân bằng toàn cục",
+  "description": "data/content/balance.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "meta",
+    "fishing",
+    "feel",
+    "scoring",
+    "inventory",
+    "economy",
+    "player",
+    "creature",
+    "physics",
+    "world",
+    "save",
+    "aim_assist",
+    "cooking",
+    "thief",
+    "settings_defaults"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "fishing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lure_apex_m",
+        "max_nibbles",
+        "nibble_min_gap_s",
+        "nibble_before_bite_min_s",
+        "lure_ground_retract_s",
+        "hook_window_s",
+        "perfect_window_s",
+        "strain_decay_per_s",
+        "strain_warning_threshold",
+        "thrash_interval_factor_min",
+        "thrash_interval_factor_max",
+        "launch_trigger_distance_m",
+        "launch_spawn_height_m",
+        "launch_water_grace_s",
+        "launch_land_before_player_m",
+        "launch_land_spread_m",
+        "perfect_yank_bonus_apex_m",
+        "post_launch_lock_s"
+      ],
+      "properties": {
+        "lure_apex_m": {
+          "type": "number"
+        },
+        "max_nibbles": {
+          "type": "number"
+        },
+        "nibble_min_gap_s": {
+          "type": "number"
+        },
+        "nibble_before_bite_min_s": {
+          "type": "number"
+        },
+        "lure_ground_retract_s": {
+          "type": "number"
+        },
+        "hook_window_s": {
+          "type": "number"
+        },
+        "perfect_window_s": {
+          "type": "number"
+        },
+        "strain_decay_per_s": {
+          "type": "number"
+        },
+        "strain_warning_threshold": {
+          "type": "number"
+        },
+        "thrash_interval_factor_min": {
+          "type": "number"
+        },
+        "thrash_interval_factor_max": {
+          "type": "number"
+        },
+        "launch_trigger_distance_m": {
+          "type": "number"
+        },
+        "launch_spawn_height_m": {
+          "type": "number"
+        },
+        "launch_water_grace_s": {
+          "type": "number"
+        },
+        "launch_land_before_player_m": {
+          "type": "number"
+        },
+        "launch_land_spread_m": {
+          "type": "number"
+        },
+        "perfect_yank_bonus_apex_m": {
+          "type": "number"
+        },
+        "post_launch_lock_s": {
+          "type": "number"
+        }
+      }
+    },
+    "feel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "launch_slowmo_s",
+        "launch_slowmo_scale",
+        "hit_stop_s",
+        "camera_shake_hurt",
+        "camera_shake_boss_slam"
+      ],
+      "properties": {
+        "launch_slowmo_s": {
+          "type": "number"
+        },
+        "launch_slowmo_scale": {
+          "type": "number"
+        },
+        "hit_stop_s": {
+          "type": "number"
+        },
+        "camera_shake_hurt": {
+          "type": "number"
+        },
+        "camera_shake_boss_slam": {
+          "type": "number"
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_total_multiplier",
+        "trick_window_s",
+        "popup_max_lines"
+      ],
+      "properties": {
+        "max_total_multiplier": {
+          "type": "number"
+        },
+        "trick_window_s": {
+          "type": "number"
+        },
+        "popup_max_lines": {
+          "type": "number"
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hotbar_slots",
+        "bag_base_slots",
+        "bag_max_slots"
+      ],
+      "properties": {
+        "hotbar_slots": {
+          "type": "number"
+        },
+        "bag_base_slots": {
+          "type": "number"
+        },
+        "bag_max_slots": {
+          "type": "number"
+        }
+      }
+    },
+    "economy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "starting_money",
+        "first_catch_bonus",
+        "vendor_happy_min_value",
+        "vendor_meh_max_value"
+      ],
+      "properties": {
+        "starting_money": {
+          "type": "number"
+        },
+        "first_catch_bonus": {
+          "type": "number"
+        },
+        "vendor_happy_min_value": {
+          "type": "number"
+        },
+        "vendor_meh_max_value": {
+          "type": "number"
+        }
+      }
+    },
+    "player": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_hp",
+        "regen_delay_s",
+        "regen_per_s",
+        "respawn_delay_s",
+        "height_m",
+        "eye_height_m",
+        "walk_speed_mps",
+        "jump_velocity_mps",
+        "item_throw_speed_mps"
+      ],
+      "properties": {
+        "max_hp": {
+          "type": "number"
+        },
+        "regen_delay_s": {
+          "type": "number"
+        },
+        "regen_per_s": {
+          "type": "number"
+        },
+        "respawn_delay_s": {
+          "type": "number"
+        },
+        "height_m": {
+          "type": "number"
+        },
+        "eye_height_m": {
+          "type": "number"
+        },
+        "walk_speed_mps": {
+          "type": "number"
+        },
+        "jump_velocity_mps": {
+          "type": "number"
+        },
+        "item_throw_speed_mps": {
+          "type": "number"
+        }
+      }
+    },
+    "creature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stuck_timeout_s",
+        "knockup_min_mps",
+        "ko_blink_before_wake_s"
+      ],
+      "properties": {
+        "stuck_timeout_s": {
+          "type": "number"
+        },
+        "knockup_min_mps": {
+          "type": "number"
+        },
+        "ko_blink_before_wake_s": {
+          "type": "number"
+        }
+      }
+    },
+    "physics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ticks_per_second",
+        "max_body_speed_mps",
+        "max_active_bodies"
+      ],
+      "properties": {
+        "ticks_per_second": {
+          "type": "number"
+        },
+        "max_body_speed_mps": {
+          "type": "number"
+        },
+        "max_active_bodies": {
+          "type": "number"
+        }
+      }
+    },
+    "world": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_active_creatures"
+      ],
+      "properties": {
+        "max_active_creatures": {
+          "type": "number"
+        }
+      }
+    },
+    "save": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "autosave_interval_s",
+        "max_world_items"
+      ],
+      "properties": {
+        "autosave_interval_s": {
+          "type": "number"
+        },
+        "max_world_items": {
+          "type": "number"
+        }
+      }
+    },
+    "aim_assist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cone_deg",
+        "max_distance_m",
+        "max_correction_deg"
+      ],
+      "properties": {
+        "cone_deg": {
+          "type": "number"
+        },
+        "max_distance_m": {
+          "type": "number"
+        },
+        "max_correction_deg": {
+          "type": "number"
+        }
+      }
+    },
+    "cooking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cook_time_s",
+        "burn_time_s",
+        "max_mult",
+        "burnt_mult"
+      ],
+      "properties": {
+        "cook_time_s": {
+          "type": "number"
+        },
+        "burn_time_s": {
+          "type": "number"
+        },
+        "max_mult": {
+          "type": "number"
+        },
+        "burnt_mult": {
+          "type": "number"
+        }
+      }
+    },
+    "thief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "steal_delay_s",
+        "cooldown_s",
+        "min_item_value",
+        "warning_s",
+        "shoo_radius_m"
+      ],
+      "properties": {
+        "steal_delay_s": {
+          "type": "number"
+        },
+        "cooldown_s": {
+          "type": "number"
+        },
+        "min_item_value": {
+          "type": "number"
+        },
+        "warning_s": {
+          "type": "number"
+        },
+        "shoo_radius_m": {
+          "type": "number"
+        }
+      }
+    },
+    "settings_defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "auto_swap_after_launch",
+        "reel_mode",
+        "music_volume_db",
+        "sfx_volume_db",
+        "look_sensitivity",
+        "invert_y",
+        "language",
+        "quality",
+        "fov_deg"
+      ],
+      "properties": {
+        "auto_swap_after_launch": {
+          "type": "boolean"
+        },
+        "reel_mode": {
+          "enum": [
+            "hold",
+            "toggle"
+          ]
+        },
+        "music_volume_db": {
+          "type": "number"
+        },
+        "sfx_volume_db": {
+          "type": "number"
+        },
+        "look_sensitivity": {
+          "type": "number"
+        },
+        "invert_y": {
+          "type": "boolean"
+        },
+        "language": {
+          "enum": [
+            "auto",
+            "en",
+            "vi"
+          ]
+        },
+        "quality": {
+          "enum": [
+            "auto",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "fov_deg": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

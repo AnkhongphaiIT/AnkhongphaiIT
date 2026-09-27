@@ -1,0 +1,274 @@
+keys,en,vi
+bait_bread.name,Bread Crumbs,Bánh mì vụn
+bait_crab_mix.name,Crab Mix,Mồi cua
+bait_fish_strip.name,Fish Strip Bait,Mồi cá miếng
+bait_milk_tea.name,Chopped Fish Bait,Mồi cá tạp
+bait_shrimp_paste.name,Shrimp Paste,Mắm ruốc
+bait_worm.name,Worms,Trùn
+cos_broom_sunset.name,Sunset Broom,Chổi hoàng hôn
+cos_rod_copper.name,Copper Rod Finish,Cần màu đồng
+cos_rod_river_green.name,River Green Rod,Cần xanh sông
+cos_slipper_river_blue.name,River Blue Slippers,Dép xanh sông
+cos_slipper_river_green.name,River Green Slippers,Dép xanh lá
+cos_slipper_sunset.name,Sunset Slippers,Dép hồng chiều
+cre_boss_ca_bop.desc,"A large local catch: photograph, record, then release.","Cá thể lớn trong vùng: chụp ảnh, ghi nhận rồi thả lại nước."
+cre_boss_ca_bop.name,Cape Cobia,Bớp Mũi Đá
+cre_boss_ca_loc.desc,"A large local catch: photograph, record, then release.","Cá thể lớn trong vùng: chụp ảnh, ghi nhận rồi thả lại nước."
+cre_boss_ca_loc.name,Old Snakehead,Lóc Già
+cre_boss_cua_bun.desc,"A large local catch: photograph, record, then release.","Cá thể lớn trong vùng: chụp ảnh, ghi nhận rồi thả lại nước."
+cre_boss_cua_bun.name,Old Mud Crab,Cua Cụ
+cre_ca_chuon.desc,Was gliding before anyone invented a fishing rod.,Biết lượn trước khi có ai nghĩ ra cần câu.
+cre_ca_chuon.name,Flying Fish,Cá chuồn
+cre_ca_doi.desc,Keeps circling the quiet side of the creek.,Cứ lượn ở phía lạch yên nước.
+cre_ca_doi.name,Mullet,Cá đối
+cre_ca_hong.desc,Strong enough to make the pier crew stop talking.,Khỏe tới mức đội sửa bến phải ngừng tán chuyện.
+cre_ca_hong.name,Red Snapper,Cá hồng
+cre_ca_me.desc,A splash announces it before the float does.,Tiếng nước báo trước cả chiếc phao.
+cre_ca_me.name,Silver Carp,Cá mè
+cre_ca_nuc.desc,Arrives in schools and leaves in splashes.,"Tới theo đàn, đi bằng những cú quẫy."
+cre_ca_nuc.name,Scad,Cá nục
+cre_ca_ro.desc,Its route back to the river goes through your feet.,Đường về sông của nó thường đi ngang chân bạn.
+cre_ca_ro.name,Climbing Perch,Cá rô
+cre_ca_thoi_loi.desc,At home on the mud. You are the visitor.,Bùn là nhà. Bạn mới là khách.
+cre_ca_thoi_loi.name,Mudskipper,Cá thòi lòi
+cre_ca_tre.desc,All whiskers and very little patience.,"Nhiều râu, ít kiên nhẫn."
+cre_ca_tre.name,Walking Catfish,Cá trê
+cre_ca_trich.desc,Silver sides catch the last light over the harbour.,Sườn bạc bắt nắng chiều ngoài bến.
+cre_ca_trich.name,Herring,Cá trích
+cre_cua_bun.desc,Its pincers have more confidence than its steering.,Càng tự tin hơn hẳn khả năng lái.
+cre_cua_bun.name,Mud Crab,Cua bùn
+cre_cua_dong.desc,Sideways is a perfectly respectable direction.,Đi ngang cũng là một hướng đi đàng hoàng.
+cre_cua_dong.name,Paddy Crab,Cua đồng
+cre_luon.desc,Found in freshwater pockets beyond the tidal creek.,Ở các ao nước ngọt phía trong lạch triều.
+cre_luon.name,Swamp Eel,Lươn
+cre_muc_ong.desc,Leaves a harmless ink splash and a dramatic exit.,Để lại vệt mực vô hại rồi rút lui rất kịch.
+cre_muc_ong.name,Squid,Mực ống
+cre_tep.desc,Small enough to miss. Bouncy enough to notice.,Nhỏ tới mức khó thấy. Nhảy tới mức khó quên.
+cre_tep.name,River Shrimp,Tép
+cre_tom_cang.desc,Long arms. Short attention span.,Càng dài. Kiên nhẫn ngắn.
+cre_tom_cang.name,River Prawn,Tôm càng
+isl_01_cu_lao.name,Village Islet,Cù lao Bến Làng
+isl_02_rung_dua.name,Coconut Swamp,Rừng Dừa Nước
+isl_03_mui_da.name,Rocky Cape,Mũi Đá
+item_festival_medal.name,Festival Medal,Huy chương hội câu
+item_golden_scale.name,Catch Record Badge,Huy hiệu ghi nhận cá
+item_grilled_fish.name,Grilled Fish Meal,Phần cá nướng
+item_rice_ball.name,Rice Ball,Cơm nắm
+item_survey_tag.name,Survey Tag,Thẻ khảo sát
+lootbox_ben_lang.name,Village Surprise Box,Hộp quà Bến Làng
+npc_bay_cho.greet,Fresh catch? The basket is here.,Có mẻ cá mới hả? Thúng ở đây nè.
+npc_bay_cho.name,Bay at the Market,Bảy Chợ
+npc_bay_cho.no_money,You can fish with free bait and come back.,Cứ câu bằng mồi miễn phí rồi quay lại nha.
+npc_bay_cho.no_sell,Please keep that for your task.,Giữ món đó để làm việc đã nha.
+npc_bay_cho.thanks_bad,A small catch still counts.,Mẻ nhỏ cũng quý mà.
+npc_bay_cho.thanks_good,A fine catch. That will help the pier fund.,Mẻ này đẹp đó. Quỹ sửa bến lại thêm một chút.
+npc_chi_lan.done,The pier is open again. The fishing spots are yours to enjoy.,"Bến mở lại rồi. Các điểm câu vẫn mở, cứ thong thả chơi nha."
+npc_chi_lan.greet,The village fishing day will help pay for the last pier repairs.,Hội câu của xã góp nốt kinh phí sửa bến đó.
+npc_chi_lan.name,Lan,Chị Lan
+npc_chi_lan.quest_boss,Cape Cobia is the final challenge. Take a photo and let it go afterwards.,Bớp Mũi Đá là thử thách cuối. Chụp ảnh xong mình thả nó đi nha.
+npc_chi_lan.quest_prep,Bring four scad for the community kitchen. I will prepare your festival bait.,Mang bốn con cá nục cho bếp chung. Chị chuẩn bị mồi hội câu cho.
+npc_chi_lan.refill,Another bait pack. The contest is about trying together.,Thêm hộp mồi đây. Hội câu là để cùng nhau thử mà.
+npc_co_ba.gift_slipper,"Here, my spare flip-flops. Aim for the head.","Nè, đôi dép dự phòng của cô. Nhắm đầu mà chọi."
+npc_co_ba.greet,Fresh fish? Toss it in the basket.,Cá tươi hả? Quăng vô thúng đi con.
+npc_co_ba.name,Aunt Ba,Cô Ba
+npc_co_ba.no_money,"Money first, dear customer!","Tiền trước, khách ơi!"
+npc_co_ba.no_sell,That's not something I buy.,Cái này cô không mua đâu.
+npc_co_ba.thanks_bad,...I'll take it. Barely.,...Thôi cô lấy. Miễn cưỡng.
+npc_co_ba.thanks_good,"Ooh, premium stuff!","Ui, hàng ngon nha!"
+npc_co_tam.greet,Fresh catch? The basket is here.,Có mẻ cá mới hả? Thúng ở đây nè.
+npc_co_tam.name,Aunt Tam,Cô Tám
+npc_co_tam.no_money,You can fish with free bait and come back.,Cứ câu bằng mồi miễn phí rồi quay lại nha.
+npc_co_tam.no_sell,Please keep that for your task.,Giữ món đó để làm việc đã nha.
+npc_co_tam.thanks_bad,A small catch still counts.,Mẻ nhỏ cũng quý mà.
+npc_co_tam.thanks_good,A fine catch. That will help the pier fund.,Mẻ này đẹp đó. Quỹ sửa bến lại thêm một chút.
+npc_nam_sau.done,Survey finished. The ferry can reach the cape again.,Khảo sát xong. Đò ra mũi đá chạy lại được rồi.
+npc_nam_sau.greet,The tide shifted the mud bank. We are checking the creek before reopening the ferry.,Triều đổi làm bãi bùn xê dịch. Mình kiểm tra lạch trước khi mở lại đò.
+npc_nam_sau.name,Uncle Sau,Chú Sáu
+npc_nam_sau.quest_boss,Old Mud Crab keeps sheltering beside the marker. Try this crab mix.,Cua Cụ hay nấp cạnh cọc mốc. Thử hộp mồi cua này đi.
+npc_nam_sau.quest_prep,Bring four mudskippers for the creek survey. Then we will release them.,Mang bốn con thòi lòi để khảo sát lạch. Ghi nhận rồi thả lại nha.
+npc_nam_sau.refill,Fresh crab mix. No need to pay.,Mồi cua mới đây. Không cần trả tiền.
+npc_ong_tu.done,Catch recorded! The ferry to the coconut creek is ready.,Ghi nhận xong! Đò sang lạch dừa đã sẵn sàng rồi.
+npc_ong_tu.greet,The flood damaged our pier. A few good catches will get the village moving again.,"Đợt nước lớn làm hư bến rồi. Góp vài mẻ cá, bà con mình sửa lại thôi."
+npc_ong_tu.name,Uncle Tu,Ông Tư
+npc_ong_tu.quest_boss,Try the red post for Old Snakehead. We will record the catch and release it.,Thử câu Lóc Già ở cọc đỏ. Ghi nhận xong mình thả nó về nước.
+npc_ong_tu.quest_lunch,Bring three perch for the repair crew. I have some chopped bait for you.,Mang ba con cá rô cho đội sửa bến. Tui có hộp mồi cá tạp cho bạn.
+npc_ong_tu.refill,Here is replacement bait. We can try again.,Mồi thay đây. Mình thử lại được mà.
+quest_01_bua_trua.name,Lunch for the Pier Crew,Bữa trưa đội sửa bến
+quest_01_bua_trua.step_deliver_ca_ro.objective,Bring 3 Climbing Perch to Uncle Tu,Mang 3 con cá rô cho Ông Tư
+quest_01_bua_trua.step_talk.objective,Talk to Uncle Tu at the pier,Nói chuyện với Ông Tư ở bến đò
+quest_01_trum_song.name,The River Survey,Ghi nhận cá lớn
+quest_01_trum_song.step_defeat_boss.objective,Use chopped fish bait at the red post and land Old Snakehead,Dùng mồi cá tạp ở cọc đỏ và bắt Lóc Già
+quest_01_trum_song.step_deliver_scale.objective,Show the catch record badge to Uncle Tu,Đưa huy hiệu ghi nhận cá cho Ông Tư
+quest_02_cua_cu.name,Old Mud Crab,Cua Cụ bên cọc mốc
+quest_02_cua_cu.step_defeat_boss.objective,Use crab mix at the marker and catch Old Mud Crab,Dùng mồi cua ở cọc mốc và bắt Cua Cụ
+quest_02_cua_cu.step_deliver_badge.objective,Bring the survey tag to Uncle Sau,Đưa thẻ khảo sát cho Chú Sáu
+quest_02_sua_ben.name,Check the Tidal Creek,Khảo sát lạch triều
+quest_02_sua_ben.step_deliver_fish.objective,Bring 4 Mudskippers to Uncle Sau,Mang 4 con thòi lòi cho Chú Sáu
+quest_02_sua_ben.step_talk.objective,Talk to Uncle Sau at the coconut creek,Nói chuyện với Chú Sáu ở lạch dừa
+quest_03_ca_bop.name,The Last Festival Catch,Mẻ cá cuối hội
+quest_03_ca_bop.step_defeat_boss.objective,Use fish strip bait at the marker and catch Cape Cobia,Dùng mồi cá miếng ở cọc mốc và bắt Bớp Mũi Đá
+quest_03_ca_bop.step_deliver_badge.objective,Show the festival medal to Lan,Đưa huy chương hội câu cho Chị Lan
+quest_03_hoi_cau.name,Village Fishing Day,Hội câu Bến Làng
+quest_03_hoi_cau.step_deliver_fish.objective,Bring 4 Scad to Lan,Mang 4 con cá nục cho Chị Lan
+quest_03_hoi_cau.step_talk.objective,Talk to Lan at the cape,Nói chuyện với Chị Lan ở mũi đá
+rod_bamboo.name,Bamboo Rod,Cần tre
+rod_carbon.name,Carbon Rod,Cần các-bon
+save.error.new_game,Cannot read progress. Retry or contact the server owner.,Chưa đọc được tiến trình. Thử lại hoặc liên hệ người vận hành máy chủ.
+save.error.recovered,Progress recovered from the server backup.,Đã khôi phục tiến trình từ bản dự phòng trên máy chủ.
+shop_bay_cho.name,Bay at the Market's Stall,Sạp Bảy Chợ
+shop_co_ba.name,Aunt Ba's Stall,Sạp Cô Ba
+shop_co_tam.name,Aunt Tam's Stall,Sạp Cô Tám
+tool_broom.name,Rib Broom,Chổi chà
+tool_coconut_bomb.name,Confetti Coconut,Dừa kim tuyến
+tool_hand.name,Bare Hands,Tay không
+tool_slingshot.name,Slingshot,Ná thun
+tool_slipper.name,Honeycomb Flip-flop,Dép tổ ong
+tool_swatter.name,Electric Swatter,Vợt muỗi điện
+trick_air_smack.desc,Knock it out while it's still flying.,Hạ khi cá còn đang bay.
+trick_air_smack.name,Air Smack,Cá Bay
+trick_combo.desc,Knock out within {value} s of the last one.,Hạ trong {value} giây sau lần hạ trước.
+trick_combo.name,Chain,Liên Hoàn
+trick_explosive.desc,Knock out with an explosive.,Hạ bằng đồ nổ.
+trick_explosive.name,Confetti Boom,Nổ Kim Tuyến
+trick_face_to_face.desc,Melee knockout from {value} m or closer.,Hạ cận chiến ở khoảng cách {value} m trở xuống.
+trick_face_to_face.name,Face to Face,Sát Mặt
+trick_head.desc,The final hit lands on the head.,Đòn cuối trúng đầu.
+trick_head.name,Head Bonk,Trúng Đầu
+trick_juggle.desc,Hit it {value} times before it lands.,Đánh trúng {value} lần trước khi cá chạm đất.
+trick_juggle.name,Juggle,Tâng Cá
+trick_long_throw.desc,Knock out with a throw from {value} m or more.,Ném hạ từ {value} m trở lên.
+trick_long_throw.name,Long Toss,Xa Tít
+trick_one_hit.desc,Knock out with a single hit.,Hạ chỉ bằng một đòn.
+trick_one_hit.name,One and Done,Một Phát Ăn Ngay
+trick_perfect_yank.desc,Hooked the instant it bit.,Giật đúng lúc cá vừa cắn.
+trick_perfect_yank.name,Perfect Yank,Giật Chuẩn
+trick_player_airborne.desc,Hit while you're in the air.,Đánh trúng khi bạn đang ở trên không.
+trick_player_airborne.name,Flying Me,Bay Người
+trick_spin_360.desc,Turn a full {value}° right before the hit.,Xoay trọn {value}° ngay trước cú đánh.
+trick_spin_360.name,Full Spin,Xoay Vòng
+tutorial.cast,Hold to charge — release to cast,Giữ để nạp lực — thả để quăng
+tutorial.pickup,Pick it up,Nhặt lên
+tutorial.reel,Hold to reel in,Giữ để kéo
+tutorial.sell,Toss it into Aunt Ba's basket,Ném vào thúng Cô Ba
+tutorial.smack,Smack it!,Đập nó!
+tutorial.thrash,Let go when it thrashes!,Thả tay khi cá quẫy!
+tutorial.throw_air,Throw a flip-flop while it's flying,Ném dép lúc cá đang bay
+ui.account.delete,Delete account,Xóa tài khoản
+ui.account.delete_confirm,This permanently deletes your account and progress. Confirm with your password.,Thao tác này xóa vĩnh viễn tài khoản và tiến trình. Xác nhận bằng mật khẩu của bạn.
+ui.account.display_name,Display name,Tên hiển thị
+ui.account.invalid_credentials,Username or password is incorrect.,Tên đăng nhập hoặc mật khẩu chưa đúng.
+ui.account.login,Sign in,Đăng nhập
+ui.account.logout,Sign out,Đăng xuất
+ui.account.new_password,New password,Mật khẩu mới
+ui.account.password,Password,Mật khẩu
+ui.account.rate_limited,Too many attempts. Please wait and try again.,Bạn đã thử quá nhiều lần. Hãy chờ rồi thử lại.
+ui.account.recover,Recover account,Khôi phục tài khoản
+ui.account.recovery_code,Recovery code,Mã khôi phục
+ui.account.recovery_warning,"Without a recovery code, you may be unable to recover your account.","Nếu không có mã khôi phục, bạn có thể không lấy lại được tài khoản."
+ui.account.register,Create account,Tạo tài khoản
+ui.account.save_recovery,Save these recovery codes now. They will only be shown once.,Hãy lưu các mã khôi phục ngay. Mã chỉ hiển thị một lần.
+ui.account.session_expired,Your session expired. Sign in again to continue.,Phiên đăng nhập đã hết hạn. Đăng nhập lại để tiếp tục.
+ui.account.sync_failed,Server unavailable. Try reconnecting; your confirmed progress is unchanged.,Chưa nối được máy chủ. Thử kết nối lại; tiến trình đã xác nhận vẫn được giữ.
+ui.account.sync_ok,Progress synced,Đã đồng bộ tiến trình
+ui.account.taken_over,Play moved to another device. Your confirmed progress is saved.,Phiên chơi đã chuyển sang thiết bị khác. Tiến trình đã xác nhận vẫn được lưu.
+ui.account.takeover,Move play session to this device,Chuyển phiên chơi sang thiết bị này
+ui.account.takeover_confirm,The other device will return to the lobby. Continue?,Thiết bị kia sẽ trở về sảnh. Bạn muốn tiếp tục?
+ui.account.username,Username,Tên đăng nhập
+ui.audio.enable,Click to enable sound and capture the mouse,Bấm để bật âm thanh và điều khiển chuột
+ui.boss.escape,Escaping in,Sắp trốn
+ui.campaign.complete,The pier is open. Keep fishing together!,Bến mở lại rồi. Cùng nhau câu tiếp thôi!
+ui.coop.create,Create Room,Tạo phòng
+ui.coop.join,Join Room,Vào phòng
+ui.coop.leave,Leave room,Rời phòng
+ui.coop.loot_owner,Caught by {name},Người câu: {name}
+ui.coop.ping,Look here,Xem chỗ này
+ui.coop.players,{count}/4 players,{count}/4 người
+ui.coop.ready,Ready,Sẵn sàng
+ui.coop.reconnecting,Reconnecting. Confirmed progress is safe on the server.,Đang kết nối lại. Tiến trình đã xác nhận được lưu trên máy chủ.
+ui.coop.room_code,Room code,Mã phòng
+ui.coop.travel_locked,Every player must unlock this island before travelling together.,Tất cả thành viên cần mở đảo này trước khi đi cùng nhau.
+ui.coop.travel_vote,Travel to {name}?,Đi tới {name}?
+ui.coop.waiting,Waiting for the group,Đang chờ cả nhóm
+ui.coop.wrong_owner,This catch belongs to another player. You can help them catch it.,Con này thuộc người câu khác. Bạn có thể giúp họ bắt cá.
+ui.currency.dust,Colour Dust,Bụi màu
+ui.currency.name,Scales,Vảy
+ui.currency.ticket,Festival Tickets,Vé hội câu
+ui.dex.tab_species,Species,Loài
+ui.dex.tab_tricks,Tricks,Trick
+ui.dex.title,Fish Log,Sổ Cá
+ui.dex.unknown,???,???
+ui.dialogue.skip,Skip line,Bỏ qua câu thoại
+ui.food.free_limit,You already have {count} free meals. Eat one before taking more.,Bạn đã có {count} phần cơm miễn phí. Ăn bớt rồi hãy lấy thêm.
+ui.hud.bag,Bag,Túi
+ui.hud.cannot_fish_carrying,Put down what you're holding to fish,Đặt đồ đang cầm xuống rồi mới câu được
+ui.hud.hunger,Fullness,Độ no
+ui.hud.inventory_full,Bag is full!,Túi đầy rồi!
+ui.hud.new_species,New species!,Loài mới!
+ui.hud.objective_none,Explore the islet,Dạo quanh cù lao
+ui.hunger.full,You are full. Keep this for later.,Bạn đang no. Để dành phần này nha.
+ui.hunger.low,Feeling hungry? Free rice is available at the stall.,Đói bụng rồi? Sạp có cơm nắm miễn phí.
+ui.lootbox.direct,Choose this colour for {count} colour dust,Chọn màu này bằng {count} bụi màu
+ui.lootbox.duplicate,Already owned: +{count} colour dust,Đã sở hữu: +{count} bụi màu
+ui.lootbox.explain,Cosmetics only. Tickets are earned by playing and cannot be bought.,"Chỉ có đồ trang trí. Vé kiếm khi chơi, không mua bằng tiền."
+ui.lootbox.no_tickets,Earn tickets from quests or every 10 fish sold.,Làm nhiệm vụ hoặc bán mỗi 10 con cá để nhận vé.
+ui.lootbox.odds,Chance: {chance}%,Tỷ lệ: {chance}%
+ui.lootbox.open,Open for {count} festival ticket,Mở bằng {count} vé hội câu
+ui.lootbox.skip,Skip animation,Bỏ qua hiệu ứng
+ui.lootbox.version,Reward table {version},Bảng thưởng {version}
+ui.menu.continue,Continue,Chơi tiếp
+ui.menu.play,Play,Chơi
+ui.menu.quit,Quit,Thoát
+ui.menu.settings,Settings,Tùy chọn
+ui.network.invite_invalid,Room code is invalid or the room has closed.,Mã phòng không hợp lệ hoặc phòng đã đóng.
+ui.network.offline,Cannot reach the server. Reconnect to keep playing.,Chưa kết nối được máy chủ. Kết nối lại để chơi tiếp.
+ui.network.pending_save,Waiting for the server to confirm this action.,Đang chờ máy chủ xác nhận thao tác.
+ui.network.room_full,This room already has four players.,Phòng đã có đủ bốn người.
+ui.network.save_conflict,Progress changed. The latest server state has been loaded.,Tiến trình đã thay đổi. Dữ liệu mới nhất từ máy chủ đã được tải.
+ui.network.server_busy,The server is busy. Please try again shortly.,Máy chủ đang bận. Vui lòng thử lại sau ít phút.
+ui.network.version_mismatch,A new game version is required. Reload this page.,Cần phiên bản game mới. Hãy tải lại trang.
+ui.pause.main_menu,Main Menu,Về menu
+ui.pause.online_notice,The room keeps playing while this menu is open.,Phòng vẫn tiếp tục chơi khi menu này đang mở.
+ui.pause.resume,Resume,Tiếp tục
+ui.player.ko,You fainted!,Bạn xỉu rồi!
+ui.popup.boss_bait_wrong_place,This bait only works at the red post.,Mồi này chỉ dùng ở cọc cờ đỏ.
+ui.popup.boss_escaped,It got away! Your bait is back.,Nó trốn mất! Mồi đã được trả lại.
+ui.popup.escaped,It got away!,Sổng mất rồi!
+ui.popup.more_tricks,+{n} more,+{n} trick khác
+ui.popup.no_fish_here,Nothing bites here. Try the pier or the mud bank.,Chỗ này không có cá. Thử ở bến hoặc bãi bùn.
+ui.popup.not_enough_money,Not enough scales,Không đủ vảy
+ui.popup.slipper_returned,Your flip-flop flew back to you.,Dép tự bay về tay bạn.
+ui.popup.total,Total,Tổng
+ui.prompt.buy,Buy {name} — {price},Mua {name} — {price}
+ui.prompt.deliver,Give {count} {name},Đưa {count} {name}
+ui.prompt.eat,Eat {name},Ăn {name}
+ui.prompt.pick_up,Pick up {name} — {value},Nhặt {name} — {value}
+ui.prompt.sell_bag,Sell bag ({count}) — {value},Bán cả túi ({count}) — {value}
+ui.prompt.sell_hint,Toss into the basket to sell,Ném vào thúng để bán
+ui.prompt.store,Store in bag,Cất vào túi
+ui.prompt.talk,Talk,Nói chuyện
+ui.save.saving,Saving...,Đang lưu...
+ui.settings.auto_swap,Auto-swap tool after yank,Tự đổi công cụ sau khi giật
+ui.settings.camera_shake,Camera shake,Rung camera
+ui.settings.fov,Field of view,Góc nhìn
+ui.settings.invert_y,Invert Y,Đảo trục dọc
+ui.settings.language,Language,Ngôn ngữ
+ui.settings.music,Music,Nhạc
+ui.settings.quality,Graphics quality,Chất lượng đồ họa
+ui.settings.reel_hold,Hold,Giữ
+ui.settings.reel_mode,Reel button,Nút kéo dây
+ui.settings.reel_toggle,Tap to toggle,Bấm bật/tắt
+ui.settings.sensitivity,Look sensitivity,Độ nhạy nhìn
+ui.settings.sfx,Sound effects,Hiệu ứng âm thanh
+ui.settings.subtitles,Subtitles,Phụ đề
+ui.settings.voice,Dialogue volume,Âm lượng lời thoại
+ui.slice.end_title,Island one test milestone complete,Đã xong mốc thử nghiệm đảo một
+ui.web.private_mode_warning,Sign in again to recover your server progress after this browser session.,Đăng nhập lại để lấy tiến trình trên máy chủ sau phiên trình duyệt này.
+upg_backpack.name,Bigger Bag,Túi rộng
+upg_reel_speed.name,Fast Reel,Guồng nhanh
+var_boba.name,Silver Sheen,Ánh Bạc
+vfx.text.boing,BOING!,BỤP!
+vfx.text.bonk,BONK!,BỐP!
+vfx.text.boom,POOF!,BÙM!
+vfx.text.thwack,THWACK!,CHÁT!
+vfx.text.whoosh,WHOOSH!,VÈO!
+vfx.text.zap,ZAP!,TÁCH!

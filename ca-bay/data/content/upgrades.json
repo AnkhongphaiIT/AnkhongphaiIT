@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design"
+  },
+  "records": [
+    {
+      "id": "upg_backpack",
+      "name_key": "upg_backpack.name",
+      "status": "slice",
+      "target": "inventory.bag_slots",
+      "levels": [
+        {
+          "level": 1,
+          "value": 1,
+          "status": "slice"
+        },
+        {
+          "level": 2,
+          "value": 1,
+          "status": "mvp"
+        }
+      ]
+    },
+    {
+      "id": "upg_reel_speed",
+      "name_key": "upg_reel_speed.name",
+      "status": "slice",
+      "target": "rod.reel_speed_mult",
+      "levels": [
+        {
+          "level": 1,
+          "value": 1.25,
+          "status": "slice"
+        },
+        {
+          "level": 2,
+          "value": 1.5,
+          "status": "mvp"
+        }
+      ]
+    }
+  ]
+}

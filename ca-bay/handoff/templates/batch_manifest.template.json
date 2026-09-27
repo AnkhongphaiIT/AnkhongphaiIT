@@ -1,0 +1,25 @@
+{
+  "schema_version": "2.0.0",
+  "template_only": true,
+  "batch_id": null,
+  "request_version": null,
+  "items": [
+    {
+      "request_id": null,
+      "asset_id": null,
+      "deliverable_kind": "concept_only",
+      "relative_path": null,
+      "variant": null,
+      "locale": null,
+      "declared_sha256": null,
+      "expected_format": null,
+      "expected_width_px": null,
+      "expected_height_px": null,
+      "expected_alpha": null,
+      "expected_sample_rate_hz": null,
+      "expected_channels": null,
+      "expected_bit_depth": null,
+      "source_record_id": null
+    }
+  ]
+}

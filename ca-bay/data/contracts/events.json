@@ -1,0 +1,3199 @@
+{
+  "schema_version": "1.1.0",
+  "events": [
+    {
+      "name": "fishing.cast_charge_started",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Bắt đầu nạp lực quăng (F1)",
+      "payload": [
+        {
+          "name": "rod_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.cast_released",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Thả nút, phao bay (F2)",
+      "payload": [
+        {
+          "name": "rod_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "charge_ratio",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "target_point",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.lure_landed",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Phao chạm nước hoặc đất (F4, F5)",
+      "payload": [
+        {
+          "name": "surface",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "water",
+            "ground"
+          ]
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "zone_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.nibble",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Cá rỉa mồi (F7)",
+      "payload": [
+        {
+          "name": "index",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.bite",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Cá cắn (F8)",
+      "payload": [
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "variant_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "zone_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "bait_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "is_boss",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.hook_set",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Đã móc câu (F11–F13)",
+      "payload": [
+        {
+          "name": "perfect",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "auto",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "reaction_s",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.reel_state_changed",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Bắt đầu/ngừng kéo dây (dùng cho âm lặp do cần câu sở hữu)",
+      "payload": [
+        {
+          "name": "reeling",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.thrash_started",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Sinh vật bắt đầu vùng vẫy (F14)",
+      "payload": [
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.thrash_ended",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Hết đợt vùng vẫy (F14)",
+      "payload": [
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.strain_warning",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Độ căng vượt ngưỡng cảnh báo (F14)",
+      "payload": [
+        {
+          "name": "strain",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.escaped",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Sinh vật sổng khi đang kéo (F10, F15, F16)",
+      "payload": [
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "strain",
+            "player_release",
+            "out_of_range"
+          ]
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.launched",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Sinh vật bị giật lên (F17, F18)",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "perfect_yank",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "fishing.cancelled",
+      "emitter": "FishingController",
+      "status": "slice",
+      "desc": "Hủy/thu phao (F3, F6, F9, F10, F20)",
+      "payload": [
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "player",
+            "ground",
+            "out_of_range",
+            "interrupted",
+            "tool_swap"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.spawned",
+      "emitter": "Spawner",
+      "status": "slice",
+      "desc": "Tạo thân sinh vật",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "variant_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "is_boss",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.landed",
+      "emitter": "Creature",
+      "status": "slice",
+      "desc": "Sinh vật chạm đất lần đầu sau khi bay",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "surface",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.damaged",
+      "emitter": "Creature / BossController",
+      "status": "slice",
+      "desc": "Sinh vật trúng đòn",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "tool_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "hit_zone",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "head",
+            "body"
+          ]
+        },
+        {
+          "name": "airborne",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.knocked_out",
+      "emitter": "Creature",
+      "status": "slice",
+      "desc": "Sinh vật thường KO và thành vật phẩm (boss KHÔNG phát sự kiện này)",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "variant_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "tool_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "value",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "total_multiplier",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.woke_up",
+      "emitter": "Creature",
+      "status": "mvp",
+      "desc": "Sinh vật KO tỉnh lại",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.returned_to_water",
+      "emitter": "Creature",
+      "status": "slice",
+      "desc": "Sinh vật còn tỉnh về nước sâu → sổng",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.attack_started",
+      "emitter": "Creature",
+      "status": "slice",
+      "desc": "Sinh vật bắt đầu đòn tấn công (báo trước)",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "creature.attacked_player",
+      "emitter": "Creature",
+      "status": "slice",
+      "desc": "Đòn sinh vật trúng người chơi",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "damage",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "scoring.tricks_awarded",
+      "emitter": "Creature / BossController (gọi TrickEvaluator)",
+      "status": "slice",
+      "desc": "Kết quả trick của một cú KO (cả boss)",
+      "payload": [
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tricks",
+          "type": "array",
+          "required": true,
+          "desc": "[{trick_id, multiplier}] theo display_order"
+        },
+        {
+          "name": "total_multiplier",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "value",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "item.spawned",
+      "emitter": "Items",
+      "status": "slice",
+      "desc": "Vật phẩm xuất hiện trong thế giới",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "def_kind",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "value",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "item.picked_up",
+      "emitter": "Interactor",
+      "status": "slice",
+      "desc": "Người chơi nhặt vật",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "item.dropped",
+      "emitter": "Interactor",
+      "status": "slice",
+      "desc": "Thả vật xuống",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "item.thrown",
+      "emitter": "Interactor",
+      "status": "slice",
+      "desc": "Ném vật",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "velocity",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "item.stored",
+      "emitter": "InventoryService",
+      "status": "slice",
+      "desc": "Cất vật vào túi",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "slot",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "item.despawned",
+      "emitter": "Items",
+      "status": "slice",
+      "desc": "Vật bị xóa khỏi thế giới/túi (bán, nộp, dọn, tỉnh lại, ăn)",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "sold",
+            "delivered",
+            "cleanup",
+            "woke_up",
+            "eaten"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "inventory.changed",
+      "emitter": "InventoryService",
+      "status": "slice",
+      "desc": "Túi/ô mồi thay đổi",
+      "payload": [
+        {
+          "name": "slots",
+          "type": "array",
+          "required": true
+        },
+        {
+          "name": "bait_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "bait_count",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "inventory.full",
+      "emitter": "InventoryService",
+      "status": "slice",
+      "desc": "Không còn ô trống",
+      "payload": [
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "economy.money_changed",
+      "emitter": "EconomyService",
+      "status": "slice",
+      "desc": "Tiền thay đổi",
+      "payload": [
+        {
+          "name": "old",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "new",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "delta",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "sell",
+            "sell_bag",
+            "buy",
+            "quest_reward",
+            "boss_reward",
+            "first_catch",
+            "debug"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "economy.item_sold",
+      "emitter": "EconomyService",
+      "status": "slice",
+      "desc": "Bán thành công",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "value",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "npc_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "economy.purchase_succeeded",
+      "emitter": "EconomyService",
+      "status": "slice",
+      "desc": "Mua thành công",
+      "payload": [
+        {
+          "name": "shop_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "entry_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "price",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "economy.purchase_failed",
+      "emitter": "EconomyService",
+      "status": "slice",
+      "desc": "Mua thất bại",
+      "payload": [
+        {
+          "name": "shop_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "entry_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "not_enough_money",
+            "inventory_full",
+            "max_level",
+            "max_purchases"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "cooking.started",
+      "emitter": "CookingService",
+      "status": "mvp",
+      "desc": "Đặt vật lên vỉ",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "station_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "cooking.level_changed",
+      "emitter": "CookingService",
+      "status": "mvp",
+      "desc": "Chín / cháy",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "level",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "raw",
+            "cooked",
+            "burnt"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "thief.approach_warning",
+      "emitter": "ThiefService",
+      "status": "mvp",
+      "desc": "Cò trộm bắt đầu rình một vật",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "thief.shooed",
+      "emitter": "ThiefService",
+      "status": "mvp",
+      "desc": "Người chơi lại gần, cò bay đi tay không",
+      "payload": [
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "thief.item_stolen",
+      "emitter": "ThiefService",
+      "status": "mvp",
+      "desc": "Cò lấy được vật và bay về tổ",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "thief.item_dropped",
+      "emitter": "ThiefService",
+      "status": "mvp",
+      "desc": "Vật bị cò lấy nằm ở tổ (lấy lại được)",
+      "payload": [
+        {
+          "name": "item_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "quest.started",
+      "emitter": "QuestService",
+      "status": "slice",
+      "desc": "Nhiệm vụ bắt đầu",
+      "payload": [
+        {
+          "name": "quest_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "quest.step_progressed",
+      "emitter": "QuestService",
+      "status": "slice",
+      "desc": "Tiến độ bước nhiệm vụ đổi",
+      "payload": [
+        {
+          "name": "quest_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "step_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "required",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "quest.completed",
+      "emitter": "QuestService",
+      "status": "slice",
+      "desc": "Hoàn thành nhiệm vụ",
+      "payload": [
+        {
+          "name": "quest_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "boss.summoned",
+      "emitter": "BossController",
+      "status": "slice",
+      "desc": "Boss lên bãi đấu (LANDING)",
+      "payload": [
+        {
+          "name": "boss_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "creature_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "boss.phase_changed",
+      "emitter": "BossController",
+      "status": "slice",
+      "desc": "Boss sang pha mới",
+      "payload": [
+        {
+          "name": "boss_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "phase",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "boss.telegraph",
+      "emitter": "BossController",
+      "status": "slice",
+      "desc": "Báo trước đòn boss",
+      "payload": [
+        {
+          "name": "boss_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "move_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "duration_s",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "boss.escape_warning",
+      "emitter": "BossController",
+      "status": "slice",
+      "desc": "Còn escape_warning_s trước khi boss trốn",
+      "payload": [
+        {
+          "name": "boss_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "remaining_s",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "boss.escaped",
+      "emitter": "FishingController / BossController",
+      "status": "slice",
+      "desc": "Trận boss kết thúc không thắng; mồi boss được hoàn",
+      "payload": [
+        {
+          "name": "boss_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "timer",
+            "reel_strain",
+            "reel_release",
+            "reel_out_of_range",
+            "interrupted",
+            "player_ko",
+            "left_arena"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "boss.defeated",
+      "emitter": "BossController",
+      "status": "slice",
+      "desc": "Boss bị hạ",
+      "payload": [
+        {
+          "name": "boss_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "time_s",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "reward",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "player.damaged",
+      "emitter": "Player",
+      "status": "slice",
+      "desc": "Người chơi mất máu",
+      "payload": [
+        {
+          "name": "amount",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "hp",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "player.knocked_out",
+      "emitter": "Player",
+      "status": "slice",
+      "desc": "Người chơi xỉu",
+      "payload": [
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "player.respawned",
+      "emitter": "Player",
+      "status": "slice",
+      "desc": "Người chơi hồi sinh",
+      "payload": [
+        {
+          "name": "spawn_zone_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "player.jumped",
+      "emitter": "Player",
+      "status": "slice",
+      "desc": "Nhảy",
+      "payload": [
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "player.landed",
+      "emitter": "Player",
+      "status": "slice",
+      "desc": "Tiếp đất",
+      "payload": [
+        {
+          "name": "surface",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "player.footstep",
+      "emitter": "Player",
+      "status": "slice",
+      "desc": "Bước chân (theo nhịp đi)",
+      "payload": [
+        {
+          "name": "surface",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "wood",
+            "sand",
+            "mud"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "interaction.focus_changed",
+      "emitter": "Interactor",
+      "status": "slice",
+      "desc": "Đối tượng đang nhắm tương tác thay đổi",
+      "payload": [
+        {
+          "name": "target_uid",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "prompt_key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "interaction.performed",
+      "emitter": "Interactor",
+      "status": "slice",
+      "desc": "Đã tương tác",
+      "payload": [
+        {
+          "name": "target_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "tool.equipped",
+      "emitter": "InventoryService",
+      "status": "slice",
+      "desc": "Trang bị công cụ/cần",
+      "payload": [
+        {
+          "name": "tool_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "slot",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "tool.used",
+      "emitter": "Tools",
+      "status": "slice",
+      "desc": "Dùng công cụ (vung/ném)",
+      "payload": [
+        {
+          "name": "tool_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "tool.hit",
+      "emitter": "Tools",
+      "status": "slice",
+      "desc": "Công cụ trúng mục tiêu",
+      "payload": [
+        {
+          "name": "tool_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target_uid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "hit_zone",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "vector3",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "dex.new_species",
+      "emitter": "DexService",
+      "status": "slice",
+      "desc": "Lần đầu bắt một loài",
+      "payload": [
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "dex.new_variant",
+      "emitter": "DexService",
+      "status": "mvp",
+      "desc": "Lần đầu gặp biến thể",
+      "payload": [
+        {
+          "name": "creature_def_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "variant_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "progress.island_unlocked",
+      "emitter": "QuestService",
+      "status": "slice",
+      "desc": "Mở khóa cù lao",
+      "payload": [
+        {
+          "name": "island_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "world.island_entered",
+      "emitter": "World",
+      "status": "slice",
+      "desc": "Vào cù lao (đổi nhạc/âm nền)",
+      "payload": [
+        {
+          "name": "island_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "save.requested",
+      "emitter": "Any",
+      "status": "slice",
+      "desc": "Yêu cầu lưu ngoài các sự kiện SaveService tự nghe (07 §15)",
+      "payload": [
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "npc_gift",
+            "tutorial",
+            "debug"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "save.completed",
+      "emitter": "SaveService",
+      "status": "slice",
+      "desc": "Lưu xong",
+      "payload": [
+        {
+          "name": "slot",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "bytes",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "duration_ms",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "save.failed",
+      "emitter": "SaveService",
+      "status": "slice",
+      "desc": "Lưu lỗi",
+      "payload": [
+        {
+          "name": "error",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "save.loaded",
+      "emitter": "SaveService",
+      "status": "slice",
+      "desc": "Nạp xong",
+      "payload": [
+        {
+          "name": "slot",
+          "type": "int",
+          "required": true
+        },
+        {
+          "name": "schema_version",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "recovered_from_backup",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "ui.popup_requested",
+      "emitter": "Any",
+      "status": "slice",
+      "desc": "Yêu cầu UI hiện thông báo",
+      "payload": [
+        {
+          "name": "kind",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "hint",
+            "info",
+            "warning",
+            "error"
+          ]
+        },
+        {
+          "name": "text_key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "args",
+          "type": "dict",
+          "required": false
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "ui.menu_opened",
+      "emitter": "UI",
+      "status": "slice",
+      "desc": "Mở menu",
+      "payload": [
+        {
+          "name": "menu_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "ui.menu_closed",
+      "emitter": "UI",
+      "status": "slice",
+      "desc": "Đóng menu",
+      "payload": [
+        {
+          "name": "menu_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "game.session_started",
+      "emitter": "Game",
+      "status": "slice",
+      "desc": "Bắt đầu phiên chơi",
+      "payload": [
+        {
+          "name": "new_game",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "game.paused",
+      "emitter": "PlatformService",
+      "status": "slice",
+      "desc": "Tạm dừng (menu, ra nền, ẩn tab)",
+      "payload": [
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "menu",
+            "app_background",
+            "tab_hidden"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "game.resumed",
+      "emitter": "PlatformService",
+      "status": "slice",
+      "desc": "Tiếp tục",
+      "payload": [
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "tutorial.step_shown",
+      "emitter": "TutorialService",
+      "status": "slice",
+      "desc": "Hiện một gợi ý",
+      "payload": [
+        {
+          "name": "step_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "tutorial.step_completed",
+      "emitter": "TutorialService",
+      "status": "slice",
+      "desc": "Hoàn thành gợi ý",
+      "payload": [
+        {
+          "name": "step_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "dialogue.line_started",
+      "emitter": "Dialogue",
+      "status": "slice",
+      "desc": "Bắt đầu một câu thoại",
+      "payload": [
+        {
+          "name": "npc_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "text_key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "dialogue.line_finished",
+      "emitter": "Dialogue",
+      "status": "slice",
+      "desc": "Kết thúc câu thoại",
+      "payload": [
+        {
+          "name": "npc_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "hunger.changed",
+      "emitter": "ConfirmedStateAdapter",
+      "status": "slice",
+      "desc": "Độ no sau state server; band theo hunger.json, không tự tính lại ở UI.",
+      "payload": [
+        {
+          "name": "value",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "previous",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "player_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "band",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "normal",
+            "low",
+            "empty"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "hunger.ate",
+      "emitter": "ConfirmedStateAdapter",
+      "status": "slice",
+      "desc": "Đã ăn sau commit nguyên tử; không phát trên yêu cầu chưa xác nhận.",
+      "payload": [
+        {
+          "name": "item_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "player_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "lootbox.opened",
+      "emitter": "ConfirmedStateAdapter",
+      "status": "slice",
+      "desc": "Receipt mới đã commit; receipt cũ sau retry không phát lại âm thưởng.",
+      "payload": [
+        {
+          "name": "reward_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "player_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "transaction_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "network.connection_changed",
+      "emitter": "NetworkAdapter",
+      "status": "slice",
+      "desc": "Trạng thái kết nối local UI.",
+      "payload": [
+        {
+          "name": "state",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "disconnected",
+            "connecting",
+            "authenticated",
+            "reconnecting",
+            "failed"
+          ]
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "room.player_joined",
+      "emitter": "NetworkAdapter",
+      "status": "slice",
+      "desc": "Thành viên đã xác thực vào room.",
+      "payload": [
+        {
+          "name": "player_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    },
+    {
+      "name": "room.player_left",
+      "emitter": "NetworkAdapter",
+      "status": "slice",
+      "desc": "Thành viên rời room được server xác nhận.",
+      "payload": [
+        {
+          "name": "player_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_player_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "room_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        },
+        {
+          "name": "event_id",
+          "type": "string",
+          "required": false,
+          "desc": "Context v2 của adapter cho event gameplay replicated; không nhận làm quyền ghi từ client."
+        }
+      ]
+    }
+  ]
+}

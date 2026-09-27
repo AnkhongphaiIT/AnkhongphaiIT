@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Chuỗi 6 nhiệm vụ qua 3 đảo. next_quest chỉ kích hoạt khi đủ điều kiện đảo; ends_vertical_slice là điểm dừng test nội bộ, KHÔNG khóa bản đầy đủ. Quest hoàn thành đầu tiên cấp vé theo lootboxes.json, không cộng lại trong rewards."
+  },
+  "records": [
+    {
+      "id": "quest_01_bua_trua",
+      "name_key": "quest_01_bua_trua.name",
+      "status": "slice",
+      "giver_npc_id": "npc_ong_tu",
+      "auto_start": true,
+      "steps": [
+        {
+          "step_id": "step_talk",
+          "type": "talk",
+          "target_id": "npc_ong_tu",
+          "count": 1,
+          "objective_key": "quest_01_bua_trua.step_talk.objective",
+          "dialogue_key": "npc_ong_tu.quest_lunch"
+        },
+        {
+          "step_id": "step_deliver_ca_ro",
+          "type": "deliver_creature",
+          "target_id": "cre_ca_ro",
+          "count": 3,
+          "deliver_to_npc_id": "npc_ong_tu",
+          "objective_key": "quest_01_bua_trua.step_deliver_ca_ro.objective"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "bait",
+          "id": "bait_milk_tea",
+          "amount": 1
+        },
+        {
+          "type": "money",
+          "amount": 20
+        },
+        {
+          "type": "tool",
+          "id": "tool_broom",
+          "amount": 1
+        }
+      ],
+      "next_quest_id": "quest_01_trum_song"
+    },
+    {
+      "id": "quest_01_trum_song",
+      "name_key": "quest_01_trum_song.name",
+      "status": "slice",
+      "giver_npc_id": "npc_ong_tu",
+      "auto_start": false,
+      "steps": [
+        {
+          "step_id": "step_defeat_boss",
+          "type": "defeat_boss",
+          "target_id": "boss_ca_loc",
+          "count": 1,
+          "objective_key": "quest_01_trum_song.step_defeat_boss.objective",
+          "dialogue_key": "npc_ong_tu.quest_boss",
+          "refill_bait_id": "bait_milk_tea"
+        },
+        {
+          "step_id": "step_deliver_scale",
+          "type": "deliver_item",
+          "target_id": "item_golden_scale",
+          "count": 1,
+          "deliver_to_npc_id": "npc_ong_tu",
+          "objective_key": "quest_01_trum_song.step_deliver_scale.objective",
+          "dialogue_key": "npc_ong_tu.done"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "money",
+          "amount": 100
+        }
+      ],
+      "ends_vertical_slice": true,
+      "next_quest_id": "quest_02_sua_ben"
+    },
+    {
+      "id": "quest_02_sua_ben",
+      "name_key": "quest_02_sua_ben.name",
+      "status": "mvp",
+      "giver_npc_id": "npc_nam_sau",
+      "auto_start": false,
+      "steps": [
+        {
+          "step_id": "step_talk",
+          "type": "talk",
+          "target_id": "npc_nam_sau",
+          "count": 1,
+          "objective_key": "quest_02_sua_ben.step_talk.objective",
+          "dialogue_key": "npc_nam_sau.quest_prep"
+        },
+        {
+          "step_id": "step_deliver_fish",
+          "type": "deliver_creature",
+          "target_id": "cre_ca_thoi_loi",
+          "count": 4,
+          "deliver_to_npc_id": "npc_nam_sau",
+          "objective_key": "quest_02_sua_ben.step_deliver_fish.objective"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "bait",
+          "id": "bait_crab_mix",
+          "amount": 1
+        },
+        {
+          "type": "money",
+          "amount": 100
+        }
+      ],
+      "next_quest_id": "quest_02_cua_cu"
+    },
+    {
+      "id": "quest_02_cua_cu",
+      "name_key": "quest_02_cua_cu.name",
+      "status": "mvp",
+      "giver_npc_id": "npc_nam_sau",
+      "auto_start": false,
+      "steps": [
+        {
+          "step_id": "step_defeat_boss",
+          "type": "defeat_boss",
+          "target_id": "boss_cua_bun",
+          "count": 1,
+          "objective_key": "quest_02_cua_cu.step_defeat_boss.objective",
+          "dialogue_key": "npc_nam_sau.quest_boss",
+          "refill_bait_id": "bait_crab_mix"
+        },
+        {
+          "step_id": "step_deliver_badge",
+          "type": "deliver_item",
+          "target_id": "item_survey_tag",
+          "count": 1,
+          "deliver_to_npc_id": "npc_nam_sau",
+          "objective_key": "quest_02_cua_cu.step_deliver_badge.objective",
+          "dialogue_key": "npc_nam_sau.done"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "money",
+          "amount": 200
+        }
+      ],
+      "ends_vertical_slice": false,
+      "next_quest_id": "quest_03_hoi_cau"
+    },
+    {
+      "id": "quest_03_hoi_cau",
+      "name_key": "quest_03_hoi_cau.name",
+      "status": "mvp",
+      "giver_npc_id": "npc_chi_lan",
+      "auto_start": false,
+      "steps": [
+        {
+          "step_id": "step_talk",
+          "type": "talk",
+          "target_id": "npc_chi_lan",
+          "count": 1,
+          "objective_key": "quest_03_hoi_cau.step_talk.objective",
+          "dialogue_key": "npc_chi_lan.quest_prep"
+        },
+        {
+          "step_id": "step_deliver_fish",
+          "type": "deliver_creature",
+          "target_id": "cre_ca_nuc",
+          "count": 4,
+          "deliver_to_npc_id": "npc_chi_lan",
+          "objective_key": "quest_03_hoi_cau.step_deliver_fish.objective"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "bait",
+          "id": "bait_fish_strip",
+          "amount": 1
+        },
+        {
+          "type": "money",
+          "amount": 150
+        }
+      ],
+      "next_quest_id": "quest_03_ca_bop"
+    },
+    {
+      "id": "quest_03_ca_bop",
+      "name_key": "quest_03_ca_bop.name",
+      "status": "mvp",
+      "giver_npc_id": "npc_chi_lan",
+      "auto_start": false,
+      "steps": [
+        {
+          "step_id": "step_defeat_boss",
+          "type": "defeat_boss",
+          "target_id": "boss_ca_bop",
+          "count": 1,
+          "objective_key": "quest_03_ca_bop.step_defeat_boss.objective",
+          "dialogue_key": "npc_chi_lan.quest_boss",
+          "refill_bait_id": "bait_fish_strip"
+        },
+        {
+          "step_id": "step_deliver_badge",
+          "type": "deliver_item",
+          "target_id": "item_festival_medal",
+          "count": 1,
+          "deliver_to_npc_id": "npc_chi_lan",
+          "objective_key": "quest_03_ca_bop.step_deliver_badge.objective",
+          "dialogue_key": "npc_chi_lan.done"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "money",
+          "amount": 300
+        }
+      ],
+      "ends_vertical_slice": false
+    }
+  ]
+}

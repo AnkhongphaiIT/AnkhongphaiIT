@@ -1,0 +1,120 @@
+{
+  "schema_version": "2.0.0",
+  "rules": [
+    {
+      "event": "fishing.lure_landed",
+      "when": {
+        "surface": "water"
+      },
+      "asset_id": "vfx_lure_splash",
+      "attach": "event_position",
+      "pool_size": 2
+    },
+    {
+      "event": "fishing.nibble",
+      "asset_id": "vfx_bobber_ripple",
+      "attach": "event_position",
+      "pool_size": 3
+    },
+    {
+      "event": "fishing.bite",
+      "asset_id": "vfx_bite_splash",
+      "attach": "event_position",
+      "pool_size": 2
+    },
+    {
+      "event": "fishing.bite",
+      "asset_id": "vfx_bite_indicator",
+      "attach": "event_position",
+      "pool_size": 1
+    },
+    {
+      "event": "creature.attack_started",
+      "asset_id": "vfx_attack_warn",
+      "attach": "creature:socket_fx_top",
+      "pool_size": 4
+    },
+    {
+      "event": "fishing.launched",
+      "asset_id": "vfx_yank_burst",
+      "attach": "event_position",
+      "pool_size": 2
+    },
+    {
+      "event": "fishing.launched",
+      "asset_id": "vfx_air_trail",
+      "attach": "creature:socket_fx_top",
+      "pool_size": 4
+    },
+    {
+      "event": "fishing.escaped",
+      "asset_id": "vfx_escape_bubbles",
+      "attach": "event_position",
+      "pool_size": 2
+    },
+    {
+      "event": "creature.damaged",
+      "asset_id": "vfx_hit_confetti",
+      "attach": "event_position",
+      "pool_size": 6
+    },
+    {
+      "event": "creature.knocked_out",
+      "asset_id": "vfx_ko_stars",
+      "attach": "creature:socket_fx_top",
+      "pool_size": 6
+    },
+    {
+      "event": "creature.knocked_out",
+      "asset_id": "vfx_trick_text",
+      "attach": "event_position",
+      "params_from_payload": [
+        "tool_id"
+      ],
+      "pool_size": 6
+    },
+    {
+      "event": "creature.returned_to_water",
+      "asset_id": "vfx_escape_bubbles",
+      "attach": "event_position",
+      "pool_size": 2
+    },
+    {
+      "event": "economy.item_sold",
+      "asset_id": "vfx_coin_burst",
+      "attach": "event_position",
+      "pool_size": 3
+    },
+    {
+      "event": "boss.telegraph",
+      "asset_id": "vfx_boss_telegraph_ring",
+      "attach": "event_position",
+      "params_from_payload": [
+        "duration_s",
+        "move_id"
+      ],
+      "pool_size": 2
+    },
+    {
+      "event": "cooking.started",
+      "asset_id": "vfx_smoke_grill",
+      "attach": "event_position",
+      "pool_size": 2,
+      "status": "mvp"
+    },
+    {
+      "event": "dex.new_variant",
+      "asset_id": "vfx_boba_sparkle",
+      "attach": "player_camera",
+      "pool_size": 1,
+      "status": "mvp"
+    },
+    {
+      "event": "lootbox.opened",
+      "asset_id": "vfx_lootbox_reveal",
+      "attach": "player_camera",
+      "pool_size": 1,
+      "status": "mvp"
+    }
+  ]
+}

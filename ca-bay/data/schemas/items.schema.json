@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/items.schema.json",
+  "title": "Vật phẩm",
+  "description": "data/content/items.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "kind",
+          "value",
+          "flags",
+          "assets"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/item_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "kind": {
+            "enum": [
+              "quest",
+              "consumable",
+              "misc"
+            ]
+          },
+          "value": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "quest",
+                "no_sell",
+                "no_steal"
+              ]
+            }
+          },
+          "assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "model",
+              "icon"
+            ],
+            "properties": {
+              "model": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              },
+              "icon": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

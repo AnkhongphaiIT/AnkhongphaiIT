@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/rods.schema.json",
+  "title": "Cần câu",
+  "description": "data/content/rods.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "tier",
+          "charge_time_s",
+          "cast_distance_m",
+          "reel_speed_mps",
+          "max_line_length_m",
+          "strain_resist",
+          "assets"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/rod_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "tier": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "charge_time_s": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "cast_distance_m": {
+            "$ref": "common.schema.json#/$defs/range_f"
+          },
+          "reel_speed_mps": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "max_line_length_m": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "strain_resist": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "model",
+              "icon"
+            ],
+            "properties": {
+              "model": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              },
+              "icon": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

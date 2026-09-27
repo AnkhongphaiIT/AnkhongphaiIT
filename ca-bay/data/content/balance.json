@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Thông số v2 cần playtest với 1/2/4 người. feel.launch_slowmo và hit_stop chỉ áp dụng animation/camera cục bộ, tuyệt đối không đổi đồng hồ mô phỏng/mạng. Kinh tế theo tài khoản, tiền không có giá trị quy đổi. Hunger/lootbox có file riêng. physics.ticks_per_second và save.autosave_interval_s phản chiếu nhịp mô phỏng/checkpoint của network_contract; validator buộc bằng nhau. Giao dịch tiền/đồ vẫn commit ngay, không chờ autosave."
+  },
+  "fishing": {
+    "lure_apex_m": 2.0,
+    "max_nibbles": 2,
+    "nibble_min_gap_s": 0.4,
+    "nibble_before_bite_min_s": 0.3,
+    "lure_ground_retract_s": 1.0,
+    "hook_window_s": 0.9,
+    "perfect_window_s": 0.35,
+    "strain_decay_per_s": 0.6,
+    "strain_warning_threshold": 0.7,
+    "thrash_interval_factor_min": 0.5,
+    "thrash_interval_factor_max": 1.5,
+    "launch_trigger_distance_m": 4.0,
+    "launch_spawn_height_m": 0.3,
+    "launch_water_grace_s": 0.3,
+    "launch_land_before_player_m": 2.0,
+    "launch_land_spread_m": 1.0,
+    "perfect_yank_bonus_apex_m": 1.0,
+    "post_launch_lock_s": 0.3
+  },
+  "feel": {
+    "launch_slowmo_s": 0.15,
+    "launch_slowmo_scale": 0.5,
+    "hit_stop_s": 0.06,
+    "camera_shake_hurt": 0.3,
+    "camera_shake_boss_slam": 0.5
+  },
+  "scoring": {
+    "max_total_multiplier": 6.0,
+    "trick_window_s": 1.5,
+    "popup_max_lines": 4
+  },
+  "inventory": {
+    "hotbar_slots": 4,
+    "bag_base_slots": 3,
+    "bag_max_slots": 5
+  },
+  "economy": {
+    "starting_money": 0,
+    "first_catch_bonus": 5,
+    "vendor_happy_min_value": 15,
+    "vendor_meh_max_value": 3
+  },
+  "player": {
+    "max_hp": 100,
+    "regen_delay_s": 5.0,
+    "regen_per_s": 5.0,
+    "respawn_delay_s": 3.0,
+    "height_m": 1.8,
+    "eye_height_m": 1.6,
+    "walk_speed_mps": 4.5,
+    "jump_velocity_mps": 4.5,
+    "item_throw_speed_mps": 8.0
+  },
+  "creature": {
+    "stuck_timeout_s": 3.0,
+    "knockup_min_mps": 2.0,
+    "ko_blink_before_wake_s": 3.0
+  },
+  "physics": {
+    "ticks_per_second": 30,
+    "max_body_speed_mps": 40.0,
+    "max_active_bodies": 40
+  },
+  "world": {
+    "max_active_creatures": 16
+  },
+  "save": {
+    "autosave_interval_s": 15,
+    "max_world_items": 32
+  },
+  "aim_assist": {
+    "cone_deg": 12,
+    "max_distance_m": 20,
+    "max_correction_deg": 6
+  },
+  "cooking": {
+    "cook_time_s": 8.0,
+    "burn_time_s": 14.0,
+    "max_mult": 1.4,
+    "burnt_mult": 0.5
+  },
+  "thief": {
+    "steal_delay_s": 10.0,
+    "cooldown_s": 30.0,
+    "min_item_value": 5,
+    "warning_s": 3.0,
+    "shoo_radius_m": 3.0
+  },
+  "settings_defaults": {
+    "auto_swap_after_launch": true,
+    "reel_mode": "hold",
+    "music_volume_db": -6,
+    "sfx_volume_db": 0,
+    "look_sensitivity": 1.0,
+    "invert_y": false,
+    "language": "auto",
+    "quality": "auto",
+    "fov_deg": 75
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "bait_milk_tea là ID tương thích: tên hiển thị Mồi cá tạp, tạo hình hộp mồi thông thường; không chứa trà sữa. Mồi boss chỉ tiêu khi server tạo encounter; mọi kết cục không thắng hoàn đúng một lần."
+  },
+  "records": [
+    {
+      "id": "bait_bread",
+      "name_key": "bait_bread.name",
+      "status": "slice",
+      "tier": 0,
+      "infinite": true,
+      "consumed_on": "hook",
+      "bite_time_s": {
+        "min": 2.5,
+        "max": 5.0
+      },
+      "assets": {
+        "icon": "ico_bait_bread",
+        "lure_model": "mdl_tool_bobber"
+      }
+    },
+    {
+      "id": "bait_worm",
+      "name_key": "bait_worm.name",
+      "status": "slice",
+      "tier": 1,
+      "infinite": false,
+      "consumed_on": "hook",
+      "bite_time_s": {
+        "min": 2.0,
+        "max": 4.0
+      },
+      "assets": {
+        "icon": "ico_bait_worm",
+        "lure_model": "mdl_tool_bobber"
+      }
+    },
+    {
+      "id": "bait_milk_tea",
+      "name_key": "bait_milk_tea.name",
+      "status": "slice",
+      "tier": 3,
+      "infinite": false,
+      "consumed_on": "hook",
+      "bite_time_s": {
+        "min": 3.0,
+        "max": 3.0
+      },
+      "summons_boss_id": "boss_ca_loc",
+      "flags": [
+        "quest",
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "icon": "ico_bait_milk_tea",
+        "lure_model": "mdl_item_milk_tea"
+      }
+    },
+    {
+      "id": "bait_shrimp_paste",
+      "name_key": "bait_shrimp_paste.name",
+      "status": "mvp",
+      "tier": 2,
+      "infinite": false,
+      "consumed_on": "hook",
+      "bite_time_s": {
+        "min": 2.0,
+        "max": 3.5
+      },
+      "assets": {
+        "icon": "ico_bait_worm",
+        "lure_model": "mdl_tool_bobber"
+      }
+    },
+    {
+      "id": "bait_crab_mix",
+      "name_key": "bait_crab_mix.name",
+      "status": "mvp",
+      "tier": 3,
+      "infinite": false,
+      "consumed_on": "hook",
+      "bite_time_s": {
+        "min": 3.0,
+        "max": 3.0
+      },
+      "summons_boss_id": "boss_cua_bun",
+      "flags": [
+        "quest",
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "icon": "ico_bait_worm",
+        "lure_model": "mdl_tool_bobber"
+      }
+    },
+    {
+      "id": "bait_fish_strip",
+      "name_key": "bait_fish_strip.name",
+      "status": "mvp",
+      "tier": 3,
+      "infinite": false,
+      "consumed_on": "hook",
+      "bite_time_s": {
+        "min": 3.0,
+        "max": 3.0
+      },
+      "summons_boss_id": "boss_ca_bop",
+      "flags": [
+        "quest",
+        "no_sell",
+        "no_steal"
+      ],
+      "assets": {
+        "icon": "ico_bait_worm",
+        "lure_model": "mdl_tool_bobber"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2767 @@
+{
+  "schema_version": "2.0.0",
+  "assets": [
+    {
+      "id": "mdl_env_isl01_terrain",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_isl01_terrain.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_pier",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_pier.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_vendor_stall",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_vendor_stall.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_ferry_boat",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_ferry_boat.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_palm_coconut",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_palm_coconut.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_nipa_palm",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_nipa_palm.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_rock_set",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_rock_set.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_boss_spot_post",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_boss_spot_post.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_sign_board",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_sign_board.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_chr_npc_co_ba",
+      "type": "model",
+      "path": "res://assets/models/chr/mdl_chr_npc_co_ba.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_chr_npc_ong_tu",
+      "type": "model",
+      "path": "res://assets/models/chr/mdl_chr_npc_ong_tu.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_fp_hands",
+      "type": "model",
+      "path": "res://assets/models/fp/mdl_fp_hands.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_rod_bamboo",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_rod_bamboo.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_bobber",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_bobber.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_slipper",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_slipper.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_broom",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_broom.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_cre_tep",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_tep.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_cre_ca_ro",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_ro.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_cre_ca_tre",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_tre.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_cre_cua_dong",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_cua_dong.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_cre_boss_ca_loc",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_boss_ca_loc.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá Lóc đầu đàn; 3.000 tam giác tối đa, vảy tự nhiên; không bụng trà sữa hay hạt trên má."
+    },
+    {
+      "id": "mdl_item_milk_tea",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_milk_tea.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "ID kỹ thuật cũ: Mồi cá tạp, hộp nhỏ đựng mồi; không cốc trà sữa."
+    },
+    {
+      "id": "mdl_item_golden_scale",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_golden_scale.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_item_worm_jar",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_worm_jar.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_proj_boba_pearl",
+      "type": "model",
+      "path": "res://assets/models/proj/mdl_proj_boba_pearl.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "ID kỹ thuật cũ: khối nước bắn low-poly; không hạt trân châu."
+    },
+    {
+      "id": "mdl_item_backpack_display",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_backpack_display.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_item_reel_display",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_reel_display.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mat_palette_lit",
+      "type": "material",
+      "path": "res://assets/materials/mat_palette_lit.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mat_palette_unshaded",
+      "type": "material",
+      "path": "res://assets/materials/mat_palette_unshaded.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "shd_water",
+      "type": "shader",
+      "path": "res://assets/shaders/shd_water.gdshader",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "tech_art",
+      "license": "tbd"
+    },
+    {
+      "id": "shd_creature_wiggle",
+      "type": "shader",
+      "path": "res://assets/shaders/shd_creature_wiggle.gdshader",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "tech_art",
+      "license": "tbd"
+    },
+    {
+      "id": "shd_fp_viewmodel",
+      "type": "shader",
+      "path": "res://assets/shaders/shd_fp_viewmodel.gdshader",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "tech_art",
+      "license": "tbd"
+    },
+    {
+      "id": "shd_hit_flash",
+      "type": "shader",
+      "path": "res://assets/shaders/shd_hit_flash.gdshader",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "tech_art",
+      "license": "tbd"
+    },
+    {
+      "id": "env_isl01_day",
+      "type": "environment",
+      "path": "res://assets/env/env_isl01_day.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "tex_palette_main",
+      "type": "texture",
+      "path": "res://assets/textures/tex_palette_main.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_fishing_line",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_fishing_line.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_lure_splash",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_lure_splash.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_bobber_ripple",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_bobber_ripple.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_bite_splash",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_bite_splash.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_yank_burst",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_yank_burst.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_air_trail",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_air_trail.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_hit_confetti",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_hit_confetti.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_ko_stars",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_ko_stars.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_trick_text",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_trick_text.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_coin_burst",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_coin_burst.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_boss_telegraph_ring",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_boss_telegraph_ring.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_escape_bubbles",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_escape_bubbles.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_bite_indicator",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_bite_indicator.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_attack_warn",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_attack_warn.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_cast_preview",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_cast_preview.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_theme_main",
+      "type": "ui",
+      "path": "res://ui/theme/ui_theme_main.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "fnt_be_vietnam_pro",
+      "type": "font",
+      "path": "res://assets/fonts/fnt_be_vietnam_pro.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "Ứng viên Be Vietnam Pro; chưa có file/font/license. Xác minh OFL của đúng bản tải trước khi duyệt."
+    },
+    {
+      "id": "ui_hud",
+      "type": "ui",
+      "path": "res://ui/hud/ui_hud.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_hotbar",
+      "type": "ui",
+      "path": "res://ui/hud/ui_hotbar.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_bag_row",
+      "type": "ui",
+      "path": "res://ui/hud/ui_bag_row.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_strain_meter",
+      "type": "ui",
+      "path": "res://ui/hud/ui_strain_meter.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_damage_vignette",
+      "type": "ui",
+      "path": "res://ui/hud/ui_damage_vignette.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_tutorial_hint",
+      "type": "ui",
+      "path": "res://ui/hud/ui_tutorial_hint.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_toast",
+      "type": "ui",
+      "path": "res://ui/hud/ui_toast.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_touch_controls",
+      "type": "ui",
+      "path": "res://ui/touch/ui_touch_controls.tscn",
+      "priority": "P2",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "Giữ ID tương thích, ngoài phạm vi desktop v2; không là điều kiện phát hành."
+    },
+    {
+      "id": "ui_prompt",
+      "type": "ui",
+      "path": "res://ui/hud/ui_prompt.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_objective_line",
+      "type": "ui",
+      "path": "res://ui/hud/ui_objective_line.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_trick_popup",
+      "type": "ui",
+      "path": "res://ui/hud/ui_trick_popup.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_boss_bar",
+      "type": "ui",
+      "path": "res://ui/hud/ui_boss_bar.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_dex_panel",
+      "type": "ui",
+      "path": "res://ui/menus/ui_dex_panel.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_pause_menu",
+      "type": "ui",
+      "path": "res://ui/menus/ui_pause_menu.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_settings_panel",
+      "type": "ui",
+      "path": "res://ui/menus/ui_settings_panel.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_main_menu",
+      "type": "ui",
+      "path": "res://ui/menus/ui_main_menu.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_dialogue_bubble",
+      "type": "ui",
+      "path": "res://ui/widgets/ui_dialogue_bubble.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ui_logo_placeholder",
+      "type": "ui",
+      "path": "res://ui/widgets/ui_logo_placeholder.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_tool_hand",
+      "type": "icon",
+      "path": "res://assets/icons/ico_tool_hand.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_tool_slipper",
+      "type": "icon",
+      "path": "res://assets/icons/ico_tool_slipper.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_tool_broom",
+      "type": "icon",
+      "path": "res://assets/icons/ico_tool_broom.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_rod_bamboo",
+      "type": "icon",
+      "path": "res://assets/icons/ico_rod_bamboo.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_bait_bread",
+      "type": "icon",
+      "path": "res://assets/icons/ico_bait_bread.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_bait_worm",
+      "type": "icon",
+      "path": "res://assets/icons/ico_bait_worm.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_bait_milk_tea",
+      "type": "icon",
+      "path": "res://assets/icons/ico_bait_milk_tea.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "ID kỹ thuật cũ: icon Mồi cá tạp; bake từ mdl_item_milk_tea."
+    },
+    {
+      "id": "ico_item_golden_scale",
+      "type": "icon",
+      "path": "res://assets/icons/ico_item_golden_scale.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_cre_tep",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_tep.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_cre_ca_ro",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_ro.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_cre_ca_tre",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_tre.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_cre_cua_dong",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_cua_dong.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_cre_boss_ca_loc",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_boss_ca_loc.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_money",
+      "type": "icon",
+      "path": "res://assets/icons/ico_money.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "ico_health",
+      "type": "icon",
+      "path": "res://assets/icons/ico_health.png",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_lib_fp",
+      "type": "anim_library",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_lib_npc_basic",
+      "type": "anim_library",
+      "path": "res://assets/anim/anm_lib_npc_basic.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_lib_boss_ca_loc",
+      "type": "anim_library",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_idle",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_idle",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_equip",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_equip",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_cast_charge",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_cast_charge",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_cast_release",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_cast_release",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_reel_loop",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_reel_loop",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_yank",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_yank",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_slap",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_slap",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_throw",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_throw",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_sweep",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_sweep",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_fp_pickup",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_fp.tres",
+      "clip": "anm_fp_pickup",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_npc_idle",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_npc_basic.tres",
+      "clip": "anm_npc_idle",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_npc_talk",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_npc_basic.tres",
+      "clip": "anm_npc_talk",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_npc_happy",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_npc_basic.tres",
+      "clip": "anm_npc_happy",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_npc_disgust",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_npc_basic.tres",
+      "clip": "anm_npc_disgust",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_land",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_land",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_idle",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_idle",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_telegraph_slam",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_telegraph_slam",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_slam",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_slam",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_telegraph_charge",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_telegraph_charge",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_charge",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_charge",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_stunned",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_stunned",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_telegraph_spit",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_telegraph_spit",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_spit",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_spit",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_phase_change",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_phase_change",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_escape",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_escape",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_boss_ca_loc_defeat",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+      "clip": "anm_boss_ca_loc_defeat",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_cast_charge",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_cast_charge.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_cast_whoosh",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_cast_whoosh.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_lure_splash",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_lure_splash.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_lure_ground",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_lure_ground.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_nibble",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_nibble.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_bite_alert",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_bite_alert.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_perfect_yank",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_perfect_yank.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_reel_loop",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_reel_loop.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_line_strain",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_line_strain.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_escape_bloop",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_escape_bloop.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_launch_pop",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_launch_pop.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_air_whistle",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_air_whistle.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_flop",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_flop_{nn}.wav",
+      "variants": 3,
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "File thật: sfx_flop_01 … sfx_flop_03; AssetRegistry thay {nn} bằng số biến thể"
+    },
+    {
+      "id": "sfx_hit_slap",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_hit_slap.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_hit_bonk",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_hit_bonk.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_slipper_throw",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_slipper_throw.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_slipper_hit",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_slipper_hit.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_ko_stars",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_ko_stars.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_trick_ding",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_trick_ding.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_coin_gain",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_coin_gain.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_sell_basket",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_sell_basket.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_buy",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_buy.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_error_nope",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_error_nope.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_pickup",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_pickup.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_drop_thud",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_drop_thud.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_player_hurt",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_player_hurt.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_player_ko",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_player_ko.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_footstep_wood",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_footstep_wood_{nn}.wav",
+      "variants": 3,
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "File thật: sfx_footstep_wood_01 … sfx_footstep_wood_03; AssetRegistry thay {nn} bằng số biến thể"
+    },
+    {
+      "id": "sfx_footstep_sand",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_footstep_sand_{nn}.wav",
+      "variants": 3,
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "File thật: sfx_footstep_sand_01 … sfx_footstep_sand_03; AssetRegistry thay {nn} bằng số biến thể"
+    },
+    {
+      "id": "sfx_jump",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_jump.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_land",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_land.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_boss_roar",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_boss_roar.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Nước quẫy và gầm cách điệu ngắn; không tiếng ợ trà sữa."
+    },
+    {
+      "id": "sfx_boss_telegraph",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_boss_telegraph.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_boss_escape_warning",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_boss_escape_warning.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_boss_phase",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_boss_phase.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Quẫy nước mạnh + nhạc nhấn nguyên bản; báo đổi pha rõ."
+    },
+    {
+      "id": "sfx_boss_escape_splash",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_boss_escape_splash.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_creature_warn",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_creature_warn.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_swing_whoosh",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_swing_whoosh.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_boss_defeat_fanfare",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_boss_defeat_fanfare.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_quest_complete",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_quest_complete.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_new_species",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_new_species.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_ui_click",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_ui_click.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_ui_back",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_ui_back.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_tutorial_pop",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_tutorial_pop.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "vo_npc_gibberish_female",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_npc_gibberish_female_{nn}.wav",
+      "variants": 10,
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "File thật: vo_npc_gibberish_female_01 … vo_npc_gibberish_female_10; AssetRegistry thay {nn} bằng số biến thể"
+    },
+    {
+      "id": "vo_npc_gibberish_male",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_npc_gibberish_male_{nn}.wav",
+      "variants": 10,
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "File thật: vo_npc_gibberish_male_01 … vo_npc_gibberish_male_10; AssetRegistry thay {nn} bằng số biến thể"
+    },
+    {
+      "id": "mus_isl01_day_loop",
+      "type": "music",
+      "path": "res://assets/audio/mus/mus_isl01_day_loop.ogg",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mus_boss_loop",
+      "type": "music",
+      "path": "res://assets/audio/mus/mus_boss_loop.ogg",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "amb_river_day_loop",
+      "type": "ambience",
+      "path": "res://assets/audio/amb/amb_river_day_loop.ogg",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_grill",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_grill.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "vfx_smoke_grill",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_smoke_grill.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_grill_sizzle_loop",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_grill_sizzle_loop.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_cook_done",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_cook_done.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_burnt",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_burnt.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_cre_egret",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_egret.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_lib_egret",
+      "type": "anim_library",
+      "path": "res://assets/anim/anm_lib_egret.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_egret_walk",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_egret.tres",
+      "clip": "anm_egret_walk",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "anm_egret_fly",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_egret.tres",
+      "clip": "anm_egret_fly",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_egret_call",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_egret_call.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_egret_steal",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_egret_steal.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_acc_boba_pearls",
+      "type": "model",
+      "path": "res://assets/models/acc/mdl_acc_boba_pearls.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "ID kỹ thuật cũ: mảng vảy Ánh Bạc bám thân, không hình hạt/đột biến; dùng chung socket_acc_body."
+    },
+    {
+      "id": "vfx_boba_sparkle",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_boba_sparkle.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd",
+      "notes": "ID kỹ thuật cũ: phản chiếu bạc/UI phát hiện hiếm ngắn; không phép thuật."
+    },
+    {
+      "id": "sfx_rare_reveal",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_rare_reveal.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_slingshot",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_slingshot.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_swatter",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_swatter.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_coconut_bomb",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_coconut_bomb.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Dụng cụ hài bằng vỏ dừa; hiệu ứng nước/bụi/confetti cơ học, không phép thuật."
+    },
+    {
+      "id": "vfx_confetti_explosion",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_confetti_explosion.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_slingshot_shot",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_slingshot_shot.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_swatter_zap",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_swatter_zap.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "sfx_coconut_boom",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_coconut_boom.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_tool_rod_carbon",
+      "type": "model",
+      "path": "res://assets/models/tools/mdl_tool_rod_carbon.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_isl02_terrain",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_isl02_terrain.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_env_isl03_terrain",
+      "type": "model",
+      "path": "res://assets/models/env/mdl_env_isl03_terrain.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd"
+    },
+    {
+      "id": "mus_isl02_day_loop",
+      "type": "music",
+      "path": "res://assets/audio/mus/mus_isl02_day_loop.ogg",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mus_isl03_day_loop",
+      "type": "music",
+      "path": "res://assets/audio/mus/mus_isl03_day_loop.ogg",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd"
+    },
+    {
+      "id": "mdl_cre_ca_me",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_me.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá mè thân dẹp, đầu nhỏ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_ca_me",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_me.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_ca_me đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_ca_thoi_loi",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_thoi_loi.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá thòi lòi, mắt cao, vây chống; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_ca_thoi_loi",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_thoi_loi.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_ca_thoi_loi đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_luon",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_luon.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Lươn thân dài, đầu nhỏ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_luon",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_luon.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_luon đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_ca_doi",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_doi.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá đối thân thuôn, đuôi chẻ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_ca_doi",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_doi.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_ca_doi đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_cua_bun",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_cua_bun.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cua bùn mai rộng, càng lớn; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_cua_bun",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_cua_bun.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_cua_bun đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_tom_cang",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_tom_cang.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Tôm càng, càng trước dài; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_tom_cang",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_tom_cang.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_tom_cang đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_ca_nuc",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_nuc.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá nục thân thoi, đuôi chẻ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_ca_nuc",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_nuc.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_ca_nuc đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_ca_chuon",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_chuon.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá chuồn, vây ngực rộng; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_ca_chuon",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_chuon.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_ca_chuon đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_ca_trich",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_trich.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá trích thân bạc dẹp; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_ca_trich",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_trich.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_ca_trich đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_muc_ong",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_muc_ong.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Mực ống, thân ống và xúc tu; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_muc_ong",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_muc_ong.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_muc_ong đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_ca_hong",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_ca_hong.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá hồng, thân dẹp và vây gai; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
+    },
+    {
+      "id": "ico_cre_ca_hong",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_ca_hong.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_cre_ca_hong đã duyệt; rõ ở 64 px."
+    },
+    {
+      "id": "mdl_cre_boss_cua_bun",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_boss_cua_bun.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc; ≤3.000 tam giác, đủ socket boss, kích thước theo dữ liệu."
+    },
+    {
+      "id": "ico_cre_boss_cua_bun",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_boss_cua_bun.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake từ mdl_cre_boss_cua_bun; PNG 256×256 RGBA."
+    },
+    {
+      "id": "anm_lib_boss_cua_bun",
+      "type": "anim_library",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Thư viện 12 clip boss; được tái dùng thuật toán nhưng phải có đủ clip mang ID riêng."
+    },
+    {
+      "id": "anm_boss_cua_bun_land",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: land; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_land"
+    },
+    {
+      "id": "anm_boss_cua_bun_idle",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: idle; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_idle"
+    },
+    {
+      "id": "anm_boss_cua_bun_phase_change",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: phase_change; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_phase_change"
+    },
+    {
+      "id": "anm_boss_cua_bun_escape",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: escape; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_escape"
+    },
+    {
+      "id": "anm_boss_cua_bun_defeat",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: defeat; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_defeat"
+    },
+    {
+      "id": "anm_boss_cua_bun_telegraph_slam",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: telegraph_slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_telegraph_slam"
+    },
+    {
+      "id": "anm_boss_cua_bun_slam",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_slam"
+    },
+    {
+      "id": "anm_boss_cua_bun_telegraph_charge",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: telegraph_charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_telegraph_charge"
+    },
+    {
+      "id": "anm_boss_cua_bun_charge",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_charge"
+    },
+    {
+      "id": "anm_boss_cua_bun_stunned",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: stunned; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_stunned"
+    },
+    {
+      "id": "anm_boss_cua_bun_telegraph_spit",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: telegraph_spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_telegraph_spit"
+    },
+    {
+      "id": "anm_boss_cua_bun_spit",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_cua_bun_spit"
+    },
+    {
+      "id": "mdl_cre_boss_ca_bop",
+      "type": "model",
+      "path": "res://assets/models/creatures/mdl_cre_boss_ca_bop.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng; ≤3.000 tam giác, đủ socket boss, kích thước theo dữ liệu."
+    },
+    {
+      "id": "ico_cre_boss_ca_bop",
+      "type": "icon",
+      "path": "res://assets/icons/ico_cre_boss_ca_bop.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake từ mdl_cre_boss_ca_bop; PNG 256×256 RGBA."
+    },
+    {
+      "id": "anm_lib_boss_ca_bop",
+      "type": "anim_library",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Thư viện 12 clip boss; được tái dùng thuật toán nhưng phải có đủ clip mang ID riêng."
+    },
+    {
+      "id": "anm_boss_ca_bop_land",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: land; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_land"
+    },
+    {
+      "id": "anm_boss_ca_bop_idle",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: idle; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_idle"
+    },
+    {
+      "id": "anm_boss_ca_bop_phase_change",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: phase_change; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_phase_change"
+    },
+    {
+      "id": "anm_boss_ca_bop_escape",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: escape; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_escape"
+    },
+    {
+      "id": "anm_boss_ca_bop_defeat",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: defeat; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_defeat"
+    },
+    {
+      "id": "anm_boss_ca_bop_telegraph_slam",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: telegraph_slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_telegraph_slam"
+    },
+    {
+      "id": "anm_boss_ca_bop_slam",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_slam"
+    },
+    {
+      "id": "anm_boss_ca_bop_telegraph_charge",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: telegraph_charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_telegraph_charge"
+    },
+    {
+      "id": "anm_boss_ca_bop_charge",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_charge"
+    },
+    {
+      "id": "anm_boss_ca_bop_stunned",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: stunned; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_stunned"
+    },
+    {
+      "id": "anm_boss_ca_bop_telegraph_spit",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: telegraph_spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_telegraph_spit"
+    },
+    {
+      "id": "anm_boss_ca_bop_spit",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
+      "clip": "anm_boss_ca_bop_spit"
+    },
+    {
+      "id": "mdl_item_rice_ball",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_rice_ball.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cơm nắm trong lá, thức ăn phục hồi đói; ≤300 tam giác, pivot tâm vật và collider đơn giản."
+    },
+    {
+      "id": "ico_item_rice_ball",
+      "type": "icon",
+      "path": "res://assets/icons/ico_item_rice_ball.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_item_rice_ball; không chứa chữ."
+    },
+    {
+      "id": "mdl_item_grilled_fish",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_grilled_fish.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Cá nướng, thức ăn theo dữ liệu; ≤300 tam giác, pivot tâm vật và collider đơn giản."
+    },
+    {
+      "id": "ico_item_grilled_fish",
+      "type": "icon",
+      "path": "res://assets/icons/ico_item_grilled_fish.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_item_grilled_fish; không chứa chữ."
+    },
+    {
+      "id": "mdl_item_survey_tag",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_survey_tag.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Thẻ ghi nhận khảo sát nghề cá; ≤300 tam giác, pivot tâm vật và collider đơn giản."
+    },
+    {
+      "id": "ico_item_survey_tag",
+      "type": "icon",
+      "path": "res://assets/icons/ico_item_survey_tag.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_item_survey_tag; không chứa chữ."
+    },
+    {
+      "id": "mdl_item_festival_medal",
+      "type": "model",
+      "path": "res://assets/models/items/mdl_item_festival_medal.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Huy hiệu lễ hội làng chài; ≤300 tam giác, pivot tâm vật và collider đơn giản."
+    },
+    {
+      "id": "ico_item_festival_medal",
+      "type": "icon",
+      "path": "res://assets/icons/ico_item_festival_medal.png",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_2d",
+      "license": "tbd",
+      "notes": "Bake 256×256 RGBA từ mdl_item_festival_medal; không chứa chữ."
+    },
+    {
+      "id": "mdl_chr_player_remote",
+      "type": "model",
+      "path": "res://assets/models/chr/mdl_chr_player_remote.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Thân đồng đội đầy đủ, ≤1.800 tam giác; 4 phối màu, socket tay/đầu; ẩn thân mình khỏi camera FP."
+    },
+    {
+      "id": "anm_lib_player_remote",
+      "type": "anim_library",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Các clip quan sát đồng đội, phát theo trạng thái đã đồng bộ."
+    },
+    {
+      "id": "anm_player_remote_idle",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội idle; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_idle"
+    },
+    {
+      "id": "anm_player_remote_walk",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội walk; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_walk"
+    },
+    {
+      "id": "anm_player_remote_run",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội run; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_run"
+    },
+    {
+      "id": "anm_player_remote_cast",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội cast; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_cast"
+    },
+    {
+      "id": "anm_player_remote_reel",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội reel; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_reel"
+    },
+    {
+      "id": "anm_player_remote_use_tool",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội use_tool; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_use_tool"
+    },
+    {
+      "id": "anm_player_remote_knocked_out",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội knocked_out; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_knocked_out"
+    },
+    {
+      "id": "anm_player_remote_revive",
+      "type": "anim_clip",
+      "path": "res://assets/anim/anm_lib_player_remote.tres",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "animation",
+      "license": "tbd",
+      "notes": "Đồng đội revive; track trình bày, không tự quyết gameplay.",
+      "clip": "anm_player_remote_revive"
+    },
+    {
+      "id": "ui_room_lobby",
+      "type": "ui",
+      "path": "res://ui/ui_room_lobby.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "Tạo/vào phòng 1–4 người, lỗi kết nối và trạng thái sẵn sàng; chữ Việt/Anh tách khỏi hình."
+    },
+    {
+      "id": "ui_party_status",
+      "type": "ui",
+      "path": "res://ui/ui_party_status.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "Danh sách đồng đội và trạng thái; không che tâm ngắm; chữ Việt/Anh tách khỏi hình."
+    },
+    {
+      "id": "ui_hunger_meter",
+      "type": "ui",
+      "path": "res://ui/ui_hunger_meter.tscn",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "Thanh đói có nhãn, icon và ngưỡng; chữ Việt/Anh tách khỏi hình."
+    },
+    {
+      "id": "ui_cosmetics_panel",
+      "type": "ui",
+      "path": "res://ui/ui_cosmetics_panel.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "6 skin phối màu dụng cụ; hiển thị sở hữu; chữ Việt/Anh tách khỏi hình."
+    },
+    {
+      "id": "ui_lootbox_panel",
+      "type": "ui",
+      "path": "res://ui/ui_lootbox_panel.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "ui",
+      "license": "tbd",
+      "notes": "Mở hộp miễn phí: nguồn, xác suất, đồ trùng; kết quả sau xác nhận máy chủ; chữ Việt/Anh tách khỏi hình."
+    },
+    {
+      "id": "sfx_hunger_low",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_hunger_low.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Bụng reo nhẹ khi vào ngưỡng thấp; hạn chế lặp; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
+    },
+    {
+      "id": "sfx_eat",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_eat.wav",
+      "priority": "P0",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Ăn ngắn, không gây khó chịu; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
+    },
+    {
+      "id": "sfx_lootbox_open",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_lootbox_open.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Nắp hộp mở gỗ và âm nhận vật ngắn; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
+    },
+    {
+      "id": "sfx_player_join",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_player_join.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Đồng đội vào phòng; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
+    },
+    {
+      "id": "sfx_player_leave",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_player_leave.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Đồng đội rời phòng; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
+    },
+    {
+      "id": "sfx_connection_lost",
+      "type": "sfx",
+      "path": "res://assets/audio/sfx/sfx_connection_lost.wav",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Mất kết nối, ngắn dễ phân biệt; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
+    },
+    {
+      "id": "vfx_lootbox_reveal",
+      "type": "vfx",
+      "path": "res://assets/vfx/vfx_lootbox_reveal.tscn",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "vfx",
+      "license": "tbd",
+      "notes": "Hộp phần thưởng UI: ≤32 hạt, có thể skip; không near-miss, không chi phối xác suất; sau commit server."
+    },
+    {
+      "id": "amb_isl02_day_loop",
+      "type": "ambience",
+      "path": "res://assets/audio/amb/amb_isl02_day_loop.ogg",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Gió rừng dừa, nước và chim nhẹ; nguyên bản/đúng quyền; OGG stereo 44.1 kHz, loop ≥30 s, khoảng −26 LUFS."
+    },
+    {
+      "id": "amb_isl03_day_loop",
+      "type": "ambience",
+      "path": "res://assets/audio/amb/amb_isl03_day_loop.ogg",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Sóng biển và gió mũi đá; nguyên bản/đúng quyền; OGG stereo 44.1 kHz, loop ≥30 s, khoảng −26 LUFS."
+    },
+    {
+      "id": "env_isl02_day",
+      "type": "environment",
+      "path": "res://assets/env/env_isl02_day.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Bầu trời/ánh sáng đảo theo 05; môi trường đơn giản tương thích web, không texture nặng."
+    },
+    {
+      "id": "env_isl03_day",
+      "type": "environment",
+      "path": "res://assets/env/env_isl03_day.tres",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "art_3d",
+      "license": "tbd",
+      "notes": "Bầu trời/ánh sáng đảo theo 05; môi trường đơn giản tương thích web, không texture nặng."
+    },
+    {
+      "id": "vo_dialogue_co_ba_vi",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_co_ba_vi.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại co_ba/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_co_ba_en",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_co_ba_en.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại co_ba/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_ong_tu_vi",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_ong_tu_vi.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại ong_tu/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_ong_tu_en",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_ong_tu_en.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại ong_tu/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_nam_sau_vi",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_nam_sau_vi.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại nam_sau/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_nam_sau_en",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_nam_sau_en.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại nam_sau/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_chi_lan_vi",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_chi_lan_vi.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại chi_lan/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_chi_lan_en",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_chi_lan_en.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại chi_lan/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_bay_cho_vi",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_bay_cho_vi.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại bay_cho/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_bay_cho_en",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_bay_cho_en.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại bay_cho/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_co_tam_vi",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_co_tam_vi.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại co_tam/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    },
+    {
+      "id": "vo_dialogue_co_tam_en",
+      "type": "voice",
+      "path": "res://assets/audio/vo/vo_dialogue_co_tam_en.json",
+      "priority": "P1",
+      "status": "planned",
+      "owner_role": "audio",
+      "license": "tbd",
+      "notes": "Chỉ mục pack thoại co_tam/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
+    }
+  ]
+}

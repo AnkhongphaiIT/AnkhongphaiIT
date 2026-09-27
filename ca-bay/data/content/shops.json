@@ -1,0 +1,434 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Cơm nắm 0 Vảy giới hạn sở hữu 3 phần/tài khoản (hunger.free_food_max_owned); từ chối nhận khi đủ, không trừ tiền, không bán. Công cụ/cần/upgrades kiểm ownership toàn tài khoản, không theo sạp; nâng cấp theo thứ tự. Các entry_id là ID cục bộ trong shop_id."
+  },
+  "records": [
+    {
+      "id": "shop_co_ba",
+      "name_key": "shop_co_ba.name",
+      "status": "slice",
+      "npc_id": "npc_co_ba",
+      "entries": [
+        {
+          "entry_id": "entry_worm_pack",
+          "grant": {
+            "kind": "bait",
+            "id": "bait_worm",
+            "amount": 5
+          },
+          "price": 10,
+          "display_socket": "socket_display_01",
+          "display_asset_id": "mdl_item_worm_jar",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_broom",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_broom",
+            "amount": 1
+          },
+          "price": 45,
+          "max_purchases": 1,
+          "display_socket": "socket_display_02",
+          "display_asset_id": "mdl_tool_broom",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_backpack_1",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_backpack",
+            "level": 1
+          },
+          "price": 30,
+          "max_purchases": 1,
+          "display_socket": "socket_display_03",
+          "display_asset_id": "mdl_item_backpack_display",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_reel_1",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_reel_speed",
+            "level": 1
+          },
+          "price": 35,
+          "max_purchases": 1,
+          "display_socket": "socket_display_04",
+          "display_asset_id": "mdl_item_reel_display",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_rice_ball",
+          "grant": {
+            "kind": "item",
+            "id": "item_rice_ball",
+            "amount": 1
+          },
+          "price": 0,
+          "display_asset_id": "mdl_item_rice_ball",
+          "status": "slice"
+        }
+      ],
+      "buys": {
+        "accepts_kinds": [
+          "creature",
+          "item"
+        ],
+        "reject_flags": [
+          "no_sell"
+        ]
+      }
+    },
+    {
+      "id": "shop_bay_cho",
+      "name_key": "shop_bay_cho.name",
+      "status": "mvp",
+      "npc_id": "npc_bay_cho",
+      "entries": [
+        {
+          "entry_id": "entry_worm_pack",
+          "grant": {
+            "kind": "bait",
+            "id": "bait_worm",
+            "amount": 5
+          },
+          "price": 10,
+          "display_socket": "socket_display_01",
+          "display_asset_id": "mdl_item_worm_jar",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_broom",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_broom",
+            "amount": 1
+          },
+          "price": 45,
+          "max_purchases": 1,
+          "display_socket": "socket_display_02",
+          "display_asset_id": "mdl_tool_broom",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_backpack_1",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_backpack",
+            "level": 1
+          },
+          "price": 30,
+          "max_purchases": 1,
+          "display_socket": "socket_display_03",
+          "display_asset_id": "mdl_item_backpack_display",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_reel_1",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_reel_speed",
+            "level": 1
+          },
+          "price": 35,
+          "max_purchases": 1,
+          "display_socket": "socket_display_04",
+          "display_asset_id": "mdl_item_reel_display",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_rice_ball",
+          "grant": {
+            "kind": "item",
+            "id": "item_rice_ball",
+            "amount": 1
+          },
+          "price": 0,
+          "display_asset_id": "mdl_item_rice_ball",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_carbon",
+          "grant": {
+            "kind": "rod",
+            "id": "rod_carbon",
+            "amount": 1
+          },
+          "price": 120,
+          "display_asset_id": "mdl_tool_rod_carbon",
+          "status": "mvp",
+          "max_purchases": 1
+        },
+        {
+          "entry_id": "entry_shrimp_paste",
+          "grant": {
+            "kind": "bait",
+            "id": "bait_shrimp_paste",
+            "amount": 5
+          },
+          "price": 15,
+          "display_asset_id": "mdl_item_worm_jar",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_slingshot",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_slingshot",
+            "amount": 1
+          },
+          "price": 90,
+          "display_asset_id": "mdl_tool_slingshot",
+          "status": "mvp",
+          "max_purchases": 1
+        },
+        {
+          "entry_id": "entry_swatter",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_swatter",
+            "amount": 1
+          },
+          "price": 130,
+          "display_asset_id": "mdl_tool_swatter",
+          "status": "mvp",
+          "max_purchases": 1
+        },
+        {
+          "entry_id": "entry_coconut",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_coconut_bomb",
+            "amount": 3
+          },
+          "price": 24,
+          "display_asset_id": "mdl_tool_coconut_bomb",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_grilled_fish",
+          "grant": {
+            "kind": "item",
+            "id": "item_grilled_fish",
+            "amount": 1
+          },
+          "price": 6,
+          "display_asset_id": "mdl_item_grilled_fish",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_upg_backpack_2",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_backpack",
+            "level": 2
+          },
+          "price": 75,
+          "max_purchases": 1,
+          "display_asset_id": "mdl_item_backpack_display",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_upg_reel_speed_2",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_reel_speed",
+            "level": 2
+          },
+          "price": 85,
+          "max_purchases": 1,
+          "display_asset_id": "mdl_item_reel_display",
+          "status": "mvp"
+        }
+      ],
+      "buys": {
+        "accepts_kinds": [
+          "creature",
+          "item"
+        ],
+        "reject_flags": [
+          "no_sell"
+        ]
+      }
+    },
+    {
+      "id": "shop_co_tam",
+      "name_key": "shop_co_tam.name",
+      "status": "mvp",
+      "npc_id": "npc_co_tam",
+      "entries": [
+        {
+          "entry_id": "entry_worm_pack",
+          "grant": {
+            "kind": "bait",
+            "id": "bait_worm",
+            "amount": 5
+          },
+          "price": 10,
+          "display_socket": "socket_display_01",
+          "display_asset_id": "mdl_item_worm_jar",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_broom",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_broom",
+            "amount": 1
+          },
+          "price": 45,
+          "max_purchases": 1,
+          "display_socket": "socket_display_02",
+          "display_asset_id": "mdl_tool_broom",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_backpack_1",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_backpack",
+            "level": 1
+          },
+          "price": 30,
+          "max_purchases": 1,
+          "display_socket": "socket_display_03",
+          "display_asset_id": "mdl_item_backpack_display",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_reel_1",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_reel_speed",
+            "level": 1
+          },
+          "price": 35,
+          "max_purchases": 1,
+          "display_socket": "socket_display_04",
+          "display_asset_id": "mdl_item_reel_display",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_rice_ball",
+          "grant": {
+            "kind": "item",
+            "id": "item_rice_ball",
+            "amount": 1
+          },
+          "price": 0,
+          "display_asset_id": "mdl_item_rice_ball",
+          "status": "slice"
+        },
+        {
+          "entry_id": "entry_carbon",
+          "grant": {
+            "kind": "rod",
+            "id": "rod_carbon",
+            "amount": 1
+          },
+          "price": 120,
+          "display_asset_id": "mdl_tool_rod_carbon",
+          "status": "mvp",
+          "max_purchases": 1
+        },
+        {
+          "entry_id": "entry_shrimp_paste",
+          "grant": {
+            "kind": "bait",
+            "id": "bait_shrimp_paste",
+            "amount": 5
+          },
+          "price": 15,
+          "display_asset_id": "mdl_item_worm_jar",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_slingshot",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_slingshot",
+            "amount": 1
+          },
+          "price": 90,
+          "display_asset_id": "mdl_tool_slingshot",
+          "status": "mvp",
+          "max_purchases": 1
+        },
+        {
+          "entry_id": "entry_swatter",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_swatter",
+            "amount": 1
+          },
+          "price": 130,
+          "display_asset_id": "mdl_tool_swatter",
+          "status": "mvp",
+          "max_purchases": 1
+        },
+        {
+          "entry_id": "entry_coconut",
+          "grant": {
+            "kind": "tool",
+            "id": "tool_coconut_bomb",
+            "amount": 3
+          },
+          "price": 24,
+          "display_asset_id": "mdl_tool_coconut_bomb",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_grilled_fish",
+          "grant": {
+            "kind": "item",
+            "id": "item_grilled_fish",
+            "amount": 1
+          },
+          "price": 6,
+          "display_asset_id": "mdl_item_grilled_fish",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_upg_backpack_2",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_backpack",
+            "level": 2
+          },
+          "price": 75,
+          "max_purchases": 1,
+          "display_asset_id": "mdl_item_backpack_display",
+          "status": "mvp"
+        },
+        {
+          "entry_id": "entry_upg_reel_speed_2",
+          "grant": {
+            "kind": "upgrade",
+            "id": "upg_reel_speed",
+            "level": 2
+          },
+          "price": 85,
+          "max_purchases": 1,
+          "display_asset_id": "mdl_item_reel_display",
+          "status": "mvp"
+        }
+      ],
+      "buys": {
+        "accepts_kinds": [
+          "creature",
+          "item"
+        ],
+        "reject_flags": [
+          "no_sell"
+        ]
+      }
+    }
+  ]
+}

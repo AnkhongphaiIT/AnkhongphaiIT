@@ -1,0 +1,2015 @@
+{
+  "schema_version": "2.0.0",
+  "note": "Planning manifest only. No runtime assets supplied or generated. Every files array is empty until actual validated files exist.",
+  "assets": [
+    {
+      "asset_id": "mdl_env_isl01_terrain",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_pier",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_vendor_stall",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_ferry_boat",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_palm_coconut",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_nipa_palm",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_rock_set",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_boss_spot_post",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_sign_board",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_chr_npc_co_ba",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_chr_npc_ong_tu",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_fp_hands",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_rod_bamboo",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_bobber",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_slipper",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_broom",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_tep",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_ro",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_tre",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_cua_dong",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_boss_ca_loc",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_milk_tea",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_golden_scale",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_worm_jar",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_proj_boba_pearl",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_backpack_display",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_reel_display",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mat_palette_lit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mat_palette_unshaded",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "shd_water",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "shd_creature_wiggle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "shd_fp_viewmodel",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "shd_hit_flash",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "env_isl01_day",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "tex_palette_main",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_fishing_line",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_lure_splash",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_bobber_ripple",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_bite_splash",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_yank_burst",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_air_trail",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_hit_confetti",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_ko_stars",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_trick_text",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_coin_burst",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_boss_telegraph_ring",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_escape_bubbles",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_bite_indicator",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_attack_warn",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_cast_preview",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_theme_main",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "fnt_be_vietnam_pro",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_hud",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_hotbar",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_bag_row",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_strain_meter",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_damage_vignette",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_tutorial_hint",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_toast",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_touch_controls",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_prompt",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_objective_line",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_trick_popup",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_boss_bar",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_dex_panel",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_pause_menu",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_settings_panel",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_main_menu",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_dialogue_bubble",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_logo_placeholder",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_tool_hand",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_tool_slipper",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_tool_broom",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_rod_bamboo",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_bait_bread",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_bait_worm",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_bait_milk_tea",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_item_golden_scale",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_tep",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_ro",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_tre",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_cua_dong",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_boss_ca_loc",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_money",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_health",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_lib_fp",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_lib_npc_basic",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_lib_boss_ca_loc",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_idle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_equip",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_cast_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_cast_release",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_reel_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_yank",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_slap",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_throw",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_sweep",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_fp_pickup",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_npc_idle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_npc_talk",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_npc_happy",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_npc_disgust",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_land",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_idle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_telegraph_slam",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_slam",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_telegraph_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_stunned",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_telegraph_spit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_spit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_phase_change",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_escape",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_loc_defeat",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_cast_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_cast_whoosh",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_lure_splash",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_lure_ground",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_nibble",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_bite_alert",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_perfect_yank",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_reel_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_line_strain",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_escape_bloop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_launch_pop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_air_whistle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_flop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_hit_slap",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_hit_bonk",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_slipper_throw",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_slipper_hit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_ko_stars",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_trick_ding",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_coin_gain",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_sell_basket",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_buy",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_error_nope",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_pickup",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_drop_thud",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_player_hurt",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_player_ko",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_footstep_wood",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_footstep_sand",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_jump",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_land",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_boss_roar",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_boss_telegraph",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_boss_escape_warning",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_boss_phase",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_boss_escape_splash",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_creature_warn",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_swing_whoosh",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_boss_defeat_fanfare",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_quest_complete",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_new_species",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_ui_click",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_ui_back",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_tutorial_pop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_npc_gibberish_female",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_npc_gibberish_male",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mus_isl01_day_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mus_boss_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "amb_river_day_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_grill",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_smoke_grill",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_grill_sizzle_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_cook_done",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_burnt",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_egret",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_lib_egret",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_egret_walk",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_egret_fly",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_egret_call",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_egret_steal",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_acc_boba_pearls",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_boba_sparkle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_rare_reveal",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_slingshot",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_swatter",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_coconut_bomb",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_confetti_explosion",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_slingshot_shot",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_swatter_zap",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_coconut_boom",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_tool_rod_carbon",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_isl02_terrain",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_env_isl03_terrain",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mus_isl02_day_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mus_isl03_day_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_me",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_me",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_thoi_loi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_thoi_loi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_luon",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_luon",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_doi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_doi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_cua_bun",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_cua_bun",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_tom_cang",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_tom_cang",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_nuc",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_nuc",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_chuon",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_chuon",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_trich",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_trich",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_muc_ong",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_muc_ong",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_ca_hong",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_ca_hong",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_boss_cua_bun",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_boss_cua_bun",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_lib_boss_cua_bun",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_land",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_idle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_phase_change",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_escape",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_defeat",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_telegraph_slam",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_slam",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_telegraph_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_stunned",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_telegraph_spit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_cua_bun_spit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_cre_boss_ca_bop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_cre_boss_ca_bop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_lib_boss_ca_bop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_land",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_idle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_phase_change",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_escape",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_defeat",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_telegraph_slam",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_slam",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_telegraph_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_charge",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_stunned",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_telegraph_spit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_boss_ca_bop_spit",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_rice_ball",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_item_rice_ball",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_grilled_fish",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_item_grilled_fish",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_survey_tag",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_item_survey_tag",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_item_festival_medal",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ico_item_festival_medal",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "mdl_chr_player_remote",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_lib_player_remote",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_idle",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_walk",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_run",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_cast",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_reel",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_use_tool",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_knocked_out",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "anm_player_remote_revive",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_room_lobby",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_party_status",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_hunger_meter",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_cosmetics_panel",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "ui_lootbox_panel",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_hunger_low",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_eat",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_lootbox_open",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_player_join",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_player_leave",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "sfx_connection_lost",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vfx_lootbox_reveal",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "amb_isl02_day_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "amb_isl03_day_loop",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "env_isl02_day",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "env_isl03_day",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_co_ba_vi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_co_ba_en",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_ong_tu_vi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_ong_tu_en",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_nam_sau_vi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_nam_sau_en",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_chi_lan_vi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_chi_lan_en",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_bay_cho_vi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_bay_cho_en",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_co_tam_vi",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    },
+    {
+      "asset_id": "vo_dialogue_co_tam_en",
+      "status": "planned",
+      "source_record_id": null,
+      "license": "tbd",
+      "files": []
+    }
+  ]
+}

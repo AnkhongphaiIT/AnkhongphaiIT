@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/audio_event_map.schema.json",
+  "title": "Bản đồ sự kiện → âm thanh",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event",
+          "asset_id",
+          "bus"
+        ],
+        "properties": {
+          "event": {
+            "$ref": "common.schema.json#/$defs/event_name"
+          },
+          "when": {
+            "type": "object",
+            "description": "Điều kiện so khớp trên payload"
+          },
+          "asset_id": {
+            "$ref": "common.schema.json#/$defs/asset_id"
+          },
+          "bus": {
+            "enum": [
+              "SFX",
+              "UI",
+              "Music",
+              "Ambience",
+              "Voice"
+            ]
+          },
+          "volume_db": {
+            "type": "number"
+          },
+          "pitch_random": {
+            "type": "number",
+            "minimum": 0
+          },
+          "cooldown_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "position": {
+            "enum": [
+              "event_position",
+              "player",
+              "none"
+            ]
+          },
+          "max_voices": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "duck_music_db": {
+            "type": "number",
+            "maximum": 0
+          },
+          "duck_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "repeat_for_field": {
+            "type": "string"
+          },
+          "repeat_interval_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "pitch_step": {
+            "type": "number"
+          },
+          "music_action": {
+            "enum": [
+              "play",
+              "restore_island"
+            ]
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          }
+        }
+      }
+    }
+  }
+}

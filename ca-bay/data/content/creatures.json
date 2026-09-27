@@ -1,0 +1,926 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "15 loài thường + 3 boss là giả định thiết kế công khai. var_boba là ID cũ cho màu Ánh Bạc tự nhiên, không có trà sữa/đột biến; khối lượng và cung bay là tham số gameplay."
+  },
+  "records": [
+    {
+      "id": "cre_tep",
+      "name_key": "cre_tep.name",
+      "desc_key": "cre_tep.desc",
+      "status": "slice",
+      "island_ids": [
+        "isl_01_cu_lao"
+      ],
+      "tier": 0,
+      "archetype": "hopper",
+      "length_m": 0.14,
+      "mass_kg": 0.3,
+      "hp": 2,
+      "base_value": 2,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0,
+        "duration_s": 0,
+        "strain_gain_per_s": 0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 8
+      },
+      "behavior": {
+        "hop_interval_s": {
+          "min": 0.6,
+          "max": 1.2
+        },
+        "hop_impulse": 2.0
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 1,
+      "assets": {
+        "model": "mdl_cre_tep",
+        "icon": "ico_cre_tep"
+      }
+    },
+    {
+      "id": "cre_ca_ro",
+      "name_key": "cre_ca_ro.name",
+      "desc_key": "cre_ca_ro.desc",
+      "status": "slice",
+      "island_ids": [
+        "isl_01_cu_lao"
+      ],
+      "tier": 0,
+      "archetype": "runner",
+      "length_m": 0.25,
+      "mass_kg": 0.6,
+      "hp": 6,
+      "base_value": 5,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0,
+        "duration_s": 0,
+        "strain_gain_per_s": 0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 6
+      },
+      "behavior": {
+        "run_speed_mps": 0.8,
+        "flop_interval_s": {
+          "min": 0.8,
+          "max": 1.6
+        },
+        "flop_impulse": 1.2
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 2,
+      "assets": {
+        "model": "mdl_cre_ca_ro",
+        "icon": "ico_cre_ca_ro"
+      }
+    },
+    {
+      "id": "cre_cua_dong",
+      "name_key": "cre_cua_dong.name",
+      "desc_key": "cre_cua_dong.desc",
+      "status": "slice",
+      "island_ids": [
+        "isl_01_cu_lao"
+      ],
+      "tier": 1,
+      "archetype": "pincher",
+      "length_m": 0.18,
+      "mass_kg": 0.8,
+      "hp": 10,
+      "base_value": 8,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.25,
+        "duration_s": 0.75,
+        "strain_gain_per_s": 0.85
+      },
+      "launch": {
+        "apex_m": {
+          "min": 2.5,
+          "max": 3.5
+        },
+        "spin_rad_s": 5
+      },
+      "behavior": {
+        "chase_speed_mps": 1.2,
+        "flop_interval_s": {
+          "min": 1.0,
+          "max": 2.0
+        },
+        "flop_impulse": 0.8
+      },
+      "attack": {
+        "damage": 5,
+        "range_m": 0.6,
+        "cooldown_s": 1.5,
+        "telegraph_s": 0.3
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 3,
+      "assets": {
+        "model": "mdl_cre_cua_dong",
+        "icon": "ico_cre_cua_dong"
+      }
+    },
+    {
+      "id": "cre_ca_tre",
+      "name_key": "cre_ca_tre.name",
+      "desc_key": "cre_ca_tre.desc",
+      "status": "slice",
+      "island_ids": [
+        "isl_01_cu_lao"
+      ],
+      "tier": 1,
+      "archetype": "biter",
+      "length_m": 0.5,
+      "mass_kg": 1.5,
+      "hp": 14,
+      "base_value": 12,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.25,
+        "duration_s": 0.75,
+        "strain_gain_per_s": 0.85
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.5
+        },
+        "spin_rad_s": 4
+      },
+      "behavior": {
+        "lunge_interval_s": {
+          "min": 1.5,
+          "max": 2.5
+        },
+        "lunge_impulse": 3.0,
+        "flop_interval_s": {
+          "min": 0.8,
+          "max": 1.4
+        },
+        "flop_impulse": 1.5
+      },
+      "attack": {
+        "damage": 8,
+        "range_m": 1.0,
+        "cooldown_s": 2.0,
+        "telegraph_s": 0.4
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 4,
+      "assets": {
+        "model": "mdl_cre_ca_tre",
+        "icon": "ico_cre_ca_tre"
+      }
+    },
+    {
+      "id": "cre_ca_me",
+      "name_key": "cre_ca_me.name",
+      "desc_key": "cre_ca_me.desc",
+      "status": "slice",
+      "island_ids": [
+        "isl_01_cu_lao"
+      ],
+      "tier": 1,
+      "archetype": "flopper",
+      "length_m": 0.45,
+      "mass_kg": 1.8,
+      "hp": 12,
+      "base_value": 10,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.25,
+        "duration_s": 0.75,
+        "strain_gain_per_s": 0.85
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 6
+      },
+      "behavior": {
+        "flop_interval_s": {
+          "min": 0.5,
+          "max": 1.0
+        },
+        "flop_impulse": 1.4
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 5,
+      "assets": {
+        "model": "mdl_cre_ca_me",
+        "icon": "ico_cre_ca_me"
+      }
+    },
+    {
+      "id": "cre_ca_thoi_loi",
+      "name_key": "cre_ca_thoi_loi.name",
+      "desc_key": "cre_ca_thoi_loi.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_02_rung_dua"
+      ],
+      "tier": 0,
+      "archetype": "hopper",
+      "length_m": 0.2,
+      "mass_kg": 0.5,
+      "hp": 8,
+      "base_value": 10,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0,
+        "duration_s": 0,
+        "strain_gain_per_s": 0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 6
+      },
+      "behavior": {
+        "hop_interval_s": {
+          "min": 0.5,
+          "max": 1.0
+        },
+        "hop_impulse": 2.5
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 6,
+      "assets": {
+        "model": "mdl_cre_ca_thoi_loi",
+        "icon": "ico_cre_ca_thoi_loi"
+      }
+    },
+    {
+      "id": "cre_luon",
+      "name_key": "cre_luon.name",
+      "desc_key": "cre_luon.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_02_rung_dua"
+      ],
+      "tier": 2,
+      "archetype": "runner",
+      "length_m": 0.6,
+      "mass_kg": 1.2,
+      "hp": 16,
+      "base_value": 20,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.35,
+        "duration_s": 0.8999999999999999,
+        "strain_gain_per_s": 1.0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.5
+        },
+        "spin_rad_s": 3
+      },
+      "behavior": {
+        "run_speed_mps": 1.4,
+        "flop_interval_s": {
+          "min": 0.6,
+          "max": 1.2
+        },
+        "flop_impulse": 1.0
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 7,
+      "assets": {
+        "model": "mdl_cre_luon",
+        "icon": "ico_cre_luon"
+      }
+    },
+    {
+      "id": "cre_ca_doi",
+      "name_key": "cre_ca_doi.name",
+      "desc_key": "cre_ca_doi.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_02_rung_dua"
+      ],
+      "tier": 1,
+      "archetype": "flopper",
+      "length_m": 0.35,
+      "mass_kg": 1.1,
+      "hp": 10,
+      "base_value": 15,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.25,
+        "duration_s": 0.75,
+        "strain_gain_per_s": 0.85
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 6
+      },
+      "behavior": {
+        "flop_interval_s": {
+          "min": 0.5,
+          "max": 1.0
+        },
+        "flop_impulse": 1.4
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 8,
+      "assets": {
+        "model": "mdl_cre_ca_doi",
+        "icon": "ico_cre_ca_doi"
+      }
+    },
+    {
+      "id": "cre_cua_bun",
+      "name_key": "cre_cua_bun.name",
+      "desc_key": "cre_cua_bun.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_02_rung_dua"
+      ],
+      "tier": 2,
+      "archetype": "pincher",
+      "length_m": 0.3,
+      "mass_kg": 2.0,
+      "hp": 18,
+      "base_value": 23,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.35,
+        "duration_s": 0.8999999999999999,
+        "strain_gain_per_s": 1.0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 2.5,
+          "max": 3.5
+        },
+        "spin_rad_s": 5
+      },
+      "behavior": {
+        "chase_speed_mps": 1.2,
+        "flop_interval_s": {
+          "min": 1.0,
+          "max": 2.0
+        },
+        "flop_impulse": 0.8
+      },
+      "attack": {
+        "damage": 5,
+        "range_m": 0.6,
+        "cooldown_s": 1.5,
+        "telegraph_s": 0.3
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 9,
+      "assets": {
+        "model": "mdl_cre_cua_bun",
+        "icon": "ico_cre_cua_bun"
+      }
+    },
+    {
+      "id": "cre_tom_cang",
+      "name_key": "cre_tom_cang.name",
+      "desc_key": "cre_tom_cang.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_02_rung_dua"
+      ],
+      "tier": 1,
+      "archetype": "hopper",
+      "length_m": 0.3,
+      "mass_kg": 0.6,
+      "hp": 12,
+      "base_value": 17,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.25,
+        "duration_s": 0.75,
+        "strain_gain_per_s": 0.85
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 8
+      },
+      "behavior": {
+        "hop_interval_s": {
+          "min": 0.6,
+          "max": 1.2
+        },
+        "hop_impulse": 2.0
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 10,
+      "assets": {
+        "model": "mdl_cre_tom_cang",
+        "icon": "ico_cre_tom_cang"
+      }
+    },
+    {
+      "id": "cre_ca_nuc",
+      "name_key": "cre_ca_nuc.name",
+      "desc_key": "cre_ca_nuc.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_03_mui_da"
+      ],
+      "tier": 0,
+      "archetype": "flopper",
+      "length_m": 0.25,
+      "mass_kg": 0.6,
+      "hp": 8,
+      "base_value": 12,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0,
+        "duration_s": 0,
+        "strain_gain_per_s": 0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 6
+      },
+      "behavior": {
+        "flop_interval_s": {
+          "min": 0.5,
+          "max": 1.0
+        },
+        "flop_impulse": 1.4
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 11,
+      "assets": {
+        "model": "mdl_cre_ca_nuc",
+        "icon": "ico_cre_ca_nuc"
+      }
+    },
+    {
+      "id": "cre_ca_chuon",
+      "name_key": "cre_ca_chuon.name",
+      "desc_key": "cre_ca_chuon.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_03_mui_da"
+      ],
+      "tier": 1,
+      "archetype": "flopper",
+      "length_m": 0.3,
+      "mass_kg": 0.5,
+      "hp": 10,
+      "base_value": 18,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.25,
+        "duration_s": 0.75,
+        "strain_gain_per_s": 0.85
+      },
+      "launch": {
+        "apex_m": {
+          "min": 5.0,
+          "max": 6.5
+        },
+        "spin_rad_s": 2
+      },
+      "behavior": {
+        "flop_interval_s": {
+          "min": 0.6,
+          "max": 1.2
+        },
+        "flop_impulse": 1.6
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 12,
+      "assets": {
+        "model": "mdl_cre_ca_chuon",
+        "icon": "ico_cre_ca_chuon"
+      }
+    },
+    {
+      "id": "cre_ca_trich",
+      "name_key": "cre_ca_trich.name",
+      "desc_key": "cre_ca_trich.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_03_mui_da"
+      ],
+      "tier": 1,
+      "archetype": "flopper",
+      "length_m": 0.28,
+      "mass_kg": 0.7,
+      "hp": 11,
+      "base_value": 16,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.25,
+        "duration_s": 0.75,
+        "strain_gain_per_s": 0.85
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 6
+      },
+      "behavior": {
+        "flop_interval_s": {
+          "min": 0.5,
+          "max": 1.0
+        },
+        "flop_impulse": 1.4
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 13,
+      "assets": {
+        "model": "mdl_cre_ca_trich",
+        "icon": "ico_cre_ca_trich"
+      }
+    },
+    {
+      "id": "cre_muc_ong",
+      "name_key": "cre_muc_ong.name",
+      "desc_key": "cre_muc_ong.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_03_mui_da"
+      ],
+      "tier": 2,
+      "archetype": "runner",
+      "length_m": 0.5,
+      "mass_kg": 1.4,
+      "hp": 17,
+      "base_value": 25,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.35,
+        "duration_s": 0.8999999999999999,
+        "strain_gain_per_s": 1.0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 6
+      },
+      "behavior": {
+        "run_speed_mps": 0.8,
+        "flop_interval_s": {
+          "min": 0.8,
+          "max": 1.6
+        },
+        "flop_impulse": 1.2
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 14,
+      "assets": {
+        "model": "mdl_cre_muc_ong",
+        "icon": "ico_cre_muc_ong"
+      }
+    },
+    {
+      "id": "cre_ca_hong",
+      "name_key": "cre_ca_hong.name",
+      "desc_key": "cre_ca_hong.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_03_mui_da"
+      ],
+      "tier": 2,
+      "archetype": "biter",
+      "length_m": 0.55,
+      "mass_kg": 2.2,
+      "hp": 22,
+      "base_value": 30,
+      "ko_duration_s": 15,
+      "thrash": {
+        "rate_per_s": 0.35,
+        "duration_s": 0.8999999999999999,
+        "strain_gain_per_s": 1.0
+      },
+      "launch": {
+        "apex_m": {
+          "min": 3.0,
+          "max": 4.5
+        },
+        "spin_rad_s": 4
+      },
+      "behavior": {
+        "lunge_interval_s": {
+          "min": 1.5,
+          "max": 2.5
+        },
+        "lunge_impulse": 3.0,
+        "flop_interval_s": {
+          "min": 0.8,
+          "max": 1.4
+        },
+        "flop_impulse": 1.5
+      },
+      "attack": {
+        "damage": 8,
+        "range_m": 1.0,
+        "cooldown_s": 2.0,
+        "telegraph_s": 0.4
+      },
+      "variants": [
+        {
+          "variant_id": "var_boba",
+          "name_key": "var_boba.name",
+          "chance": 0.03,
+          "value_mult": 2,
+          "accessory_asset_id": "mdl_acc_boba_pearls",
+          "status": "mvp"
+        }
+      ],
+      "is_boss": false,
+      "dex_order": 15,
+      "assets": {
+        "model": "mdl_cre_ca_hong",
+        "icon": "ico_cre_ca_hong"
+      }
+    },
+    {
+      "id": "cre_boss_ca_loc",
+      "name_key": "cre_boss_ca_loc.name",
+      "desc_key": "cre_boss_ca_loc.desc",
+      "status": "slice",
+      "island_ids": [
+        "isl_01_cu_lao"
+      ],
+      "tier": 3,
+      "archetype": "boss",
+      "length_m": 1.25,
+      "mass_kg": 12,
+      "hp": 300,
+      "base_value": 0,
+      "ko_duration_s": 0,
+      "thrash": {
+        "rate_per_s": 0.5,
+        "duration_s": 1.2,
+        "strain_gain_per_s": 0.6
+      },
+      "launch": {
+        "apex_m": {
+          "min": 4.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 0
+      },
+      "behavior": {},
+      "variants": [],
+      "is_boss": true,
+      "boss_id": "boss_ca_loc",
+      "dex_order": 16,
+      "assets": {
+        "model": "mdl_cre_boss_ca_loc",
+        "icon": "ico_cre_boss_ca_loc"
+      }
+    },
+    {
+      "id": "cre_boss_cua_bun",
+      "name_key": "cre_boss_cua_bun.name",
+      "desc_key": "cre_boss_cua_bun.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_02_rung_dua"
+      ],
+      "tier": 3,
+      "archetype": "boss",
+      "length_m": 0.65,
+      "mass_kg": 5,
+      "hp": 420,
+      "base_value": 0,
+      "ko_duration_s": 0,
+      "thrash": {
+        "rate_per_s": 0.5,
+        "duration_s": 1.2,
+        "strain_gain_per_s": 0.6
+      },
+      "launch": {
+        "apex_m": {
+          "min": 4.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 0
+      },
+      "behavior": {},
+      "variants": [],
+      "is_boss": true,
+      "boss_id": "boss_cua_bun",
+      "dex_order": 17,
+      "assets": {
+        "model": "mdl_cre_boss_cua_bun",
+        "icon": "ico_cre_boss_cua_bun"
+      }
+    },
+    {
+      "id": "cre_boss_ca_bop",
+      "name_key": "cre_boss_ca_bop.name",
+      "desc_key": "cre_boss_ca_bop.desc",
+      "status": "mvp",
+      "island_ids": [
+        "isl_03_mui_da"
+      ],
+      "tier": 3,
+      "archetype": "boss",
+      "length_m": 1.6,
+      "mass_kg": 25,
+      "hp": 540,
+      "base_value": 0,
+      "ko_duration_s": 0,
+      "thrash": {
+        "rate_per_s": 0.5,
+        "duration_s": 1.2,
+        "strain_gain_per_s": 0.6
+      },
+      "launch": {
+        "apex_m": {
+          "min": 4.0,
+          "max": 4.0
+        },
+        "spin_rad_s": 0
+      },
+      "behavior": {},
+      "variants": [],
+      "is_boss": true,
+      "boss_id": "boss_ca_bop",
+      "dex_order": 18,
+      "assets": {
+        "model": "mdl_cre_boss_ca_bop",
+        "icon": "ico_cre_boss_ca_bop"
+      }
+    }
+  ]
+}

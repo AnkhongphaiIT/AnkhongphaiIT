@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/islands.schema.json",
+  "title": "Cù lao",
+  "description": "data/content/islands.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "order",
+          "unlock",
+          "zones",
+          "assets"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/island_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "unlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "requires_quest_ids"
+            ],
+            "properties": {
+              "requires_quest_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/quest_id"
+                }
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          },
+          "zones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "zone_id",
+                "kind"
+              ],
+              "properties": {
+                "zone_id": {
+                  "$ref": "common.schema.json#/$defs/zone_id"
+                },
+                "kind": {
+                  "enum": [
+                    "fishing",
+                    "boss_spot",
+                    "shop",
+                    "player_spawn",
+                    "quest_area"
+                  ]
+                },
+                "spawn_table_id": {
+                  "$ref": "common.schema.json#/$defs/spawn_table_id"
+                },
+                "bite_time_mult": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "boss_id": {
+                  "$ref": "common.schema.json#/$defs/boss_id"
+                },
+                "shop_id": {
+                  "$ref": "common.schema.json#/$defs/shop_id"
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "kind": {
+                        "const": "fishing"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "spawn_table_id",
+                      "bite_time_mult"
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "kind": {
+                        "const": "boss_spot"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "boss_id"
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "kind": {
+                        "const": "shop"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "shop_id"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "terrain",
+              "music",
+              "ambience",
+              "environment"
+            ],
+            "properties": {
+              "terrain": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              },
+              "music": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              },
+              "ambience": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              },
+              "environment": {
+                "$ref": "common.schema.json#/$defs/asset_id"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

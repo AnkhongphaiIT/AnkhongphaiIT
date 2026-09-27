@@ -1,0 +1,373 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/save.schema.json",
+  "title": "File lưu game (slot)",
+  "description": "user://saves/slot_1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "game_version",
+    "saved_at",
+    "playtime_s",
+    "rng_seed",
+    "player",
+    "inventory",
+    "world",
+    "progress",
+    "dex"
+  ],
+  "$defs": {
+    "item_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "def_kind",
+        "def_id",
+        "base_value",
+        "trick_mult",
+        "cook_level",
+        "flags",
+        "created_at_s"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^it_[0-9]{6,}$"
+        },
+        "def_kind": {
+          "enum": [
+            "creature",
+            "item",
+            "tool",
+            "bait"
+          ]
+        },
+        "def_id": {
+          "type": "string"
+        },
+        "variant_id": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/variant_id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "base_value": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "trick_mult": {
+          "type": "number",
+          "minimum": 1
+        },
+        "cook_level": {
+          "enum": [
+            "raw",
+            "cooked",
+            "burnt"
+          ]
+        },
+        "cook_progress": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "quest",
+              "no_sell",
+              "no_steal"
+            ]
+          }
+        },
+        "created_at_s": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "vec3": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "game_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "saved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "playtime_s": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rng_seed": {
+      "type": "integer"
+    },
+    "player": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "island_id",
+        "position",
+        "yaw_deg",
+        "hp",
+        "money",
+        "last_tool_id"
+      ],
+      "properties": {
+        "island_id": {
+          "$ref": "common.schema.json#/$defs/island_id"
+        },
+        "position": {
+          "$ref": "#/$defs/vec3"
+        },
+        "yaw_deg": {
+          "type": "number"
+        },
+        "hp": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "money": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "last_tool_id": {
+          "$ref": "common.schema.json#/$defs/tool_id"
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bag",
+        "bait_counts",
+        "selected_bait_id",
+        "tools_owned",
+        "rods_owned",
+        "equipped_rod_id",
+        "equipped_id",
+        "upgrades"
+      ],
+      "properties": {
+        "bag": {
+          "type": "array",
+          "description": "Túi đựng sinh vật/vật phẩm; độ dài = số ô hiện có",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/item_instance"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "equipped_id": {
+          "type": "string",
+          "description": "rod_… hoặc tool_… đang cầm"
+        },
+        "bait_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "selected_bait_id": {
+          "$ref": "common.schema.json#/$defs/bait_id"
+        },
+        "tools_owned": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/tool_id"
+          }
+        },
+        "rods_owned": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/rod_id"
+          }
+        },
+        "equipped_rod_id": {
+          "$ref": "common.schema.json#/$defs/rod_id"
+        },
+        "upgrades": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "world": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "Tối đa save.max_world_items (balance.json)",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item",
+              "position",
+              "island_id"
+            ],
+            "properties": {
+              "item": {
+                "$ref": "#/$defs/item_instance"
+              },
+              "position": {
+                "$ref": "#/$defs/vec3"
+              },
+              "island_id": {
+                "$ref": "common.schema.json#/$defs/island_id"
+              }
+            }
+          }
+        }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quests",
+        "bosses_defeated",
+        "islands_unlocked",
+        "tutorial_done",
+        "npc_flags"
+      ],
+      "properties": {
+        "quests": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "state",
+              "step_index",
+              "counts"
+            ],
+            "properties": {
+              "state": {
+                "enum": [
+                  "inactive",
+                  "active",
+                  "completed"
+                ]
+              },
+              "step_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "counts": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "bosses_defeated": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/boss_id"
+          }
+        },
+        "islands_unlocked": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/island_id"
+          }
+        },
+        "tutorial_done": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "npc_flags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "dex": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "tricks_seen"
+      ],
+      "properties": {
+        "species": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "caught",
+              "best_value",
+              "variants_seen"
+            ],
+            "properties": {
+              "caught": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "best_value": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "variants_seen": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/variant_id"
+                }
+              }
+            }
+          }
+        },
+        "tricks_seen": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/trick_id"
+          }
+        }
+      }
+    }
+  }
+}

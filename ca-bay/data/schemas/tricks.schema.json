@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/tricks.schema.json",
+  "title": "Trick",
+  "description": "data/content/tricks.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "desc_key",
+          "status",
+          "multiplier",
+          "condition",
+          "display_order"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/trick_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "desc_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "multiplier": {
+            "type": "number",
+            "minimum": 1
+          },
+          "condition": {
+            "$ref": "#/$defs/condition"
+          },
+          "display_value": {
+            "type": "number",
+            "description": "Giá trị thay cho {value} trong mô tả (vd khoảng cách)"
+          },
+          "display_order": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "condition": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "creature_airborne",
+            "creature_air_hits_min",
+            "hit_zone",
+            "hits_to_ko_max",
+            "distance_min",
+            "distance_max",
+            "tool_kind",
+            "player_airborne",
+            "yaw_rotation_min",
+            "perfect_yank",
+            "chain_window_max",
+            "all_of"
+          ]
+        },
+        "value": {},
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

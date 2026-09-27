@@ -1,0 +1,322 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Server khóa n người tại lúc triệu hồi; HP = base_hp × (1 + 0.45 × (n-1)), làm tròn lên; timer không giảm. Mỗi tài khoản đủ điều kiện nhận thưởng một lần/encounter; boss thả về nước sau ảnh lưu niệm."
+  },
+  "records": [
+    {
+      "id": "boss_ca_loc",
+      "name_key": "cre_boss_ca_loc.name",
+      "status": "slice",
+      "creature_id": "cre_boss_ca_loc",
+      "summon": {
+        "bait_id": "bait_milk_tea",
+        "zone_id": "zone_01_boss_spot"
+      },
+      "escape_timer_s": {
+        "solo": 240,
+        "per_extra_player_mult": 1.0
+      },
+      "escape_warning_s": 10,
+      "stunned_damage_mult": 1.5,
+      "reward_base_value": 150,
+      "arena_radius_m": 12,
+      "leave_arena_grace_s": 5,
+      "drops": [
+        {
+          "kind": "item",
+          "id": "item_golden_scale",
+          "count": 1
+        }
+      ],
+      "moves": [
+        {
+          "move_id": "move_tail_slam",
+          "telegraph_s": 0.9,
+          "damage": 20,
+          "radius_m": 3.0,
+          "recover_s": 1.0,
+          "stun_on_recover": false,
+          "anims": {
+            "telegraph": "anm_boss_ca_loc_telegraph_slam",
+            "attack": "anm_boss_ca_loc_slam"
+          }
+        },
+        {
+          "move_id": "move_belly_charge",
+          "telegraph_s": 1.0,
+          "damage": 25,
+          "distance_m": 8,
+          "speed_mps": 9,
+          "recover_s": 2.0,
+          "stun_on_recover": true,
+          "anims": {
+            "telegraph": "anm_boss_ca_loc_telegraph_charge",
+            "attack": "anm_boss_ca_loc_charge",
+            "recover": "anm_boss_ca_loc_stunned"
+          }
+        },
+        {
+          "move_id": "move_water_splash",
+          "telegraph_s": 0.7,
+          "damage": 8,
+          "projectiles": 3,
+          "projectile_speed_mps": 10,
+          "projectile_asset_id": "mdl_proj_boba_pearl",
+          "spread_deg": 30,
+          "recover_s": 1.0,
+          "stun_on_recover": false,
+          "anims": {
+            "telegraph": "anm_boss_ca_loc_telegraph_spit",
+            "attack": "anm_boss_ca_loc_spit"
+          }
+        }
+      ],
+      "phases": [
+        {
+          "phase": 1,
+          "hp_below": 1.0,
+          "move_weights": {
+            "move_tail_slam": 1,
+            "move_belly_charge": 1
+          }
+        },
+        {
+          "phase": 2,
+          "hp_below": 0.5,
+          "move_weights": {
+            "move_tail_slam": 1,
+            "move_belly_charge": 1,
+            "move_water_splash": 2
+          }
+        }
+      ],
+      "assets": {
+        "music": "mus_boss_loop",
+        "anims": {
+          "land": "anm_boss_ca_loc_land",
+          "idle": "anm_boss_ca_loc_idle",
+          "phase_change": "anm_boss_ca_loc_phase_change",
+          "escape": "anm_boss_ca_loc_escape",
+          "defeat": "anm_boss_ca_loc_defeat"
+        }
+      },
+      "cooperative": {
+        "hp_per_extra_player_mult": 0.45,
+        "max_players": 4,
+        "party_size_locked_on_start": true,
+        "personal_reward": true
+      }
+    },
+    {
+      "id": "boss_cua_bun",
+      "name_key": "cre_boss_cua_bun.name",
+      "status": "mvp",
+      "creature_id": "cre_boss_cua_bun",
+      "summon": {
+        "bait_id": "bait_crab_mix",
+        "zone_id": "zone_02_boss_spot"
+      },
+      "escape_timer_s": {
+        "solo": 240,
+        "per_extra_player_mult": 1.0
+      },
+      "escape_warning_s": 10,
+      "stunned_damage_mult": 1.5,
+      "reward_base_value": 220,
+      "arena_radius_m": 12,
+      "leave_arena_grace_s": 5,
+      "drops": [
+        {
+          "kind": "item",
+          "id": "item_survey_tag",
+          "count": 1
+        }
+      ],
+      "moves": [
+        {
+          "move_id": "move_tail_slam",
+          "telegraph_s": 0.9,
+          "damage": 20,
+          "radius_m": 4,
+          "recover_s": 1.0,
+          "stun_on_recover": false,
+          "anims": {
+            "telegraph": "anm_boss_cua_bun_telegraph_slam",
+            "attack": "anm_boss_cua_bun_slam"
+          }
+        },
+        {
+          "move_id": "move_belly_charge",
+          "telegraph_s": 1.0,
+          "damage": 25,
+          "distance_m": 6,
+          "speed_mps": 6,
+          "recover_s": 2.0,
+          "stun_on_recover": true,
+          "anims": {
+            "telegraph": "anm_boss_cua_bun_telegraph_charge",
+            "attack": "anm_boss_cua_bun_charge",
+            "recover": "anm_boss_cua_bun_stunned"
+          }
+        },
+        {
+          "move_id": "move_water_splash",
+          "telegraph_s": 0.7,
+          "damage": 8,
+          "projectiles": 3,
+          "projectile_speed_mps": 10,
+          "projectile_asset_id": "mdl_proj_boba_pearl",
+          "spread_deg": 30,
+          "recover_s": 1.0,
+          "stun_on_recover": false,
+          "anims": {
+            "telegraph": "anm_boss_cua_bun_telegraph_spit",
+            "attack": "anm_boss_cua_bun_spit"
+          }
+        }
+      ],
+      "phases": [
+        {
+          "phase": 1,
+          "hp_below": 1.0,
+          "move_weights": {
+            "move_tail_slam": 1,
+            "move_belly_charge": 1
+          }
+        },
+        {
+          "phase": 2,
+          "hp_below": 0.5,
+          "move_weights": {
+            "move_tail_slam": 2,
+            "move_belly_charge": 1
+          }
+        }
+      ],
+      "assets": {
+        "music": "mus_boss_loop",
+        "anims": {
+          "land": "anm_boss_cua_bun_land",
+          "idle": "anm_boss_cua_bun_idle",
+          "phase_change": "anm_boss_cua_bun_phase_change",
+          "escape": "anm_boss_cua_bun_escape",
+          "defeat": "anm_boss_cua_bun_defeat"
+        }
+      },
+      "cooperative": {
+        "hp_per_extra_player_mult": 0.45,
+        "max_players": 4,
+        "party_size_locked_on_start": true,
+        "personal_reward": true
+      }
+    },
+    {
+      "id": "boss_ca_bop",
+      "name_key": "cre_boss_ca_bop.name",
+      "status": "mvp",
+      "creature_id": "cre_boss_ca_bop",
+      "summon": {
+        "bait_id": "bait_fish_strip",
+        "zone_id": "zone_03_boss_spot"
+      },
+      "escape_timer_s": {
+        "solo": 240,
+        "per_extra_player_mult": 1.0
+      },
+      "escape_warning_s": 10,
+      "stunned_damage_mult": 1.5,
+      "reward_base_value": 300,
+      "arena_radius_m": 12,
+      "leave_arena_grace_s": 5,
+      "drops": [
+        {
+          "kind": "item",
+          "id": "item_festival_medal",
+          "count": 1
+        }
+      ],
+      "moves": [
+        {
+          "move_id": "move_tail_slam",
+          "telegraph_s": 0.9,
+          "damage": 20,
+          "radius_m": 3.0,
+          "recover_s": 1.0,
+          "stun_on_recover": false,
+          "anims": {
+            "telegraph": "anm_boss_ca_bop_telegraph_slam",
+            "attack": "anm_boss_ca_bop_slam"
+          }
+        },
+        {
+          "move_id": "move_belly_charge",
+          "telegraph_s": 1.2,
+          "damage": 25,
+          "distance_m": 10,
+          "speed_mps": 9,
+          "recover_s": 2.0,
+          "stun_on_recover": true,
+          "anims": {
+            "telegraph": "anm_boss_ca_bop_telegraph_charge",
+            "attack": "anm_boss_ca_bop_charge",
+            "recover": "anm_boss_ca_bop_stunned"
+          }
+        },
+        {
+          "move_id": "move_water_splash",
+          "telegraph_s": 0.7,
+          "damage": 8,
+          "projectiles": 5,
+          "projectile_speed_mps": 10,
+          "projectile_asset_id": "mdl_proj_boba_pearl",
+          "spread_deg": 30,
+          "recover_s": 1.0,
+          "stun_on_recover": false,
+          "anims": {
+            "telegraph": "anm_boss_ca_bop_telegraph_spit",
+            "attack": "anm_boss_ca_bop_spit"
+          }
+        }
+      ],
+      "phases": [
+        {
+          "phase": 1,
+          "hp_below": 1.0,
+          "move_weights": {
+            "move_tail_slam": 1,
+            "move_belly_charge": 1
+          }
+        },
+        {
+          "phase": 2,
+          "hp_below": 0.5,
+          "move_weights": {
+            "move_tail_slam": 1,
+            "move_belly_charge": 1,
+            "move_water_splash": 2
+          }
+        }
+      ],
+      "assets": {
+        "music": "mus_boss_loop",
+        "anims": {
+          "land": "anm_boss_ca_bop_land",
+          "idle": "anm_boss_ca_bop_idle",
+          "phase_change": "anm_boss_ca_bop_phase_change",
+          "escape": "anm_boss_ca_bop_escape",
+          "defeat": "anm_boss_ca_bop_defeat"
+        }
+      },
+      "cooperative": {
+        "hp_per_extra_player_mult": 0.45,
+        "max_players": 4,
+        "party_size_locked_on_start": true,
+        "personal_reward": true
+      }
+    }
+  ]
+}

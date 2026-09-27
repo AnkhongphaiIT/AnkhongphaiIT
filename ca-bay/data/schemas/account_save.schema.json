@@ -1,0 +1,619 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/account_save.schema.json",
+  "title": "Authoritative account save v2",
+  "description": "Server-produced durable snapshot. Not a client upload format. No credential, RNG seed, live world or local UX preferences. JSON Schema plus server semantic/reference checks are required.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "game_version",
+    "content_version",
+    "save_version",
+    "account_id",
+    "updated_at",
+    "active_playtime_s",
+    "profile",
+    "currencies",
+    "player",
+    "inventory",
+    "progress",
+    "collection",
+    "cosmetics",
+    "lootbox_progress"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "2.0.0"
+    },
+    "game_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "content_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "save_version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "account_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "active_playtime_s": {
+      "type": "number",
+      "minimum": 0
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "display_name"
+      ],
+      "properties": {
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        }
+      }
+    },
+    "currencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "money",
+        "festival_ticket",
+        "cosmetic_dust"
+      ],
+      "properties": {
+        "money": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "festival_ticket": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "cosmetic_dust": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        }
+      }
+    },
+    "player": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hunger",
+        "hp",
+        "safe_island_id",
+        "safe_spawn_zone_id"
+      ],
+      "properties": {
+        "hunger": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "hp": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "safe_island_id": {
+          "type": "string",
+          "pattern": "^isl_[a-z0-9_]+$",
+          "maxLength": 80
+        },
+        "safe_spawn_zone_id": {
+          "type": "string",
+          "pattern": "^zone_[a-z0-9_]+$",
+          "maxLength": 80
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capacity",
+        "bag",
+        "recovery_inbox",
+        "bait_counts",
+        "food_counts",
+        "selected_bait_id",
+        "tools_owned",
+        "rods_owned",
+        "equipped_rod_id",
+        "equipped_id",
+        "upgrades"
+      ],
+      "properties": {
+        "capacity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 48
+        },
+        "bag": {
+          "type": "array",
+          "maxItems": 48,
+          "items": {
+            "$ref": "#/$defs/item_instance"
+          }
+        },
+        "recovery_inbox": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "$ref": "#/$defs/item_instance"
+          }
+        },
+        "bait_counts": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^bait_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "maxProperties": 256
+        },
+        "food_counts": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^item_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "maxProperties": 256
+        },
+        "selected_bait_id": {
+          "type": "string",
+          "pattern": "^bait_[a-z0-9_]+$",
+          "maxLength": 80
+        },
+        "tools_owned": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^tool_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "rods_owned": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^rod_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "equipped_rod_id": {
+          "type": "string",
+          "pattern": "^rod_[a-z0-9_]+$",
+          "maxLength": 80
+        },
+        "equipped_id": {
+          "type": "string",
+          "pattern": "^(rod|tool)_[a-z0-9_]+$",
+          "maxLength": 80
+        },
+        "upgrades": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^upg_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "maxProperties": 256
+        }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quests",
+        "bosses_defeated",
+        "islands_unlocked",
+        "tutorial_done",
+        "npc_flags"
+      ],
+      "properties": {
+        "quests": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^quest_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/quest_progress"
+          },
+          "maxProperties": 256
+        },
+        "bosses_defeated": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^boss_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "islands_unlocked": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "pattern": "^isl_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "uniqueItems": true
+        },
+        "tutorial_done": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$",
+            "maxLength": 64
+          },
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "npc_flags": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^npc_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9_]+$",
+              "maxLength": 64
+            },
+            "maxItems": 64,
+            "uniqueItems": true
+          },
+          "maxProperties": 128
+        }
+      }
+    },
+    "collection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "tricks_seen"
+      ],
+      "properties": {
+        "species": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^cre_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "caught",
+              "best_value",
+              "variants_seen"
+            ],
+            "properties": {
+              "caught": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483647
+              },
+              "best_value": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483647
+              },
+              "variants_seen": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^var_[a-z0-9_]+$",
+                  "maxLength": 80
+                },
+                "maxItems": 64,
+                "uniqueItems": true
+              }
+            }
+          },
+          "maxProperties": 128
+        },
+        "tricks_seen": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^trick_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "maxItems": 64,
+          "uniqueItems": true
+        }
+      }
+    },
+    "cosmetics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owned",
+        "equipped"
+      ],
+      "properties": {
+        "owned": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^cos_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "maxItems": 256,
+          "uniqueItems": true
+        },
+        "equipped": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^(rod|tool)_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^cos_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "maxProperties": 128
+        }
+      }
+    },
+    "lootbox_progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valid_owned_fish_sales_total",
+        "fish_sale_ticket_milestones_awarded",
+        "quest_ticket_awarded_ids",
+        "boxes",
+        "last_receipt_id"
+      ],
+      "properties": {
+        "valid_owned_fish_sales_total": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "fish_sale_ticket_milestones_awarded": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "quest_ticket_awarded_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^quest_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "maxItems": 256,
+          "uniqueItems": true
+        },
+        "boxes": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^lootbox_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "table_version",
+              "opens_total"
+            ],
+            "properties": {
+              "table_version": {
+                "type": "string",
+                "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+              },
+              "opens_total": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483647
+              }
+            }
+          },
+          "maxProperties": 64
+        },
+        "last_receipt_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "item_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "owner_account_id",
+        "caught_by_account_id",
+        "def_kind",
+        "def_id",
+        "variant_id",
+        "base_value",
+        "trick_mult_milli",
+        "cook_level",
+        "flags",
+        "created_at"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "owner_account_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "caught_by_account_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "def_kind": {
+          "enum": [
+            "creature",
+            "item"
+          ]
+        },
+        "def_id": {
+          "type": "string",
+          "pattern": "^(cre|item)_[a-z0-9_]+$",
+          "maxLength": 80
+        },
+        "variant_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^var_[a-z0-9_]+$",
+              "maxLength": 80
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "base_value": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "trick_mult_milli": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "cook_level": {
+          "enum": [
+            "raw",
+            "cooked",
+            "burnt"
+          ]
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$",
+            "maxLength": 64
+          },
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "quest_progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "step_index",
+        "counts",
+        "reward_claimed"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "locked",
+            "available",
+            "active",
+            "completed"
+          ]
+        },
+        "step_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "counts": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^step_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "maxProperties": 256
+        },
+        "reward_claimed": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

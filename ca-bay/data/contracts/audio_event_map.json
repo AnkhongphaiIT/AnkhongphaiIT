@@ -1,0 +1,474 @@
+{
+  "schema_version": "2.0.0",
+  "rules": [
+    {
+      "event": "fishing.cast_released",
+      "asset_id": "sfx_cast_whoosh",
+      "bus": "SFX",
+      "position": "player",
+      "pitch_random": 0.05
+    },
+    {
+      "event": "fishing.lure_landed",
+      "when": {
+        "surface": "water"
+      },
+      "asset_id": "sfx_lure_splash",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "fishing.lure_landed",
+      "when": {
+        "surface": "ground"
+      },
+      "asset_id": "sfx_lure_ground",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "fishing.nibble",
+      "asset_id": "sfx_nibble",
+      "bus": "SFX",
+      "position": "event_position",
+      "pitch_random": 0.1
+    },
+    {
+      "event": "fishing.bite",
+      "asset_id": "sfx_bite_alert",
+      "bus": "SFX",
+      "position": "none",
+      "volume_db": 0,
+      "duck_music_db": -8,
+      "duck_s": 0.8
+    },
+    {
+      "event": "fishing.hook_set",
+      "when": {
+        "perfect": true
+      },
+      "asset_id": "sfx_perfect_yank",
+      "bus": "SFX",
+      "position": "none"
+    },
+    {
+      "event": "fishing.escaped",
+      "asset_id": "sfx_escape_bloop",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "fishing.launched",
+      "asset_id": "sfx_launch_pop",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "fishing.launched",
+      "asset_id": "sfx_air_whistle",
+      "bus": "SFX",
+      "position": "event_position",
+      "pitch_random": 0.1
+    },
+    {
+      "event": "creature.landed",
+      "asset_id": "sfx_flop",
+      "bus": "SFX",
+      "position": "event_position",
+      "pitch_random": 0.15,
+      "max_voices": 4
+    },
+    {
+      "event": "creature.damaged",
+      "when": {
+        "tool_id": "tool_hand"
+      },
+      "asset_id": "sfx_hit_slap",
+      "bus": "SFX",
+      "position": "event_position",
+      "pitch_random": 0.1
+    },
+    {
+      "event": "creature.damaged",
+      "when": {
+        "tool_id": "tool_broom"
+      },
+      "asset_id": "sfx_hit_bonk",
+      "bus": "SFX",
+      "position": "event_position",
+      "pitch_random": 0.1
+    },
+    {
+      "event": "creature.damaged",
+      "when": {
+        "tool_id": "tool_slipper"
+      },
+      "asset_id": "sfx_slipper_hit",
+      "bus": "SFX",
+      "position": "event_position",
+      "pitch_random": 0.08
+    },
+    {
+      "event": "creature.knocked_out",
+      "asset_id": "sfx_ko_stars",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "creature.returned_to_water",
+      "asset_id": "sfx_escape_bloop",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "scoring.tricks_awarded",
+      "asset_id": "sfx_trick_ding",
+      "bus": "UI",
+      "position": "none",
+      "repeat_for_field": "tricks",
+      "repeat_interval_s": 0.12,
+      "pitch_step": 0.08
+    },
+    {
+      "event": "economy.item_sold",
+      "asset_id": "sfx_sell_basket",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "economy.item_sold",
+      "asset_id": "sfx_coin_gain",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "economy.purchase_succeeded",
+      "asset_id": "sfx_buy",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "economy.purchase_failed",
+      "asset_id": "sfx_error_nope",
+      "bus": "UI",
+      "position": "none",
+      "cooldown_s": 0.5
+    },
+    {
+      "event": "item.picked_up",
+      "asset_id": "sfx_pickup",
+      "bus": "SFX",
+      "position": "player"
+    },
+    {
+      "event": "item.dropped",
+      "asset_id": "sfx_drop_thud",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "tool.used",
+      "when": {
+        "tool_id": "tool_slipper"
+      },
+      "asset_id": "sfx_slipper_throw",
+      "bus": "SFX",
+      "position": "player"
+    },
+    {
+      "event": "tool.used",
+      "when": {
+        "tool_id": "tool_hand"
+      },
+      "asset_id": "sfx_swing_whoosh",
+      "bus": "SFX",
+      "position": "player",
+      "pitch_random": 0.15
+    },
+    {
+      "event": "tool.used",
+      "when": {
+        "tool_id": "tool_broom"
+      },
+      "asset_id": "sfx_swing_whoosh",
+      "bus": "SFX",
+      "position": "player",
+      "pitch_random": 0.05,
+      "volume_db": 2
+    },
+    {
+      "event": "creature.attack_started",
+      "asset_id": "sfx_creature_warn",
+      "bus": "SFX",
+      "position": "event_position",
+      "cooldown_s": 0.3
+    },
+    {
+      "event": "player.damaged",
+      "asset_id": "sfx_player_hurt",
+      "bus": "SFX",
+      "position": "none",
+      "cooldown_s": 0.3
+    },
+    {
+      "event": "player.knocked_out",
+      "asset_id": "sfx_player_ko",
+      "bus": "SFX",
+      "position": "none"
+    },
+    {
+      "event": "player.jumped",
+      "asset_id": "sfx_jump",
+      "bus": "SFX",
+      "position": "player"
+    },
+    {
+      "event": "player.landed",
+      "asset_id": "sfx_land",
+      "bus": "SFX",
+      "position": "player"
+    },
+    {
+      "event": "player.footstep",
+      "when": {
+        "surface": "wood"
+      },
+      "asset_id": "sfx_footstep_wood",
+      "bus": "SFX",
+      "position": "player",
+      "pitch_random": 0.1
+    },
+    {
+      "event": "player.footstep",
+      "when": {
+        "surface": "sand"
+      },
+      "asset_id": "sfx_footstep_sand",
+      "bus": "SFX",
+      "position": "player",
+      "pitch_random": 0.1
+    },
+    {
+      "event": "player.footstep",
+      "when": {
+        "surface": "mud"
+      },
+      "asset_id": "sfx_footstep_sand",
+      "bus": "SFX",
+      "position": "player",
+      "pitch_random": 0.1
+    },
+    {
+      "event": "boss.summoned",
+      "asset_id": "sfx_boss_roar",
+      "bus": "SFX",
+      "position": "event_position"
+    },
+    {
+      "event": "boss.summoned",
+      "asset_id": "mus_boss_loop",
+      "bus": "Music",
+      "position": "none",
+      "music_action": "play"
+    },
+    {
+      "event": "boss.telegraph",
+      "asset_id": "sfx_boss_telegraph",
+      "bus": "SFX",
+      "position": "event_position",
+      "duck_music_db": -4,
+      "duck_s": 0.6
+    },
+    {
+      "event": "boss.phase_changed",
+      "asset_id": "sfx_boss_phase",
+      "bus": "SFX",
+      "position": "none"
+    },
+    {
+      "event": "boss.escape_warning",
+      "asset_id": "sfx_boss_escape_warning",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "boss.escaped",
+      "asset_id": "sfx_boss_escape_splash",
+      "bus": "SFX",
+      "position": "none"
+    },
+    {
+      "event": "boss.escaped",
+      "asset_id": "mus_isl01_day_loop",
+      "bus": "Music",
+      "position": "none",
+      "music_action": "restore_island"
+    },
+    {
+      "event": "boss.defeated",
+      "asset_id": "sfx_boss_defeat_fanfare",
+      "bus": "SFX",
+      "position": "none"
+    },
+    {
+      "event": "boss.defeated",
+      "asset_id": "mus_isl01_day_loop",
+      "bus": "Music",
+      "position": "none",
+      "music_action": "restore_island"
+    },
+    {
+      "event": "quest.step_progressed",
+      "asset_id": "sfx_quest_complete",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "quest.completed",
+      "asset_id": "sfx_quest_complete",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "dex.new_species",
+      "asset_id": "sfx_new_species",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "tutorial.step_shown",
+      "asset_id": "sfx_tutorial_pop",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "world.island_entered",
+      "asset_id": "mus_isl01_day_loop",
+      "bus": "Music",
+      "position": "none",
+      "music_action": "restore_island"
+    },
+    {
+      "event": "cooking.level_changed",
+      "when": {
+        "level": "cooked"
+      },
+      "asset_id": "sfx_cook_done",
+      "bus": "SFX",
+      "position": "event_position",
+      "status": "mvp"
+    },
+    {
+      "event": "cooking.level_changed",
+      "when": {
+        "level": "burnt"
+      },
+      "asset_id": "sfx_burnt",
+      "bus": "SFX",
+      "position": "event_position",
+      "status": "mvp"
+    },
+    {
+      "event": "thief.approach_warning",
+      "asset_id": "sfx_egret_call",
+      "bus": "SFX",
+      "position": "event_position",
+      "status": "mvp"
+    },
+    {
+      "event": "thief.item_stolen",
+      "asset_id": "sfx_egret_steal",
+      "bus": "SFX",
+      "position": "none",
+      "status": "mvp"
+    },
+    {
+      "event": "dex.new_variant",
+      "asset_id": "sfx_rare_reveal",
+      "bus": "UI",
+      "position": "none",
+      "status": "mvp"
+    },
+    {
+      "event": "world.island_entered",
+      "when": {
+        "island_id": "isl_01_cu_lao"
+      },
+      "asset_id": "amb_river_day_loop",
+      "bus": "Ambience",
+      "position": "none"
+    },
+    {
+      "event": "world.island_entered",
+      "when": {
+        "island_id": "isl_02_rung_dua"
+      },
+      "asset_id": "amb_isl02_day_loop",
+      "bus": "Ambience",
+      "position": "none"
+    },
+    {
+      "event": "world.island_entered",
+      "when": {
+        "island_id": "isl_03_mui_da"
+      },
+      "asset_id": "amb_isl03_day_loop",
+      "bus": "Ambience",
+      "position": "none"
+    },
+    {
+      "event": "hunger.changed",
+      "asset_id": "sfx_hunger_low",
+      "bus": "UI",
+      "position": "none",
+      "cooldown_s": 60,
+      "when": {
+        "band": "low"
+      }
+    },
+    {
+      "event": "hunger.changed",
+      "asset_id": "sfx_hunger_low",
+      "bus": "UI",
+      "position": "none",
+      "cooldown_s": 60,
+      "when": {
+        "band": "empty"
+      }
+    },
+    {
+      "event": "hunger.ate",
+      "asset_id": "sfx_eat",
+      "bus": "SFX",
+      "position": "none"
+    },
+    {
+      "event": "lootbox.opened",
+      "asset_id": "sfx_lootbox_open",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "room.player_joined",
+      "asset_id": "sfx_player_join",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "room.player_left",
+      "asset_id": "sfx_player_leave",
+      "bus": "UI",
+      "position": "none"
+    },
+    {
+      "event": "network.connection_changed",
+      "asset_id": "sfx_connection_lost",
+      "bus": "UI",
+      "position": "none",
+      "cooldown_s": 3,
+      "when": {
+        "state": "disconnected"
+      }
+    }
+  ]
+}

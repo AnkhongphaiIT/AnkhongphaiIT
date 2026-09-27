@@ -1,0 +1,353 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design",
+    "notes": "Mỗi đảo có hai điểm câu và 5 loài. Lọc cần/mồi trước khi chuẩn hóa trọng số. Mồi miễn phí luôn có ít nhất một kết quả hợp lệ. Không sinh boss từ bảng thường."
+  },
+  "records": [
+    {
+      "id": "spt_01_ben_do",
+      "status": "slice",
+      "fallback_creature_id": "cre_tep",
+      "entries": [
+        {
+          "creature_id": "cre_tep",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_ro",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_cua_dong",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_tre",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_me",
+          "weight": 10,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        }
+      ]
+    },
+    {
+      "id": "spt_01_bai_bun",
+      "status": "slice",
+      "fallback_creature_id": "cre_tep",
+      "entries": [
+        {
+          "creature_id": "cre_tep",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_ro",
+          "weight": 20,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_cua_dong",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_tre",
+          "weight": 20,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_me",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        }
+      ]
+    },
+    {
+      "id": "spt_02_ben_do",
+      "status": "mvp",
+      "fallback_creature_id": "cre_ca_thoi_loi",
+      "entries": [
+        {
+          "creature_id": "cre_ca_thoi_loi",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_luon",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        },
+        {
+          "creature_id": "cre_ca_doi",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_cua_bun",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        },
+        {
+          "creature_id": "cre_tom_cang",
+          "weight": 10,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        }
+      ]
+    },
+    {
+      "id": "spt_02_bai_bun",
+      "status": "mvp",
+      "fallback_creature_id": "cre_ca_thoi_loi",
+      "entries": [
+        {
+          "creature_id": "cre_ca_thoi_loi",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_luon",
+          "weight": 20,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        },
+        {
+          "creature_id": "cre_ca_doi",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_cua_bun",
+          "weight": 20,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        },
+        {
+          "creature_id": "cre_tom_cang",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        }
+      ]
+    },
+    {
+      "id": "spt_03_ben_do",
+      "status": "mvp",
+      "fallback_creature_id": "cre_ca_nuc",
+      "entries": [
+        {
+          "creature_id": "cre_ca_nuc",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_chuon",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_trich",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_muc_ong",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        },
+        {
+          "creature_id": "cre_ca_hong",
+          "weight": 10,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        }
+      ]
+    },
+    {
+      "id": "spt_03_bai_bun",
+      "status": "mvp",
+      "fallback_creature_id": "cre_ca_nuc",
+      "entries": [
+        {
+          "creature_id": "cre_ca_nuc",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_chuon",
+          "weight": 20,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_ca_trich",
+          "weight": 30,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 1
+        },
+        {
+          "creature_id": "cre_muc_ong",
+          "weight": 20,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        },
+        {
+          "creature_id": "cre_ca_hong",
+          "weight": 15,
+          "bait_ids": [
+            "bait_bread",
+            "bait_worm",
+            "bait_shrimp_paste"
+          ],
+          "min_rod_tier": 2
+        }
+      ]
+    }
+  ]
+}

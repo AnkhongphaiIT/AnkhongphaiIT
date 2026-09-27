@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/upgrades.schema.json",
+  "title": "Nâng cấp",
+  "description": "data/content/upgrades.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_key",
+          "status",
+          "target",
+          "levels"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/upgrade_id"
+          },
+          "name_key": {
+            "$ref": "common.schema.json#/$defs/loc_key"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/status"
+          },
+          "target": {
+            "enum": [
+              "inventory.bag_slots",
+              "rod.reel_speed_mult"
+            ]
+          },
+          "levels": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "level",
+                "value",
+                "status"
+              ],
+              "description": "Giá nằm ở shops.json (nguồn chính thức của mọi giá)",
+              "properties": {
+                "level": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "value": {
+                  "type": "number"
+                },
+                "status": {
+                  "$ref": "common.schema.json#/$defs/status"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

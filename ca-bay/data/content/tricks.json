@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design"
+  },
+  "records": [
+    {
+      "id": "trick_air_smack",
+      "name_key": "trick_air_smack.name",
+      "desc_key": "trick_air_smack.desc",
+      "status": "slice",
+      "multiplier": 1.3,
+      "condition": {
+        "type": "creature_airborne"
+      },
+      "display_order": 1
+    },
+    {
+      "id": "trick_juggle",
+      "name_key": "trick_juggle.name",
+      "desc_key": "trick_juggle.desc",
+      "status": "slice",
+      "multiplier": 1.4,
+      "condition": {
+        "type": "creature_air_hits_min",
+        "value": 2
+      },
+      "display_order": 2,
+      "display_value": 2
+    },
+    {
+      "id": "trick_one_hit",
+      "name_key": "trick_one_hit.name",
+      "desc_key": "trick_one_hit.desc",
+      "status": "slice",
+      "multiplier": 1.2,
+      "condition": {
+        "type": "hits_to_ko_max",
+        "value": 1
+      },
+      "display_order": 3
+    },
+    {
+      "id": "trick_head",
+      "name_key": "trick_head.name",
+      "desc_key": "trick_head.desc",
+      "status": "slice",
+      "multiplier": 1.3,
+      "condition": {
+        "type": "hit_zone",
+        "value": "head"
+      },
+      "display_order": 4
+    },
+    {
+      "id": "trick_long_throw",
+      "name_key": "trick_long_throw.name",
+      "desc_key": "trick_long_throw.desc",
+      "status": "slice",
+      "multiplier": 1.35,
+      "condition": {
+        "type": "all_of",
+        "conditions": [
+          {
+            "type": "tool_kind",
+            "value": "throwable"
+          },
+          {
+            "type": "distance_min",
+            "value": 12
+          }
+        ]
+      },
+      "display_order": 5,
+      "display_value": 12
+    },
+    {
+      "id": "trick_face_to_face",
+      "name_key": "trick_face_to_face.name",
+      "desc_key": "trick_face_to_face.desc",
+      "status": "slice",
+      "multiplier": 1.15,
+      "condition": {
+        "type": "all_of",
+        "conditions": [
+          {
+            "type": "tool_kind",
+            "value": "melee"
+          },
+          {
+            "type": "distance_max",
+            "value": 0.8
+          }
+        ]
+      },
+      "display_order": 6,
+      "display_value": 0.8
+    },
+    {
+      "id": "trick_spin_360",
+      "name_key": "trick_spin_360.name",
+      "desc_key": "trick_spin_360.desc",
+      "status": "slice",
+      "multiplier": 1.6,
+      "condition": {
+        "type": "yaw_rotation_min",
+        "value": 360
+      },
+      "display_order": 7,
+      "display_value": 360
+    },
+    {
+      "id": "trick_perfect_yank",
+      "name_key": "trick_perfect_yank.name",
+      "desc_key": "trick_perfect_yank.desc",
+      "status": "slice",
+      "multiplier": 1.2,
+      "condition": {
+        "type": "perfect_yank"
+      },
+      "display_order": 8
+    },
+    {
+      "id": "trick_player_airborne",
+      "name_key": "trick_player_airborne.name",
+      "desc_key": "trick_player_airborne.desc",
+      "status": "mvp",
+      "multiplier": 1.2,
+      "condition": {
+        "type": "player_airborne"
+      },
+      "display_order": 9
+    },
+    {
+      "id": "trick_combo",
+      "name_key": "trick_combo.name",
+      "desc_key": "trick_combo.desc",
+      "status": "mvp",
+      "multiplier": 1.15,
+      "condition": {
+        "type": "chain_window_max",
+        "value": 3.0
+      },
+      "display_order": 10,
+      "display_value": 3
+    },
+    {
+      "id": "trick_explosive",
+      "name_key": "trick_explosive.name",
+      "desc_key": "trick_explosive.desc",
+      "status": "mvp",
+      "multiplier": 1.35,
+      "condition": {
+        "type": "tool_kind",
+        "value": "explosive"
+      },
+      "display_order": 11
+    }
+  ]
+}

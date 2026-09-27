@@ -1,0 +1,104 @@
+{
+  "schema_version": "2.0.0",
+  "game_version": "0.1.0",
+  "content_version": "2.0.0",
+  "save_version": 9,
+  "account_id": "8c1e967c-17a4-4c2e-a03c-2df7b1188069",
+  "updated_at": "2026-09-27T13:00:00Z",
+  "active_playtime_s": 420,
+  "profile": {
+    "display_name": "NguoiCau01"
+  },
+  "currencies": {
+    "money": 20,
+    "festival_ticket": 0,
+    "cosmetic_dust": 0
+  },
+  "player": {
+    "hunger": 86,
+    "hp": 100,
+    "safe_island_id": "isl_01_cu_lao",
+    "safe_spawn_zone_id": "zone_01_spawn"
+  },
+  "inventory": {
+    "capacity": 3,
+    "bag": [
+      {
+        "uid": "405a5a10-d73c-45a7-bb9d-a0fc74744903",
+        "owner_account_id": "8c1e967c-17a4-4c2e-a03c-2df7b1188069",
+        "caught_by_account_id": "8c1e967c-17a4-4c2e-a03c-2df7b1188069",
+        "def_kind": "creature",
+        "def_id": "cre_ca_ro",
+        "variant_id": null,
+        "base_value": 5,
+        "trick_mult_milli": 1000,
+        "cook_level": "raw",
+        "flags": [],
+        "created_at": "2026-09-27T12:59:50Z"
+      }
+    ],
+    "recovery_inbox": [],
+    "bait_counts": {
+      "bait_worm": 3
+    },
+    "food_counts": {
+      "item_rice_ball": 1,
+      "item_grilled_fish": 0
+    },
+    "selected_bait_id": "bait_worm",
+    "tools_owned": [
+      "tool_hand",
+      "tool_slipper"
+    ],
+    "rods_owned": [
+      "rod_bamboo"
+    ],
+    "equipped_rod_id": "rod_bamboo",
+    "equipped_id": "rod_bamboo",
+    "upgrades": {
+      "upg_backpack": 0,
+      "upg_reel_speed": 0
+    }
+  },
+  "progress": {
+    "quests": {},
+    "bosses_defeated": [],
+    "islands_unlocked": [
+      "isl_01_cu_lao"
+    ],
+    "tutorial_done": [
+      "cast",
+      "reel",
+      "smack",
+      "pickup",
+      "sell"
+    ],
+    "npc_flags": {}
+  },
+  "collection": {
+    "species": {
+      "cre_ca_ro": {
+        "caught": 3,
+        "best_value": 5,
+        "variants_seen": []
+      }
+    },
+    "tricks_seen": []
+  },
+  "cosmetics": {
+    "owned": [],
+    "equipped": {}
+  },
+  "lootbox_progress": {
+    "valid_owned_fish_sales_total": 2,
+    "fish_sale_ticket_milestones_awarded": 0,
+    "quest_ticket_awarded_ids": [],
+    "boxes": {
+      "lootbox_ben_lang": {
+        "table_version": "1.0.0",
+        "opens_total": 0
+      }
+    },
+    "last_receipt_id": null
+  }
+}

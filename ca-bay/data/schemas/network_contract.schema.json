@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/network_contract.schema.json",
+  "title": "Network contract v1 specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol_version",
+    "status",
+    "authority",
+    "transport",
+    "limits",
+    "envelope",
+    "authentication_payload",
+    "http_endpoints",
+    "messages",
+    "errors",
+    "invariants"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "protocol_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "const": "design_specification_not_implemented"
+    },
+    "authority": {
+      "const": "dedicated_godot_server_with_transactional_persistence"
+    },
+    "transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "class",
+        "public_scheme",
+        "local_scheme",
+        "rpc_transfer_mode",
+        "browser_is_client_only",
+        "authentication",
+        "secrets_in_url"
+      ],
+      "properties": {
+        "class": {
+          "const": "WebSocketMultiplayerPeer"
+        },
+        "public_scheme": {
+          "const": "wss"
+        },
+        "local_scheme": {
+          "const": "ws"
+        },
+        "rpc_transfer_mode": {
+          "const": "reliable"
+        },
+        "browser_is_client_only": {
+          "const": true
+        },
+        "authentication": {
+          "const": "single_use_ticket_in_SceneMultiplayer_auth_message"
+        },
+        "secrets_in_url": {
+          "const": false
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "players_per_room",
+        "initial_concurrent_rooms",
+        "simulation_hz",
+        "input_hz",
+        "snapshot_hz",
+        "interpolation_ms",
+        "max_client_payload_bytes",
+        "max_server_payload_bytes",
+        "max_pending_messages_per_peer",
+        "max_unacked_snapshot_sets",
+        "max_snapshot_reassembly_bytes",
+        "snapshot_chunk_expiry_s",
+        "websocket_auth_timeout_s",
+        "ticket_ttl_s",
+        "heartbeat_interval_s",
+        "heartbeat_timeout_s",
+        "reconnect_grace_s",
+        "afk_timeout_s",
+        "checkpoint_interval_s",
+        "access_token_ttl_s",
+        "refresh_session_max_s",
+        "idempotency_retention_days"
+      ],
+      "properties": {
+        "players_per_room": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "initial_concurrent_rooms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "simulation_hz": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "input_hz": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "snapshot_hz": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "interpolation_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_client_payload_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_server_payload_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_pending_messages_per_peer": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_unacked_snapshot_sets": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_snapshot_reassembly_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "snapshot_chunk_expiry_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "websocket_auth_timeout_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "ticket_ttl_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "heartbeat_interval_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "heartbeat_timeout_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reconnect_grace_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "afk_timeout_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "checkpoint_interval_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "access_token_ttl_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "refresh_session_max_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "idempotency_retention_days": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "envelope": {
+      "$ref": "#/$defs/payloadSchema"
+    },
+    "authentication_payload": {
+      "$ref": "#/$defs/payloadSchema"
+    },
+    "http_endpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "method",
+          "path",
+          "auth",
+          "purpose"
+        ],
+        "properties": {
+          "method": {
+            "enum": [
+              "GET",
+              "POST",
+              "DELETE"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "auth": {
+            "enum": [
+              "public",
+              "public_rate_limited",
+              "access_token",
+              "refresh_token",
+              "recovery_code_rate_limited",
+              "private_service"
+            ]
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 64,
+      "uniqueItems": false
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "direction",
+          "stage",
+          "max_per_second",
+          "durable",
+          "description",
+          "payload_schema"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z]+(?:\\.[a-z_]+)+$"
+          },
+          "direction": {
+            "enum": [
+              "client_to_server",
+              "server_to_client"
+            ]
+          },
+          "stage": {
+            "const": "authenticated"
+          },
+          "max_per_second": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 60
+          },
+          "durable": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "payload_schema": {
+            "$ref": "#/$defs/payloadSchema"
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": false
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Z0-9_]+$"
+      },
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true
+    },
+    "invariants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "minItems": 1,
+      "maxItems": 64,
+      "uniqueItems": false
+    }
+  },
+  "$defs": {
+    "payloadSchema": {
+      "type": "object",
+      "required": [
+        "type",
+        "properties",
+        "required",
+        "additionalProperties"
+      ],
+      "properties": {
+        "type": {
+          "const": "object"
+        },
+        "properties": {
+          "type": "object"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "additionalProperties": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/collision_layers.schema.json",
+  "title": "Lớp va chạm",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "layers"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "layers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "layer",
+          "name",
+          "used_by",
+          "mask"
+        ],
+        "properties": {
+          "layer": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 32
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z_]+$"
+          },
+          "used_by": {
+            "type": "string"
+          },
+          "mask": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 32
+            }
+          }
+        }
+      }
+    }
+  }
+}

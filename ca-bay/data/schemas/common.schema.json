@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cabay.local/schemas/common.schema.json",
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "status": {
+      "enum": [
+        "slice",
+        "mvp",
+        "post_mvp",
+        "planned"
+      ],
+      "description": "slice = vertical slice (P0); mvp = P1; post_mvp = P2; planned = chưa làm, chỉ giữ chỗ"
+    },
+    "loc_key": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "asset_id": {
+      "type": "string",
+      "pattern": "^(mdl|mat|shd|tex|env|vfx|anm|ui|ico|fnt|sfx|mus|amb|vo)_[a-z0-9_]+$"
+    },
+    "creature_id": {
+      "type": "string",
+      "pattern": "^cre_[a-z0-9_]+$"
+    },
+    "bait_id": {
+      "type": "string",
+      "pattern": "^bait_[a-z0-9_]+$"
+    },
+    "rod_id": {
+      "type": "string",
+      "pattern": "^rod_[a-z0-9_]+$"
+    },
+    "tool_id": {
+      "type": "string",
+      "pattern": "^tool_[a-z0-9_]+$"
+    },
+    "item_id": {
+      "type": "string",
+      "pattern": "^item_[a-z0-9_]+$"
+    },
+    "island_id": {
+      "type": "string",
+      "pattern": "^isl_[0-9]{2}_[a-z0-9_]+$"
+    },
+    "zone_id": {
+      "type": "string",
+      "pattern": "^zone_[0-9]{2}_[a-z0-9_]+$"
+    },
+    "spawn_table_id": {
+      "type": "string",
+      "pattern": "^spt_[0-9]{2}_[a-z0-9_]+$"
+    },
+    "quest_id": {
+      "type": "string",
+      "pattern": "^quest_[0-9]{2}_[a-z0-9_]+$"
+    },
+    "step_id": {
+      "type": "string",
+      "pattern": "^step_[a-z0-9_]+$"
+    },
+    "shop_id": {
+      "type": "string",
+      "pattern": "^shop_[a-z0-9_]+$"
+    },
+    "entry_id": {
+      "type": "string",
+      "pattern": "^entry_[a-z0-9_]+$"
+    },
+    "npc_id": {
+      "type": "string",
+      "pattern": "^npc_[a-z0-9_]+$"
+    },
+    "trick_id": {
+      "type": "string",
+      "pattern": "^trick_[a-z0-9_]+$"
+    },
+    "boss_id": {
+      "type": "string",
+      "pattern": "^boss_[a-z0-9_]+$"
+    },
+    "move_id": {
+      "type": "string",
+      "pattern": "^move_[a-z0-9_]+$"
+    },
+    "upgrade_id": {
+      "type": "string",
+      "pattern": "^upg_[a-z0-9_]+$"
+    },
+    "variant_id": {
+      "type": "string",
+      "pattern": "^var_[a-z0-9_]+$"
+    },
+    "event_name": {
+      "type": "string",
+      "pattern": "^[a-z]+\\.[a-z_]+$"
+    },
+    "range_f": {
+      "type": "object",
+      "required": [
+        "min",
+        "max"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "value_status",
+        "origin",
+        "owner_role"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "value_status": {
+          "enum": [
+            "start_value_needs_playtest",
+            "playtested",
+            "final"
+          ],
+          "description": "Mọi số trong file là giá trị khởi đầu cần thử nghiệm cho tới khi đổi trạng thái"
+        },
+        "origin": {
+          "enum": [
+            "proposed_for_new_game"
+          ],
+          "description": "Dữ liệu tự thiết kế cho game mới — KHÔNG phải dữ liệu trích từ game gốc (xem references/)"
+        },
+        "owner_role": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "file_header": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "meta"
+      ],
+      "properties": {
+        "schema_version": {
+          "$ref": "#/$defs/semver"
+        },
+        "meta": {
+          "$ref": "#/$defs/meta"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "value_status": "start_value_needs_playtest",
+    "origin": "proposed_for_new_game",
+    "owner_role": "game_design"
+  },
+  "records": [
+    {
+      "id": "rod_bamboo",
+      "name_key": "rod_bamboo.name",
+      "status": "slice",
+      "tier": 1,
+      "charge_time_s": 0.9,
+      "cast_distance_m": {
+        "min": 4,
+        "max": 14
+      },
+      "reel_speed_mps": 3.0,
+      "max_line_length_m": 25,
+      "strain_resist": 1.0,
+      "assets": {
+        "model": "mdl_tool_rod_bamboo",
+        "icon": "ico_rod_bamboo"
+      }
+    },
+    {
+      "id": "rod_carbon",
+      "name_key": "rod_carbon.name",
+      "status": "mvp",
+      "tier": 2,
+      "charge_time_s": 0.8,
+      "cast_distance_m": {
+        "min": 5,
+        "max": 18
+      },
+      "reel_speed_mps": 4.0,
+      "max_line_length_m": 30,
+      "strain_resist": 1.4,
+      "assets": {
+        "model": "mdl_tool_rod_carbon",
+        "icon": "ico_rod_bamboo"
+      }
+    }
+  ]
+}
