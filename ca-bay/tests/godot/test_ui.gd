@@ -51,3 +51,33 @@ func test_dynamic_keys_translated(t) -> void:
 	for isl in IslandLayout.LAYOUTS:
 		for zid in IslandLayout.LAYOUTS[isl]["fishing"]:
 			t.ok(Loc.has_key("zone.%s.name" % zid), "thiếu tên vùng " + zid)
+
+
+func test_percent_text_and_no_unsupported_format(t) -> void:
+	# Lỗi cũ: bảng tỉ lệ hộp quà hiện "Tỷ lệ: %g%" vì GDScript không hỗ trợ %g.
+	var old := Loc.locale
+	Loc.locale = "vi"
+	t.eq(UIKit.percent(100.0 / 6.0), "16,67", "vi dùng dấu phẩy, 2 chữ số")
+	t.eq(UIKit.percent(20.0), "20", "bỏ số 0 thừa")
+	Loc.locale = "en"
+	t.eq(UIKit.percent(12.5), "12.5", "en dùng dấu chấm")
+	Loc.locale = old
+	var re := RegEx.new()
+	re.compile("\"[^\"\\n]*%[-+ 0#]*[0-9.]*[gGeEiu][^\"\\n]*\"[ \\t]*%")
+	var bad: Array = []
+	for dir in ["res://client/scripts/", "res://server/gameplay/", "res://shared/"]:
+		for f in _gd_files(dir):
+			var src := FileAccess.get_file_as_string(f)
+			for m in re.search_all(src):
+				bad.append("%s: %s" % [f, m.get_string()])
+	t.eq(bad, [], "không dùng định dạng printf GDScript không hỗ trợ (%g/%e/%i/%u)")
+
+
+func _gd_files(dir: String) -> Array:
+	var out: Array = []
+	for f in DirAccess.get_files_at(dir):
+		if f.ends_with(".gd"):
+			out.append(dir + f)
+	for d in DirAccess.get_directories_at(dir):
+		out.append_array(_gd_files(dir + d + "/"))
+	return out
