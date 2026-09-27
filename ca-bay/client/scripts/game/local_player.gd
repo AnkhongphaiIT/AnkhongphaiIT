@@ -76,10 +76,16 @@ func set_equipped(id: String) -> void:
 	var cos_id: String = session.save.get("cosmetics", {}).get("equipped", {}).get(id, "")
 	if cos_id != "" and ContentDB.cosmetics.has(cos_id):
 		tint = Color(ContentDB.cosmetics[cos_id]["color_hex"])
+	_tip_node = null
+	if id == "tool_hand":
+		# tay không: chính bàn tay góc nhìn thứ nhất là "công cụ", không gắn thêm mô hình
+		tool_holder.position = Vector3.ZERO
+		tool_holder.rotation = Vector3.ZERO
+		play_fp("anm_fp_equip", true)
+		return
 	var m := Models.tool_model(id, tint)
 	m.material_override = _viewmodel_material()
 	tool_holder.add_child(m)
-	_tip_node = null
 	if id.begins_with("rod_"):
 		m.rotation_degrees = Vector3(34, -12, 0)
 		m.position = Vector3(0.04, -0.02, 0.02)

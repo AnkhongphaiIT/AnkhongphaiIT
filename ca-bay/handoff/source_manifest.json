@@ -296,8 +296,8 @@
       "files": [
         {
           "path": "res://assets/models/fp/mdl_fp_hands.tscn",
-          "bytes": 8843,
-          "sha256": "1262fc63adb2191e1d37b135b59f40970ef9cb85e5fcaf9d484d72a0a70a2877"
+          "bytes": 35759,
+          "sha256": "8da3cf63cc168a1fc540211ae0371ff770fa423fa87a5fd63de0e0ef978db792"
         }
       ],
       "source": {
@@ -306,11 +306,11 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 84.0,
+        "triangles": 364,
         "size": [
-          0.12,
-          0.1,
-          0.31
+          0.14,
+          0.14,
+          0.39
         ]
       }
     },
@@ -1388,8 +1388,8 @@
       "files": [
         {
           "path": "res://assets/icons/ico_tool_hand.png",
-          "bytes": 3311,
-          "sha256": "4c8d816360fd5a7973114fdded7a739b7f1bed155933c649c7f275d59fbf9431"
+          "bytes": 6012,
+          "sha256": "f68a77e18f00f60090fc3325e01db5dbc133a08e8f36d20447ed4692b02a232a"
         }
       ],
       "source": {
@@ -1399,8 +1399,8 @@
       },
       "measure": {
         "size": [
-          256.0,
-          256.0
+          256,
+          256
         ],
         "alpha": true
       }

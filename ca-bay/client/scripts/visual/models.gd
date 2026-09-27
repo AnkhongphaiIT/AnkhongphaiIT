@@ -257,15 +257,24 @@ static func person(skin: Color, shirt: Color, pants: Color, hat: String = "non_l
 	return root
 
 
-## Bàn tay góc nhìn thứ nhất: găng 4 ngón hoạt hình + cổ tay áo.
+## Bàn tay góc nhìn thứ nhất: nắm tay bo tròn low-poly (đang cầm đồ) + cẳng tay áo có viền cổ tay.
+## (Bản cũ ghép hộp vuông: nhìn từ camera thành "bậc thang".)
 static func fp_hand(skin: Color, sleeve: Color) -> MeshInstance3D:
-	return mesh_instance("fp_hand_%s_%s" % [skin.to_html(), sleeve.to_html()], func():
+	return mesh_instance("fp_hand3_%s_%s" % [skin.to_html(), sleeve.to_html()], func():
 		var k := MeshKit.new()
-		k.box(Vector3(0, 0, 0.12), Vector3(0.1, 0.1, 0.18), sleeve)
-		k.box(Vector3(0, 0, 0), Vector3(0.1, 0.05, 0.1), skin)
+		# cẳng tay trong tay áo, chạy lùi về phía camera
+		k.cylinder(Vector3(0.0, -0.012, 0.32), Vector3(0.0, 0.0, 0.11), 0.066, 0.056, 10, sleeve)
+		k.cylinder(Vector3(0.0, 0.0, 0.118), Vector3(0.0, 0.0, 0.088), 0.064, 0.064, 10, sleeve.lightened(0.28))
+		k.cylinder(Vector3(0.0, 0.0, 0.095), Vector3(0.0, 0.0, 0.035), 0.042, 0.047, 8, skin.darkened(0.06))
+		# nắm tay
+		k.ellipsoid(Vector3(0.0, 0.0, 0.0), Vector3(0.056, 0.043, 0.06), 9, 5, skin, skin.darkened(0.16))
+		# hàng khớp ngón cuộn lại phía trước
 		for i in 4:
-			k.box(Vector3(-0.035 + i * 0.024, 0, -0.07), Vector3(0.02, 0.035, 0.06), skin.darkened(0.03 * i))
-		k.box(Vector3(0.06, 0, -0.01), Vector3(0.025, 0.03, 0.05), skin)
+			var x := -0.036 + i * 0.024
+			k.ellipsoid(Vector3(x, -0.004 - 0.003 * absf(i - 1.5), -0.052), Vector3(0.0135, 0.019, 0.019), 6, 4, skin.lightened(0.04), skin.darkened(0.12))
+		# ngón cái ôm bên hông
+		k.ellipsoid(Vector3(-0.052, 0.012, -0.018), Vector3(0.017, 0.015, 0.032), 6, 4, skin, skin.darkened(0.1),
+			Basis(Vector3.UP, 0.5))
 		return k.commit_mesh())
 
 

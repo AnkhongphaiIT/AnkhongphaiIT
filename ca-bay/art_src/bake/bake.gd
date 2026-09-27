@@ -20,15 +20,22 @@ func _ready() -> void:
 	if typeof(old) == TYPE_DICTIONARY:
 		for k in ["models", "icons", "misc"]:
 			report[k] = old.get(k, {})
-	if all or "--models" in args:
+	# --only=<id>[,<id>…]: chỉ bake các asset này (tránh sinh lại mọi file — Godot đổi unique_id mỗi lần lưu)
+	var only: Array = []
+	for a0 in args:
+		if a0.begins_with("--only="):
+			only = a0.trim_prefix("--only=").split(",")
+	if not only.is_empty():
+		all = false
+	if all or "--models" in args or not only.is_empty():
 		for a in reg["assets"]:
-			if a["type"] == "model":
+			if a["type"] == "model" and (only.is_empty() or a["id"] in only):
 				_bake_model(a["id"], a["path"])
 	if all or "--misc" in args:
 		_bake_misc(reg)
-	if all or "--icons" in args or "--missing-icons" in args:
+	if all or "--icons" in args or "--missing-icons" in args or not only.is_empty():
 		for a in reg["assets"]:
-			if a["type"] == "icon":
+			if a["type"] == "icon" and (only.is_empty() or a["id"] in only):
 				# --missing-icons: chỉ bake icon chưa có file (không sinh lại icon đã duyệt/đã commit)
 				if "--missing-icons" in args and FileAccess.file_exists(a["path"]):
 					continue
@@ -177,6 +184,7 @@ func icon_model(id: String) -> Node3D:
 		"ico_health": return _wrap(Models.heart())
 		"ico_rod_bamboo": return _wrap(Models.tool_model("rod_bamboo"))
 		"ico_bait_milk_tea": return _wrap(Models.bait("bait_milk_tea"))
+		"ico_tool_hand": return _wrap(Models.fp_hand(Models.SKINS[0], Color("#2F6FA8")))
 		"ico_upg_backpack": return _wrap(Models.backpack_display())
 		"ico_upg_reel_speed": return _wrap(Models.reel_display())
 	if rest.begins_with("tool_") or rest.begins_with("rod_"):
@@ -220,6 +228,8 @@ func _bake_icon(id: String, path: String) -> void:
 	vp.add_child(holder)
 	# khung hình: xoay 3/4, cân theo AABB
 	holder.rotation_degrees = Vector3(0, -125 if id.begins_with("ico_cre_") else -35, 0)
+	if id == "ico_tool_hand":
+		holder.rotation_degrees = Vector3(18, 150, 0)  # nắm tay hướng về camera, cổ tay áo ra sau
 	if id in ["ico_rod_bamboo", "ico_rod_carbon", "ico_tool_broom"]:
 		# vật dài mảnh: đặt chéo khung và làm dày để còn đọc được ở 64 px
 		holder.rotation_degrees = Vector3(0, 0, 0)

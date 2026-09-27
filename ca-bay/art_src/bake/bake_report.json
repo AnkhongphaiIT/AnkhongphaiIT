@@ -495,14 +495,14 @@
       "alpha": true,
       "path": "res://assets/icons/ico_tool_hand.png",
       "size": [
-        256.0,
-        256.0
+        256,
+        256
       ],
       "used_rect": [
-        24.0,
-        59.0,
-        208.0,
-        138.0
+        57,
+        90,
+        146,
+        80
       ]
     },
     "ico_tool_slingshot": {
@@ -918,11 +918,11 @@
     "mdl_fp_hands": {
       "path": "res://assets/models/fp/mdl_fp_hands.tscn",
       "size": [
-        0.12,
-        0.1,
-        0.31
+        0.14,
+        0.14,
+        0.39
       ],
-      "triangles": 84.0
+      "triangles": 364
     },
     "mdl_item_backpack_display": {
       "path": "res://assets/models/items/mdl_item_backpack_display.tscn",
