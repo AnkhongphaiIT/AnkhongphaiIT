@@ -1,10 +1,10 @@
 # NEXT_ACTIONS (tối đa 5, theo thứ tự)
 
-1. **Hồi quy sau P-025/P-026**: kết quả bot `content_all` + `quest_boss` 2 bot; xuất lại web, chạy `meta_isl2`, `boss_isl1`, `full_loop`, `coop2`; đóng gói lại web/server.
-2. **Cảm giác chơi**: độ khó cá cuối bến, hình NPC/tay cầm; icon mảnh (cần carbon, vỉ ruồi) cần làm dày; cân nhắc giảm cày đảo 3.
-3. **SAVE-03** (giết backend giữa giao dịch) và kiểm dung lượng/bộ nhớ bản web; F3 hiển thị FPS/bộ nhớ cho buổi thử trên máy thật.
-4. **Chờ chủ dự án** (không chặn việc khác): NEED-HOST, NEED-ITCH, NEED-CONTACT, NEED-VOICE-LICENSE/voice_v1, relay batch ChatGPT b01/b02, NEED-DEVICES cho buổi playtest 60 phút.
-5. Cập nhật `reports/*`, commit + push sau mỗi mốc.
+1. **Nhận kết quả agent QA WP-12** (mất mạng 10/60/100 s, mạng xấu qua proxy, boss co-op nâng cao, giết room giữa trận boss): đọc diff `tests/bots/**`, `tests/integration/**`, chạy lại, sửa lỗi sản phẩm được báo, commit.
+2. **Làm đẹp còn thô**: tay góc nhìn thứ nhất, NPC, icon mảnh (cần carbon, vỉ ruồi); nhãn 3D tên boss trùng thanh máu HUD khi boss vừa tới.
+3. **PERF-01 phần làm được**: ghi bộ nhớ JS/wasm và thời gian tải trong Chromium; chuẩn bị bảng đo cho máy thật (F3/"Hiện FPS" trong Tùy chọn).
+4. **Chờ chủ dự án** (không chặn việc khác): NEED-HOST, NEED-ITCH, NEED-CONTACT, NEED-VOICE-LICENSE/voice_v1, NEED-DEVICES (buổi thử 60 phút có máy Firefox), relay batch ChatGPT b01/b02.
+5. Sau mỗi mốc: cập nhật `reports/*`, đóng gói lại web/server, commit + push.
 
 ## Lệnh tiếp tục đã kiểm chứng
 
@@ -24,4 +24,7 @@ python3 tests/integration/run_bots.py --scenario content_all --bots 1 --timeout 
 python3 tests/integration/crash_backend.py --kills 6                                   # SAVE-03: SIGKILL backend giữa giao dịch
 python3 tests/web/run_web_e2e.py --scenario boss_isl1 --seed-stage isl1_boss          # boss trên trình duyệt với tài khoản checkpoint
 python3 tests/web/run_web_e2e.py --scenario meta_isl2 --seed-stage isl2_start         # hộp quà, nướng cá, đi đảo 2, nhận việc
+python3 tests/web/run_web_e2e.py --scenario save01_cross --seed-stage isl2_start      # SAVE-01 đổi máy khác origin
+python3 tests/web/run_web_e2e.py --scenario boss_isl3 --seed-stage isl3_boss          # boss đảo 3 (tương tự boss_isl2 / isl2_boss)
+python3 tests/web/run_web_e2e.py --scenario full_loop --iframe                        # chạy trong iframe khác site (giả lập itch.io)
 ```
