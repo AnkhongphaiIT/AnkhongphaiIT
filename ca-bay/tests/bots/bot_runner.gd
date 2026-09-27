@@ -1,7 +1,9 @@
 extends Node
 ## Chạy kịch bản nhiều bot qua protocol thật.
 ##   godot --headless --path . res://tests/bots/bot_runner.tscn -- --scenario=<tên> --bots=4 [--api=..] [--ws=..]
-##       [--timeout=giây] [--from-island=1..3 --user=<tên> --password=<mk>]
+##       [--timeout=giây] [--from-island=1..3 --user=<tên> --password=<mk>] [--all-species]
+## Kịch bản: connect4, fish_loop, reconnect, negative, quest_boss, content_all, takeover, restart, two_rooms,
+##   summon_replay, kick_cleanup, pickup_blink. Chạy kèm stack: tests/integration/run_bots.py (cổng 8797/8920).
 ## In "BOTRESULT {json}" rồi thoát (0 = đạt). Kịch bản cần điều phối bên ngoài (restart) in "BOTSIGNAL <tên>".
 
 const Bot := preload("res://tests/bots/bot.gd")
@@ -9,10 +11,11 @@ const Bot := preload("res://tests/bots/bot.gd")
 var bots: Array = []
 var endpoints: Dictionary
 var result := {"scenario": "", "ok": false, "checks": {}, "notes": [], "timings": {}}
-var opts := {"timeout": 600.0, "from_island": 1, "user": "", "password": ""}
+var opts := {"timeout": 600.0, "from_island": 1, "user": "", "password": "", "all_species": false}
 var _t0 := 0
 var _mark_t := 0
 var _finished := false
+var last_summon_op := {}
 
 
 func _ready() -> void:
@@ -31,6 +34,8 @@ func _ready() -> void:
 			opts["user"] = a.substr(7)
 		elif a.begins_with("--password="):
 			opts["password"] = a.substr(11)
+		elif a == "--all-species":
+			opts["all_species"] = true
 	endpoints = Endpoints.load_endpoints()
 	result["scenario"] = scenario
 	result["bots"] = n
@@ -61,6 +66,12 @@ func _ready() -> void:
 			ok = await sc_connect(1) and await sc_restart()
 		"two_rooms":
 			ok = await sc_two_rooms()
+		"pickup_blink":
+			ok = await sc_connect(1) and await sc_pickup_blink()
+		"summon_replay":
+			ok = await sc_summon_replay()
+		"kick_cleanup":
+			ok = await sc_connect(2) and await sc_kick_cleanup()
 		_:
 			result["notes"].append("không có kịch bản " + scenario)
 	_finish(ok, "")
@@ -564,6 +575,7 @@ func island_boss(idx: int, replay_checks: bool) -> bool:
 			check("%s_boss_summon_committed" % tag, false, {"attempt": attempt, "status": rs.get("status"), "error": rs.get("error_code")})
 			return false
 		summon_op = {"op_id": rs["op_id_sent"], "esv": rs["esv_sent"], "encounter_id": (rs.get("receipt", {}) if typeof(rs.get("receipt")) == TYPE_DICTIONARY else {}).get("encounter_id", "")}
+		last_summon_op = summon_op
 		await summoner.wait_until(func(): return not summoner.last_event("boss.summoned", "", bases[0]).is_empty(), 6.0)
 		var ev: Dictionary = summoner.last_event("boss.summoned", "", bases[0])
 		if ev.is_empty():
@@ -624,6 +636,9 @@ func island_boss(idx: int, replay_checks: bool) -> bool:
 				if e["kind"] == "boss":
 					return false
 			return true, 10.0)
+		# quay lại cọc (trong tầm gọi) để lần gửi lại thật sự tới backend, không bị room server chặn vì xa cọc
+		await summoner.nav_to(post + dir * 2.0 + perp * -1.5, 0.6, 30.0)
+		await summoner.sleep(1.0)
 		var s_before: Dictionary = await summoner.server_save()
 		var rb_base: int = summoner.events.size()
 		var rr: Dictionary = await summoner.durable_raw("boss.summon", {"boss_id": boss_id, "zone_id": spot["zone_id"]}, summon_op["op_id"], summon_op["esv"])
@@ -634,6 +649,7 @@ func island_boss(idx: int, replay_checks: bool) -> bool:
 			if e["kind"] == "boss":
 				boss_ent = true
 		var s_after: Dictionary = await summoner.server_save()
+		check("%s_replay_summon_reached_backend" % tag, str(rr.get("error_code", "")) not in ["OUT_OF_RANGE", "COOLDOWN"] and rr.get("status", "") in ["committed", "rejected"], rr)
 		check("%s_replay_summon_same_op_no_new_encounter" % tag, again.is_empty() and not boss_ent,
 			{"replay_status": rr.get("status"), "replay_error": rr.get("error_code"), "boss_summoned_again": again.size(), "boss_entity": boss_ent,
 			"encounter_id": summon_op["encounter_id"]})
@@ -677,6 +693,70 @@ func island_finish(b, idx: int) -> Dictionary:
 		var evs: Array = b.events_named("progress.island_unlocked", ev_base, b.api.account_id).filter(func(e): return e["event_payload"].get("island_id", "") == nxt)
 		out["unlock_events"] = evs.size()
 		out["ok"] = out["ok"] and out["unlocked"] and evs.size() == 1
+	return out
+
+
+## Một bot: bắt đủ các loài thường của vùng bến đảo idx (bảng spawn thật). Loài cần cần câu bậc cao hơn → mua ở sạp đảo
+## (tiền kiếm từ nhiệm vụ/bán cá), trang bị rồi câu tiếp. Túi đầy → bán cá ở sạp. Chỉ ghi nhận qua save server (collection).
+func collect_species(b, idx: int) -> Dictionary:
+	var isl: String = ContentDB.island_order[idx]
+	var out := {"ok": false, "bot": b.index, "casts": 0, "skipped": 0, "sold": 0, "bought": [], "new": []}
+	var t0 := Time.get_ticks_msec()
+	var table: Dictionary = {}
+	for z in ContentDB.islands[isl]["zones"]:
+		if z.get("kind", "") == "fishing" and String(z["zone_id"]).ends_with("ben_do"):
+			table = ContentDB.spawn_tables[z["spawn_table_id"]]
+	var tier_of := {}
+	for e in table.get("entries", []):
+		tier_of[e["creature_id"]] = int(e["min_rod_tier"])
+	var shop := IslandLayout.shop_zone(isl)
+	for guard in 60:
+		var missing: Array = tier_of.keys().filter(func(cid): return not b.save["collection"]["species"].has(cid))
+		if missing.is_empty():
+			break
+		var rod_tier := int(ContentDB.rods[b.save["inventory"]["equipped_rod_id"]]["tier"])
+		var need := 0
+		for cid in missing:
+			need = maxi(need, int(tier_of[cid]))
+		if need > rod_tier:
+			for en in ContentDB.shops[shop["shop_id"]]["entries"]:
+				var g: Dictionary = en["grant"]
+				if g["kind"] == "rod" and int(ContentDB.rods[g["id"]]["tier"]) >= need and g["id"] not in b.save["inventory"]["rods_owned"]:
+					await b.goto_shop()
+					var rb: Dictionary = await b.dur("shop.buy", {"shop_id": shop["shop_id"], "entry_id": en["entry_id"], "quantity": 1})
+					out["bought"].append([en["entry_id"], rb.get("status"), rb.get("error_code")])
+					break
+			for rid in b.save["inventory"]["rods_owned"]:
+				if int(ContentDB.rods[rid]["tier"]) > rod_tier:
+					await b.dur("equipment.equip", {"equipment_id": rid})
+					rod_tier = int(ContentDB.rods[rid]["tier"])
+			missing = missing.filter(func(cid): return int(tier_of[cid]) <= rod_tier)
+			if missing.is_empty():
+				out["error"] = "không mua được cần bậc %d" % need
+				return out
+		if b.bag_free() == 0:
+			await b.goto_shop()
+			var uids: Array = []
+			for it in b.save["inventory"]["bag"]:
+				if it["def_kind"] == "creature":
+					uids.append(it["uid"])
+			if uids.is_empty():
+				out["error"] = "túi đầy đồ không bán được"
+				return out
+			var rs: Dictionary = await b.dur("inventory.sell", {"item_uids": uids, "shop_id": shop["shop_id"]})
+			if rs.get("status", "") == "committed":
+				out["sold"] += uids.size()
+		var c: Dictionary = await b.catch_one(missing, 40)
+		out["casts"] += int(c.get("casts", 0))
+		out["skipped"] += int(c.get("skipped", 0))
+		if not c.get("ok", false):
+			out["error"] = "câu %s thất bại: %s" % [str(missing), str(c.get("error", ""))]
+			return out
+		out["new"].append(c.get("species", ""))
+	var left: Array = tier_of.keys().filter(func(cid): return not b.save["collection"]["species"].has(cid))
+	out["missing"] = left
+	out["t_s"] = snappedf((Time.get_ticks_msec() - t0) / 1000.0, 0.1)
+	out["ok"] = left.is_empty()
 	return out
 
 
@@ -743,10 +823,22 @@ func sc_content_all(n: int) -> bool:
 		var b = bots[0]
 		if not await b.login_as(String(opts["user"]), String(opts["password"])):
 			return check("login_existing_account", false)
+		# phiên chơi cũ (lần chạy trước, room server đã tắt) còn giữ lease → dùng đúng luồng sản phẩm: chuyển phiên sang đây
+		var sv0: Dictionary = await b.api.get_save()
+		var lease: Dictionary = sv0["data"].get("lease", {}) if sv0["ok"] else {}
+		if lease.get("active", false) and not lease.get("this_session", false):
+			var tk: Dictionary = await b.api.takeover()
+			note("tài khoản còn lease của phiên trước → POST /v1/account/takeover: %s" % str(tk["ok"]))
 		var isl0: String = ContentDB.island_order[start_idx]
 		if not check("from_island_unlocked_legitimately", isl0 in b.save["progress"]["islands_unlocked"], b.save["progress"]["islands_unlocked"]):
 			return false
 		var r: Dictionary = await b.api.create_room(isl0)
+		for i in 12:
+			# phòng của lần chạy trước còn "sống" tới khi mất nhịp tim 30 s (giới hạn initial_concurrent_rooms)
+			if r["ok"] or r["error_code"] != "SERVER_BUSY":
+				break
+			await b.sleep(5.0)
+			r = await b.api.create_room(isl0)
 		if not r["ok"]:
 			return check("create_room_on_%s" % isl0, false, r["error_code"])
 		b.room_id = r["data"]["room_id"]
@@ -774,6 +866,13 @@ func sc_content_all(n: int) -> bool:
 		mark("%s_finish" % tag)
 		if not ok:
 			return false
+		if opts["all_species"]:
+			var col: Array = await all_bots(func(b): return await collect_species(b, idx))
+			for i in col.size():
+				ok = check("%s_bot%d_all_species_of_island" % [tag, i], typeof(col[i]) == TYPE_DICTIONARY and col[i].get("ok", false), col[i]) and ok
+			mark("%s_species" % tag)
+			if not ok:
+				return false
 		var info := island_info(idx)
 		if info.has("next_island"):
 			if not check("%s_travel_to_%s" % [tag, info["next_island"]], await travel_all(info["next_island"]), bots.map(func(b): return b.island())):
@@ -794,6 +893,12 @@ func sc_content_all(n: int) -> bool:
 		for cid in sv["collection"]["species"]:
 			if not ContentDB.creatures[cid].get("is_boss", false):
 				normal += 1
+		if opts["all_species"]:
+			var tn := 0
+			for cid in ContentDB.creatures:
+				if not ContentDB.creatures[cid].get("is_boss", false):
+					tn += 1
+			all_ok = check("bot%d_all_normal_species_caught" % i, normal == tn, {"caught": normal, "total": tn}) and all_ok
 		all_ok = check("bot%d_all_bosses_quests_islands" % i, bosses_ok and quests_ok and sv["progress"]["islands_unlocked"].size() == ContentDB.island_order.size(),
 			{"bosses": sv["progress"]["bosses_defeated"], "islands": sv["progress"]["islands_unlocked"], "money": sv["currencies"]["money"],
 			"normal_species_caught": normal, "species": sv["collection"]["species"].keys()}) and all_ok
@@ -801,7 +906,8 @@ func sc_content_all(n: int) -> bool:
 		for cid in ContentDB.creatures:
 			if not ContentDB.creatures[cid].get("is_boss", false):
 				total_normal += 1
-		note("bot%d bắt %d/%d loài thường (CONTENT-01 đầy đủ còn yêu cầu đủ 15 loài; kịch bản này chỉ bắt loài nhiệm vụ)" % [i, normal, total_normal])
+		if not opts["all_species"]:
+			note("bot%d bắt %d/%d loài thường (CONTENT-01 đầy đủ cần đủ loài: chạy thêm --all-species)" % [i, normal, total_normal])
 	return all_ok
 
 
@@ -907,6 +1013,7 @@ func sc_restart() -> bool:
 	var c: Dictionary = await b.catch_one([], 30)
 	if not check("caught_fish_before_restart", c.get("ok", false), c):
 		return false
+	await b.sleep(2.0)  # để các server op phụ (tutorial.done do sự kiện nhặt) commit xong trước khi chụp save
 	var s1: Dictionary = await b.server_save()
 	var bag1: Array = s1["inventory"]["bag"].map(func(it): return it["uid"])
 	check("fish_in_bag_before_restart", c["uid"] in bag1, bag1)
@@ -936,6 +1043,8 @@ func sc_restart() -> bool:
 			n_fish += 1
 	check("replay_pickup_after_restart_no_duplicate", n_fish == 1 and int(s3["save_version"]) == int(s2["save_version"]),
 		{"replay_status": rp.get("status"), "copies": n_fish, "version": [s2["save_version"], s3["save_version"]]})
+	# hợp đồng: "Same op_id and same payload returns original result" → client gửi lại đúng payload cũ phải nhận lại receipt committed
+	check("replay_pickup_same_op_returns_original_result", rp.get("status", "") == "committed", {"status": rp.get("status"), "error": rp.get("error_code")})
 	# nhặt lại bằng op mới cũng không được
 	var rp2: Dictionary = await b.dur("inventory.pickup", {"item_uid": c["uid"]})
 	check("pickup_again_new_op_rejected", rp2.get("status", "") == "rejected", rp2.get("error_code"))
@@ -991,7 +1100,7 @@ func sc_two_rooms() -> bool:
 	if not await bots[0].create_room():
 		return check("create_room_A", false)
 	var okB: bool = await bots[2].create_room()
-	if not check("create_room_B_second_concurrent_room", okB, "backend từ chối phòng thứ hai (CABAY_MAX_ROOMS / initial_concurrent_rooms=%d)" % int(ContentDB.limit("initial_concurrent_rooms", 1))):
+	if not check("create_room_B_second_concurrent_room", okB, "ok" if okB else "backend từ chối phòng thứ hai (CABAY_MAX_ROOMS / initial_concurrent_rooms=%d)" % int(ContentDB.limit("initial_concurrent_rooms", 1))):
 		return false
 	var rA: Dictionary = await bots[1].join_by_code(bots[0].invite_code)
 	var rB: Dictionary = await bots[3].join_by_code(bots[2].invite_code)
@@ -1010,6 +1119,12 @@ func sc_two_rooms() -> bool:
 	# cùng tọa độ: bot0≡bot2 (ô bến 0), bot1≡bot3 (ô bến 1)
 	for b in bots:
 		b.slot = b.index % 2
+	# dép của Cô Ba (để đập xỉu cá) — mỗi bot tự nhận trong phòng của mình
+	var gifts: Array = await all_bots(func(b):
+		await b.goto_npc("npc_co_ba")
+		await b.talk("npc_co_ba")
+		return await b.wait_until(func(): return "tool_slipper" in b.save["inventory"]["tools_owned"], 5.0), 60.0)
+	check("all_got_slipper", gifts.all(func(g): return g == true), gifts)
 	# cả 4 câu cùng lúc (2 phòng, cùng ô bến)
 	var fished: Array = await all_bots(func(b): return await b.catch_one([], 30), 300.0)
 	check("all_four_caught_in_parallel_rooms", _ok_all(fished), fished.map(func(f): return [f.get("ok"), f.get("species"), f.get("casts")] if typeof(f) == TYPE_DICTIONARY else null))
@@ -1084,3 +1199,126 @@ func sc_two_rooms() -> bool:
 		ok_iso = ok_iso and bad_players.is_empty() and bad_actor == 0 and bad_room == 0 and own_actors.size() == 2
 	check("no_cross_room_leak_players_entities_events", ok_iso, leak)
 	return ok_iso
+
+
+# ================================================================== server tự ngắt phiên (rate_limit) phải dọn người chơi
+
+## bot1 gửi >40 player.input sai schema → server gửi session.closed rate_limit và ngắt. Người còn lại (bot0) phải thấy
+## bot1 chuyển sang "disconnected" (giữ chỗ trong grace) rồi vào lại được như mất mạng thường.
+func sc_kick_cleanup() -> bool:
+	var a = bots[0]
+	var k = bots[1]
+	var aid: String = k.api.account_id
+	k.keepalive = false
+	for i in 45:
+		var env := Protocol.make_envelope("player.input", {"move_x": 1.0001, "move_z": 0.0, "look_yaw_rad": 0.0, "look_pitch_rad": 0.0, "jump": false},
+			k.conn.connection_id, k.conn.room_id, k.conn.seq + 1)
+		k.conn.seq += 1
+		k.conn.send_raw(JSON.stringify(env))
+		await k.sleep(0.06)
+	await k.wait_until(func(): return "rate_limit" in k.session_closed, 5.0)
+	check("invalid_spam_gets_session_closed_rate_limit", "rate_limit" in k.session_closed, k.session_closed)
+	await k.wait_until(func(): return k.conn.state == "closed", 5.0)
+	check("kicked_client_connection_closed", k.conn.state == "closed", k.conn.state)
+	var seen_mode := [""]
+	var ok: bool = await a.wait_until(func():
+		for pl in a.snapshot.get("players", []):
+			if pl["account_id"] == aid:
+				seen_mode[0] = pl["mode"]
+				return pl["mode"] == "disconnected"
+		seen_mode[0] = "gone"
+		return true, 6.0)
+	check("kicked_player_detached_by_room_server", ok, {"mode_seen_by_other_player_6s_after_kick": seen_mode[0]})
+	k.session_closed = []
+	var back: bool = await k.reconnect(15.0)
+	check("kicked_player_can_reconnect", back, k.closed_reason)
+	return ok and back
+
+
+# ================================================================== nhặt cá đang nhấp nháy sắp tỉnh
+
+## Cá xỉu ko_duration_s; ko_blink_before_wake_s cuối chuyển "stunned_waking" (vẫn xỉu, chỉ nhấp nháy báo sắp tỉnh).
+## Nhặt trong khoảng đó phải được như lúc "stunned".
+func sc_pickup_blink() -> bool:
+	var b = bots[0]
+	await b.goto_npc("npc_co_ba")
+	await b.talk("npc_co_ba")
+	await b.wait_until(func(): return "tool_slipper" in b.save["inventory"]["tools_owned"], 5.0)
+	var cre_ko := 15.0
+	for cid in ContentDB.creatures:
+		if not ContentDB.creatures[cid].get("is_boss", false):
+			cre_ko = minf(cre_ko, float(ContentDB.creatures[cid]["ko_duration_s"]))
+	var blink := float(ContentDB.balance["creature"]["ko_blink_before_wake_s"])
+	# catch_one chờ 1.2 s sau khi xỉu + hold; nhặt rơi vào giữa cửa sổ nhấp nháy
+	b.hold_before_pickup_s = cre_ko - blink - 1.2 + 0.8
+	var c: Dictionary = await b.catch_one([], 4)
+	check("blinking_fish_can_be_picked_up", c.get("ok", false), {"pickup_state": c.get("pickup_state"), "errors": c.get("pickup_errors", []), "hold_s": b.hold_before_pickup_s, "casts": c.get("casts"), "error": c.get("error", "")})
+	return c.get("ok", false)
+
+
+# ================================================================== gửi lại boss.summon: người mới có nhận thưởng "miễn phí"?
+
+## bot0 làm nhiệm vụ + hạ boss đảo 1 một mình. Sau đó bot1 (tài khoản mới, không tốn mồi, chưa làm nhiệm vụ) vào phòng;
+## bot0 gửi lại đúng op boss.summon cũ. Đúng: không có trận mới, bot1 không nhận gì. Nếu có trận → ghi thưởng bot1 nhận được.
+func sc_summon_replay() -> bool:
+	if bots.size() != 2:
+		return check("summon_replay_needs_2_bots", false, "--bots=2")
+	var a = bots[0]
+	var c = bots[1]
+	if not await a.register_and_login() or not await a.create_room() or not await a.connect_room():
+		return check("a_connect", false)
+	var all_bots_saved := bots
+	bots = [a]
+	var prep: Dictionary = await island_prep(a, 0)
+	if not check("a_prep_quest", prep.get("ok", false), prep):
+		return false
+	var won: bool = await island_boss(0, false)
+	bots = all_bots_saved
+	if not check("a_solo_boss_defeated", won):
+		return false
+	mark("a_quest_and_boss")
+	if not await c.register_and_login():
+		return check("c_register", false)
+	var rj: Dictionary = await c.join_by_code(a.invite_code)
+	if not check("c_join", rj["ok"] and await c.connect_room(), rj.get("error_code")):
+		return false
+	var info := island_info(0)
+	var boss_id: String = info["boss_id"]
+	var boss: Dictionary = ContentDB.bosses[boss_id]
+	var spot := IslandLayout.boss_spot(a.island())
+	var post: Vector2 = spot["post"]
+	var dir := (Vector2(spot["arena"]) - post).normalized()
+	var perp := Vector2(-dir.y, dir.x)
+	await all_bots(func(b): return await b.nav_to(post + dir * 2.0 + perp * (-1.5 + 1.0 * b.index), 0.6, 60.0))
+	await a.wait_until(func():
+		for e in a.snapshot.get("entities", []):
+			if e["kind"] == "boss":
+				return false
+		return true, 10.0)
+	var a0: Dictionary = await a.server_save()
+	var c0: Dictionary = await c.server_save()
+	var bases: Array = bots.map(func(b): return b.events.size())
+	var rr: Dictionary = await a.durable_raw("boss.summon", {"boss_id": boss_id, "zone_id": spot["zone_id"]}, last_summon_op["op_id"], int(last_summon_op["esv"]))
+	await a.wait_until(func(): return not a.last_event("boss.summoned", "", bases[0]).is_empty(), 4.0)
+	var ev: Dictionary = a.last_event("boss.summoned", "", bases[0])
+	check("replayed_summon_starts_no_encounter", ev.is_empty(), {"replay_status": rr.get("status"), "boss_summoned": not ev.is_empty(), "encounter_id": last_summon_op.get("encounter_id")})
+	if ev.is_empty():
+		return true
+	var uid: String = ev["event_payload"]["creature_uid"]
+	var fights: Array = await all_bots(func(b): return await b.fight_boss(uid, bases[b.index], 260.0), 290.0)
+	print("[boss] replay: %s" % JSON.stringify(fights))
+	await c.wait_until(func(): return boss_id in c.save["progress"]["bosses_defeated"], 10.0)
+	await a.sleep(1.5)
+	var a1: Dictionary = await a.server_save()
+	var c1: Dictionary = await c.server_save()
+	var bait: String = boss["summon"]["bait_id"]
+	var det := {"fight": fights.map(func(f): return f.get("result") if typeof(f) == TYPE_DICTIONARY else null),
+		"newcomer_money_delta": int(c1["currencies"]["money"]) - int(c0["currencies"]["money"]),
+		"newcomer_drops": _count_items(c1, boss["drops"][0]["id"]) - _count_items(c0, boss["drops"][0]["id"]),
+		"newcomer_bosses_defeated": c1["progress"]["bosses_defeated"],
+		"newcomer_bait_spent": 0,
+		"summoner_money_delta": int(a1["currencies"]["money"]) - int(a0["currencies"]["money"]),
+		"summoner_bait_delta": int(a1["inventory"]["bait_counts"].get(bait, 0)) - int(a0["inventory"]["bait_counts"].get(bait, 0))}
+	check("newcomer_gets_no_reward_from_replayed_summon", det["newcomer_money_delta"] == 0 and det["newcomer_drops"] == 0, det)
+	check("summoner_no_second_reward", det["summoner_money_delta"] == 0 and det["summoner_bait_delta"] == 0, det)
+	return false

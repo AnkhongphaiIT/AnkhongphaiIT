@@ -2,10 +2,13 @@
 
     python3 tests/integration/run_bots.py --scenario quest_boss --bots 1
     python3 tests/integration/run_bots.py --scenario quest_boss --bots 4
-    python3 tests/integration/run_bots.py --scenario content_all --bots 1 --timeout 2400
+    python3 tests/integration/run_bots.py --scenario content_all --bots 1 --timeout 2400 [--bot-arg=--all-species]
     python3 tests/integration/run_bots.py --scenario takeover --bots 2
     python3 tests/integration/run_bots.py --scenario restart --bots 1
     python3 tests/integration/run_bots.py --scenario two_rooms --bots 4 --max-rooms 2
+    python3 tests/integration/run_bots.py --scenario summon_replay --bots 2      (gửi lại boss.summon cùng op_id)
+    python3 tests/integration/run_bots.py --scenario kick_cleanup --bots 2       (server tự ngắt phiên rate_limit)
+    python3 tests/integration/run_bots.py --scenario pickup_blink --bots 1       (nhặt cá đang "stunned_waking")
 
 Mặc định API 8797 / WS 8920 (không đụng stack khác ở 8787/8910). Bot in "BOTSIGNAL restart_room" → runner dừng
 room server (tiến trình do chính runner tạo), chờ 2 s rồi bật lại. --db giữ DB giữa các lần chạy (tiếp tục bằng

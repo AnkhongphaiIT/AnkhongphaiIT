@@ -24,7 +24,7 @@
       "stunned_damage_mult": 1.5,
       "reward_base_value": 150,
       "arena_radius_m": 12,
-      "leave_arena_grace_s": 5,
+      "leave_arena_grace_s": 8,
       "drops": [
         {
           "kind": "item",
@@ -128,7 +128,7 @@
       "stunned_damage_mult": 1.5,
       "reward_base_value": 220,
       "arena_radius_m": 12,
-      "leave_arena_grace_s": 5,
+      "leave_arena_grace_s": 8,
       "drops": [
         {
           "kind": "item",
@@ -231,7 +231,7 @@
       "stunned_damage_mult": 1.5,
       "reward_base_value": 300,
       "arena_radius_m": 12,
-      "leave_arena_grace_s": 5,
+      "leave_arena_grace_s": 8,
       "drops": [
         {
           "kind": "item",

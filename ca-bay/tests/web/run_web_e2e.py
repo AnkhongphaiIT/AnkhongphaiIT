@@ -6,6 +6,8 @@ Chromium (Playwright) qua giao diện người dùng — đăng ký, vào phòng
   python3 tests/web/run_web_e2e.py [--scenario fish_loop] [--keep]
 
 Kịch bản trong tests/web/scenarios/<tên>.json; {USER} và {BASE} được thay lúc chạy.
+--seed-stage isl1_boss: tạo tài khoản checkpoint bằng server/ops/seed_checkpoint.py (pipeline op thật) trước khi
+room server chạy; tên/mật khẩu thay vào {CP_USER}/{CP_PASS}.
 Ảnh chụp + console lưu ở tests/web/artifacts/<tên>/ (không commit).
 """
 from __future__ import annotations
@@ -48,6 +50,7 @@ def main() -> int:
     ap.add_argument("--keep", action="store_true", help="giữ stack chạy sau khi xong (để xem tay)")
     ap.add_argument("--external-api", help="dùng máy chủ đang chạy sẵn (ví dụ gói server đã giải nén), không tự dựng stack")
     ap.add_argument("--external-ws")
+    ap.add_argument("--seed-stage", help="tạo tài khoản checkpoint ở mốc này (isl1_boss, isl2_start, …)")
     a = ap.parse_args()
     if not (ROOT / "build/web/index.pck").exists():
         print("Chưa có build/web — chạy tools/build/export.py web trước")
@@ -66,6 +69,16 @@ def main() -> int:
     try:
         if not (a.external_api and a.external_ws):
             st.start_backend()
+            if a.seed_stage:
+                cp_file = st.tmp / "checkpoint_accounts.txt"
+                r = subprocess.run([str(ROOT / "server/backend/.venv/bin/python"), str(ROOT / "server/ops/seed_checkpoint.py"),
+                                    "--stage", a.seed_stage, "--out", str(cp_file), "--yes-this-is-an-operator-db"],
+                                   env={k: v for k, v in st.env.items() if k != "CABAY_SERVICE_KEY"}, capture_output=True, text=True, timeout=120)
+                print(r.stdout.strip() or r.stderr.strip())
+                if r.returncode != 0:
+                    return 1
+                stage, cp_user, cp_pass = cp_file.read_text(encoding="utf-8").strip().split("\t")[:3]
+                (out / "scenario.json").write_text(text.replace("{CP_USER}", cp_user).replace("{CP_PASS}", cp_pass), encoding="utf-8")
             st.start_room_server()
         httpd = serve_web()
         env = dict(os.environ, NODE_PATH=npm_root())

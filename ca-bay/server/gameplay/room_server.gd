@@ -128,9 +128,8 @@ func _on_peer_connected(peer_id: int) -> void:
 	# Cùng tài khoản đang ở peer khác: phiên mới thắng (epoch mới), phiên cũ bị đóng.
 	for other in sessions.keys():
 		if other != peer_id and sessions[other]["account_id"] == s["account_id"]:
-			send(other, "session.closed", {"reason": "takeover", "reconnect_allowed": false})
+			_close_session(other, sessions[other], "takeover", false)
 			sessions.erase(other)
-			_kick_later(other)
 	s["live"] = true
 	var room: RefCounted = rooms[s["room_id"]]
 	room.attach_player(peer_id, s)
@@ -149,10 +148,22 @@ func _on_peer_disconnected(peer_id: int) -> void:
 		room.detach_player(s["account_id"], peer_id)
 
 
+## Gửi session.closed đúng một lần rồi ngắt sau 0,2 s (để gói tin tới client).
+func _close_session(peer_id: int, s: Dictionary, reason: String, reconnect_allowed: bool) -> void:
+	if s.get("closing", false):
+		return
+	s["closing"] = true
+	send(peer_id, "session.closed", {"reason": reason, "reconnect_allowed": reconnect_allowed})
+	_kick_later(peer_id)
+
+
 func _kick_later(peer_id: int) -> void:
 	await get_tree().create_timer(0.2).timeout
 	if known_peers.has(peer_id):
 		mp.disconnect_peer(peer_id)
+		# SceneMultiplayer không phát peer_disconnected khi chính server ngắt: tự dọn phiên/người chơi
+		# (chuyển "disconnected" giữ chỗ như mất mạng), tránh RPC tới peer đã mất.
+		_on_peer_disconnected(peer_id)
 
 
 # ------------------------------------------------------------------ thông điệp
@@ -160,8 +171,13 @@ func _kick_later(peer_id: int) -> void:
 func _on_client_message(peer_id: int, text: String) -> void:
 	stats["messages"] += 1
 	var s: Dictionary = sessions.get(peer_id, {})
-	if s.is_empty() or not s["live"]:
+	if s.is_empty() or not s["live"] or s.get("closing", false):
 		return
+	# bộ đếm vi phạm tính theo cửa sổ 60 s: phiên chơi dài không bị ngắt oan vì vài lỗi rải rác
+	var now_ms := Time.get_ticks_msec()
+	if now_ms - int(s.get("invalid_window_ms", 0)) > 60000:
+		s["invalid_window_ms"] = now_ms
+		s["invalid"] = 0
 	var res := Protocol.parse_and_validate(text, "client_to_server")
 	if not res["ok"]:
 		_invalid(peer_id, s, res["error"], _peek_request_id(text))
@@ -179,8 +195,7 @@ func _on_client_message(peer_id: int, text: String) -> void:
 		reply_result(peer_id, env["request_id"], env["payload"].get("op_id"), "rejected", "RATE_LIMITED", _save_version(s), null)
 		s["invalid"] += 1
 		if s["invalid"] > 40:
-			send(peer_id, "session.closed", {"reason": "rate_limit", "reconnect_allowed": true})
-			_kick_later(peer_id)
+			_close_session(peer_id, s, "rate_limit", true)
 		return
 	if env["type"] == "session.ping":
 		var room0: RefCounted = rooms.get(s["room_id"])
@@ -197,11 +212,9 @@ func _invalid(peer_id: int, s: Dictionary, code: String, request_id: String) -> 
 	if request_id != "":
 		reply_result(peer_id, request_id, null, "rejected", code, _save_version(s), null)
 	if code == "PROTOCOL_MISMATCH":
-		send(peer_id, "session.closed", {"reason": "protocol_mismatch", "reconnect_allowed": false})
-		_kick_later(peer_id)
+		_close_session(peer_id, s, "protocol_mismatch", false)
 	elif s["invalid"] > 40:
-		send(peer_id, "session.closed", {"reason": "rate_limit", "reconnect_allowed": true})
-		_kick_later(peer_id)
+		_close_session(peer_id, s, "rate_limit", true)
 
 
 func _peek_request_id(text: String) -> String:
@@ -312,15 +325,19 @@ func _poll_controls() -> void:
 				if not rooms.has(c["room_id"]):
 					_create_room(c["room_id"], c["payload"]["island_id"], c["payload"]["owner_account_id"])
 			"kick_account":
+				# Chỉ đá đúng kết nối bị thu hồi (connection_id của lease cũ). Thiết bị mới có thể đã vào trước khi
+				# lệnh này được đọc (chu kỳ 1 s): không được đá nhầm phiên mới đó.
 				var aid: String = c["payload"]["account_id"]
+				var cid: String = String(c["payload"].get("connection_id", ""))
 				var pid := peer_of(aid)
-				if pid:
-					var reason: String = c["payload"].get("reason", "revoked")
-					send(pid, "session.closed", {"reason": "takeover" if reason == "taken_over" else "revoked", "reconnect_allowed": false})
-					sessions.erase(pid)
-					_kick_later(pid)
-				for room in rooms.values():
-					room.remove_player_now(aid, false)
+				var cur_cid: String = String(sessions[pid]["connection_id"]) if pid and sessions.has(pid) else ""
+				if pid == 0 or cid == "" or cur_cid == cid:
+					if pid:
+						var reason: String = c["payload"].get("reason", "revoked")
+						_close_session(pid, sessions[pid], "takeover" if reason == "taken_over" else "revoked", false)
+						sessions.erase(pid)
+					for room in rooms.values():
+						room.remove_player_now(aid, false)
 		pending_acks.append(int(c["control_id"]))
 	if not pending_acks.is_empty():
 		_post_status()

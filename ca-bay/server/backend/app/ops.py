@@ -47,8 +47,15 @@ LEASE_OPTIONAL_OPS = {"boss.refund", "inventory.recover_escrow"}
 RNG: Callable[[int], int] = secrets.randbelow  # test có thể thay bằng hàm xác định; không có endpoint đổi
 
 
+# Trường do room server tự thêm vào payload (không phải ý định client): không tính vào hash idempotency, để gửi lại
+# cùng op_id sau khi room server khởi động lại (thực thể đã mất) vẫn nhận kết quả gốc thay vì OP_PAYLOAD_MISMATCH.
+SERVER_ADDED_FIELDS = {"inventory.pickup": ("fresh_item",), "inventory.drop": ("room_id",)}
+
+
 def payload_hash(op_type: str, payload: dict, expected_save_version) -> str:
-    canon = json.dumps({"t": op_type, "p": payload, "v": expected_save_version}, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    drop = SERVER_ADDED_FIELDS.get(op_type, ())
+    intent = {k: v for k, v in payload.items() if k not in drop} if drop else payload
+    canon = json.dumps({"t": op_type, "p": intent, "v": expected_save_version}, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canon.encode()).hexdigest()
 
 
@@ -85,6 +92,12 @@ def commit(conn: sqlite3.Connection, cat: Catalog, *, account_id: str, op_id: st
             if stored.get("expired"):
                 return _result("rejected", op_id, "OP_EXPIRED", None, None)
             stored["replayed"] = True
+            if op_type == "boss.summon" and stored.get("status") == "committed":
+                # Gửi lại lệnh gọi boss: chỉ được mở trận khi lượt gọi đó chưa từng diễn ra (mất phản hồi lần đầu) —
+                # trận còn "open" và thuộc đúng phòng này. Trận đã thắng/hoàn mồi thì không mở lại (chống gọi boss miễn phí).
+                enc = (stored.get("receipt") or {}).get("encounter_id")
+                att = conn.execute("SELECT status, room_id FROM boss_attempts WHERE encounter_id=?", (enc,)).fetchone() if enc else None
+                stored["encounter_open"] = bool(att is not None and att["status"] == "open" and room_id is not None and att["room_id"] == room_id)
             return stored
         if op_type not in LEASE_OPTIONAL_OPS:
             lease = conn.execute("SELECT epoch, active, room_id FROM gameplay_leases WHERE account_id=?", (account_id,)).fetchone()

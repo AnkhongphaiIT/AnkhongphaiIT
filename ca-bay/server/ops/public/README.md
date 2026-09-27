@@ -73,6 +73,11 @@ Rồi tải `release/ca-bay-web-<version>.zip` lên itch.io (loại HTML, "This 
   4. Chạy lại backend + room server, kiểm `/healthz`, đăng nhập thử một tài khoản.
 - Nên chép `backups/` sang ổ/máy khác định kỳ.
 
+### Tài khoản checkpoint cho buổi chơi thử
+
+`ops/seed_checkpoint.py` tạo tài khoản `checkpoint_…` đã tới một mốc (isl1_boss, isl2_start, isl2_boss, isl3_start, isl3_boss, endgame) bằng chính các giao dịch server dùng khi chơi (có idempotency, kiểm bất biến save). Chỉ chạy trên DB mình quản lý, lúc chưa có người chơi; cần cờ `--yes-this-is-an-operator-db`. Lệnh mẫu ở `release/PLAYTEST_60MIN.md` của mã nguồn:
+`CABAY_DATA_DIR=$PWD/data CABAY_DB_PATH=$PWD/var/cabay.db .venv/bin/python ops/seed_checkpoint.py --stage isl2_start --yes-this-is-an-operator-db` (sau khi `set -a; . ./.env; set +a`). Mật khẩu ghi vào `var/checkpoint_accounts.txt` quyền 600, không in ra màn hình. Xóa tài khoản checkpoint sau buổi thử bằng Tùy chọn → Xóa tài khoản.
+
 ## 6. Cập nhật phiên bản và quay lại (rollback)
 
 1. Sao lưu DB (mục 5).

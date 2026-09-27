@@ -288,6 +288,33 @@ func _build_boss_post(L: Dictionary) -> void:
 	add_child(post)
 
 
+var _arena_ring: MeshInstance3D
+
+
+## Vòng phao đỏ-trắng đánh dấu bãi boss khi trận đang diễn ra (ra ngoài quá lâu thì boss bỏ đi).
+func show_arena(on: bool) -> void:
+	if on and _arena_ring == null:
+		var b := IslandLayout.boss_spot(island_id)
+		var c: Vector2 = b["arena"]
+		var r := float(b["arena_radius"])
+		var k := MeshKit.new()
+		var n := int(ceil(TAU * r / 1.6))
+		for i in n:
+			var a := TAU * i / n
+			var x := c.x + cos(a) * r
+			var z := c.y + sin(a) * r
+			var y := maxf(IslandLayout.ground_height(island_id, x, z), 0.0)
+			var col := Models.C_RED if i % 2 == 0 else Color("#F4F1DE")
+			k.cylinder(Vector3(x, y, z), Vector3(x, y + 0.35, z), 0.22, 0.12, 6, col)
+		_arena_ring = MeshInstance3D.new()
+		_arena_ring.name = "ArenaRing"
+		_arena_ring.mesh = k.commit_mesh()
+		_arena_ring.material_override = MeshKit.material()
+		add_child(_arena_ring)
+	if _arena_ring:
+		_arena_ring.visible = on
+
+
 func _build_zone_signs(L: Dictionary) -> void:
 	for zid in L["fishing"]:
 		var key := "zone.%s.name" % zid

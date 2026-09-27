@@ -260,7 +260,8 @@ static func use_tool(room, p: Dictionary, target_uid: String) -> String:
 	var cands: Array = [target["pos"]]
 	cands.append_array(target.get("hist", []))
 	for c in cands:
-		var tp: Vector3 = c + Vector3(0, 0.15, 0)
+		# boss to xác: đo tới thân (cao 1 m) như client nhắm, không phải tới chân
+		var tp: Vector3 = c + Vector3(0, 1.0 if is_boss else 0.15, 0)
 		var d := eye.distance_to(tp)
 		if d > reach:
 			continue

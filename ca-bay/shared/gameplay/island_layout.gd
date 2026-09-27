@@ -177,6 +177,12 @@ static func boss_spot(island_id: String) -> Dictionary:
 
 
 ## Hướng ra nước gần nhất (dùng cho cá chạy về sông).
+## Điểm hồi sinh khi bị KO giữa trận boss: trên đất, trong bãi, giữa tâm bãi và cọc cờ (cọc đứng ở mép nước).
+static func boss_respawn_point(island_id: String) -> Vector3:
+	var b := boss_spot(island_id)
+	return v3(island_id, (b["arena"] as Vector2).lerp(b["post"], 0.6))
+
+
 static func toward_water(island_id: String, x: float, z: float) -> Vector2:
 	var p := Vector2(x, z)
 	if p.length() < 0.01:

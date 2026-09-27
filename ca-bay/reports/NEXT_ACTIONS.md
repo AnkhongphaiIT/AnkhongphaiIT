@@ -1,10 +1,10 @@
 # NEXT_ACTIONS (tối đa 5, theo thứ tự)
 
-1. **Nhận kết quả subagent QA (WP-11a)**: bot `quest_boss`, `content_all` (CONTENT-01 qua 3 đảo), `takeover` (SAVE-02), `restart`, `two_rooms` (NET-02). Đọc diff, chạy lại, sửa lỗi sản phẩm được báo, commit.
-2. **E2E trình duyệt phần còn lại**: boss co-op (gọi ở cọc cờ đỏ), nấu cá, hộp quà, đi đảo khác; lớp phủ F3 (FPS/ping/bộ nhớ) cho buổi thử trên máy thật.
-3. **Cảm giác chơi**: tinh chỉnh độ khó cá ở cuối bến (tép/cua sổng nhanh), kiểm lại gõ tiếng Việt có dấu trong ô nhập (WEB-01 FAIL), hình NPC/tay cầm.
-4. **Chờ chủ dự án** (không chặn việc khác): NEED-HOST, NEED-ITCH, NEED-CONTACT, NEED-VOICE-LICENSE/voice_v1, relay batch ChatGPT b01/b02.
-5. Cập nhật `reports/*`, commit + push sau mỗi mốc.
+1. **E2E trình duyệt boss** (`tests/web/scenarios/boss_isl1.json`, tài khoản checkpoint `--seed-stage isl1_boss`): chạy lại sau CR-006 + sửa tầm đánh boss; sau đó nấu cá, hộp quà, đi đảo khác trên trình duyệt.
+2. **Hồi quy sau sửa lỗi QA**: chạy lại `content_all` 1 bot và `quest_boss` 4 bot trên code mới; WEB-E2E full_loop + coop2.
+3. **Cảm giác chơi**: độ khó cá cuối bến, hình NPC/tay cầm; cân nhắc giảm cày ở đảo 3 (bot mất 180 s chuẩn bị).
+4. **Chờ chủ dự án** (không chặn việc khác): NEED-HOST, NEED-ITCH, NEED-CONTACT, NEED-VOICE-LICENSE/voice_v1, relay batch ChatGPT b01/b02, NEED-DEVICES cho buổi playtest 60 phút.
+5. Cập nhật `reports/*`, đóng gói lại web/server, commit + push sau mỗi mốc.
 
 ## Lệnh tiếp tục đã kiểm chứng
 
@@ -20,4 +20,6 @@ xvfb-run -a godot --path . --rendering-driver opengl3 res://art_src/bake/bake.ts
 godot --headless --path . --script art_src/anim/build_anim.gd && godot --headless --path . --script art_src/vfx/build_vfx.gd
 python3 tools/asset_generation/sync_asset_status.py   # cập nhật registry/source_manifest/ASSET_COVERAGE từ file thật
 python3 tools/build/package_web.py && python3 tools/build/package_server.py   # gói phát hành (bản -local khi chưa có endpoint)
+python3 tests/integration/run_bots.py --scenario content_all --bots 1 --timeout 2400   # CONTENT-01 bằng bot (≈8 phút)
+python3 tests/web/run_web_e2e.py --scenario boss_isl1 --seed-stage isl1_boss          # boss trên trình duyệt với tài khoản checkpoint
 ```

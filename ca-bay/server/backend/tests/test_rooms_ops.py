@@ -327,3 +327,56 @@ def test_stale_boss_attempt_sweep_refunds(client, svc, env):
     conn.close()
     save = client.get("/v1/account/save", headers=u["auth"]).json()["save"]
     assert save["inventory"]["bait_counts"]["bait_milk_tea"] == 1
+
+
+def _with_milk_tea(lease):
+    from app.db import connect
+    import json as _j
+    conn = connect()
+    try:
+        row = conn.execute("SELECT state_json FROM account_saves WHERE account_id=?", (lease["account_id"],)).fetchone()
+        s = _j.loads(row[0])
+        s["inventory"]["bait_counts"]["bait_milk_tea"] = 1
+        conn.execute("UPDATE account_saves SET state_json=? WHERE account_id=?", (_j.dumps(s), lease["account_id"]))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def test_boss_summon_replay_only_reopens_unstarted_encounter(client, svc):
+    """Lỗi QA WP-11a P0: gửi lại boss.summon cùng op_id sau khi đã thắng không được mở thêm trận (thưởng miễn phí)."""
+    u = register(client)
+    room = ready_room(client, svc, u)
+    lease = connect_player(client, svc, u, room)
+    _with_milk_tea(lease)
+    ver = current_version(client, svc, lease)
+    op = str(uuid.uuid4())
+    payload = {"boss_id": "boss_ca_loc", "zone_id": "zone_01_boss_spot"}
+    s = commit(client, svc, lease, "boss.summon", payload, expected=ver, op_id=op)
+    assert s["status"] == "committed"
+    enc = s["receipt"]["encounter_id"]
+    # mất phản hồi lần đầu → gửi lại: trận còn open trong đúng phòng → được mở
+    r1 = commit(client, svc, lease, "boss.summon", payload, expected=ver, op_id=op)
+    assert r1.get("replayed") and r1["encounter_open"] is True
+    # đã thắng → gửi lại: không mở lại
+    assert commit(client, svc, lease, "boss.reward", {"encounter_id": enc, "boss_id": "boss_ca_loc"}, server=True)["status"] == "committed"
+    r2 = commit(client, svc, lease, "boss.summon", payload, expected=ver, op_id=op)
+    assert r2.get("replayed") and r2["encounter_open"] is False
+    assert r2["receipt"]["encounter_id"] == enc
+
+
+def test_pickup_replay_without_server_fields_returns_original(client, svc):
+    """Lỗi QA WP-11a P2: room server khởi động lại (thực thể mất, không còn fresh_item) — gửi lại cùng op_id phải trả kết quả gốc."""
+    u = register(client)
+    room = ready_room(client, svc, u)
+    lease = connect_player(client, svc, u, room)
+    ver = current_version(client, svc, lease)
+    op = str(uuid.uuid4())
+    uid = str(uuid.uuid4())
+    first = commit(client, svc, lease, "inventory.pickup", {"item_uid": uid, "fresh_item": fresh_fish("cre_ca_ro")}, expected=ver, op_id=op)
+    assert first["status"] == "committed"
+    again = commit(client, svc, lease, "inventory.pickup", {"item_uid": uid}, expected=ver, op_id=op)
+    assert again["status"] == "committed" and again.get("replayed") and again["save_version"] == first["save_version"]
+    # ý định khác (uid khác) cùng op_id vẫn bị chặn
+    bad = commit(client, svc, lease, "inventory.pickup", {"item_uid": str(uuid.uuid4())}, expected=ver, op_id=op)
+    assert bad["error_code"] == "OP_PAYLOAD_MISMATCH"

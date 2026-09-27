@@ -198,6 +198,7 @@ ui.boss.arrived,The big one is here!,Con trùm tới rồi!
 ui.boss.defeated,{name} is out cold! Rewards sent.,{name} xỉu rồi! Phần thưởng đã gửi.
 ui.boss.escape,Escaping in,Sắp trốn
 ui.boss.need_bait,You need {bait} to call it here.,Cần {bait} để gọi nó ra đây.
+ui.boss.return_arena,Get back inside the buoys or it swims off!,Quay vào trong vòng phao kẻo nó bơi mất!
 ui.campaign.complete,The pier is open. Keep fishing together!,Bến mở lại rồi. Cùng nhau câu tiếp thôi!
 ui.cook.level_burnt,"Oops, it burnt. Still sellable (cheap).","Ối, khét rồi. Vẫn bán được (rẻ)."
 ui.cook.level_cooked,Grilled fish ready! Added to your food.,Cá nướng xong! Đã thêm vào đồ ăn.

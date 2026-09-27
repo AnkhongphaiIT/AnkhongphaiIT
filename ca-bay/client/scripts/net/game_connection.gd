@@ -35,6 +35,7 @@ func connect_to(url: String, ticket: String, root: Node) -> void:
 	_ticket = ticket
 	_close_reason = ""
 	seq = 0
+	connection_id = ""  # id của kết nối cũ không còn hợp lệ; chờ session.accepted cấp id mới
 	mp = SceneMultiplayer.new()
 	mp.allow_object_decoding = false
 	mp.auth_timeout = float(ContentDB.limit("websocket_auth_timeout_s", 5)) + 2.0

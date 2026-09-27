@@ -96,6 +96,43 @@ func test_boss_timeout_refunds_once(t) -> void:
 	t.eq(srv.events("boss.escaped").size(), 1, "boss trốn")
 
 
+func test_ko_during_boss_respawns_at_post_and_fight_continues(t) -> void:
+	var rs := H.make_room()
+	var room: RefCounted = rs[0]
+	var srv = rs[1]
+	var p := H.add_player(room, 2)
+	var spot := IslandLayout.boss_spot(room.island_id)
+	p["pos"] = IslandLayout.v3(room.island_id, spot["arena"])
+	Boss.start(room, p, "boss_ca_loc", Protocol.uuid4())
+	H.run(room, 2.0)
+	room.damage_player(p, 1000.0, "boss")
+	t.eq(p["mode"], "knocked_out", "KO")
+	H.run(room, float(ContentDB.balance["player"]["respawn_delay_s"]) + 0.5)
+	t.eq(p["mode"], "active", "đã hồi sinh")
+	var rp := IslandLayout.boss_respawn_point(room.island_id)
+	t.ok((p["pos"] as Vector3).distance_to(rp) < 0.5, "hồi sinh trong bãi boss, phía cọc cờ")
+	t.ok(IslandLayout.walkable(room.island_id, rp.x, rp.z) and not IslandLayout.is_water(room.island_id, rp.x, rp.z), "điểm hồi sinh là đất đi được")
+	for isl in ContentDB.island_order:
+		var q := IslandLayout.boss_respawn_point(isl)
+		var bsp := IslandLayout.boss_spot(isl)
+		t.ok(IslandLayout.walkable(isl, q.x, q.z) and Vector2(q.x, q.z).distance_to(bsp["arena"]) <= float(bsp["arena_radius"]), "%s: điểm hồi sinh boss trên đất, trong bãi" % isl)
+	# đi được thật từ điểm hồi sinh (không kẹt)
+	var st := {"pos": rp, "vel_y": 0.0, "on_ground": true}
+	for i in 10:
+		st = Movement.step(room.island_id, st, 0.0, -1.0, 0.0, false, 0.1)
+	t.ok((st["pos"] as Vector3).distance_to(rp) > 1.0, "di chuyển được sau khi hồi sinh")
+	t.eq(String(srv.events("player.respawned")[-1]["payload"]["event_payload"]["spawn_zone_id"]), String(spot["zone_id"]), "sự kiện ghi vùng boss")
+	# người chơi đứng yên ở cọc cờ lâu hơn thời gian ân hạn rời bãi: boss không bỏ đi
+	H.run(room, float(ContentDB.bosses["boss_ca_loc"]["leave_arena_grace_s"]) + 2.0)
+	t.eq(srv.events("boss.escaped").size(), 0, "boss không bỏ đi vì người vừa hồi sinh")
+	t.ok(room.boss_state.has("uid"), "trận vẫn tiếp tục")
+	# ngoài trận boss: hồi sinh ở bến như cũ
+	room.boss_state = {}
+	room.damage_player(p, 1000.0, "fall")
+	H.run(room, float(ContentDB.balance["player"]["respawn_delay_s"]) + 0.5)
+	t.ok((p["pos"] as Vector3).distance_to(IslandLayout.spawn_point(room.island_id)) < 0.5, "ngoài trận boss hồi sinh ở bến")
+
+
 func test_hunger_active_only(t) -> void:
 	var rs := H.make_room()
 	var room: RefCounted = rs[0]
@@ -183,3 +220,27 @@ func test_melee_lag_compensation_bounded(t) -> void:
 	p["cooldowns"] = {}
 	e["hist"] = [e["pos"]]
 	t.eq(Creatures.use_tool(room, p, uid), "OUT_OF_RANGE", "không có vị trí nào trong tầm → từ chối")
+
+
+func test_boss_melee_reach_matches_body(t) -> void:
+	# Chổi (tầm 1,8 m) đánh boss đứng cách 3,6 m theo phương ngang: trúng thân → chấp nhận; 4,6 m → từ chối.
+	var rs := H.make_room()
+	var room: RefCounted = rs[0]
+	var p := H.add_player(room, 2)
+	var spot := IslandLayout.boss_spot(room.island_id)
+	var arena := IslandLayout.v3(room.island_id, spot["arena"])
+	p["pos"] = arena
+	p["equipped"] = "tool_broom"
+	p["save"]["inventory"]["tools_owned"].append("tool_broom")
+	Boss.start(room, p, "boss_ca_loc", Protocol.uuid4())
+	var uid: String = room.boss_state["uid"]
+	for pair in [[3.6, ""], [4.6, "OUT_OF_RANGE"]]:
+		var e: Dictionary = room.entities[uid]
+		e["pos"] = arena + Vector3(0, 0, -float(pair[0]))
+		e["pos"].y = IslandLayout.ground_height(room.island_id, e["pos"].x, e["pos"].z)
+		e["hist"] = []
+		var d: Vector3 = e["pos"] + Vector3(0, 1.0, 0) - Movement.eye(p["pos"])
+		p["yaw"] = atan2(-d.x, -d.z)
+		p["pitch"] = atan2(d.y, Vector2(d.x, d.z).length())
+		p["cooldowns"] = {}
+		t.eq(Creatures.use_tool(room, p, uid), pair[1], "boss cách %.1f m" % pair[0])

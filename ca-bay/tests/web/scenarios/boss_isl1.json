@@ -1,0 +1,172 @@
+[
+ {
+  "goto": "{BASE}/index.html?autotest=1"
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   640,
+   372
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   634,
+   495
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "b00_login"
+ },
+ {
+  "type": "{CP_USER}"
+ },
+ {
+  "key": "Tab"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "type": "{CP_PASS}"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "waitlog": "CABAY_AUTH_SUBMIT",
+  "timeout": 20000
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "shot": "b01_lobby"
+ },
+ {
+  "click": [
+   441,
+   290
+  ]
+ },
+ {
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 30000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "key": "KeyU"
+ },
+ {
+  "walk_until": "CABAY_FOCUS boss",
+  "face_key": "KeyU",
+  "timeout": 45000
+ },
+ {
+  "wait": 500
+ },
+ {
+  "shot": "b02_post"
+ },
+ {
+  "key": "KeyE"
+ },
+ {
+  "waitlog": "CABAY_EV boss.summoned",
+  "fresh": true,
+  "timeout": 15000
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "key": "KeyT"
+ },
+ {
+  "wait": 400
+ },
+ {
+  "shot": "b03_boss_arrived"
+ },
+ {
+  "key": "Digit3"
+ },
+ {
+  "wait": 500
+ },
+ {
+  "hunt": {
+   "until": "CABAY_EV boss.phase_changed",
+   "fail": "CABAY_EV boss.escaped",
+   "timeout": 120000,
+   "interval": 200,
+   "pre_key": "KeyT",
+   "step_key": "KeyW",
+   "step_every": 1,
+   "step_ms": 450,
+   "dodge": {
+    "on": "CABAY_EV boss.telegraph",
+    "keys": [
+     [
+      "KeyS",
+      "KeyA"
+     ],
+     [
+      "KeyS",
+      "KeyD"
+     ]
+    ],
+    "ms": 700
+   }
+  }
+ },
+ {
+  "shot": "b04_phase2"
+ },
+ {
+  "hunt": {
+   "until": "CABAY_EV boss.defeated",
+   "fail": "CABAY_EV boss.escaped",
+   "timeout": 200000,
+   "interval": 200,
+   "pre_key": "KeyT",
+   "step_key": "KeyW",
+   "step_every": 1,
+   "step_ms": 450,
+   "dodge": {
+    "on": "CABAY_EV boss.telegraph",
+    "keys": [
+     [
+      "KeyS",
+      "KeyA"
+     ],
+     [
+      "KeyS",
+      "KeyD"
+     ]
+    ],
+    "ms": 700
+   }
+  }
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "b05_defeated"
+ }
+]

@@ -684,6 +684,7 @@ func _on_event(ev: Dictionary) -> void:
 			hud.boss_bar.visible = true
 			hud.boss_label.text = Loc.name_of(ContentDB.bosses[p["boss_id"]]["creature_id"])
 			hud.show_center(Loc.t("ui.boss.arrived"), 2.0, UIKit.C_RED)
+			world_view.show_arena(true)
 		"boss.phase_changed":
 			if int(p["phase"]) > 1:
 				hud.show_center(Loc.t("ui.boss.angry"), 1.5, UIKit.C_RED)
@@ -996,9 +997,17 @@ func _process(_delta: float) -> void:
 		hud.boss_hp.value = 100.0 * float(_boss.get("hp", 1.0)) / maxf(1.0, float(_boss.get("max_hp", 1.0)))
 		var left := maxi(0, int(ceil(float(_boss["end_t"]) - now)))
 		hud.boss_timer.text = "%s %d:%02d" % [Loc.t("ui.boss.escape"), left / 60, left % 60]
+		# ra ngoài vòng phao: boss bỏ đi sau leave_arena_grace_s nếu cả nhóm cùng ra (boss_sim.tick)
+		if not _boss.has("hide_t") and player:
+			var bs := IslandLayout.boss_spot(island_id)
+			var arena := IslandLayout.v3(island_id, bs["arena"])
+			var d := Vector2(server_pos.x - arena.x, server_pos.z - arena.z).length()
+			if d > float(bs["arena_radius"]) + 2.0 and my_mode != "knocked_out":
+				hud.show_center(Loc.t("ui.boss.return_arena"), 0.3, UIKit.C_RED)
 		if _boss.has("hide_t") and now > float(_boss["hide_t"]):
 			_boss = {}
 			hud.boss_bar.visible = false
+			world_view.show_arena(false)
 	# gợi ý tương tác / hướng dẫn
 	if menu_name == "" and hud.prompt.text != Loc.t("ui.network.pending_save"):
 		hud.prompt.text = _prompt_text()

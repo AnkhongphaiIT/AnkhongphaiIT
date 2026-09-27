@@ -33,6 +33,9 @@ var password: String = ""
 var slot: int = -1               # ô đứng câu trên bến (-1 = theo index)
 var hold_before_pickup_s := 0.0  # giữ cá đã xỉu trên đất trước khi nhặt (test chéo phòng)
 var ko_uid: String = ""          # cá vừa đập xỉu, chưa nhặt
+var sent_types: Dictionary = {}  # request_id -> loại message (chẩn đoán RATE_LIMITED)
+var rejected_counts: Dictionary = {}  # "loại/mã lỗi" -> số lần
+var last_snapshot_ms := 0
 var keepalive := true            # rung nhẹ góc nhìn định kỳ để không bị AFK khi đứng chờ
 var _keep_t := 0.0
 var _keep_sign := 1.0
@@ -55,8 +58,12 @@ func _init(i: int, ep: Dictionary) -> void:
 	conn = GameConnection.new()
 	add_child(conn)
 	conn.message.connect(_on_message)
-	conn.closed.connect(func(r, _a): closed_reason = r)
-	conn.auth_failed.connect(func(c): closed_reason = c)
+	conn.closed.connect(func(r, _a):
+		closed_reason = r
+		say("kết nối đóng: %s (session.closed=%s, bị từ chối=%s)" % [r, str(session_closed), str(rejected_counts)]))
+	conn.auth_failed.connect(func(c):
+		closed_reason = c
+		say("auth thất bại: %s" % c))
 
 
 func say(msg: String) -> void:
@@ -69,6 +76,7 @@ func _on_message(type: String, payload: Dictionary, env: Dictionary) -> void:
 	match type:
 		"state.snapshot":
 			snapshot = payload
+			last_snapshot_ms = Time.get_ticks_msec()
 			for pl in payload["players"]:
 				seen_players[pl["account_id"]] = pl["display_name"]
 			for e in payload["entities"]:
@@ -77,6 +85,11 @@ func _on_message(type: String, payload: Dictionary, env: Dictionary) -> void:
 				snapshot_room_ids[env["room_id"]] = true
 		"command.result":
 			results[payload["request_id"]] = payload
+			if payload["status"] == "rejected":
+				var key := "%s/%s" % [sent_types.get(payload["request_id"], "?"), str(payload["error_code"])]
+				rejected_counts[key] = int(rejected_counts.get(key, 0)) + 1
+				if str(payload["error_code"]) == "RATE_LIMITED" and int(rejected_counts[key]) <= 3:
+					say("RATE_LIMITED %s" % key)
 			var rec: Variant = payload.get("receipt")
 			if typeof(rec) == TYPE_DICTIONARY and rec.has("view"):
 				if int(rec["view"]["save_version"]) >= save_version:
@@ -87,6 +100,7 @@ func _on_message(type: String, payload: Dictionary, env: Dictionary) -> void:
 			event_room_ids[payload["room_id"]] = true
 		"session.closed":
 			session_closed.append(payload["reason"])
+			say("session.closed %s" % payload["reason"])
 		"session.accepted":
 			pass
 
@@ -102,7 +116,9 @@ func _process(delta: float) -> void:
 		yaw += 0.03 * _keep_sign
 	if _input_t >= 0.05:
 		_input_t = 0.0
-		conn.send("player.input", {"move_x": move.x, "move_z": move.y, "look_yaw_rad": wrapf(yaw, -PI, PI), "look_pitch_rad": clampf(pitch, -1.5, 1.5), "jump": false})
+		# schema: move_x/move_z ∈ [-1, 1]; phép tính hướng có thể ra 1.0000001 → server coi là INVALID_PAYLOAD
+		var rid_in: String = conn.send("player.input", {"move_x": clampf(move.x, -1.0, 1.0), "move_z": clampf(move.y, -1.0, 1.0), "look_yaw_rad": wrapf(yaw, -PI, PI), "look_pitch_rad": clampf(pitch, -1.5, 1.5), "jump": false})
+		sent_types[rid_in] = "player.input"
 
 
 # ------------------------------------------------------------------ tiện ích bất đồng bộ
@@ -220,7 +236,9 @@ func durable(type: String, payload: Dictionary, timeout_s: float = 10.0) -> Dict
 
 
 func command(type: String, payload: Dictionary) -> String:
-	return conn.send(type, payload)
+	var rid: String = conn.send(type, payload)
+	sent_types[rid] = type
+	return rid
 
 
 func last_event(name: String, actor: String = "", after_index: int = 0) -> Dictionary:
@@ -321,6 +339,7 @@ func durable_raw(type: String, payload: Dictionary, op_id: String, esv: int, tim
 	var rid: String = conn.send(type, pl)
 	if rid == "":
 		return {"status": "not_sent", "error_code": "NOT_CONNECTED"}
+	sent_types[rid] = type
 	var ok: bool = await wait_until(func(): return results.has(rid), timeout_s)
 	if not ok:
 		return {"status": "timeout", "error_code": "TIMEOUT"}
@@ -447,6 +466,9 @@ func catch_one(want: Array, max_casts: int = 40) -> Dictionary:
 	var isl := island()
 	var pier: Dictionary = IslandLayout.layout(isl)["pier"]
 	var end: Vector2 = pier["to"]
+	if "tool_slipper" not in save["inventory"]["tools_owned"]:
+		out["error"] = "chưa có dép (nói chuyện Cô Ba trước)"
+		return out
 	var sl: int = slot if slot >= 0 else index % 4
 	var stand2: Vector2 = end - Vector2(0, 2.0) + Vector2(-1.1 + 0.73 * sl, 0)
 	var stand := IslandLayout.v3(isl, stand2)
@@ -544,10 +566,32 @@ func catch_one(want: Array, max_casts: int = 40) -> Dictionary:
 		if e2.is_empty():
 			out["lost"] += 1
 			continue
-		var fish_pos := Vector3(e2["position"][0], e2["position"][1], e2["position"][2])
-		await nav_to(Vector2(fish_pos.x, fish_pos.z), 1.0, 12.0)
+		# đi theo vị trí hiện tại của cá (có thể còn nảy/rơi) tới trong tầm nhặt
+		var t2 := Time.get_ticks_msec()
+		var fish_pos := Vector3.INF
+		while Time.get_ticks_msec() - t2 < 8000:
+			var e3: Dictionary = entity(cuid)
+			if e3.is_empty():
+				break
+			fish_pos = Vector3(e3["position"][0], e3["position"][1], e3["position"][2])
+			var mp := my_pos()
+			var dd := Vector2(fish_pos.x - mp.x, fish_pos.z - mp.z)
+			if dd.length() <= 1.8 and absf(fish_pos.y - mp.y) < 2.0:
+				break
+			if _near_pier(isl, Vector2(mp.x, mp.z)) != _near_pier(isl, Vector2(fish_pos.x, fish_pos.z)):
+				await nav_to(Vector2(fish_pos.x, fish_pos.z), 1.2, 6.0)
+				continue
+			yaw = atan2(-dd.x, -dd.y)
+			move = Vector2(0, -1 if dd.length() > 1.5 else -0.5)
+			await get_tree().process_frame
+		move = Vector2.ZERO
+		if entity(cuid).is_empty():
+			out["lost"] += 1
+			continue
+		out["pickup_state"] = String(entity(cuid).get("state", ""))
 		var pk: Dictionary = await dur("inventory.pickup", {"item_uid": cuid})
 		if pk.get("status", "") != "committed":
+			out["pickup_errors"] = out.get("pickup_errors", []) + ["%s@%s" % [str(pk.get("error_code")), out["pickup_state"]]]
 			say("nhặt lỗi %s (cá %s, bot %s)" % [pk.get("error_code"), str(fish_pos), str(my_pos())])
 			out["lost"] += 1
 			continue
@@ -587,7 +631,7 @@ func fight_boss(boss_uid: String, ev_from: int, timeout_s: float = 230.0) -> Dic
 		# kết quả các lần ném (chỉ bị từ chối mới có command.result)
 		for rid in pending.duplicate():
 			if results.has(rid):
-				var code: String = String(results[rid].get("error_code", ""))
+				var code: String = str(results[rid].get("error_code", ""))
 				out["rejects"][code] = int(out["rejects"].get(code, 0)) + 1
 				pending.erase(rid)
 		var done := ""
@@ -660,6 +704,6 @@ func fight_boss(boss_uid: String, ev_from: int, timeout_s: float = 230.0) -> Dic
 	await sleep(0.6)
 	for rid in pending:
 		if results.has(rid):
-			var code2: String = String(results[rid].get("error_code", ""))
+			var code2: String = str(results[rid].get("error_code", ""))
 			out["rejects"][code2] = int(out["rejects"].get(code2, 0)) + 1
 	return out

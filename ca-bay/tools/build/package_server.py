@@ -52,6 +52,7 @@ def main() -> int:
     shutil.copy2(ROOT / "data/contracts/network_contract.json", out / "data/contracts/network_contract.json")
     (out / "ops").mkdir()
     shutil.copy2(ROOT / "server/ops/backup/backup.py", out / "ops/backup.py")
+    shutil.copy2(ROOT / "server/ops/seed_checkpoint.py", out / "ops/seed_checkpoint.py")
     copytree(ROOT / "server/ops/public/run", out / "run")
     for f in (out / "run").glob("*.sh"):
         f.chmod(0o755)

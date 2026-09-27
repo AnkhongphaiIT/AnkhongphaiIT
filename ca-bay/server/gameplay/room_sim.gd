@@ -207,15 +207,21 @@ func _tick_player(p: Dictionary) -> void:
 		if (tick_count - int(p["disconnected_tick"])) * dt > float(ContentDB.limit("reconnect_grace_s", 90)):
 			remove_player_now(aid)
 		return
-	# KO người chơi → hồi sinh ở bến an toàn
+	# KO người chơi → hồi sinh ở bến an toàn; đang tham gia trận boss thì hồi sinh trên đất trong bãi, phía cọc cờ
+	# (CR-006: về bến xa làm bãi trống quá leave_arena_grace_s → boss bỏ đi, người chơi một mình gần như chắc thua).
 	if p["mode"] == "knocked_out":
 		if tick_count >= int(p["ko_until"]):
 			p["mode"] = "active"
 			p["hp"] = float(ContentDB.balance["player"]["max_hp"])
+			var zone := IslandLayout.spawn_zone_id(island_id)
 			p["pos"] = IslandLayout.spawn_point(island_id)
+			var b: Dictionary = boss_state
+			if b.has("uid") and b["participants"].has(aid) and String(b["state"]) not in ["defeated", "escaping"]:
+				p["pos"] = IslandLayout.boss_respawn_point(island_id)
+				zone = IslandLayout.boss_spot(island_id)["zone_id"]
 			p["vel_y"] = 0.0
 			p["last_active_tick"] = tick_count
-			emit("player.respawned", aid, {"spawn_zone_id": IslandLayout.spawn_zone_id(island_id)})
+			emit("player.respawned", aid, {"spawn_zone_id": zone})
 		return
 	var afk_s := float(ContentDB.limit("afk_timeout_s", 120))
 	if p["mode"] == "active" and (tick_count - int(p["last_active_tick"])) * dt > afk_s:
@@ -452,7 +458,7 @@ func _durable(p: Dictionary, t: String, pl: Dictionary, rid: String) -> void:
 					_reject(p, rid, op_id, "ITEM_ALREADY_CLAIMED")
 					return
 				if e["kind"] == "fish":
-					if e["state"] not in ["stunned", "stolen"]:
+					if e["state"] not in ["stunned", "stunned_waking", "stolen"]:
 						_reject(p, rid, op_id, "COOLDOWN")
 						return
 					payload["fresh_item"] = {"def_kind": "creature", "def_id": e["def_id"], "variant_id": e.get("variant", null),
@@ -504,7 +510,8 @@ func _durable(p: Dictionary, t: String, pl: Dictionary, rid: String) -> void:
 					"spawn_tick": tick_count, "ground_tick": tick_count}
 				emit("item.dropped", p["account_id"], {"item_uid": it["uid"], "position": [dpos.x, dpos.y, dpos.z]})
 		"boss.summon":
-			if res["status"] == "committed":
+			# Gửi lại cùng op_id (replayed) không mở thêm trận, trừ khi backend xác nhận lượt gọi đó chưa từng diễn ra.
+			if res["status"] == "committed" and (not res.get("replayed", false) or res.get("encounter_open", false)):
 				Boss.start(self, p, pl["boss_id"], res["receipt"]["encounter_id"])
 			else:
 				boss_state = {}
@@ -526,7 +533,8 @@ func commit(p: Dictionary, op_type: String, payload: Dictionary, expected_versio
 		if int(res["save"]["save_version"]) >= int(cur["save"]["save_version"]):
 			cur["save"] = res["save"]
 	var receipt: Variant = res.get("receipt", null)
-	if res["status"] == "committed" and not cur.is_empty():
+	# kết quả gửi lại (replayed) đã phát sự kiện ở lần đầu: không phát lại (tránh popup/tiền "tăng" giả)
+	if res["status"] == "committed" and not res.get("replayed", false) and not cur.is_empty():
 		for ev in res.get("events", []):
 			emit(ev["name"], aid, ev["payload"])
 	if request_id != "" or DURABLE.has(op_type):

@@ -6,7 +6,13 @@ Dành cho chủ dự án + tối đa 3 người bạn, **sau khi** máy chủ đ
 
 - [ ] Máy chủ chạy theo `server/ops/public/README.md`, `/healthz` đạt; bản web cùng content_hash.
 - [ ] 4 tài khoản sạch cho 4 người (người chơi tự tạo trong buổi thử để kiểm luồng đăng ký).
-- [ ] Tài khoản "checkpoint" đã tới đảo 2 và đảo 3 để xem nội dung cuối mà không phải cày — **chưa có công cụ tạo**; tạm dùng tài khoản do bot `content_all` chơi tới (xem `tasks/WP-11-bots.md`). Không sửa DB bằng tay.
+- [ ] Tài khoản checkpoint (đã tới boss đảo 1, đảo 2, đảo 3, cuối game) để xem nội dung sau mà không phải cày. Trong thư mục gói máy chủ, lúc **chưa có người chơi**:
+  ```
+  set -a; . ./.env; set +a
+  CABAY_DATA_DIR=$PWD/data CABAY_DB_PATH=$PWD/var/cabay.db .venv/bin/python ops/seed_checkpoint.py \
+      --stage isl1_boss --stage isl2_start --stage isl3_start --stage endgame --yes-this-is-an-operator-db
+  ```
+  Tên đăng nhập `checkpoint_…` in ra màn hình; mật khẩu nằm trong `var/checkpoint_accounts.txt` (quyền 600) — xóa file sau buổi thử. Công cụ đi đúng pipeline op của server (không sửa save bằng tay); tiến trình này **không** tính là bằng chứng đã chơi hết 3 đảo.
 - [ ] Sao lưu DB trước buổi thử (`run/backup.sh`).
 - [ ] Mở sẵn file ghi chép (bảng dưới) để điền trong lúc chơi.
 
