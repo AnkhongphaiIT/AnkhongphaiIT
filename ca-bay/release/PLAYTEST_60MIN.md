@@ -6,6 +6,7 @@ Dành cho chủ dự án + tối đa 3 người bạn, **sau khi** máy chủ đ
 
 - [ ] Máy chủ chạy theo `server/ops/public/README.md`, `/healthz` đạt; bản web cùng content_hash.
 - [ ] 4 tài khoản sạch cho 4 người (người chơi tự tạo trong buổi thử để kiểm luồng đăng ký).
+- [ ] Trình duyệt: ít nhất **1 máy Firefox** và 1 máy Chrome hoặc Edge (ghi phiên bản vào bảng ghi chép). Trên mỗi máy thử: bấm vào màn chơi để khóa chuột, Esc nhả chuột/mở menu, phóng to toàn màn hình (F11 của trình duyệt), đổi kích thước cửa sổ, chuyển tab rồi quay lại.
 - [ ] Tài khoản checkpoint (đã tới boss đảo 1, đảo 2, đảo 3, cuối game) để xem nội dung sau mà không phải cày. Trong thư mục gói máy chủ, lúc **chưa có người chơi**:
   ```
   set -a; . ./.env; set +a
