@@ -108,6 +108,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_G: _autotest_face_fishing_zone()
 			KEY_N: _autotest_face_nearest_npc()
 			KEY_V: _autotest_face_point(IslandLayout.npc_position(island_id, IslandLayout.shop_zone(island_id)["npc_id"]))
+			KEY_P: _autotest_face_other_player()
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and not Endpoints.autotest:
 		var sens := 0.0025 * float(Settings.get_value("mouse_sensitivity", 1.0))
 		yaw = wrapf(yaw - event.relative.x * sens, -PI, PI)
@@ -306,3 +307,19 @@ func _autotest_face_point(p: Vector3) -> void:
 		return
 	yaw = atan2(-(p.x - pos.x), -(p.z - pos.z))
 	pitch = -0.1
+
+
+## Chỉ dùng ở chế độ kiểm thử tự động: quay về đồng đội gần nhất.
+func _autotest_face_other_player() -> void:
+	var ents: EntityView = session.entities
+	var best := Vector3.INF
+	for aid in ents.players_meta:
+		if aid == ents.my_account_id or not ents.nodes.has(aid):
+			continue
+		var p: Vector3 = ents.nodes[aid].global_position + Vector3(0, 1.5, 0)
+		if best == Vector3.INF or p.distance_to(pos) < best.distance_to(pos):
+			best = p
+	if best != Vector3.INF:
+		var d := best - Movement.eye(pos)
+		yaw = atan2(-d.x, -d.z)
+		pitch = clampf(atan2(d.y, Vector2(d.x, d.z).length()), -1.45, 1.45)

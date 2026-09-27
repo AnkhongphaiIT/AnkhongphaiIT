@@ -1,0 +1,367 @@
+[
+ {
+  "goto": "{BASE}/index.html?autotest=1"
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   640,
+   372
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   634,
+   495
+  ]
+ },
+ {
+  "wait": 600
+ },
+ {
+  "click": [
+   566,
+   224
+  ]
+ },
+ {
+  "wait": 600
+ },
+ {
+  "click": [
+   640,
+   198
+  ]
+ },
+ {
+  "type": "{USER}"
+ },
+ {
+  "click": [
+   640,
+   255
+  ]
+ },
+ {
+  "type": "Ban Web"
+ },
+ {
+  "click": [
+   640,
+   312
+  ]
+ },
+ {
+  "type": "songnuoc-2026-xanh"
+ },
+ {
+  "click": [
+   640,
+   369
+  ]
+ },
+ {
+  "type": "songnuoc-2026-xanh"
+ },
+ {
+  "click": [
+   640,
+   518
+  ]
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "click": [
+   640,
+   611
+  ]
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "click": [
+   441,
+   290
+  ]
+ },
+ {
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 40000
+ },
+ {
+  "capture": {
+   "regex": "CABAY_ROOM code=([A-Z0-9]+)",
+   "var": "CODE"
+  }
+ },
+ {
+  "goto": "{BASE}/index.html?autotest=1",
+  "page": 1
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000,
+  "page": 1
+ },
+ {
+  "wait": 1500,
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   372
+  ],
+  "page": 1
+ },
+ {
+  "wait": 800,
+  "page": 1
+ },
+ {
+  "click": [
+   634,
+   495
+  ],
+  "page": 1
+ },
+ {
+  "wait": 600,
+  "page": 1
+ },
+ {
+  "click": [
+   566,
+   224
+  ],
+  "page": 1
+ },
+ {
+  "wait": 600,
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   198
+  ],
+  "page": 1
+ },
+ {
+  "type": "{USER}b",
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   255
+  ],
+  "page": 1
+ },
+ {
+  "type": "Ban B",
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   312
+  ],
+  "page": 1
+ },
+ {
+  "type": "songnuoc-2026-xanh",
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   369
+  ],
+  "page": 1
+ },
+ {
+  "type": "songnuoc-2026-xanh",
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   518
+  ],
+  "page": 1
+ },
+ {
+  "wait": 2500,
+  "page": 1
+ },
+ {
+  "wait": 2000,
+  "page": 1
+ },
+ {
+  "click": [
+   640,
+   611
+  ],
+  "page": 1
+ },
+ {
+  "wait": 2500,
+  "page": 1
+ },
+ {
+  "page": 1,
+  "shot": "c00_b_lobby"
+ },
+ {
+  "page": 1,
+  "click": [
+   413,
+   392
+  ]
+ },
+ {
+  "page": 1,
+  "type": "{CODE}",
+  "delay": 150
+ },
+ {
+  "page": 1,
+  "wait": 1500
+ },
+ {
+  "page": 1,
+  "click": [
+   574,
+   392
+  ]
+ },
+ {
+  "page": 1,
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 40000
+ },
+ {
+  "page": 1,
+  "waitlog": "CABAY_TEAM n=2",
+  "timeout": 20000
+ },
+ {
+  "page": 0,
+  "waitlog": "CABAY_TEAM n=2",
+  "timeout": 20000
+ },
+ {
+  "page": 1,
+  "wait": 1500
+ },
+ {
+  "page": 1,
+  "key": "KeyP"
+ },
+ {
+  "page": 1,
+  "wait": 1200
+ },
+ {
+  "page": 1,
+  "shot": "c01_b_sees_a"
+ },
+ {
+  "page": 0,
+  "key": "KeyP"
+ },
+ {
+  "page": 0,
+  "wait": 1200
+ },
+ {
+  "page": 0,
+  "shot": "c02_a_sees_b"
+ },
+ {
+  "page": 1,
+  "key": "KeyG"
+ },
+ {
+  "page": 1,
+  "hold": "KeyW",
+  "ms": 5200
+ },
+ {
+  "page": 1,
+  "hold": "KeyD",
+  "ms": 500
+ },
+ {
+  "page": 0,
+  "key": "KeyG"
+ },
+ {
+  "page": 0,
+  "hold": "KeyW",
+  "ms": 6500
+ },
+ {
+  "page": 0,
+  "repeat": [
+   {
+    "mdown": "left"
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "mup": "left"
+   },
+   {
+    "waitlog": "CABAY_EV fishing.lure_landed",
+    "fresh": true,
+    "timeout": 8000
+   },
+   {
+    "reel": {
+     "until": "CABAY_EV fishing.(launched|escaped|cancelled)",
+     "fail": "CABAY_EV fishing.(escaped|cancelled)",
+     "timeout": 90000
+    },
+    "wait_for": "CABAY_EV fishing.bite"
+   }
+  ],
+  "until": "CABAY_EV fishing.launched",
+  "max": 5
+ },
+ {
+  "page": 1,
+  "waitlog": "CABAY_OTHER fishing.launched by=",
+  "timeout": 15000
+ },
+ {
+  "page": 1,
+  "key": "KeyP"
+ },
+ {
+  "page": 1,
+  "wait": 800
+ },
+ {
+  "page": 1,
+  "shot": "c03_b_watches_a_fish"
+ }
+]

@@ -51,6 +51,7 @@ var _pings: Array = []
 var _last_view_version := -1
 var server_pos := Vector3.ZERO
 var snap_count := 0
+var _team_n := 0
 
 
 func start(c: Node, a: Node, r: Dictionary, s: Dictionary) -> void:
@@ -248,6 +249,8 @@ func _pump_queue() -> void:
 
 func _on_accepted(p: Dictionary) -> void:
 	print("CABAY_SESSION accepted")
+	if Endpoints.autotest:
+		print("CABAY_ROOM code=%s" % String(room.get("invite_code", "")))
 	my_id = p["account_id"]
 	entities.my_account_id = my_id
 	_reconnecting = false
@@ -314,6 +317,9 @@ func _on_snapshot(s: Dictionary) -> void:
 			hud.show_center("")
 	hud.update_vitals(my_hp, my_hunger)
 	hud.update_team(s["players"], my_id, entities.player_colors)
+	if Endpoints.autotest and (s["players"] as Array).size() != _team_n:
+		_team_n = (s["players"] as Array).size()
+		print("CABAY_TEAM n=%d" % _team_n)
 
 
 func _refresh_save_later(version: int) -> void:
@@ -510,6 +516,8 @@ func _on_event(ev: Dictionary) -> void:
 	var actor: Variant = ev["actor_player_id"]
 	var own: bool = actor != null and actor == my_id
 	AudioDirector.on_event(name, p, {"own": own, "player_pos": player.pos})
+	if Endpoints.autotest and not own and actor != null and name in ["fishing.launched", "creature.knocked_out", "item.picked_up", "room.player_joined", "player.emote", "room.ping"]:
+		print("CABAY_OTHER %s by=%s" % [name, _name_of_player(actor)])
 	if (Endpoints.autotest or OS.is_debug_build()) and own and not name.begins_with("hunger.") and name != "player.footstep":
 		print("CABAY_EV %s pos=(%.1f,%.1f,%.1f) yaw=%.2f pitch=%.2f" % [name, player.pos.x, player.pos.y, player.pos.z, player.yaw, player.pitch])  # nhật ký chẩn đoán (không chứa dữ liệu cá nhân)
 	match name:

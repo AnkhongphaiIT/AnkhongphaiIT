@@ -76,7 +76,8 @@ def main() -> int:
         events = [l.split()[2] for l in log.splitlines() if l.startswith("[log] CABAY_EV")]
         summary = {"scenario": a.scenario, "ok": "DRIVE_OK" in r.stdout, "events": sorted(set(events)),
                    "rejections": [l[6:] for l in log.splitlines() if l.startswith("[log] CABAY_REJ")],
-                   "page_errors": [l for l in log.splitlines() if l.startswith("[pageerror]")]}
+                   "page_errors": [l for l in log.splitlines() if "[pageerror]" in l],
+                   "other_pages": sorted({l.split()[2] for l in log.splitlines() if l.startswith("[p1] [log] CABAY_EV") or l.startswith("[p1] [log] CABAY_OTHER")})}
         (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
         print(json.dumps(summary, ensure_ascii=False))
         if a.keep:
