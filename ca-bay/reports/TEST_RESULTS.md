@@ -19,6 +19,13 @@ Môi trường chung: container Ubuntu đám mây, Python 3.11.15, Godot 4.7.2.s
 | WEB-01 pointer lock/Esc/fullscreen | — | — | NOT_RUN (tự động) | Pointer lock trong Chromium headless sinh chuyển động chuột giả → không kiểm tự động được; cần thử tay trên máy thật |
 | WEB-01 gõ tiếng Việt có dấu | — | 16:00 | FAIL (chưa rõ nguyên nhân) | `keyboard.type("Bạn Web")` của Playwright (insertText) làm rơi "ạ" trong LineEdit → tên hiển thị "Bn Web". Chưa kiểm với bộ gõ thật (Unikey/Telex, macOS). Cần thử tay |
 | AUDIO-01 file âm thanh | subagent WP-09 | 15:55 | PASS (đo bằng máy) | `tools/asset_generation/audio/validate_audio.py`: 80/80 asset id, 166 file, 0 lỗi; loop có chunk smpl; nhạc −18 LUFS. **Chưa có người nghe duyệt** |
+| Godot unit (cập nhật) | phiên 1 tối | 18:05 | PASS (22/22) | thêm test giao thức (số nguyên chuẩn hóa, kiểu hợp object/null), HUD phủ màn hình, khóa dịch động |
+| WEB-E2E full_loop | phiên 1 tối | 17:05 | PASS | + đi tới sạp Cô Ba → **bán cả túi** (economy.item_sold) → lấy cơm nắm miễn phí (shop.buy). Phát hiện + sửa lỗi thật: shop.buy bị từ chối vì số nguyên thành 1.0 khi chuyển tiếp (Protocol.normalize_integers) |
+| WEB-E2E npc_shop | phiên 1 tối | 16:55 | PASS | quà dép Cô Ba, menu sạp, hội thoại + nhiệm vụ Ông Tư, Sổ Cá, menu tạm dừng |
+| WEB-E2E coop2 (2 trình duyệt) | phiên 1 tối | 17:40 | PASS | 2 context Chromium, 2 tài khoản: B nhập mã phòng của A, cả hai thấy n=2, B nhận sự kiện câu cá của A (CABAY_OTHER). Ảnh `release/screenshots/p12_coop.png` |
+| WEB-E2E trên gói server phát hành | phiên 1 tối | 16:52 | PASS | giải nén `ca-bay-server-0.1.0.zip`, chạy `run/start_backend.sh` + `run/start_room.sh` (room server đã xuất, scrypt production), trình duyệt chơi full_loop; `run/backup.sh` → verify → restore OK |
+| BUILD-02 quét bí mật gói web | phiên 1 tối | 17:10 | PASS | `package_web.py`: không .env/.db/.py/.gd, không khóa dịch vụ, không khối PEM có dữ liệu; `index.html` ở gốc ZIP |
+| ASSET sync | phiên 1 tối | 18:00 | PASS (đo máy) | `sync_asset_status.py`: 353 file thật đã băm; 0 planned; ngân sách tam giác mô hình đạt (boss ≤3000, vật phẩm ≤300) |
 | SAVE-02/03 (takeover, crash) | — | — | NOT_RUN | Chưa có kịch bản |
 | NET-02 hai room song song trên server thật | — | — | NOT_RUN | Có unit test cách ly dữ liệu; chưa chạy 2 room qua mạng |
 | NET server restart | — | — | NOT_RUN | |
