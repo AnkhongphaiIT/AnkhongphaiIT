@@ -600,6 +600,7 @@ func _on_event(ev: Dictionary) -> void:
 			m2["variant"] = p["variant_id"]
 			entities.meta[p["creature_uid"]] = m2
 		"creature.damaged":
+			entities.flash(String(p["creature_uid"]))
 			if _boss.get("uid", "") == p["creature_uid"] and p.has("hp"):
 				_boss["hp"] = float(p["hp"])
 				_boss["max_hp"] = float(p.get("max_hp", _boss.get("max_hp", 1.0)))

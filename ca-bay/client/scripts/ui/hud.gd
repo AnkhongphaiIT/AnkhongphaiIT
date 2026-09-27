@@ -215,7 +215,7 @@ func update_save(save: Dictionary, equipped: String) -> void:
 		if ammo != null:
 			txt += " (%s)" % ammo
 		var b := UIKit.label(txt, 16, UIKit.C_GOLD if id == equipped else UIKit.C_TEXT, HORIZONTAL_ALIGNMENT_CENTER)
-		var p := UIKit.panel(b)
+		var p := UIKit.panel(UIKit.hbox([UIKit.icon(id, 34), b], 4))
 		if id == equipped:
 			var sb := StyleBoxFlat.new()
 			sb.bg_color = Color(0.12, 0.48, 0.55, 0.9)

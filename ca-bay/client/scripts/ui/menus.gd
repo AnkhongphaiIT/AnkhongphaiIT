@@ -82,8 +82,9 @@ static func shop(s, shop_id: String) -> Control:
 		var label := "%s — %s" % [name, Loc.t("ui.shop.free") if price == 0 else "%d %s" % [price, Loc.t("ui.currency.name")]]
 		var b := UIKit.button(Loc.t("ui.shop.owned") if owned else Loc.t("ui.shop.buy"), func(): s.durable("shop.buy", {"shop_id": shop_id, "entry_id": e["entry_id"], "quantity": 1}))
 		b.disabled = owned or (price > int(save["currencies"]["money"]))
-		var row := UIKit.hbox([UIKit.label(label, 17), b])
-		(row.get_child(0) as Label).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var nm_lbl := UIKit.label(label, 17)
+		nm_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var row := UIKit.hbox([UIKit.icon(String(g["id"]), 36), nm_lbl, b])
 		list.add_child(row)
 	v.add_child(_scroll(list, 260))
 	# nướng cá
@@ -166,7 +167,12 @@ static func dex(s, tab := "species") -> Control:
 					txt += "  ·  " + Loc.name_of("var_boba")
 			if c.get("is_boss", false):
 				txt += "  [" + Loc.t("ui.dex.boss") + "]"
-			list.add_child(UIKit.label(txt, 16, UIKit.C_TEXT if not got.is_empty() else UIKit.C_MUTED))
+			var lbl := UIKit.label(txt, 16, UIKit.C_TEXT if not got.is_empty() else UIKit.C_MUTED)
+			lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			var ic := UIKit.icon(cid, 36)
+			if got.is_empty():
+				ic.modulate = Color(0, 0, 0, 0.55)  # bóng đen khi chưa gặp
+			list.add_child(UIKit.hbox([ic, lbl], 6))
 		v.add_child(UIKit.label(Loc.t("ui.dex.progress", {"n": n, "total": ContentDB.dex_order.size()}), 18, UIKit.C_GOLD))
 	else:
 		for tid in ContentDB.trick_order:
@@ -245,7 +251,7 @@ static func bag(s) -> Control:
 			name += " · " + Loc.name_of("var_boba")
 		if it.get("cook_level", "raw") == "burnt":
 			name += " · " + Loc.t("ui.bag.burnt")
-		v.add_child(UIKit.hbox([UIKit.label("%s — %d %s" % [name, item_value(it), Loc.t("ui.currency.name")], 17),
+		v.add_child(UIKit.hbox([UIKit.icon(it["def_id"], 36), UIKit.label("%s — %d %s" % [name, item_value(it), Loc.t("ui.currency.name")], 17),
 			UIKit.button(Loc.t("ui.bag.drop"), func(): s.durable("inventory.drop", {"item_uid": it["uid"]}))]))
 	if not (inv["recovery_inbox"] as Array).is_empty():
 		v.add_child(UIKit.label(Loc.t("ui.bag.inbox"), 18, UIKit.C_GOLD))

@@ -4,6 +4,8 @@ extends Node3D
 ## Chỉ trình bày: trạng thái, chủ sở hữu, giá trị đều đến từ server.
 
 const INTERP_MS := 100.0
+const WIGGLE := preload("res://assets/shaders/shd_creature_wiggle.gdshader")
+const HIT_FLASH := preload("res://assets/shaders/shd_hit_flash.gdshader")
 
 var my_account_id: String = ""
 var snaps: Array = []                 # [{t, players:{}, entities:{}}]
@@ -136,6 +138,9 @@ func _entity_node(uid: String, e: Dictionary) -> Node3D:
 			if ContentDB.creatures.has(def_id):
 				model = Models.creature(def_id, m.get("variant"))
 				model.scale = Vector3.ONE * 1.6
+				var sm := ShaderMaterial.new()
+				sm.shader = WIGGLE
+				(model.get_node("Body") as MeshInstance3D).material_override = sm
 			else:
 				model = Node3D.new()
 				model.add_child(Models.item(def_id))
@@ -161,6 +166,9 @@ func _entity_node(uid: String, e: Dictionary) -> Node3D:
 			var bm := Models.creature(def_id)
 			bm.name = "Model"
 			bm.scale = Vector3.ONE * 3.2
+			var bsm := ShaderMaterial.new()
+			bsm.shader = HIT_FLASH
+			(bm.get_node("Body") as MeshInstance3D).material_override = bsm
 			root.add_child(bm)
 			var hb := WorldView._label3d("", 0.8)
 			hb.name = "Info"
@@ -194,6 +202,9 @@ func _update_entity_visual(n: Node3D, uid: String, e: Dictionary, delta: float) 
 			var info: Label3D = n.get_node("Info")
 			var ko := state.begins_with("stunned") or state == "stolen"
 			stars.visible = ko
+			var wm: ShaderMaterial = (model.get_node("Body") as MeshInstance3D).material_override if model.has_node("Body") else null
+			if wm:
+				wm.set_shader_parameter("wiggle", 0.0 if ko else (1.0 if state in ["landed", "airborne"] else 0.4))
 			if ko:
 				stars.rotation.y += delta * 4.0
 				model.rotation.z = lerpf(model.rotation.z, PI * 0.5, 10 * delta)  # nằm nghiêng (xỉu)
@@ -296,3 +307,16 @@ func _draw_line(key: String, a: Vector3, b: Vector3, taut: bool) -> void:
 		p.y -= sin(t * PI) * sag
 		im.surface_add_vertex(p)
 	im.surface_end()
+
+
+## Chớp trắng khi trúng đòn (sự kiện creature.damaged của server).
+func flash(uid: String) -> void:
+	var n: Node3D = nodes.get(uid)
+	if n == null or not n.has_node("Model/Body"):
+		return
+	var sm: ShaderMaterial = (n.get_node("Model/Body") as MeshInstance3D).material_override
+	if sm == null:
+		return
+	sm.set_shader_parameter("flash", 1.0)
+	var tw := create_tween()
+	tw.tween_method(func(v): sm.set_shader_parameter("flash", v), 1.0, 0.0, 0.18)

@@ -1,0 +1,25 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7j1o"]
+vertex_color_use_as_albedo = true
+metallic_specular = 0.2
+roughness = 0.95
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rrhbv"]
+_surfaces = [{
+"aabb": AABB(-0.08, 0.02, -0.05, 0.16, 0.027500004, 0.1),
+"attribute_data": PackedByteArray("5+TS/+fk0v/n5NL/5+TS/+fk0v/n5NL/9PHe//Tx3v/08d7/9PHe//Tx3v/08d7/4N3M/+DdzP/g3cz/4N3M/+DdzP/g3cz/7OnX/+zp1//s6df/7OnX/+zp1//s6df/9PHf//Tx3//08d//9PHf//Tx3//08d//z8y8/8/MvP/PzLz/z8y8/8/MvP/PzLz/2EM5/9hDOf/YQzn/2EM5/9hDOf/YQzn/5Ec8/+RHPP/kRzz/5Ec8/+RHPP/kRzz/0UE3/9FBN//RQTf/0UE3/9FBN//RQTf/3UQ6/91EOv/dRDr/3UQ6/91EOv/dRDr/5VJH/+VSR//lUkf/5VJH/+VSR//lUkf/wTwz/8E8M//BPDP/wTwz/8E8M//BPDP/"),
+"format": 34359738383,
+"material": SubResource("StandardMaterial3D_m7j1o"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("CtejvQrXozzNzEy9CtejPQrXIz3NzEy9CtejvQrXIz3NzEy9CtejvQrXozzNzEy9CtejPQrXozzNzEy9CtejPQrXIz3NzEy9CtejvQrXozzNzEw9CtejPQrXIz3NzEw9CtejPQrXozzNzEw9CtejvQrXozzNzEw9CtejvQrXIz3NzEw9CtejPQrXIz3NzEw9CtejvQrXozzNzEy9CtejvQrXIz3NzEw9CtejvQrXozzNzEw9CtejvQrXozzNzEy9CtejvQrXIz3NzEy9CtejvQrXIz3NzEw9CtejPQrXozzNzEy9CtejPQrXIz3NzEw9CtejPQrXIz3NzEy9CtejPQrXozzNzEy9CtejPQrXozzNzEw9CtejPQrXIz3NzEw9CtejvQrXIz3NzEy9CtejPQrXIz3NzEw9CtejvQrXIz3NzEw9CtejvQrXIz3NzEy9CtejPQrXIz3NzEy9CtejPQrXIz3NzEw9CtejvQrXozzNzEy9CtejPQrXozzNzEw9CtejPQrXozzNzEy9CtejvQrXozzNzEy9CtejvQrXozzNzEw9CtejPQrXozzNzEw9j8J1vXsULj0K1yO8j8J1PV2PQj0K1yO8j8J1vV2PQj0K1yO8j8J1vXsULj0K1yO8j8J1PXsULj0K1yO8j8J1PV2PQj0K1yO8j8J1vXsULj0K1yM8j8J1PV2PQj0K1yM8j8J1PXsULj0K1yM8j8J1vXsULj0K1yM8j8J1vV2PQj0K1yM8j8J1PV2PQj0K1yM8j8J1vXsULj0K1yO8j8J1vV2PQj0K1yM8j8J1vXsULj0K1yM8j8J1vXsULj0K1yO8j8J1vV2PQj0K1yO8j8J1vV2PQj0K1yM8j8J1PXsULj0K1yO8j8J1PV2PQj0K1yM8j8J1PV2PQj0K1yO8j8J1PXsULj0K1yO8j8J1PXsULj0K1yM8j8J1PV2PQj0K1yM8j8J1vV2PQj0K1yO8j8J1PV2PQj0K1yM8j8J1vV2PQj0K1yM8j8J1vV2PQj0K1yO8j8J1PV2PQj0K1yO8j8J1PV2PQj0K1yM8j8J1vXsULj0K1yO8j8J1PXsULj0K1yM8j8J1PXsULj0K1yO8j8J1vXsULj0K1yO8j8J1vXsULj0K1yM8j8J1PXsULj0K1yM8//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+///////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
+}]
+
+[node name="mdl_item_survey_tag" type="Node3D" unique_id=452840790]
+
+[node name="@Node3D@167" type="Node3D" parent="." unique_id=474274219]
+
+[node name="@MeshInstance3D@166" type="MeshInstance3D" parent="@Node3D@167" unique_id=1523750990]
+mesh = SubResource("ArrayMesh_rrhbv")

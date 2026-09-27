@@ -1,0 +1,25 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7j1o"]
+vertex_color_use_as_albedo = true
+metallic_specular = 0.2
+roughness = 0.95
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m0tnx"]
+_surfaces = [{
+"aabb": AABB(-0.075, 0, -0.055, 0.15, 0.1125, 0.11),
+"attribute_data": PackedByteArray("WYdK/1mHSv9Zh0r/WYdK/1mHSv9Zh0r/Xo9O/16PTv9ej07/Xo9O/16PTv9ej07/VoNH/1aDR/9Wg0f/VoNH/1aDR/9Wg0f/W4pL/1uKS/9bikv/W4pL/1uKS/9bikv/Z5VY/2eVWP9nlVj/Z5VY/2eVWP9nlVj/T3lC/095Qv9PeUL/T3lC/095Qv9PeUL/OmUy/zplMv86ZTL/OmUy/zplMv86ZTL/Pms1/z5rNf8+azX/Pms1/z5rNf8+azX/OWIw/zliMP85YjD/OWIw/zliMP85YjD/PGcz/zxnM/88ZzP/PGcz/zxnM/88ZzP/SXNB/0lzQf9Jc0H/SXNB/0lzQf9Jc0H/NFot/zRaLf80Wi3/NFot/zRaLf80Wi3/5+TS/+fk0v/n5NL/5+TS/+fk0v/n5NL/9PHe//Tx3v/08d7/9PHe//Tx3v/08d7/4N3M/+DdzP/g3cz/4N3M/+DdzP/g3cz/7OnX/+zp1//s6df/7OnX/+zp1//s6df/9PHf//Tx3//08d//9PHf//Tx3//08d//z8y8/8/MvP/PzLz/z8y8/8/MvP/PzLz/"),
+"format": 34359738383,
+"material": SubResource("StandardMaterial3D_m7j1o"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 108,
+"vertex_data": PackedByteArray("KVyPvQAAAADNzEy9KVyPPc3MzD3NzEy9KVyPvc3MzD3NzEy9KVyPvQAAAADNzEy9KVyPPQAAAADNzEy9KVyPPc3MzD3NzEy9KVyPvQAAAADNzEw9KVyPPc3MzD3NzEw9KVyPPQAAAADNzEw9KVyPvQAAAADNzEw9KVyPvc3MzD3NzEw9KVyPPc3MzD3NzEw9KVyPvQAAAADNzEy9KVyPvc3MzD3NzEw9KVyPvQAAAADNzEw9KVyPvQAAAADNzEy9KVyPvc3MzD3NzEy9KVyPvc3MzD3NzEw9KVyPPQAAAADNzEy9KVyPPc3MzD3NzEw9KVyPPc3MzD3NzEy9KVyPPQAAAADNzEy9KVyPPQAAAADNzEw9KVyPPc3MzD3NzEw9KVyPvc3MzD3NzEy9KVyPPc3MzD3NzEw9KVyPvc3MzD3NzEw9KVyPvc3MzD3NzEy9KVyPPc3MzD3NzEy9KVyPPc3MzD3NzEw9KVyPvQAAAADNzEy9KVyPPQAAAADNzEw9KVyPPQAAAADNzEy9KVyPvQAAAADNzEy9KVyPvQAAAADNzEw9KVyPPQAAAADNzEw9mpmZvRSuxz2uR2G9mpmZPWZm5j2uR2G9mpmZvWZm5j2uR2G9mpmZvRSuxz2uR2G9mpmZPRSuxz2uR2G9mpmZPWZm5j2uR2G9mpmZvRSuxz2uR2E9mpmZPWZm5j2uR2E9mpmZPRSuxz2uR2E9mpmZvRSuxz2uR2E9mpmZvWZm5j2uR2E9mpmZPWZm5j2uR2E9mpmZvRSuxz2uR2G9mpmZvWZm5j2uR2E9mpmZvRSuxz2uR2E9mpmZvRSuxz2uR2G9mpmZvWZm5j2uR2G9mpmZvWZm5j2uR2E9mpmZPRSuxz2uR2G9mpmZPWZm5j2uR2E9mpmZPWZm5j2uR2G9mpmZPRSuxz2uR2G9mpmZPRSuxz2uR2E9mpmZPWZm5j2uR2E9mpmZvWZm5j2uR2G9mpmZPWZm5j2uR2E9mpmZvWZm5j2uR2E9mpmZvWZm5j2uR2G9mpmZPWZm5j2uR2G9mpmZPWZm5j2uR2E9mpmZvRSuxz2uR2G9mpmZPRSuxz2uR2E9mpmZPRSuxz2uR2G9mpmZvRSuxz2uR2G9mpmZvRSuxz2uR2E9mpmZPRSuxz2uR2E9CtcjvQrXIz3NzEw9CtcjPQrXoz3NzEw9CtcjvQrXoz3NzEw9CtcjvQrXIz3NzEw9CtcjPQrXIz3NzEw9CtcjPQrXoz3NzEw9CtcjvQrXIz3z/VQ9CtcjPQrXoz3z/VQ9CtcjPQrXIz3z/VQ9CtcjvQrXIz3z/VQ9CtcjvQrXoz3z/VQ9CtcjPQrXoz3z/VQ9CtcjvQrXIz3NzEw9CtcjvQrXoz3z/VQ9CtcjvQrXIz3z/VQ9CtcjvQrXIz3NzEw9CtcjvQrXoz3NzEw9CtcjvQrXoz3z/VQ9CtcjPQrXIz3NzEw9CtcjPQrXoz3z/VQ9CtcjPQrXoz3NzEw9CtcjPQrXIz3NzEw9CtcjPQrXIz3z/VQ9CtcjPQrXoz3z/VQ9CtcjvQrXoz3NzEw9CtcjPQrXoz3z/VQ9CtcjvQrXoz3z/VQ9CtcjvQrXoz3NzEw9CtcjPQrXoz3NzEw9CtcjPQrXoz3z/VQ9CtcjvQrXIz3NzEw9CtcjPQrXIz3z/VQ9CtcjPQrXIz3NzEw9CtcjvQrXIz3NzEw9CtcjvQrXIz3z/VQ9CtcjPQrXIz3z/VQ9//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+///////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+///////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
+}]
+
+[node name="mdl_item_milk_tea" type="Node3D" unique_id=51253647]
+
+[node name="@Node3D@86" type="Node3D" parent="." unique_id=1597249695]
+
+[node name="@MeshInstance3D@85" type="MeshInstance3D" parent="@Node3D@86" unique_id=587225566]
+mesh = SubResource("ArrayMesh_m0tnx")

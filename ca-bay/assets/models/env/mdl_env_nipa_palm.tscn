@@ -1,0 +1,25 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7j1o"]
+vertex_color_use_as_albedo = true
+metallic_specular = 0.2
+roughness = 0.95
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k2tce"]
+_surfaces = [{
+"aabb": AABB(-1.5822564, 0.1, -1.5169556, 3.150363, 2.3000002, 3.116437),
+"attribute_data": PackedByteArray("Tpo6/06aOv9Omjr/Roo0/0aKNP9GijT/VZ5B/1WeQf9VnkH/TI47/0yOO/9Mjjv/XKJJ/1yiSf9cokn/UpFC/1KRQv9SkUL/Tpo6/06aOv9Omjr/Roo0/0aKNP9GijT/VZ5B/1WeQf9VnkH/TI47/0yOO/9Mjjv/XKJJ/1yiSf9cokn/UpFC/1KRQv9SkUL/Tpo6/06aOv9Omjr/Roo0/0aKNP9GijT/VZ5B/1WeQf9VnkH/TI47/0yOO/9Mjjv/XKJJ/1yiSf9cokn/UpFC/1KRQv9SkUL/"),
+"format": 34359738383,
+"material": SubResource("StandardMaterial3D_m7j1o"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("+W9Lvc3MzD2l5Xo++W9LPc3MzD2l5Xq+t7fIP5qZGUD7v6I++W9Lvc3MzD2l5Xo+t7fIP5qZGUD7v6I++W9LPc3MzD2l5Xq+6jtIvs3MzD2sgR8+6jtIPs3MzD2sgR++4DV/P5qZGUDvL6A/6jtIvs3MzD2sgR8+4DV/P5qZGUDvL6A/6jtIPs3MzD2sgR++wOp/vs3MzD2OmtC7wOp/Ps3MzD2OmtA7C+ImvZqZGUDNu8w/wOp/vs3MzD2OmtC7C+ImvZqZGUDNu8w/wOp/Ps3MzD2OmtA7gto/vs3MzD13fim+gto/Ps3MzD13fik+X5iHv5qZGUCbe5k/gto/vs3MzD13fim+X5iHv5qZGUCbe5k/gto/Ps3MzD13fik+KRQYvc3MzD05KX2+KRQYPc3MzD05KX0+YYfKv5qZGUB1U3M+KRQYvc3MzD05KX2+YYfKv5qZGUB1U3M+KRQYPc3MzD05KX0+oJoFPs3MzD0GX1q+oJoFvs3MzD0GX1o+a7Kuv5qZGUAzxFW/oJoFPs3MzD0GX1q+a7Kuv5qZGUAzxFW/oJoFvs3MzD0GX1o+gLZyPs3MzD1azqK9gLZyvs3MzD1azqI9rz4Cv5qZGUCaK8K/gLZyPs3MzD1azqK9rz4Cv5qZGUCaK8K/gLZyvs3MzD1azqI99EBuPs3MzD0aT7s99EBuvs3MzD0aT7u94tgVP5qZGUBdmr6/9EBuPs3MzD0aT7s94tgVP5qZGUBdmr6/9EBuvs3MzD0aT7u9QKD0Pc3MzD3a42A+QKD0vc3MzD3a42C+e+mzP5qZGUBns0O/QKD0Pc3MzD3a42A+e+mzP5qZGUBns0O/QKD0vc3MzD3a42C+gS8RvehYOauBLxG96Fg5q4EvEb3oWDmr7MJ+UOhYOavswn5Q6Fg5q+zCflDoWDmrYioI2pU9nJxiKgjalT2cnGIqCNqVPZyc9aWdVZU9nJz1pZ1VlT2cnPWlnVWVPZycQMwa/to6vY1AzBr+2jq9jUDMGv7aOr2NGn5ATNo6vY0afkBM2jq9jRp+QEzaOr2NvdXH1xm+/oO91cfXGb7+g73Vx9cZvv6Dx1e9VRm+/oPHV71VGb7+g8dXvVUZvv6Da8/xugVpsdZrz/G6BWmx1mvP8boFabHW8jpsTwVpsdbyOmxPBWmx1vI6bE8FabHWurQAqzFNxsi6tACrMU3GyLq0AKsxTcbIASu7NDFNxsgBK7s0MU3GyAEruzQxTcbIvpRjrcpSfqy+lGOtylJ+rL6UY63KUn6sYy2/FMpSfqxjLb8UylJ+rGMtvxTKUn6sfmixrAV37px+aLGsBXfunH5osawFd+6cTNOBFwV37pxM04EXBXfunEzTgRcFd+6cMklkq+d7PaUySWSr53s9pTJJZKvnez2lmdTMNud7PaWZ1Mw253s9pZnUzDbnez2l")
+}]
+
+[node name="mdl_env_nipa_palm" type="Node3D" unique_id=407540050]
+
+[node name="@Node3D@64" type="Node3D" parent="." unique_id=41541440]
+
+[node name="@MeshInstance3D@63" type="MeshInstance3D" parent="@Node3D@64" unique_id=1513608725]
+mesh = SubResource("ArrayMesh_k2tce")

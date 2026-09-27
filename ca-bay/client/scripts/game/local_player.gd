@@ -40,6 +40,7 @@ func _ready() -> void:
 	viewmodel.position = Vector3(0.28, -0.26, -0.45)
 	cam.add_child(viewmodel)
 	var hand := Models.fp_hand(Models.SKINS[0], Color("#2F6FA8"))
+	hand.material_override = _viewmodel_material()
 	hand.position = Vector3(0, -0.02, 0.06)
 	viewmodel.add_child(hand)
 	tool_holder = Node3D.new()
@@ -66,6 +67,7 @@ func set_equipped(id: String) -> void:
 	if cos_id != "" and ContentDB.cosmetics.has(cos_id):
 		tint = Color(ContentDB.cosmetics[cos_id]["color_hex"])
 	var m := Models.tool_model(id, tint)
+	m.material_override = _viewmodel_material()
 	tool_holder.add_child(m)
 	_tip_node = null
 	if id.begins_with("rod_"):
@@ -323,3 +325,15 @@ func _autotest_face_other_player() -> void:
 		var d := best - Movement.eye(pos)
 		yaw = atan2(-d.x, -d.z)
 		pitch = clampf(atan2(d.y, Vector2(d.x, d.z).length()), -1.45, 1.45)
+
+
+static var _vm_mat: ShaderMaterial
+
+
+## asset shd_fp_viewmodel: tay/cần không bị cảnh vật che hay xuyên vào tường/NPC.
+static func _viewmodel_material() -> ShaderMaterial:
+	if _vm_mat == null:
+		_vm_mat = ShaderMaterial.new()
+		_vm_mat.shader = load("res://assets/shaders/shd_fp_viewmodel.gdshader")
+		_vm_mat.render_priority = 10
+	return _vm_mat

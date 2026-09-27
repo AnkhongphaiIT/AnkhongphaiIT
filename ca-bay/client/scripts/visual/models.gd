@@ -484,3 +484,103 @@ static func boat() -> MeshInstance3D:
 		k.eye(Vector3(-0.9, 0.55, -2.6), 0.12, Vector3(-1, 0, -0.3))
 		k.eye(Vector3(0.9, 0.55, -2.6), 0.12, Vector3(1, 0, -0.3))
 		return k.commit_mesh())
+
+
+# ------------------------------------------------------------------ vật phẩm/UI bổ sung (khớp asset registry)
+
+## Mồi theo ID (bait_milk_tea là ID kỹ thuật cũ: hộp mồi cá tạp, không phải cốc trà sữa).
+static func bait(bait_id: String) -> MeshInstance3D:
+	return mesh_instance("bait_" + bait_id, func():
+		var k := MeshKit.new()
+		match bait_id:
+			"bait_bread":
+				k.box(Vector3(0, 0.03, 0), Vector3(0.12, 0.06, 0.09), Color("#E8C27A"))
+				k.box(Vector3(0.05, 0.045, 0.02), Vector3(0.05, 0.05, 0.05), Color("#F6E6BF"))
+				k.box(Vector3(-0.07, 0.02, -0.03), Vector3(0.04, 0.04, 0.04), Color("#D9A85A"))
+			"bait_worm":
+				k.cylinder(Vector3(0, 0, 0), Vector3(0, 0.14, 0), 0.07, 0.07, 10, Color(0.8, 0.9, 0.95))
+				k.cylinder(Vector3(0, 0.14, 0), Vector3(0, 0.17, 0), 0.075, 0.075, 10, C_RED)
+				for i in 3:
+					k.cylinder(Vector3(-0.04 + i * 0.03, 0.02, 0), Vector3(-0.02 + i * 0.03, 0.1, 0.02), 0.012, 0.01, 5, Color("#C9736A"), false)
+			"bait_shrimp_paste":
+				k.cylinder(Vector3(0, 0, 0), Vector3(0, 0.08, 0), 0.08, 0.07, 10, Color("#C8744A"))
+				k.cylinder(Vector3(0, 0.08, 0), Vector3(0, 0.1, 0), 0.075, 0.075, 10, Color("#F4F1DE"))
+			"bait_crab_mix":
+				k.box(Vector3(0, 0.05, 0), Vector3(0.16, 0.1, 0.12), Color("#7A5A3A"))
+				k.ellipsoid(Vector3(0, 0.11, 0), Vector3(0.05, 0.02, 0.04), 8, 3, Color("#D9533F"))
+			"bait_fish_strip":
+				k.box(Vector3(0, 0.02, 0), Vector3(0.05, 0.02, 0.18), C_SILVER, Basis(Vector3.UP, 0.4))
+				k.box(Vector3(0.05, 0.02, 0.02), Vector3(0.05, 0.02, 0.16), C_SILVER_L, Basis(Vector3.UP, -0.3))
+			_:  # bait_milk_tea = hộp mồi cá tạp
+				k.box(Vector3(0, 0.05, 0), Vector3(0.14, 0.1, 0.1), Color("#5E8F4E"))
+				k.box(Vector3(0, 0.105, 0), Vector3(0.15, 0.015, 0.11), Color("#3E6B35"))
+				k.box(Vector3(0, 0.06, 0.051), Vector3(0.08, 0.04, 0.002), Color("#F4F1DE"))
+		return k.commit_mesh())
+
+
+static func coin() -> MeshInstance3D:
+	return mesh_instance("coin", func():
+		var k := MeshKit.new()
+		k.cylinder(Vector3(0, 0, -0.012), Vector3(0, 0, 0.012), 0.1, 0.1, 16, C_GOLD)
+		k.cylinder(Vector3(0, 0, 0.012), Vector3(0, 0, 0.016), 0.07, 0.07, 16, C_GOLD.darkened(0.15), false)
+		k.fin(Vector3(-0.03, -0.035, 0.017), Vector3(0.035, 0.0, 0.017), Vector3(-0.03, 0.035, 0.017), Color("#FFF1B8"))
+		return k.commit_mesh())
+
+
+static func heart() -> MeshInstance3D:
+	return mesh_instance("heart", func():
+		var k := MeshKit.new()
+		k.ellipsoid(Vector3(-0.045, 0.03, 0), Vector3(0.055, 0.055, 0.04), 10, 5, C_RED)
+		k.ellipsoid(Vector3(0.045, 0.03, 0), Vector3(0.055, 0.055, 0.04), 10, 5, C_RED)
+		k.cone(Vector3(0, 0.02, 0), Vector3(0, -0.09, 0), 0.085, 10, C_RED.darkened(0.1))
+		return k.commit_mesh())
+
+
+static func sign_board() -> MeshInstance3D:
+	return mesh_instance("sign_board", func():
+		var k := MeshKit.new()
+		k.box(Vector3(0, 0.7, 0), Vector3(0.1, 1.4, 0.1), C_WOOD_D)
+		k.box(Vector3(0, 1.35, 0.06), Vector3(1.2, 0.5, 0.06), C_WOOD_L)
+		k.box(Vector3(0, 1.35, 0.095), Vector3(1.05, 0.36, 0.01), C_WOOD)
+		return k.commit_mesh())
+
+
+static func grill() -> MeshInstance3D:
+	return mesh_instance("grill", func():
+		var k := MeshKit.new()
+		k.box(Vector3(0, 0.35, 0), Vector3(0.7, 0.7, 0.6), Color("#8A8A84"))
+		k.box(Vector3(0, 0.72, 0), Vector3(0.6, 0.04, 0.5), Color("#2B2B2B"))
+		for i in 5:
+			k.box(Vector3(-0.24 + i * 0.12, 0.75, 0), Vector3(0.02, 0.02, 0.5), Color("#555555"))
+		k.ellipsoid(Vector3(0, 0.66, 0), Vector3(0.2, 0.03, 0.15), 8, 3, Color("#E4473C"), Color("#FFC93C"))
+		return k.commit_mesh())
+
+
+static func backpack_display() -> MeshInstance3D:
+	return mesh_instance("backpack_display", func():
+		var k := MeshKit.new()
+		k.box(Vector3(0, 0.22, 0), Vector3(0.36, 0.44, 0.22), Color("#3E7FA8"))
+		k.box(Vector3(0, 0.12, 0.12), Vector3(0.28, 0.18, 0.04), Color("#2F6FA8"))
+		k.box(Vector3(0, 0.46, 0), Vector3(0.3, 0.06, 0.2), Color("#2B5A7A"))
+		for x in [-0.12, 0.12]:
+			k.box(Vector3(x, 0.25, -0.12), Vector3(0.04, 0.4, 0.02), C_WOOD_D)
+		return k.commit_mesh())
+
+
+static func reel_display() -> MeshInstance3D:
+	return mesh_instance("reel_display", func():
+		var k := MeshKit.new()
+		k.cylinder(Vector3(-0.05, 0.1, 0), Vector3(0.05, 0.1, 0), 0.09, 0.09, 14, Color("#8A8A84"))
+		k.cylinder(Vector3(-0.055, 0.1, 0), Vector3(0.055, 0.1, 0), 0.05, 0.05, 14, C_GOLD, false)
+		k.box(Vector3(0.09, 0.1, 0.06), Vector3(0.02, 0.02, 0.12), Color("#2B2B2B"))
+		k.box(Vector3(0, 0.0, 0), Vector3(0.05, 0.02, 0.18), Color("#5A5A5A"))
+		return k.commit_mesh())
+
+
+## ID kỹ thuật cũ mdl_acc_boba_pearls = mảng vảy Ánh Bạc bám thân (không phải hạt trân châu).
+static func silver_scales() -> MeshInstance3D:
+	return mesh_instance("silver_scales", func():
+		var k := MeshKit.new()
+		for i in 5:
+			k.ellipsoid(Vector3(-0.04 + i * 0.02, 0.01 + (i % 2) * 0.012, 0), Vector3(0.018, 0.012, 0.004), 6, 2, C_SILVER_L, C_SILVER)
+		return k.commit_mesh())

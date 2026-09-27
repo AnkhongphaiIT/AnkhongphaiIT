@@ -6,189 +6,189 @@
       "type": "model",
       "path": "res://assets/models/env/mdl_env_isl01_terrain.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_pier",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_pier.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_vendor_stall",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_vendor_stall.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_ferry_boat",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_ferry_boat.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_palm_coconut",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_palm_coconut.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_nipa_palm",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_nipa_palm.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_rock_set",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_rock_set.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_boss_spot_post",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_boss_spot_post.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_sign_board",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_sign_board.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_chr_npc_co_ba",
       "type": "model",
       "path": "res://assets/models/chr/mdl_chr_npc_co_ba.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_chr_npc_ong_tu",
       "type": "model",
       "path": "res://assets/models/chr/mdl_chr_npc_ong_tu.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_fp_hands",
       "type": "model",
       "path": "res://assets/models/fp/mdl_fp_hands.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_rod_bamboo",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_rod_bamboo.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_bobber",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_bobber.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_slipper",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_slipper.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_broom",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_broom.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_cre_tep",
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_tep.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_cre_ca_ro",
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_ro.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_cre_ca_tre",
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_tre.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_cre_cua_dong",
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_cua_dong.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_cre_boss_ca_loc",
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_boss_ca_loc.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Lóc đầu đàn; 3.000 tam giác tối đa, vảy tự nhiên; không bụng trà sữa hay hạt trên má."
     },
     {
@@ -196,9 +196,9 @@
       "type": "model",
       "path": "res://assets/models/items/mdl_item_milk_tea.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "ID kỹ thuật cũ: Mồi cá tạp, hộp nhỏ đựng mồi; không cốc trà sữa."
     },
     {
@@ -206,27 +206,27 @@
       "type": "model",
       "path": "res://assets/models/items/mdl_item_golden_scale.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_item_worm_jar",
       "type": "model",
       "path": "res://assets/models/items/mdl_item_worm_jar.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_proj_boba_pearl",
       "type": "model",
       "path": "res://assets/models/proj/mdl_proj_boba_pearl.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "ID kỹ thuật cũ: khối nước bắn low-poly; không hạt trân châu."
     },
     {
@@ -234,81 +234,81 @@
       "type": "model",
       "path": "res://assets/models/items/mdl_item_backpack_display.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_item_reel_display",
       "type": "model",
       "path": "res://assets/models/items/mdl_item_reel_display.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mat_palette_lit",
       "type": "material",
       "path": "res://assets/materials/mat_palette_lit.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mat_palette_unshaded",
       "type": "material",
       "path": "res://assets/materials/mat_palette_unshaded.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "shd_water",
       "type": "shader",
       "path": "res://assets/shaders/shd_water.gdshader",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "tech_art",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "shd_creature_wiggle",
       "type": "shader",
       "path": "res://assets/shaders/shd_creature_wiggle.gdshader",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "tech_art",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "shd_fp_viewmodel",
       "type": "shader",
       "path": "res://assets/shaders/shd_fp_viewmodel.gdshader",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "tech_art",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "shd_hit_flash",
       "type": "shader",
       "path": "res://assets/shaders/shd_hit_flash.gdshader",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "tech_art",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "env_isl01_day",
       "type": "environment",
       "path": "res://assets/env/env_isl01_day.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "tex_palette_main",
@@ -459,18 +459,18 @@
       "type": "ui",
       "path": "res://ui/theme/ui_theme_main.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "fnt_be_vietnam_pro",
       "type": "font",
       "path": "res://assets/fonts/fnt_be_vietnam_pro.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "approved",
       "owner_role": "ui",
-      "license": "tbd",
+      "license": "OFL",
       "notes": "Ứng viên Be Vietnam Pro; chưa có file/font/license. Xác minh OFL của đúng bản tải trước khi duyệt."
     },
     {
@@ -478,36 +478,40 @@
       "type": "ui",
       "path": "res://ui/hud/ui_hud.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_hotbar",
       "type": "ui",
       "path": "res://ui/hud/ui_hotbar.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_bag_row",
       "type": "ui",
       "path": "res://ui/hud/ui_bag_row.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/menus.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_strain_meter",
       "type": "ui",
       "path": "res://ui/hud/ui_strain_meter.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_damage_vignette",
@@ -523,109 +527,120 @@
       "type": "ui",
       "path": "res://ui/hud/ui_tutorial_hint.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/game/game_session.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_toast",
       "type": "ui",
       "path": "res://ui/hud/ui_toast.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_touch_controls",
       "type": "ui",
       "path": "res://ui/touch/ui_touch_controls.tscn",
       "priority": "P2",
-      "status": "planned",
+      "status": "deprecated",
       "owner_role": "ui",
       "license": "tbd",
-      "notes": "Giữ ID tương thích, ngoài phạm vi desktop v2; không là điều kiện phát hành."
+      "notes": "Ngoài phạm vi bản này: chỉ desktop bàn phím + chuột (không cảm ứng)."
     },
     {
       "id": "ui_prompt",
       "type": "ui",
       "path": "res://ui/hud/ui_prompt.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_objective_line",
       "type": "ui",
       "path": "res://ui/hud/ui_objective_line.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_trick_popup",
       "type": "ui",
       "path": "res://ui/hud/ui_trick_popup.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_boss_bar",
       "type": "ui",
       "path": "res://ui/hud/ui_boss_bar.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_dex_panel",
       "type": "ui",
       "path": "res://ui/menus/ui_dex_panel.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/menus.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_pause_menu",
       "type": "ui",
       "path": "res://ui/menus/ui_pause_menu.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/menus.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_settings_panel",
       "type": "ui",
       "path": "res://ui/menus/ui_settings_panel.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/settings_menu.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_main_menu",
       "type": "ui",
       "path": "res://ui/menus/ui_main_menu.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/client_app.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_dialogue_bubble",
       "type": "ui",
       "path": "res://ui/widgets/ui_dialogue_bubble.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_logo_placeholder",
@@ -641,63 +656,63 @@
       "type": "icon",
       "path": "res://assets/icons/ico_tool_hand.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_tool_slipper",
       "type": "icon",
       "path": "res://assets/icons/ico_tool_slipper.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_tool_broom",
       "type": "icon",
       "path": "res://assets/icons/ico_tool_broom.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_rod_bamboo",
       "type": "icon",
       "path": "res://assets/icons/ico_rod_bamboo.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_bait_bread",
       "type": "icon",
       "path": "res://assets/icons/ico_bait_bread.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_bait_worm",
       "type": "icon",
       "path": "res://assets/icons/ico_bait_worm.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_bait_milk_tea",
       "type": "icon",
       "path": "res://assets/icons/ico_bait_milk_tea.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "ID kỹ thuật cũ: icon Mồi cá tạp; bake từ mdl_item_milk_tea."
     },
     {
@@ -705,72 +720,72 @@
       "type": "icon",
       "path": "res://assets/icons/ico_item_golden_scale.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_cre_tep",
       "type": "icon",
       "path": "res://assets/icons/ico_cre_tep.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_cre_ca_ro",
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_ro.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_cre_ca_tre",
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_tre.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_cre_cua_dong",
       "type": "icon",
       "path": "res://assets/icons/ico_cre_cua_dong.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_cre_boss_ca_loc",
       "type": "icon",
       "path": "res://assets/icons/ico_cre_boss_ca_loc.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_money",
       "type": "icon",
       "path": "res://assets/icons/ico_money.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ico_health",
       "type": "icon",
       "path": "res://assets/icons/ico_health.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_lib_fp",
@@ -1064,108 +1079,108 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_cast_charge.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_cast_whoosh",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_cast_whoosh.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_lure_splash",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_lure_splash.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_lure_ground",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_lure_ground.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_nibble",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_nibble.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_bite_alert",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_bite_alert.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_perfect_yank",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_perfect_yank.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_reel_loop",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_reel_loop.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_line_strain",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_line_strain.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_escape_bloop",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_escape_bloop.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_launch_pop",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_launch_pop.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_air_whistle",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_air_whistle.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_flop",
@@ -1173,9 +1188,9 @@
       "path": "res://assets/audio/sfx/sfx_flop_{nn}.wav",
       "variants": 3,
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "File thật: sfx_flop_01 … sfx_flop_03; AssetRegistry thay {nn} bằng số biến thể"
     },
     {
@@ -1183,126 +1198,126 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_hit_slap.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_hit_bonk",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_hit_bonk.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_slipper_throw",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_slipper_throw.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_slipper_hit",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_slipper_hit.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_ko_stars",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_ko_stars.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_trick_ding",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_trick_ding.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_coin_gain",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_coin_gain.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_sell_basket",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_sell_basket.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_buy",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_buy.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_error_nope",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_error_nope.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_pickup",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_pickup.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_drop_thud",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_drop_thud.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_player_hurt",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_player_hurt.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_player_ko",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_player_ko.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_footstep_wood",
@@ -1310,9 +1325,9 @@
       "path": "res://assets/audio/sfx/sfx_footstep_wood_{nn}.wav",
       "variants": 3,
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "File thật: sfx_footstep_wood_01 … sfx_footstep_wood_03; AssetRegistry thay {nn} bằng số biến thể"
     },
     {
@@ -1321,9 +1336,9 @@
       "path": "res://assets/audio/sfx/sfx_footstep_sand_{nn}.wav",
       "variants": 3,
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "File thật: sfx_footstep_sand_01 … sfx_footstep_sand_03; AssetRegistry thay {nn} bằng số biến thể"
     },
     {
@@ -1331,27 +1346,27 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_jump.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_land",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_land.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_boss_roar",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_boss_roar.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Nước quẫy và gầm cách điệu ngắn; không tiếng ợ trà sữa."
     },
     {
@@ -1359,27 +1374,27 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_boss_telegraph.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_boss_escape_warning",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_boss_escape_warning.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_boss_phase",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_boss_phase.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Quẫy nước mạnh + nhạc nhấn nguyên bản; báo đổi pha rõ."
     },
     {
@@ -1387,81 +1402,81 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_boss_escape_splash.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_creature_warn",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_creature_warn.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_swing_whoosh",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_swing_whoosh.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_boss_defeat_fanfare",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_boss_defeat_fanfare.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_quest_complete",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_quest_complete.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_new_species",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_new_species.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_ui_click",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_ui_click.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_ui_back",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_ui_back.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_tutorial_pop",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_tutorial_pop.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vo_npc_gibberish_female",
@@ -1469,9 +1484,9 @@
       "path": "res://assets/audio/vo/vo_npc_gibberish_female_{nn}.wav",
       "variants": 10,
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "File thật: vo_npc_gibberish_female_01 … vo_npc_gibberish_female_10; AssetRegistry thay {nn} bằng số biến thể"
     },
     {
@@ -1480,9 +1495,9 @@
       "path": "res://assets/audio/vo/vo_npc_gibberish_male_{nn}.wav",
       "variants": 10,
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "File thật: vo_npc_gibberish_male_01 … vo_npc_gibberish_male_10; AssetRegistry thay {nn} bằng số biến thể"
     },
     {
@@ -1490,36 +1505,36 @@
       "type": "music",
       "path": "res://assets/audio/mus/mus_isl01_day_loop.ogg",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mus_boss_loop",
       "type": "music",
       "path": "res://assets/audio/mus/mus_boss_loop.ogg",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "amb_river_day_loop",
       "type": "ambience",
       "path": "res://assets/audio/amb/amb_river_day_loop.ogg",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_grill",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_grill.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_smoke_grill",
@@ -1535,36 +1550,36 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_grill_sizzle_loop.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_cook_done",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_cook_done.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_burnt",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_burnt.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_cre_egret",
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_egret.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_lib_egret",
@@ -1600,27 +1615,27 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_egret_call.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_egret_steal",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_egret_steal.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_acc_boba_pearls",
       "type": "model",
       "path": "res://assets/models/acc/mdl_acc_boba_pearls.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "ID kỹ thuật cũ: mảng vảy Ánh Bạc bám thân, không hình hạt/đột biến; dùng chung socket_acc_body."
     },
     {
@@ -1638,36 +1653,36 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_rare_reveal.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_slingshot",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_slingshot.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_swatter",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_swatter.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_coconut_bomb",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_coconut_bomb.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Dụng cụ hài bằng vỏ dừa; hiệu ứng nước/bụi/confetti cơ học, không phép thuật."
     },
     {
@@ -1684,81 +1699,81 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_slingshot_shot.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_swatter_zap",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_swatter_zap.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_coconut_boom",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_coconut_boom.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_tool_rod_carbon",
       "type": "model",
       "path": "res://assets/models/tools/mdl_tool_rod_carbon.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_isl02_terrain",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_isl02_terrain.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_env_isl03_terrain",
       "type": "model",
       "path": "res://assets/models/env/mdl_env_isl03_terrain.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mus_isl02_day_loop",
       "type": "music",
       "path": "res://assets/audio/mus/mus_isl02_day_loop.ogg",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mus_isl03_day_loop",
       "type": "music",
       "path": "res://assets/audio/mus/mus_isl03_day_loop.ogg",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "mdl_cre_ca_me",
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_me.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá mè thân dẹp, đầu nhỏ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1766,9 +1781,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_me.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_ca_me đã duyệt; rõ ở 64 px."
     },
     {
@@ -1776,9 +1791,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_thoi_loi.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá thòi lòi, mắt cao, vây chống; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1786,9 +1801,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_thoi_loi.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_ca_thoi_loi đã duyệt; rõ ở 64 px."
     },
     {
@@ -1796,9 +1811,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_luon.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Lươn thân dài, đầu nhỏ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1806,9 +1821,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_luon.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_luon đã duyệt; rõ ở 64 px."
     },
     {
@@ -1816,9 +1831,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_doi.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá đối thân thuôn, đuôi chẻ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1826,9 +1841,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_doi.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_ca_doi đã duyệt; rõ ở 64 px."
     },
     {
@@ -1836,9 +1851,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_cua_bun.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua bùn mai rộng, càng lớn; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1846,9 +1861,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_cua_bun.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_cua_bun đã duyệt; rõ ở 64 px."
     },
     {
@@ -1856,9 +1871,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_tom_cang.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Tôm càng, càng trước dài; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1866,9 +1881,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_tom_cang.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_tom_cang đã duyệt; rõ ở 64 px."
     },
     {
@@ -1876,9 +1891,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_nuc.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá nục thân thoi, đuôi chẻ; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1886,9 +1901,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_nuc.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_ca_nuc đã duyệt; rõ ở 64 px."
     },
     {
@@ -1896,9 +1911,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_chuon.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá chuồn, vây ngực rộng; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1906,9 +1921,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_chuon.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_ca_chuon đã duyệt; rõ ở 64 px."
     },
     {
@@ -1916,9 +1931,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_trich.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá trích thân bạc dẹp; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1926,9 +1941,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_trich.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_ca_trich đã duyệt; rõ ở 64 px."
     },
     {
@@ -1936,9 +1951,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_muc_ong.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Mực ống, thân ống và xúc tu; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1946,9 +1961,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_muc_ong.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_muc_ong đã duyệt; rõ ở 64 px."
     },
     {
@@ -1956,9 +1971,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_ca_hong.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá hồng, thân dẹp và vây gai; dài theo creatures.json, đủ 5 socket sinh vật, ≤900 tam giác; hình bóng khác các loài khác."
     },
     {
@@ -1966,9 +1981,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_ca_hong.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_cre_ca_hong đã duyệt; rõ ở 64 px."
     },
     {
@@ -1976,9 +1991,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_boss_cua_bun.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc; ≤3.000 tam giác, đủ socket boss, kích thước theo dữ liệu."
     },
     {
@@ -1986,9 +2001,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_boss_cua_bun.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake từ mdl_cre_boss_cua_bun; PNG 256×256 RGBA."
     },
     {
@@ -2138,9 +2153,9 @@
       "type": "model",
       "path": "res://assets/models/creatures/mdl_cre_boss_ca_bop.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng; ≤3.000 tam giác, đủ socket boss, kích thước theo dữ liệu."
     },
     {
@@ -2148,9 +2163,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_cre_boss_ca_bop.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake từ mdl_cre_boss_ca_bop; PNG 256×256 RGBA."
     },
     {
@@ -2300,9 +2315,9 @@
       "type": "model",
       "path": "res://assets/models/items/mdl_item_rice_ball.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cơm nắm trong lá, thức ăn phục hồi đói; ≤300 tam giác, pivot tâm vật và collider đơn giản."
     },
     {
@@ -2310,9 +2325,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_item_rice_ball.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_item_rice_ball; không chứa chữ."
     },
     {
@@ -2320,9 +2335,9 @@
       "type": "model",
       "path": "res://assets/models/items/mdl_item_grilled_fish.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá nướng, thức ăn theo dữ liệu; ≤300 tam giác, pivot tâm vật và collider đơn giản."
     },
     {
@@ -2330,9 +2345,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_item_grilled_fish.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_item_grilled_fish; không chứa chữ."
     },
     {
@@ -2340,9 +2355,9 @@
       "type": "model",
       "path": "res://assets/models/items/mdl_item_survey_tag.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Thẻ ghi nhận khảo sát nghề cá; ≤300 tam giác, pivot tâm vật và collider đơn giản."
     },
     {
@@ -2350,9 +2365,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_item_survey_tag.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_item_survey_tag; không chứa chữ."
     },
     {
@@ -2360,9 +2375,9 @@
       "type": "model",
       "path": "res://assets/models/items/mdl_item_festival_medal.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Huy hiệu lễ hội làng chài; ≤300 tam giác, pivot tâm vật và collider đơn giản."
     },
     {
@@ -2370,9 +2385,9 @@
       "type": "icon",
       "path": "res://assets/icons/ico_item_festival_medal.png",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_2d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bake 256×256 RGBA từ mdl_item_festival_medal; không chứa chữ."
     },
     {
@@ -2380,9 +2395,9 @@
       "type": "model",
       "path": "res://assets/models/chr/mdl_chr_player_remote.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Thân đồng đội đầy đủ, ≤1.800 tam giác; 4 phối màu, socket tay/đầu; ẩn thân mình khỏi camera FP."
     },
     {
@@ -2488,59 +2503,59 @@
       "type": "ui",
       "path": "res://ui/ui_room_lobby.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd",
-      "notes": "Tạo/vào phòng 1–4 người, lỗi kết nối và trạng thái sẵn sàng; chữ Việt/Anh tách khỏi hình."
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/client_app.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_party_status",
       "type": "ui",
       "path": "res://ui/ui_party_status.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd",
-      "notes": "Danh sách đồng đội và trạng thái; không che tâm ngắm; chữ Việt/Anh tách khỏi hình."
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_hunger_meter",
       "type": "ui",
       "path": "res://ui/ui_hunger_meter.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd",
-      "notes": "Thanh đói có nhãn, icon và ngưỡng; chữ Việt/Anh tách khỏi hình."
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_cosmetics_panel",
       "type": "ui",
       "path": "res://ui/ui_cosmetics_panel.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd",
-      "notes": "6 skin phối màu dụng cụ; hiển thị sở hữu; chữ Việt/Anh tách khỏi hình."
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/menus.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_lootbox_panel",
       "type": "ui",
       "path": "res://ui/ui_lootbox_panel.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd",
-      "notes": "Mở hộp miễn phí: nguồn, xác suất, đồ trùng; kết quả sau xác nhận máy chủ; chữ Việt/Anh tách khỏi hình."
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/menus.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "sfx_hunger_low",
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_hunger_low.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bụng reo nhẹ khi vào ngưỡng thấp; hạn chế lặp; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
     },
     {
@@ -2548,9 +2563,9 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_eat.wav",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Ăn ngắn, không gây khó chịu; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
     },
     {
@@ -2558,9 +2573,9 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_lootbox_open.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Nắp hộp mở gỗ và âm nhận vật ngắn; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
     },
     {
@@ -2568,9 +2583,9 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_player_join.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội vào phòng; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
     },
     {
@@ -2578,9 +2593,9 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_player_leave.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội rời phòng; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
     },
     {
@@ -2588,9 +2603,9 @@
       "type": "sfx",
       "path": "res://assets/audio/sfx/sfx_connection_lost.wav",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Mất kết nối, ngắn dễ phân biệt; WAV PCM16 mono 44.1 kHz, ≤2 s, peak ≤−3 dBFS."
     },
     {
@@ -2608,9 +2623,9 @@
       "type": "ambience",
       "path": "res://assets/audio/amb/amb_isl02_day_loop.ogg",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Gió rừng dừa, nước và chim nhẹ; nguyên bản/đúng quyền; OGG stereo 44.1 kHz, loop ≥30 s, khoảng −26 LUFS."
     },
     {
@@ -2618,9 +2633,9 @@
       "type": "ambience",
       "path": "res://assets/audio/amb/amb_isl03_day_loop.ogg",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "audio",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Sóng biển và gió mũi đá; nguyên bản/đúng quyền; OGG stereo 44.1 kHz, loop ≥30 s, khoảng −26 LUFS."
     },
     {
@@ -2628,9 +2643,9 @@
       "type": "environment",
       "path": "res://assets/env/env_isl02_day.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bầu trời/ánh sáng đảo theo 05; môi trường đơn giản tương thích web, không texture nặng."
     },
     {
@@ -2638,9 +2653,9 @@
       "type": "environment",
       "path": "res://assets/env/env_isl03_day.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Bầu trời/ánh sáng đảo theo 05; môi trường đơn giản tương thích web, không texture nặng."
     },
     {
@@ -2648,7 +2663,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_co_ba_vi.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại co_ba/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2658,7 +2673,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_co_ba_en.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại co_ba/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2668,7 +2683,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_ong_tu_vi.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại ong_tu/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2678,7 +2693,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_ong_tu_en.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại ong_tu/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2688,7 +2703,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_nam_sau_vi.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại nam_sau/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2698,7 +2713,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_nam_sau_en.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại nam_sau/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2708,7 +2723,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_chi_lan_vi.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại chi_lan/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2718,7 +2733,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_chi_lan_en.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại chi_lan/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2728,7 +2743,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_bay_cho_vi.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại bay_cho/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2738,7 +2753,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_bay_cho_en.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại bay_cho/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2748,7 +2763,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_co_tam_vi.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại co_tam/vi, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."
@@ -2758,7 +2773,7 @@
       "type": "voice",
       "path": "res://assets/audio/vo/vo_dialogue_co_tam_en.json",
       "priority": "P1",
-      "status": "planned",
+      "status": "placeholder",
       "owner_role": "audio",
       "license": "tbd",
       "notes": "Chỉ mục pack thoại co_tam/en, chưa có audio: JSON line_id → asset/file riêng từng câu; mọi câu bắt buộc phải có WAV và phụ đề; không tính pack là coverage hoàn thành."

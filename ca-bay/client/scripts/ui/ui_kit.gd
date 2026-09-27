@@ -189,3 +189,26 @@ static func spacer(h := 8) -> Control:
 static func clear(node: Node) -> void:
 	for c in node.get_children():
 		c.queue_free()
+
+
+## Icon 256×256 đã bake từ mô hình (assets/icons/ico_*.png); trả Control rỗng nếu chưa có.
+static func icon(def_id: String, px := 40) -> Control:
+	var candidates: Array[String] = []
+	if def_id.begins_with("rod_"):
+		candidates = ["ico_" + def_id, "ico_rod_bamboo"]
+	else:
+		candidates = ["ico_" + def_id]
+	for c in candidates:
+		var path := "res://assets/icons/%s.png" % c
+		if ResourceLoader.exists(path):
+			var tr := TextureRect.new()
+			tr.texture = load(path)
+			tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			tr.custom_minimum_size = Vector2(px, px)
+			tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			return tr
+	var empty := Control.new()
+	empty.custom_minimum_size = Vector2(px, px)
+	empty.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return empty
