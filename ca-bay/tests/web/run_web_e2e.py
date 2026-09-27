@@ -98,13 +98,24 @@ def main() -> int:
         env = dict(os.environ, NODE_PATH=npm_root())
         r = subprocess.run(["node", str(ROOT / "tests/web/drive.cjs"), str(out / "scenario.json"), str(out)],
                            env=env, capture_output=True, text=True, timeout=900)
+        # bộ nhớ tiến trình máy chủ sau buổi chạy (VmRSS hiện tại / VmHWM đỉnh), MB — PERF-01 phía server
+        server_mem = {}
+        for name, proc in (("room", getattr(st, "room", None)), ("backend", getattr(st, "backend", None))):
+            try:
+                txt = Path(f"/proc/{proc.pid}/status").read_text()
+                vals = {l.split(":")[0]: int(l.split()[1]) for l in txt.splitlines() if l.startswith(("VmRSS", "VmHWM"))}
+                server_mem[name] = {"rss_mb": round(vals["VmRSS"] / 1024, 1), "peak_mb": round(vals["VmHWM"] / 1024, 1)}
+            except Exception:
+                pass
         print(r.stdout.strip())
         log = (out / "console.log").read_text(encoding="utf-8") if (out / "console.log").exists() else ""
         events = [l.split()[2] for l in log.splitlines() if l.startswith("[log] CABAY_EV")]
         summary = {"scenario": a.scenario, "ok": "DRIVE_OK" in r.stdout, "events": sorted(set(events)),
                    "rejections": [l[6:] for l in log.splitlines() if l.startswith("[log] CABAY_REJ")],
                    "page_errors": [l for l in log.splitlines() if "[pageerror]" in l],
-                   "other_pages": sorted({l.split()[2] for l in log.splitlines() if l.startswith("[p1] [log] CABAY_EV") or l.startswith("[p1] [log] CABAY_OTHER")})}
+                   "other_pages": sorted({l.split()[2] for l in log.splitlines() if l.startswith("[p1] [log] CABAY_EV") or l.startswith("[p1] [log] CABAY_OTHER")}),
+                   "perf": [l.split("CABAY_PERF ", 1)[1] for l in log.splitlines() if "CABAY_PERF " in l],
+                   "server_mem": server_mem}
         (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
         print(json.dumps(summary, ensure_ascii=False))
         if a.keep:

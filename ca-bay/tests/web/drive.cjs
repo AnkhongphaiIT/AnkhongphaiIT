@@ -79,6 +79,19 @@ async function runStep(ctx, s, outDir, mark) {
       for (const cb of window.__heldRAF.splice(0)) window.__origRAF(cb);
     });
   }
+  // {perf:"nhãn"} — ghi CABAY_PERF: bộ nhớ wasm, JS heap, tổng dung lượng tài nguyên đã tải, thời gian tải trang
+  if (s.perf) {
+    const m = await page.evaluate(() => ({
+      wasm: (window.__wasmMems || []).reduce((a, x) => a + x.buffer.byteLength, 0),
+      js: performance.memory ? performance.memory.usedJSHeapSize : -1,
+      jsTotal: performance.memory ? performance.memory.totalJSHeapSize : -1,
+      res: performance.getEntriesByType('resource').reduce((a, r) => a + (r.decodedBodySize || 0), 0)
+        + ((performance.getEntriesByType('navigation')[0] || {}).decodedBodySize || 0),
+      load: (performance.getEntriesByType('navigation')[0] || {}).loadEventEnd || -1,
+    }));
+    const mb = (x) => (x / 1048576).toFixed(1);
+    logs.push(`[p${n}] [log] CABAY_PERF ${s.perf} wasm_mb=${mb(m.wasm)} js_used_mb=${mb(m.js)} js_total_mb=${mb(m.jsTotal)} downloaded_mb=${mb(m.res)} load_ms=${Math.round(m.load)}`);
+  }
   // {assert_near:{a:"BIẾN1", b:"BIẾN2", max:m}} — hai vị trí "x, y, z" đã capture cách nhau (mặt phẳng xz) không quá m
   if (s.assert_near) {
     const pa = String(vars[s.assert_near.a] || '').split(',').map(Number);
@@ -230,6 +243,15 @@ async function runStep(ctx, s, outDir, mark) {
     async newPage(n) {
       // mỗi người chơi một context riêng (không chia sẻ bộ nhớ trình duyệt/cài đặt)
       const c = await browser.newContext({ viewport: { width: 1280, height: 720 } });
+      // đo bộ nhớ WebAssembly: ghi lại Memory do module xuất/nhập (chỉ đọc kích thước, không đổi hành vi)
+      await c.addInitScript(() => {
+        window.__wasmMems = [];
+        const keep = (inst) => { try { for (const v of Object.values(inst.exports)) if (v instanceof WebAssembly.Memory) window.__wasmMems.push(v); } catch (e) {} };
+        const oi = WebAssembly.instantiate;
+        WebAssembly.instantiate = async function (...a) { const r = await oi.apply(this, a); keep(r.instance || r); return r; };
+        const os = WebAssembly.instantiateStreaming;
+        if (os) WebAssembly.instantiateStreaming = async function (...a) { const r = await os.apply(this, a); keep(r.instance); return r; };
+      });
       const p = await c.newPage();
       p.on('console', (m) => logs.push(`[p${n}] [${m.type()}] ${m.text()}`));
       p.on('pageerror', (e) => logs.push(`[p${n}] [pageerror] ${e.message}`));
