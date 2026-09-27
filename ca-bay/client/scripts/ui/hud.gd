@@ -28,6 +28,7 @@ var boss_label: Label
 var boss_hp: ProgressBar
 var boss_timer: Label
 var _center_until := 0.0
+var vignette: ColorRect
 var _sub_until := 0.0
 
 
@@ -126,6 +127,16 @@ func _ready() -> void:
 	charge_bar.visible = false
 	strain_bar.visible = false
 	keys_hint.text = Loc.t("ui.keys.hint")
+	# asset ui_damage_vignette: viền đỏ mờ khi bị thương (shader canvas, không ảnh)
+	vignette = ColorRect.new()
+	vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
+	var sh := Shader.new()
+	sh.code = "shader_type canvas_item;\nuniform float strength = 0.0;\nvoid fragment() {\n\tfloat d = distance(UV, vec2(0.5)) * 1.42;\n\tCOLOR = vec4(0.89, 0.28, 0.24, smoothstep(0.55, 1.0, d) * strength);\n}\n"
+	var sm := ShaderMaterial.new()
+	sm.shader = sh
+	vignette.material = sm
+	add_child(vignette)
+	move_child(vignette, 0)
 	_ignore_mouse(self)
 
 
@@ -261,3 +272,11 @@ func update_team(players: Array, my_id: String, colors: Array) -> void:
 func set_net(ok: bool, text: String) -> void:
 	net_label.text = text
 	net_label.add_theme_color_override("font_color", UIKit.C_GREEN if ok else UIKit.C_RED)
+
+
+func damage_flash(amount: float) -> void:
+	if vignette == null:
+		return
+	var sm: ShaderMaterial = vignette.material
+	var tw := create_tween()
+	tw.tween_method(func(v): sm.set_shader_parameter("strength", v), clampf(amount / 20.0, 0.35, 0.9), 0.0, 0.6)

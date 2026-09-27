@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_o0upd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28ugh"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7490196, 0.91764706, 0.9411765, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ecqo"]
+material = SubResource("StandardMaterial3D_28ugh")
+radius = 0.05
+height = 0.1
+radial_segments = 6
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ha6lg"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.94509804, 0.72156864, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_pc7f2"]
+material = SubResource("StandardMaterial3D_ha6lg")
+size = Vector2(0.12, 0.12)
+
+[node name="vfx_yank_burst" type="Node3D" unique_id=1150592064]
+script = ExtResource("1_o0upd")
+
+[node name="Particles" type="CPUParticles3D" parent="." unique_id=1779548624]
+amount = 28
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_2ecqo")
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+scale_amount_min = 0.6
+scale_amount_max = 1.2
+
+[node name="Sparkle" type="CPUParticles3D" parent="." unique_id=188710265]
+amount = 10
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_pc7f2")
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.5
+scale_amount_min = 0.6
+scale_amount_max = 1.2

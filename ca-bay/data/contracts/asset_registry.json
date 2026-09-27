@@ -315,144 +315,144 @@
       "type": "texture",
       "path": "res://assets/textures/tex_palette_main.png",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "art_3d",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_fishing_line",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_fishing_line.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_lure_splash",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_lure_splash.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_bobber_ripple",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_bobber_ripple.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_bite_splash",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_bite_splash.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_yank_burst",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_yank_burst.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_air_trail",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_air_trail.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_hit_confetti",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_hit_confetti.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_ko_stars",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_ko_stars.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_trick_text",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_trick_text.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_coin_burst",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_coin_burst.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_boss_telegraph_ring",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_boss_telegraph_ring.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_escape_bubbles",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_escape_bubbles.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_bite_indicator",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_bite_indicator.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_attack_warn",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_attack_warn.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "vfx_cast_preview",
       "type": "vfx",
       "path": "res://assets/vfx/vfx_cast_preview.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "ui_theme_main",
@@ -518,9 +518,10 @@
       "type": "ui",
       "path": "res://ui/hud/ui_damage_vignette.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/hud.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ui_tutorial_hint",
@@ -647,9 +648,10 @@
       "type": "ui",
       "path": "res://ui/widgets/ui_logo_placeholder.tscn",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "ui",
-      "license": "tbd"
+      "license": "self_made",
+      "notes": "Dựng bằng mã tại client/scripts/ui/client_app.gd (không có file cảnh riêng); kiểm bằng E2E trình duyệt tests/web/scenarios/."
     },
     {
       "id": "ico_tool_hand",
@@ -792,27 +794,27 @@
       "type": "anim_library",
       "path": "res://assets/anim/anm_lib_fp.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_lib_npc_basic",
       "type": "anim_library",
       "path": "res://assets/anim/anm_lib_npc_basic.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_lib_boss_ca_loc",
       "type": "anim_library",
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_idle",
@@ -820,9 +822,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_idle",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_equip",
@@ -830,9 +832,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_equip",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_cast_charge",
@@ -840,9 +842,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_cast_charge",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_cast_release",
@@ -850,9 +852,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_cast_release",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_reel_loop",
@@ -860,9 +862,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_reel_loop",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_yank",
@@ -870,9 +872,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_yank",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_slap",
@@ -880,9 +882,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_slap",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_throw",
@@ -890,9 +892,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_throw",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_sweep",
@@ -900,9 +902,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_sweep",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_fp_pickup",
@@ -910,9 +912,9 @@
       "path": "res://assets/anim/anm_lib_fp.tres",
       "clip": "anm_fp_pickup",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_npc_idle",
@@ -920,9 +922,9 @@
       "path": "res://assets/anim/anm_lib_npc_basic.tres",
       "clip": "anm_npc_idle",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_npc_talk",
@@ -930,9 +932,9 @@
       "path": "res://assets/anim/anm_lib_npc_basic.tres",
       "clip": "anm_npc_talk",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_npc_happy",
@@ -940,9 +942,9 @@
       "path": "res://assets/anim/anm_lib_npc_basic.tres",
       "clip": "anm_npc_happy",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_npc_disgust",
@@ -950,9 +952,9 @@
       "path": "res://assets/anim/anm_lib_npc_basic.tres",
       "clip": "anm_npc_disgust",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_land",
@@ -960,9 +962,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_land",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_idle",
@@ -970,9 +972,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_idle",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_telegraph_slam",
@@ -980,9 +982,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_telegraph_slam",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_slam",
@@ -990,9 +992,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_slam",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_telegraph_charge",
@@ -1000,9 +1002,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_telegraph_charge",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_charge",
@@ -1010,9 +1012,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_charge",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_stunned",
@@ -1020,9 +1022,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_stunned",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_telegraph_spit",
@@ -1030,9 +1032,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_telegraph_spit",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_spit",
@@ -1040,9 +1042,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_spit",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_phase_change",
@@ -1050,9 +1052,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_phase_change",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_escape",
@@ -1060,9 +1062,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_escape",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_boss_ca_loc_defeat",
@@ -1070,9 +1072,9 @@
       "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
       "clip": "anm_boss_ca_loc_defeat",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_cast_charge",
@@ -1541,9 +1543,9 @@
       "type": "vfx",
       "path": "res://assets/vfx/vfx_smoke_grill.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_grill_sizzle_loop",
@@ -1586,9 +1588,9 @@
       "type": "anim_library",
       "path": "res://assets/anim/anm_lib_egret.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_egret_walk",
@@ -1596,9 +1598,9 @@
       "path": "res://assets/anim/anm_lib_egret.tres",
       "clip": "anm_egret_walk",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "anm_egret_fly",
@@ -1606,9 +1608,9 @@
       "path": "res://assets/anim/anm_lib_egret.tres",
       "clip": "anm_egret_fly",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_egret_call",
@@ -1643,9 +1645,9 @@
       "type": "vfx",
       "path": "res://assets/vfx/vfx_boba_sparkle.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "ID kỹ thuật cũ: phản chiếu bạc/UI phát hiện hiếm ngắn; không phép thuật."
     },
     {
@@ -1690,9 +1692,9 @@
       "type": "vfx",
       "path": "res://assets/vfx/vfx_confetti_explosion.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd"
+      "license": "self_made"
     },
     {
       "id": "sfx_slingshot_shot",
@@ -2011,9 +2013,9 @@
       "type": "anim_library",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Thư viện 12 clip boss; được tái dùng thuật toán nhưng phải có đủ clip mang ID riêng."
     },
     {
@@ -2021,9 +2023,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: land; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_land"
     },
@@ -2032,9 +2034,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: idle; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_idle"
     },
@@ -2043,9 +2045,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: phase_change; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_phase_change"
     },
@@ -2054,9 +2056,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: escape; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_escape"
     },
@@ -2065,9 +2067,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: defeat; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_defeat"
     },
@@ -2076,9 +2078,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: telegraph_slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_telegraph_slam"
     },
@@ -2087,9 +2089,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_slam"
     },
@@ -2098,9 +2100,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: telegraph_charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_telegraph_charge"
     },
@@ -2109,9 +2111,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_charge"
     },
@@ -2120,9 +2122,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: stunned; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_stunned"
     },
@@ -2131,9 +2133,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: telegraph_spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_telegraph_spit"
     },
@@ -2142,9 +2144,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cua Bùn đầu đàn, càng đối xứng dễ đọc: spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_cua_bun_spit"
     },
@@ -2173,9 +2175,9 @@
       "type": "anim_library",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Thư viện 12 clip boss; được tái dùng thuật toán nhưng phải có đủ clip mang ID riêng."
     },
     {
@@ -2183,9 +2185,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: land; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_land"
     },
@@ -2194,9 +2196,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: idle; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_idle"
     },
@@ -2205,9 +2207,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: phase_change; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_phase_change"
     },
@@ -2216,9 +2218,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: escape; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_escape"
     },
@@ -2227,9 +2229,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: defeat; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_defeat"
     },
@@ -2238,9 +2240,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: telegraph_slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_telegraph_slam"
     },
@@ -2249,9 +2251,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: slam; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_slam"
     },
@@ -2260,9 +2262,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: telegraph_charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_telegraph_charge"
     },
@@ -2271,9 +2273,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: charge; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_charge"
     },
@@ -2282,9 +2284,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: stunned; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_stunned"
     },
@@ -2293,9 +2295,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: telegraph_spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_telegraph_spit"
     },
@@ -2304,9 +2306,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Cá Bớp đầu đàn, thân khỏe và vây lưng nhận dạng: spit; khớp timing bosses.json, không tự áp sát thương; spit chỉ là nước.",
       "clip": "anm_boss_ca_bop_spit"
     },
@@ -2405,9 +2407,9 @@
       "type": "anim_library",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Các clip quan sát đồng đội, phát theo trạng thái đã đồng bộ."
     },
     {
@@ -2415,9 +2417,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội idle; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_idle"
     },
@@ -2426,9 +2428,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội walk; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_walk"
     },
@@ -2437,9 +2439,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội run; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_run"
     },
@@ -2448,9 +2450,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội cast; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_cast"
     },
@@ -2459,9 +2461,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội reel; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_reel"
     },
@@ -2470,9 +2472,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội use_tool; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_use_tool"
     },
@@ -2481,9 +2483,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội knocked_out; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_knocked_out"
     },
@@ -2492,9 +2494,9 @@
       "type": "anim_clip",
       "path": "res://assets/anim/anm_lib_player_remote.tres",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "animation",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Đồng đội revive; track trình bày, không tự quyết gameplay.",
       "clip": "anm_player_remote_revive"
     },
@@ -2613,9 +2615,9 @@
       "type": "vfx",
       "path": "res://assets/vfx/vfx_lootbox_reveal.tscn",
       "priority": "P1",
-      "status": "planned",
+      "status": "in_review",
       "owner_role": "vfx",
-      "license": "tbd",
+      "license": "self_made",
       "notes": "Hộp phần thưởng UI: ≤32 hạt, có thể skip; không near-miss, không chi phối xác suất; sau commit server."
     },
     {

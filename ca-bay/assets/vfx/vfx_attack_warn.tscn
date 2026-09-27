@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_nurje"]
+
+[node name="vfx_attack_warn" type="Node3D" unique_id=2103103497]
+script = ExtResource("1_nurje")
+life = 0.9
+
+[node name="Label" type="Label3D" parent="." unique_id=1994719688]
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+modulate = Color(1, 0.5411765, 0.23529412, 1)
+outline_modulate = Color(0.105882354, 0.105882354, 0.105882354, 1)
+text = "!"
+font_size = 90
+outline_size = 14

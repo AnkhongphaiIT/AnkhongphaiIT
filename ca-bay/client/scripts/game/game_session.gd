@@ -520,6 +520,7 @@ func _on_event(ev: Dictionary) -> void:
 		print("CABAY_OTHER %s by=%s" % [name, _name_of_player(actor)])
 	if (Endpoints.autotest or OS.is_debug_build()) and own and not name.begins_with("hunger.") and name != "player.footstep":
 		print("CABAY_EV %s pos=(%.1f,%.1f,%.1f) yaw=%.2f pitch=%.2f" % [name, player.pos.x, player.pos.y, player.pos.z, player.yaw, player.pitch])  # nhật ký chẩn đoán (không chứa dữ liệu cá nhân)
+	_event_vfx(name, p, actor, own)
 	match name:
 		# --- câu cá (trạng thái chỉ theo sự kiện server của chính mình)
 		"fishing.cast_charge_started":
@@ -613,6 +614,8 @@ func _on_event(ev: Dictionary) -> void:
 		"creature.attacked_player", "player.damaged":
 			if own:
 				player.shake = 0.5
+				if name == "player.damaged":
+					hud.damage_flash(float(p.get("amount", 10.0)))
 		"player.knocked_out":
 			if own:
 				hud.show_center(Loc.t("ui.player.ko"), 3.0, UIKit.C_RED)
@@ -971,6 +974,7 @@ func _process(_delta: float) -> void:
 			_queue.push_front(q)
 			_pump_queue()
 			break
+	_update_cast_preview(now)
 	# thanh nạp lực / căng dây
 	var rod: Dictionary = ContentDB.rods.get(save.get("inventory", {}).get("equipped_rod_id", "rod_bamboo"), {})
 	hud.charge_bar.visible = player.fishing_state == "CHARGING"
@@ -1088,3 +1092,102 @@ func _objective_text() -> String:
 	if (save["progress"]["bosses_defeated"] as Array).size() >= 3:
 		return Loc.t("ui.campaign.complete")
 	return Loc.t("ui.hud.objective_none")
+
+
+# ------------------------------------------------------------------ hiệu ứng hình theo sự kiện server
+
+static func _pos(p: Dictionary) -> Variant:
+	var a: Variant = p.get("position")
+	if a is Array and (a as Array).size() == 3:
+		return Vector3(a[0], a[1], a[2])
+	return null
+
+
+func _event_vfx(name: String, p: Dictionary, actor: Variant, own: bool) -> void:
+	var pos: Variant = _pos(p)
+	match name:
+		"fishing.lure_landed":
+			if pos != null and p.get("surface", "") == "water":
+				VfxPlayer.spawn("vfx_lure_splash", world, pos)
+		"fishing.bite":
+			if pos != null:
+				VfxPlayer.spawn("vfx_bite_splash", world, pos)
+				if own:
+					VfxPlayer.spawn("vfx_bite_indicator", world, pos + Vector3(0, 1.0, 0))
+		"fishing.launched":
+			if pos != null:
+				VfxPlayer.spawn("vfx_yank_burst", world, pos)
+		"fishing.cast_released":
+			if not own and actor != null:
+				entities.player_event(String(actor), "anm_player_remote_cast", 0.6)
+		"tool.used":
+			if not own and actor != null:
+				entities.player_event(String(actor), "anm_player_remote_use_tool", 0.35)
+		"tool.hit":
+			if pos != null and p.get("tool_id", "") == "tool_coconut_bomb":
+				VfxPlayer.spawn("vfx_confetti_explosion", world, pos)
+		"creature.damaged":
+			if pos != null:
+				VfxPlayer.spawn("vfx_hit_confetti", world, pos + Vector3(0, 0.2, 0))
+		"scoring.tricks_awarded":
+			var fp := entities.entity_pos(String(p["creature_uid"]))
+			if fp != Vector3.INF:
+				VfxPlayer.spawn("vfx_trick_text", world, fp + Vector3(0, 1.0, 0), "+%d" % int(p["value"]))
+		"economy.item_sold":
+			VfxPlayer.spawn("vfx_coin_burst", world, pos if pos != null else player.pos + Vector3(0, 1.2, 0))
+		"boss.telegraph":
+			if pos != null:
+				VfxPlayer.spawn("vfx_boss_telegraph_ring", world, pos, "", float(p.get("duration_s", 1.2)))
+		"boss.phase_changed":
+			var bn: Node3D = entities.nodes.get(_boss.get("uid", ""))
+			if bn and bn.has_node("Model/Anim"):
+				var bap: AnimationPlayer = bn.get_node("Model/Anim")
+				var clip := "boss/anm_%s_phase_change" % String(ContentDB.bosses[p["boss_id"]]["creature_id"]).replace("cre_boss_", "boss_")
+				if bap.has_animation(clip):
+					bap.play(clip)
+		"fishing.escaped", "creature.returned_to_water":
+			if pos != null:
+				VfxPlayer.spawn("vfx_escape_bubbles", world, pos)
+		"creature.attack_started":
+			if pos != null:
+				VfxPlayer.spawn("vfx_attack_warn", world, pos + Vector3(0, 0.9, 0))
+		"player.knocked_out":
+			if not own and actor != null:
+				entities.player_event(String(actor), "anm_player_remote_knocked_out", 3.0)
+		"player.respawned":
+			if not own and actor != null:
+				entities.player_event(String(actor), "anm_player_remote_revive", 0.6)
+		"dialogue.line_started":
+			world_view.play_npc(String(p["npc_id"]), "anm_npc_talk", 2.5)
+		"quest.completed":
+			for npc_id in world_view.npc_nodes:
+				if ContentDB.quests.get(p["quest_id"], {}).get("giver_npc_id", "") == npc_id:
+					world_view.play_npc(npc_id, "anm_npc_happy", 0.8)
+		"item.picked_up":
+			if own:
+				player.pickup_anim()
+
+
+var _cast_preview: Node3D
+
+
+## Vòng đích quăng (asset vfx_cast_preview) khi đang nạp lực: ước lượng giống công thức server.
+func _update_cast_preview(now: float) -> void:
+	var charging := player.fishing_state == "CHARGING" and _charge_t0 > 0.0
+	if not charging:
+		if _cast_preview:
+			_cast_preview.queue_free()
+			_cast_preview = null
+		return
+	var rod: Dictionary = ContentDB.rods.get(save.get("inventory", {}).get("equipped_rod_id", "rod_bamboo"), {})
+	if rod.is_empty():
+		return
+	var ratio := clampf((now - _charge_t0) / float(rod["charge_time_s"]), 0.0, 1.0)
+	var dist := lerpf(float(rod["cast_distance_m"]["min"]), float(rod["cast_distance_m"]["max"]), ratio)
+	var f := Vector2(-sin(player.yaw), -cos(player.yaw))
+	var t := Vector3(player.pos.x + f.x * dist, 0.0, player.pos.z + f.y * dist)
+	t.y = maxf(IslandLayout.ground_height(island_id, t.x, t.z), IslandLayout.WATER_Y)
+	if _cast_preview == null:
+		_cast_preview = VfxPlayer.spawn("vfx_cast_preview", world, t)
+	elif is_instance_valid(_cast_preview):
+		_cast_preview.global_position = t

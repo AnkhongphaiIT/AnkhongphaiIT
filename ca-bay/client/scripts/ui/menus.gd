@@ -214,6 +214,11 @@ static func lootbox(s) -> Control:
 		v.add_child(UIKit.label(Loc.t("ui.lootbox.no_tickets"), 15, UIKit.C_MUTED))
 	if not s.last_lootbox.is_empty():
 		var r: Dictionary = s.last_lootbox
+		if not r.get("_revealed", false) and ResourceLoader.exists("res://assets/vfx/vfx_lootbox_reveal.tscn"):
+			r["_revealed"] = true  # chỉ nổ pháo giấy một lần cho mỗi lần mở
+			var fx: Control = load("res://assets/vfx/vfx_lootbox_reveal.tscn").instantiate()
+			fx.position = Vector2(320, 40)
+			v.add_child(fx)
 		var cos2: Dictionary = ContentDB.cosmetics.get(r["cosmetic_id"], {})
 		var txt := Loc.t(cos2.get("name_key", ""))
 		if r["outcome"] == "duplicate":

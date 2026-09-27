@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_7hse5"]
+
+[node name="vfx_trick_text" type="Node3D" unique_id=126510580]
+script = ExtResource("1_7hse5")
+life = 1.4
+rise = 0.8
+
+[node name="Label" type="Label3D" parent="." unique_id=1444644399]
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+modulate = Color(1, 0.7882353, 0.23529412, 1)
+outline_modulate = Color(0.105882354, 0.105882354, 0.105882354, 1)
+font_size = 72
+outline_size = 14

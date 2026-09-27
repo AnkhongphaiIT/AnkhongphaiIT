@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_tfxef"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpo7i"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.7)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ksplk"]
+material = SubResource("StandardMaterial3D_hpo7i")
+inner_radius = 0.22
+outer_radius = 0.25
+rings = 24
+ring_segments = 4
+
+[sub_resource type="Curve" id="Curve_arjak"]
+_limits = [0.0, 6.0, 0.0, 1.0]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 6), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="vfx_bobber_ripple" type="Node3D" unique_id=2013227383]
+script = ExtResource("1_tfxef")
+life = 0.0
+
+[node name="Particles" type="CPUParticles3D" parent="." unique_id=2072724756]
+amount = 3
+lifetime = 1.6
+mesh = SubResource("TorusMesh_ksplk")
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_arjak")

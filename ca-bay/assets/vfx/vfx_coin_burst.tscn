@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_5k0lb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbg0g"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.7882353, 0.23529412, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d8vcw"]
+material = SubResource("StandardMaterial3D_cbg0g")
+top_radius = 0.06
+bottom_radius = 0.06
+height = 0.015
+radial_segments = 10
+
+[node name="vfx_coin_burst" type="Node3D" unique_id=1122613396]
+script = ExtResource("1_5k0lb")
+life = 1.2
+
+[node name="Particles" type="CPUParticles3D" parent="." unique_id=1612806561]
+amount = 12
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("CylinderMesh_d8vcw")
+direction = Vector3(0, 1, 0)
+spread = 40.0
+initial_velocity_min = 2.5
+initial_velocity_max = 4.5
+scale_amount_min = 0.6
+scale_amount_max = 1.2

@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_8hrbg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjbf7"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.79, 0.24, 0.8)
+
+[sub_resource type="TorusMesh" id="TorusMesh_j4ibw"]
+material = SubResource("StandardMaterial3D_mjbf7")
+inner_radius = 0.54
+outer_radius = 0.6
+rings = 24
+ring_segments = 4
+
+[node name="vfx_cast_preview" type="Node3D" unique_id=1123449493]
+script = ExtResource("1_8hrbg")
+life = 0.0
+
+[node name="Ring" type="MeshInstance3D" parent="." unique_id=1388608562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+mesh = SubResource("TorusMesh_j4ibw")

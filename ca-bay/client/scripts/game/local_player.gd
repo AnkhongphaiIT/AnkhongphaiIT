@@ -8,6 +8,8 @@ var island_id := ""
 var cam: Camera3D
 var viewmodel: Node3D
 var tool_holder: Node3D
+var anim: AnimationPlayer
+var _anim_state := ""
 var rod_tip: Node3D
 var pos := Vector3.ZERO
 var vel_y := 0.0
@@ -44,7 +46,14 @@ func _ready() -> void:
 	hand.position = Vector3(0, -0.02, 0.06)
 	viewmodel.add_child(hand)
 	tool_holder = Node3D.new()
+	tool_holder.name = "ToolHolder"
 	viewmodel.add_child(tool_holder)
+	# hoạt ảnh tay cầm: thư viện asset anm_lib_fp (art_src/anim/build_anim.gd)
+	anim = AnimationPlayer.new()
+	viewmodel.add_child(anim)
+	if ResourceLoader.exists("res://assets/anim/anm_lib_fp.tres"):
+		anim.add_animation_library("fp", load("res://assets/anim/anm_lib_fp.tres"))
+		anim.play("fp/anm_fp_idle")
 	rod_tip = Node3D.new()
 	add_child(rod_tip)
 	cam.current = true
@@ -84,6 +93,7 @@ func set_equipped(id: String) -> void:
 		m.rotation_degrees = Vector3(10, 0, 0)
 	tool_holder.position = Vector3.ZERO
 	tool_holder.rotation = Vector3.ZERO
+	play_fp("anm_fp_equip", true)
 
 
 func rod_tip_world() -> Vector3:
@@ -195,37 +205,54 @@ func reconcile(server_pos: Vector3, ack_seq: int) -> void:
 		correction = err
 
 
-func _animate_viewmodel(delta: float) -> void:
-	var t := Time.get_ticks_msec() / 1000.0
-	var target_rot := Vector3.ZERO
+func _animate_viewmodel(_delta: float) -> void:
+	# trạng thái lặp theo máy trạng thái câu của server; hoạt ảnh một lần (quăng, giật, đập) không bị cắt ngang
+	var want := "anm_fp_idle"
 	match fishing_state:
-		"CHARGING":
-			target_rot = Vector3(-0.6, 0, 0.1)
-		"REELING":
-			target_rot = Vector3(0.25 + sin(t * 18.0) * (0.05 if reel_held else 0.0), 0, 0)
-		"BITING":
-			target_rot = Vector3(sin(t * 40.0) * 0.08, 0, 0)
-	tool_holder.rotation = tool_holder.rotation.lerp(target_rot, minf(1.0, delta * 12.0))
+		"CHARGING": want = "anm_fp_cast_charge"
+		"REELING": want = "anm_fp_reel_loop" if reel_held else "anm_fp_idle"
+	if anim == null or not anim.has_animation("fp/" + want):
+		return
+	var cur := anim.current_animation.trim_prefix("fp/")
+	var one_shot_playing: bool = anim.is_playing() and cur in ["anm_fp_equip", "anm_fp_cast_release", "anm_fp_yank", "anm_fp_slap", "anm_fp_throw", "anm_fp_sweep", "anm_fp_pickup"]
+	if one_shot_playing:
+		return
+	if cur != want or not anim.is_playing():
+		if want == "anm_fp_cast_charge" and cur == want:
+			return
+		anim.play("fp/" + want, 0.12)
+	if fishing_state == "BITING":
+		tool_holder.rotation.x += sin(Time.get_ticks_msec() / 25.0) * 0.02
+
+
+func play_fp(clip: String, force := false) -> void:
+	if anim and anim.has_animation("fp/" + clip):
+		if force or anim.current_animation != "fp/" + clip:
+			anim.play("fp/" + clip, 0.05)
+			anim.seek(0.0, true)
 
 
 func swing() -> void:
-	var tw := create_tween()
-	tw.tween_property(tool_holder, "rotation", Vector3(-1.1, 0.2, 0.3), 0.07)
-	tw.tween_property(tool_holder, "rotation", Vector3(0.7, -0.3, -0.2), 0.1)
-	tw.tween_property(tool_holder, "rotation", Vector3.ZERO, 0.18)
+	var kind: String = ContentDB.tools.get(equipped, {}).get("kind", "melee")
+	var clip := "anm_fp_slap"
+	if equipped == "tool_broom":
+		clip = "anm_fp_sweep"
+	elif kind in ["throwable", "ranged", "explosive"]:
+		clip = "anm_fp_throw"
+	play_fp(clip, true)
 
 
 func cast_anim() -> void:
-	var tw := create_tween()
-	tw.tween_property(tool_holder, "rotation", Vector3(0.9, 0, 0), 0.12)
-	tw.tween_property(tool_holder, "rotation", Vector3.ZERO, 0.3)
+	play_fp("anm_fp_cast_release", true)
 
 
 func yank_anim() -> void:
-	var tw := create_tween()
-	tw.tween_property(tool_holder, "rotation", Vector3(-1.0, 0, 0), 0.08)
-	tw.tween_property(tool_holder, "rotation", Vector3.ZERO, 0.25)
+	play_fp("anm_fp_yank", true)
 	shake = 0.6
+
+
+func pickup_anim() -> void:
+	play_fp("anm_fp_pickup", true)
 
 
 ## Chọn mục tiêu cho công cụ theo hỗ trợ ngắm (aim_assist trong balance.json).

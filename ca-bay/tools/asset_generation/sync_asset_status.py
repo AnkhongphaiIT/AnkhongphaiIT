@@ -34,7 +34,8 @@ UI_IN_CODE = {
     "ui_main_menu": "client/scripts/ui/client_app.gd", "ui_dialogue_bubble": "client/scripts/ui/hud.gd",
     "ui_room_lobby": "client/scripts/ui/client_app.gd", "ui_party_status": "client/scripts/ui/hud.gd",
     "ui_hunger_meter": "client/scripts/ui/hud.gd", "ui_cosmetics_panel": "client/scripts/ui/menus.gd",
-    "ui_lootbox_panel": "client/scripts/ui/menus.gd",
+    "ui_lootbox_panel": "client/scripts/ui/menus.gd", "ui_damage_vignette": "client/scripts/ui/hud.gd",
+    "ui_logo_placeholder": "client/scripts/ui/client_app.gd",
 }
 OUT_OF_SCOPE = {"ui_touch_controls": "Ngoài phạm vi bản này: chỉ desktop bàn phím + chuột (không cảm ứng)."}
 
@@ -78,7 +79,7 @@ def main() -> int:
                 source = "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)" if license_ == "self_made" else "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành"
         elif typ == "anim_clip":
             p = res_path(path)
-            if p.exists():
+            if p.exists() and f'"{aid}"' in p.read_text(encoding="utf-8", errors="replace"):
                 files.append({"path": path, "clip": aid, "bytes": p.stat().st_size, "sha256": sha(p)})
                 status, license_, source = "in_review", "self_made", "art_src/anim (procedural keyframes)"
         elif typ == "ui" and aid in UI_IN_CODE and not res_path(path).exists():
@@ -104,7 +105,7 @@ def main() -> int:
                               "shader": "viết tay trong dự án", "environment": "art_src/bake/bake.gd ← world_view.gd",
                               "material": "art_src/bake/bake.gd ← mesh_kit.gd", "ui": "art_src/bake/bake.gd ← ui_kit.gd",
                               "vfx": "art_src/vfx (procedural particles)", "anim_library": "art_src/anim (procedural keyframes)",
-                              "texture": "art_src (procedural)"}.get(typ, "self_made")
+                              "texture": "art_src/bake/bake.gd (bảng màu Art Bible)"}.get(typ, "self_made")
         asset["status"] = status
         asset["license"] = license_
         if note:

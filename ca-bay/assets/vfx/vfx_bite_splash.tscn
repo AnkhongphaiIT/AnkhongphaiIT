@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_serpo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v60b"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7490196, 0.91764706, 0.9411765, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vwenq"]
+material = SubResource("StandardMaterial3D_1v60b")
+radius = 0.045
+height = 0.09
+radial_segments = 6
+rings = 3
+
+[node name="vfx_bite_splash" type="Node3D" unique_id=1256233828]
+script = ExtResource("1_serpo")
+
+[node name="Particles" type="CPUParticles3D" parent="." unique_id=1755332583]
+amount = 24
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_vwenq")
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 2.5
+initial_velocity_max = 4.5
+scale_amount_min = 0.6
+scale_amount_max = 1.2

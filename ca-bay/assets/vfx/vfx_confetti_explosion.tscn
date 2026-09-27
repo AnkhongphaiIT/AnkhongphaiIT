@@ -1,0 +1,135 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_fqnxd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_socvp"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7490196, 0.91764706, 0.9411765, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2wq3t"]
+material = SubResource("StandardMaterial3D_socvp")
+radius = 0.06
+height = 0.12
+radial_segments = 6
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwxys"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.89411765, 0.2784314, 0.23529412, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_hvghb"]
+material = SubResource("StandardMaterial3D_hwxys")
+size = Vector2(0.09, 0.09)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7x6r"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.7882353, 0.23529412, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_bor03"]
+material = SubResource("StandardMaterial3D_b7x6r")
+size = Vector2(0.09, 0.09)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5fe3"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.42352942, 0.7607843, 0.2901961, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_p16wh"]
+material = SubResource("StandardMaterial3D_u5fe3")
+size = Vector2(0.09, 0.09)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0t7nb"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7176471, 0.6039216, 0.8509804, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_buesu"]
+material = SubResource("StandardMaterial3D_0t7nb")
+size = Vector2(0.09, 0.09)
+
+[node name="vfx_confetti_explosion" type="Node3D" unique_id=1809063573]
+script = ExtResource("1_fqnxd")
+life = 1.5
+
+[node name="Particles" type="CPUParticles3D" parent="." unique_id=1088848464]
+amount = 30
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_2wq3t")
+direction = Vector3(0, 1, 0)
+spread = 60.0
+initial_velocity_min = 4.0
+initial_velocity_max = 7.0
+scale_amount_min = 0.6
+scale_amount_max = 1.2
+
+[node name="Confetti_e4473cff" type="CPUParticles3D" parent="." unique_id=684052107]
+lifetime = 1.3
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_hvghb")
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+scale_amount_min = 0.6
+scale_amount_max = 1.2
+
+[node name="Confetti_ffc93cff" type="CPUParticles3D" parent="." unique_id=1158290749]
+lifetime = 1.3
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_bor03")
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+scale_amount_min = 0.6
+scale_amount_max = 1.2
+
+[node name="Confetti_6cc24aff" type="CPUParticles3D" parent="." unique_id=1101884581]
+lifetime = 1.3
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_p16wh")
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+scale_amount_min = 0.6
+scale_amount_max = 1.2
+
+[node name="Confetti_b79ad9ff" type="CPUParticles3D" parent="." unique_id=417393194]
+lifetime = 1.3
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_buesu")
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+scale_amount_min = 0.6
+scale_amount_max = 1.2

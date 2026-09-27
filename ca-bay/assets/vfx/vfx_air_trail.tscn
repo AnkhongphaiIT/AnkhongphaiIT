@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_8qif5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yl242"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.85, 0.95, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v656j"]
+material = SubResource("StandardMaterial3D_yl242")
+radius = 0.03
+height = 0.06
+radial_segments = 6
+rings = 3
+
+[node name="vfx_air_trail" type="Node3D" unique_id=2078195958]
+script = ExtResource("1_8qif5")
+life = 0.0
+
+[node name="Particles" type="CPUParticles3D" parent="." unique_id=1275929227]
+amount = 16
+lifetime = 0.5
+mesh = SubResource("SphereMesh_v656j")
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, -1, 0)
+initial_velocity_max = 0.3
+scale_amount_min = 0.5

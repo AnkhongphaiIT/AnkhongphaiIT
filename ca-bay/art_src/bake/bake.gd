@@ -282,6 +282,23 @@ func _bake_misc(reg: Dictionary) -> void:
 			"ui":
 				if a["id"] == "ui_theme_main":
 					res = UIKit.theme()
+			"texture":
+				if a["id"] == "tex_palette_main":
+					# bảng màu Art Bible §3: mỗi màu một ô 16×16 (UV bảng màu cho mô hình/UI về sau)
+					var cols := ["#5EC8F2", "#CDEFF7", "#1F7A8C", "#3FB8AF", "#F4F1DE", "#9C8455", "#E9C98B", "#8D6A4A",
+						"#7CC24A", "#3E8E3A", "#9C6B3F", "#6B4428", "#C8A160", "#E4473C", "#FFC93C", "#6CC24A",
+						"#B8C4C8", "#E8ECE8", "#F1C27D", "#D9A066", "#A86B3C", "#B79AD9", "#9FB7C9", "#8A5A3C",
+						"#2B2B2B", "#FFFFFF", "#111111", "#B8A05A", "#D9C27A", "#22313A", "#FFF8E7", "#1B1B1B"]
+					var img := Image.create(128, 64, false, Image.FORMAT_RGBA8)
+					for i in cols.size():
+						img.fill_rect(Rect2i((i % 8) * 16, int(i / 8) * 16, 16, 16), Color(cols[i]))
+					DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(path.get_base_dir()))
+					var e2 := img.save_png(ProjectSettings.globalize_path(path))
+					if e2 == OK:
+						report["misc"][a["id"]] = {"path": path}
+					else:
+						report["errors"].append("tex_palette_main: %d" % e2)
+					continue
 		if res == null:
 			continue
 		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(path.get_base_dir()))

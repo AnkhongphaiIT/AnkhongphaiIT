@@ -6,6 +6,8 @@ extends Node3D
 const INTERP_MS := 100.0
 const WIGGLE := preload("res://assets/shaders/shd_creature_wiggle.gdshader")
 const HIT_FLASH := preload("res://assets/shaders/shd_hit_flash.gdshader")
+const BOSS_CLIPS := {"arriving": "land", "idle": "idle", "recover": "idle", "attack_slam": "slam", "charging": "charge",
+	"attack_spit": "spit", "stunned": "stunned", "defeated": "defeat", "escaping": "escape"}
 
 var my_account_id: String = ""
 var snaps: Array = []                 # [{t, players:{}, entities:{}}]
@@ -80,8 +82,8 @@ func _process(delta: float) -> void:
 		n.global_position = p0.lerp(p1, f)
 		n.rotation.y = lerp_angle(float(pa["yaw_rad"]), float(pb["yaw_rad"]), f)
 		n.visible = pb["mode"] != "disconnected"
-		var body: Node3D = n.get_node("Avatar")
-		body.rotation.z = lerpf(body.rotation.z, (PI * 0.5 if pb["mode"] == "knocked_out" else 0.0), 8 * delta)
+		var spd := p0.distance_to(p1) / maxf(0.05, span / 1000.0)
+		_animate_player(aid, n, pb, spd, b)
 	for uid in b["entities"]:
 		var eb: Dictionary = b["entities"][uid]
 		var ea: Dictionary = a["entities"].get(uid, eb)
@@ -120,6 +122,10 @@ func _player_node(aid: String, p: Dictionary) -> Node3D:
 	lbl.modulate = player_colors[slot % 4].lightened(0.4)
 	lbl.position = Vector3(0, 2.35, 0)
 	root.add_child(lbl)
+	var ap := AnimationPlayer.new()
+	ap.name = "Anim"
+	root.add_child(ap)
+	_add_lib(ap, "pl", "res://assets/anim/anm_lib_player_remote.tres")
 	add_child(root)
 	nodes[aid] = root
 	return root
@@ -169,6 +175,10 @@ func _entity_node(uid: String, e: Dictionary) -> Node3D:
 			var bsm := ShaderMaterial.new()
 			bsm.shader = HIT_FLASH
 			(bm.get_node("Body") as MeshInstance3D).material_override = bsm
+			var bap := AnimationPlayer.new()
+			bap.name = "Anim"
+			bm.add_child(bap)
+			_add_lib(bap, "boss", "res://assets/anim/anm_lib_%s.tres" % def_id.replace("cre_boss_", "boss_"))
 			root.add_child(bm)
 			var hb := WorldView._label3d("", 0.8)
 			hb.name = "Info"
@@ -186,6 +196,10 @@ func _entity_node(uid: String, e: Dictionary) -> Node3D:
 					var h := Models.heron()
 					h.name = "Model"
 					root.add_child(h)
+					var hap := AnimationPlayer.new()
+					hap.name = "Anim"
+					root.add_child(hap)
+					_add_lib(hap, "egret", "res://assets/anim/anm_lib_egret.tres")
 				_:
 					root.add_child(Models.bobber())
 	add_child(root)
@@ -201,7 +215,10 @@ func _update_entity_visual(n: Node3D, uid: String, e: Dictionary, delta: float) 
 			var stars: Label3D = n.get_node("Stars")
 			var info: Label3D = n.get_node("Info")
 			var ko := state.begins_with("stunned") or state == "stolen"
-			stars.visible = ko
+			var star_vfx := _ensure_vfx(n, "KoStars", "vfx_ko_stars", ko, Vector3(0, 0.45, 0))
+			stars.visible = ko and star_vfx == null
+			_ensure_vfx(n, "Trail", "vfx_air_trail", state == "airborne")
+			_ensure_vfx(n, "Sparkle", "vfx_boba_sparkle", meta.get(uid, {}).get("variant") != null)
 			var wm: ShaderMaterial = (model.get_node("Body") as MeshInstance3D).material_override if model.has_node("Body") else null
 			if wm:
 				wm.set_shader_parameter("wiggle", 0.0 if ko else (1.0 if state in ["landed", "airborne"] else 0.4))
@@ -237,22 +254,22 @@ func _update_entity_visual(n: Node3D, uid: String, e: Dictionary, delta: float) 
 			var bm: Node3D = n.get_node("Model")
 			var hp: float = meta.get(uid, {}).get("hp_ratio", 1.0)
 			info2.text = "%s\n%s" % [Loc.name_of(e["def_id"]), "█".repeat(int(round(hp * 20))) + "░".repeat(20 - int(round(hp * 20)))]
-			var t := Time.get_ticks_msec() / 1000.0
-			match state:
-				"telegraph_tail_slam", "telegraph_belly_charge", "telegraph_water_splash":
-					bm.position.y = 0.15 + absf(sin(t * 14.0)) * 0.25
-					bm.scale = Vector3.ONE * (3.2 + sin(t * 20.0) * 0.12)
-				"stunned":
-					bm.rotation.z = lerpf(bm.rotation.z, 0.6, 6 * delta)
-				"defeated":
-					bm.rotation.z = lerpf(bm.rotation.z, PI * 0.5, 4 * delta)
-				_:
-					bm.position.y = 0.0
-					bm.scale = Vector3.ONE * 3.2
-					bm.rotation.z = lerpf(bm.rotation.z, 0.0, 6 * delta)
+			var bap2: AnimationPlayer = bm.get_node_or_null("Anim")
+			if bap2:
+				var clip: String = BOSS_CLIPS.get(state, "idle")
+				if state.begins_with("telegraph_"):
+					clip = "telegraph_spit" if state.contains("splash") or state.contains("spit") else ("telegraph_charge" if state.contains("charge") else "telegraph_slam")
+				_play(bap2, "boss", "anm_%s_%s" % [String(e["def_id"]).replace("cre_boss_", "boss_"), clip])
 		"prop":
 			if e["def_id"] == "lure":
 				n.position.y += sin(Time.get_ticks_msec() / 200.0) * 0.03 * (3.0 if state.ends_with("biting") else 1.0)
+				_ensure_vfx(n, "Ripple", "vfx_bobber_ripple", not state.ends_with("flying"))
+			elif e["def_id"] == "thief_bird":
+				var hap2: AnimationPlayer = n.get_node_or_null("Anim")
+				if hap2:
+					var prev: Vector3 = n.get_meta("prev_pos", n.global_position)
+					n.set_meta("prev_pos", n.global_position)
+					_play(hap2, "egret", "anm_egret_fly" if prev.distance_to(n.global_position) > 0.02 or state == "leave" else "anm_egret_walk")
 
 
 func _update_lines(b: Dictionary) -> void:
@@ -281,21 +298,28 @@ func _update_lines(b: Dictionary) -> void:
 		_draw_line(uid, from, to, st.ends_with("reeling"))
 	for key in lines.keys():
 		if not b["entities"].has(key):
-			lines[key].queue_free()
+			var holder: Node = lines[key].get_parent()
+			(holder if holder is VfxPlayer else lines[key]).queue_free()
 			lines.erase(key)
 
 
 func _draw_line(key: String, a: Vector3, b: Vector3, taut: bool) -> void:
 	var mi: MeshInstance3D = lines.get(key)
 	if mi == null:
-		mi = MeshInstance3D.new()
-		mi.mesh = ImmediateMesh.new()
-		var mat := StandardMaterial3D.new()
-		mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		mat.albedo_color = Color(0.95, 0.95, 0.9)
-		mi.material_override = mat
+		# asset vfx_fishing_line: nút Line (ImmediateMesh) vẽ lại mỗi khung
+		var holder := VfxPlayer.spawn("vfx_fishing_line", self, Vector3.ZERO)
+		if holder and holder.has_node("Line"):
+			mi = holder.get_node("Line")
+			mi.mesh = ImmediateMesh.new()
+		else:
+			mi = MeshInstance3D.new()
+			mi.mesh = ImmediateMesh.new()
+			var mat := StandardMaterial3D.new()
+			mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+			mat.albedo_color = Color(0.95, 0.95, 0.9)
+			mi.material_override = mat
+			add_child(mi)
 		mi.top_level = true
-		add_child(mi)
 		lines[key] = mi
 	var im: ImmediateMesh = mi.mesh
 	im.clear_surfaces()
@@ -320,3 +344,61 @@ func flash(uid: String) -> void:
 	sm.set_shader_parameter("flash", 1.0)
 	var tw := create_tween()
 	tw.tween_method(func(v): sm.set_shader_parameter("flash", v), 1.0, 0.0, 0.18)
+
+
+static func _add_lib(ap: AnimationPlayer, lib: String, path: String) -> void:
+	if ResourceLoader.exists(path):
+		ap.add_animation_library(lib, load(path))
+
+
+static func _play(ap: AnimationPlayer, lib: String, clip: String, blend := 0.15) -> void:
+	var full := lib + "/" + clip
+	if ap.has_animation(full) and ap.current_animation != full:
+		ap.play(full, blend)
+
+
+## Hiệu ứng gắn theo thực thể: bật khi `on`, gỡ khi tắt. Trả nút đang có (hoặc null).
+func _ensure_vfx(n: Node3D, child: String, vfx_id: String, on: bool, offset := Vector3.ZERO) -> Node3D:
+	var cur: Node3D = n.get_node_or_null(child)
+	if on and cur == null:
+		cur = VfxPlayer.spawn(vfx_id, n, n.global_position + offset)
+		if cur:
+			cur.name = child
+	elif not on and cur != null:
+		cur.queue_free()
+		cur = null
+	return cur
+
+
+var _player_oneshot: Dictionary = {}   # account_id -> {clip, until}
+
+
+## Sự kiện của người chơi khác → hoạt ảnh một lần (quăng, dùng công cụ, xỉu, hồi sinh).
+func player_event(aid: String, clip: String, seconds: float) -> void:
+	_player_oneshot[aid] = {"clip": clip, "until": Time.get_ticks_msec() / 1000.0 + seconds}
+	var n: Node3D = nodes.get(aid)
+	if n and n.has_node("Anim"):
+		var ap: AnimationPlayer = n.get_node("Anim")
+		if ap.has_animation("pl/" + clip):
+			ap.play("pl/" + clip, 0.08)
+			ap.seek(0.0, true)
+
+
+func _animate_player(aid: String, n: Node3D, p: Dictionary, spd: float, snap: Dictionary) -> void:
+	var ap: AnimationPlayer = n.get_node_or_null("Anim")
+	if ap == null:
+		return
+	var os: Dictionary = _player_oneshot.get(aid, {})
+	if not os.is_empty() and Time.get_ticks_msec() / 1000.0 < float(os["until"]):
+		return
+	if p["mode"] == "knocked_out":
+		_play(ap, "pl", "anm_player_remote_knocked_out")
+		return
+	# đang kéo cá: phao của người này ở trạng thái reeling
+	var slot: int = players_meta.get(aid, {}).get("slot", -1)
+	for uid in snap["entities"]:
+		var e: Dictionary = snap["entities"][uid]
+		if e["def_id"] == "lure" and String(e["state"]) == "lure_s%d_reeling" % slot:
+			_play(ap, "pl", "anm_player_remote_reel")
+			return
+	_play(ap, "pl", "anm_player_remote_idle" if spd < 0.4 else ("anm_player_remote_walk" if spd < 3.4 else "anm_player_remote_run"))

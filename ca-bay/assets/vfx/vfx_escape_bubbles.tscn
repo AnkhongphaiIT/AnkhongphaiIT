@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_wau3g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02wof"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9, 0.97, 1, 0.8)
+
+[sub_resource type="SphereMesh" id="SphereMesh_iu781"]
+material = SubResource("StandardMaterial3D_02wof")
+radius = 0.05
+height = 0.1
+radial_segments = 6
+rings = 3
+
+[node name="vfx_escape_bubbles" type="Node3D" unique_id=1833260915]
+script = ExtResource("1_wau3g")
+life = 1.4
+
+[node name="Particles" type="CPUParticles3D" parent="." unique_id=292105274]
+amount = 14
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_iu781")
+direction = Vector3(0, 1, 0)
+spread = 25.0
+gravity = Vector3(0, 0.5, 0)
+initial_velocity_min = 0.6
+initial_velocity_max = 1.4
+scale_amount_min = 0.6
+scale_amount_max = 1.2

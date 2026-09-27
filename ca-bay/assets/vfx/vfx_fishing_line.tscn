@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://client/scripts/visual/vfx_player.gd" id="1_2yf8k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k87s8"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.95, 0.95, 0.9, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_uuo3f"]
+
+[node name="vfx_fishing_line" type="Node3D" unique_id=30050858]
+script = ExtResource("1_2yf8k")
+life = 0.0
+
+[node name="Line" type="MeshInstance3D" parent="." unique_id=184085776]
+material_override = SubResource("StandardMaterial3D_k87s8")
+mesh = SubResource("ImmediateMesh_uuo3f")

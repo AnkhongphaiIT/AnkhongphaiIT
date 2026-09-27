@@ -20,7 +20,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 12764,
+        "triangles": 12764.0,
         "size": [
           240.0,
           6.0,
@@ -46,7 +46,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 816,
+        "triangles": 816.0,
         "size": [
           3.1,
           4.45,
@@ -72,7 +72,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 148,
+        "triangles": 148.0,
         "size": [
           4.5,
           2.85,
@@ -98,7 +98,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 163,
+        "triangles": 163.0,
         "size": [
           2.6,
           1.6,
@@ -124,7 +124,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 208,
+        "triangles": 208.0,
         "size": [
           4.37,
           6.25,
@@ -150,7 +150,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 18,
+        "triangles": 18.0,
         "size": [
           3.15,
           2.3,
@@ -176,7 +176,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 198,
+        "triangles": 198.0,
         "size": [
           5.38,
           2.52,
@@ -202,7 +202,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 84,
+        "triangles": 84.0,
         "size": [
           1.03,
           3.6,
@@ -228,7 +228,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 36,
+        "triangles": 36.0,
         "size": [
           1.2,
           1.6,
@@ -254,7 +254,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 496,
+        "triangles": 496.0,
         "size": [
           0.78,
           2.02,
@@ -280,7 +280,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 520,
+        "triangles": 520.0,
         "size": [
           0.78,
           1.84,
@@ -306,7 +306,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 84,
+        "triangles": 84.0,
         "size": [
           0.12,
           0.1,
@@ -332,7 +332,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 152,
+        "triangles": 152.0,
         "size": [
           0.08,
           0.07,
@@ -358,7 +358,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 72,
+        "triangles": 72.0,
         "size": [
           0.09,
           0.16,
@@ -384,7 +384,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 44,
+        "triangles": 44.0,
         "size": [
           0.09,
           0.04,
@@ -410,7 +410,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 66,
+        "triangles": 66.0,
         "size": [
           0.18,
           0.04,
@@ -436,7 +436,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 458,
+        "triangles": 458.0,
         "size": [
           0.09,
           0.05,
@@ -462,7 +462,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 246,
+        "triangles": 246.0,
         "size": [
           0.12,
           0.18,
@@ -488,7 +488,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 326,
+        "triangles": 326.0,
         "size": [
           0.24,
           0.16,
@@ -514,7 +514,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 404,
+        "triangles": 404.0,
         "size": [
           0.37,
           0.12,
@@ -540,7 +540,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 414,
+        "triangles": 414.0,
         "size": [
           0.57,
           0.35,
@@ -566,7 +566,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 36,
+        "triangles": 36.0,
         "size": [
           0.15,
           0.11,
@@ -592,7 +592,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 40,
+        "triangles": 40.0,
         "size": [
           0.21,
           0.04,
@@ -618,7 +618,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 110,
+        "triangles": 110.0,
         "size": [
           0.15,
           0.17,
@@ -644,7 +644,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 64,
+        "triangles": 64.0,
         "size": [
           0.42,
           0.36,
@@ -670,7 +670,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 60,
+        "triangles": 60.0,
         "size": [
           0.36,
           0.49,
@@ -696,7 +696,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 108,
+        "triangles": 108.0,
         "size": [
           0.16,
           0.2,
@@ -832,115 +832,291 @@
     },
     {
       "asset_id": "tex_palette_main",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_tex_palette_main",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/textures/tex_palette_main.png",
+          "bytes": 456,
+          "sha256": "48f92913894e3bc0c01e787228e7e0c0a2f32d7e204d0e1fce0d09e22e64bcea"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/bake/bake.gd (bảng màu Art Bible)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_fishing_line",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_fishing_line",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_fishing_line.tscn",
+          "bytes": 621,
+          "sha256": "67c33c5281e4f275c3cbc234a2e1aa145120db893c6460b5c904b78c09e443fd"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_lure_splash",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_lure_splash",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_lure_splash.tscn",
+          "bytes": 873,
+          "sha256": "1d372d4229d2e5008cd74b33474e9ea539a7bd17c368627ec4d08fce7d863010"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_bobber_ripple",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_bobber_ripple",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_bobber_ripple.tscn",
+          "bytes": 998,
+          "sha256": "80e78ebcbebb6a2be2266593c7dea9301b0a2a4e1113f9488d5ecd8b11856e0a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_bite_splash",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_bite_splash",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_bite_splash.tscn",
+          "bytes": 864,
+          "sha256": "83ba9d126006158742ac7e3a30bfa4f898b41972a0d4cf46627ac1e9dee7ffc1"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_yank_burst",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_yank_burst",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_yank_burst.tscn",
+          "bytes": 1601,
+          "sha256": "31ff0c36247bad3bdb3dd365ce67bc418a62e743af24f1246b342d8e7115f144"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_air_trail",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_air_trail",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_air_trail.tscn",
+          "bytes": 796,
+          "sha256": "19f95381108ee6a14a191619e384582884e3d9eadb835e8153a4a49c0722048c"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_hit_confetti",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_hit_confetti",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_hit_confetti.tscn",
+          "bytes": 2527,
+          "sha256": "e893c1794536695c64c990c9cfcde9939b89ee953b912d9e5753a3a17bcb502d"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_ko_stars",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_ko_stars",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_ko_stars.tscn",
+          "bytes": 4357,
+          "sha256": "0b2e2b02f13283f564148f07c1404a74230eba4e131463dca4ae048e9206bc5d"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_trick_text",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_trick_text",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_trick_text.tscn",
+          "bytes": 498,
+          "sha256": "437b8d488ad16b78acbebcfe753901db5968a556a24d896bba7446086860999b"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_coin_burst",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_coin_burst",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_coin_burst.tscn",
+          "bytes": 873,
+          "sha256": "475ff5a60c2a7a496e4d3558fd8c799a2f07a70be6589981d2c407dd61372cd5"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_boss_telegraph_ring",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_boss_telegraph_ring",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_boss_telegraph_ring.tscn",
+          "bytes": 773,
+          "sha256": "9b88800496b8370ecd7dc825daa3899b88cf991b3dea14ac472b9acca59d01b4"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_escape_bubbles",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_escape_bubbles",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_escape_bubbles.tscn",
+          "bytes": 903,
+          "sha256": "29ef7d03bc2341479559bc385477236a9a9fc62026893a878b4918ff08c76864"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_bite_indicator",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_bite_indicator",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_bite_indicator.tscn",
+          "bytes": 512,
+          "sha256": "b85d7b96a52359d145587c732009a91f552918a8cdb166fa5ad8208cde952834"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_attack_warn",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_attack_warn",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_attack_warn.tscn",
+          "bytes": 500,
+          "sha256": "8b3ca763111d2a6da90190e151065e1b00999c1d1b32b74b31318c99ca815f91"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "vfx_cast_preview",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_cast_preview",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_cast_preview.tscn",
+          "bytes": 751,
+          "sha256": "4ee649c6c65461b37017858820e8650e49bfc25113758590f131d431dcf18f65"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "ui_theme_main",
@@ -1043,10 +1219,15 @@
     },
     {
       "asset_id": "ui_damage_vignette",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_ui_damage_vignette",
+      "license": "self_made",
+      "files": [],
+      "source": {
+        "tool_or_origin": "client/scripts/ui/hud.gd",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "ui_tutorial_hint",
@@ -1189,10 +1370,15 @@
     },
     {
       "asset_id": "ui_logo_placeholder",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_ui_logo_placeholder",
+      "license": "self_made",
+      "files": [],
+      "source": {
+        "tool_or_origin": "client/scripts/ui/client_app.gd",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "ico_tool_hand",
@@ -1213,8 +1399,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1238,8 +1424,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1263,8 +1449,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1288,8 +1474,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1313,8 +1499,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1338,8 +1524,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1363,8 +1549,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1388,8 +1574,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1413,8 +1599,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1438,8 +1624,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1463,8 +1649,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1488,8 +1674,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1513,8 +1699,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1538,8 +1724,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1563,214 +1749,559 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
     },
     {
       "asset_id": "anm_lib_fp",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_lib_fp",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_lib_npc_basic",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_lib_npc_basic",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_npc_basic.tres",
+          "bytes": 2844,
+          "sha256": "999dd99f768c6aef65268869ea5800b01f6c0e8ab907c953049cb83424e88a09"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_lib_boss_ca_loc",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_lib_boss_ca_loc",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_idle",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_idle",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_idle",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_equip",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_equip",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_equip",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_cast_charge",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_cast_charge",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_cast_charge",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_cast_release",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_cast_release",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_cast_release",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_reel_loop",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_reel_loop",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_reel_loop",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_yank",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_yank",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_yank",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_slap",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_slap",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_slap",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_throw",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_throw",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_throw",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_sweep",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_sweep",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_sweep",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_fp_pickup",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_fp_pickup",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_fp.tres",
+          "clip": "anm_fp_pickup",
+          "bytes": 7450,
+          "sha256": "cac967c0b7966071567821cef5123fab2660b26cb8e60d269e983e01751a5797"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_npc_idle",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_npc_idle",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_npc_basic.tres",
+          "clip": "anm_npc_idle",
+          "bytes": 2844,
+          "sha256": "999dd99f768c6aef65268869ea5800b01f6c0e8ab907c953049cb83424e88a09"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_npc_talk",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_npc_talk",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_npc_basic.tres",
+          "clip": "anm_npc_talk",
+          "bytes": 2844,
+          "sha256": "999dd99f768c6aef65268869ea5800b01f6c0e8ab907c953049cb83424e88a09"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_npc_happy",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_npc_happy",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_npc_basic.tres",
+          "clip": "anm_npc_happy",
+          "bytes": 2844,
+          "sha256": "999dd99f768c6aef65268869ea5800b01f6c0e8ab907c953049cb83424e88a09"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_npc_disgust",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_npc_disgust",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_npc_basic.tres",
+          "clip": "anm_npc_disgust",
+          "bytes": 2844,
+          "sha256": "999dd99f768c6aef65268869ea5800b01f6c0e8ab907c953049cb83424e88a09"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_land",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_land",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_land",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_idle",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_idle",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_idle",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_telegraph_slam",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_telegraph_slam",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_telegraph_slam",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_slam",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_slam",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_slam",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_telegraph_charge",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_telegraph_charge",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_telegraph_charge",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_charge",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_charge",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_charge",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_stunned",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_stunned",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_stunned",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_telegraph_spit",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_telegraph_spit",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_telegraph_spit",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_spit",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_spit",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_spit",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_phase_change",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_phase_change",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_phase_change",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_escape",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_escape",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_escape",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_loc_defeat",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_loc_defeat",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_loc.tres",
+          "clip": "anm_boss_ca_loc_defeat",
+          "bytes": 8706,
+          "sha256": "89a914f8361c314825f47a0bee5e695c6587930241db06c045389fec84a7c8ef"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "sfx_cast_charge",
@@ -2792,7 +3323,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 116,
+        "triangles": 116.0,
         "size": [
           0.7,
           0.76,
@@ -2802,10 +3333,21 @@
     },
     {
       "asset_id": "vfx_smoke_grill",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_smoke_grill",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_smoke_grill.tscn",
+          "bytes": 871,
+          "sha256": "27a3ad2e8ca6a66c68d950681a6e6f5d8f62ebb5e4f60e7c4b37162baeb13e24"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "sfx_grill_sizzle_loop",
@@ -2879,7 +3421,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 288,
+        "triangles": 288.0,
         "size": [
           1.5,
           1.21,
@@ -2889,24 +3431,59 @@
     },
     {
       "asset_id": "anm_lib_egret",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_lib_egret",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_egret.tres",
+          "bytes": 1807,
+          "sha256": "55c1c33bd4451b7b498358745a92b15befbbc80555f3e3fc0ad959051d583282"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_egret_walk",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_egret_walk",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_egret.tres",
+          "clip": "anm_egret_walk",
+          "bytes": 1807,
+          "sha256": "55c1c33bd4451b7b498358745a92b15befbbc80555f3e3fc0ad959051d583282"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_egret_fly",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_egret_fly",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_egret.tres",
+          "clip": "anm_egret_fly",
+          "bytes": 1807,
+          "sha256": "55c1c33bd4451b7b498358745a92b15befbbc80555f3e3fc0ad959051d583282"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "sfx_egret_call",
@@ -2962,7 +3539,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 60,
+        "triangles": 60.0,
         "size": [
           0.12,
           0.04,
@@ -2972,10 +3549,21 @@
     },
     {
       "asset_id": "vfx_boba_sparkle",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_boba_sparkle",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_boba_sparkle.tscn",
+          "bytes": 925,
+          "sha256": "bcd4d0015755277ba9447bd5d0d1b352e205c934803e0cbdbb78509d7f9f58aa"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "sfx_rare_reveal",
@@ -3013,7 +3601,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 44,
+        "triangles": 44.0,
         "size": [
           0.12,
           0.21,
@@ -3039,7 +3627,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 22,
+        "triangles": 22.0,
         "size": [
           0.18,
           0.02,
@@ -3065,7 +3653,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 70,
+        "triangles": 70.0,
         "size": [
           0.17,
           0.24,
@@ -3075,10 +3663,21 @@
     },
     {
       "asset_id": "vfx_confetti_explosion",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_confetti_explosion",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_confetti_explosion.tscn",
+          "bytes": 3911,
+          "sha256": "a88c0a282c94dfe53df0ddd30d48e4bd28da404f4eeee949cba7301e347027c1"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "sfx_slingshot_shot",
@@ -3152,7 +3751,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 152,
+        "triangles": 152.0,
         "size": [
           0.08,
           0.07,
@@ -3178,7 +3777,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 13346,
+        "triangles": 13346.0,
         "size": [
           240.0,
           5.4,
@@ -3204,7 +3803,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 13048,
+        "triangles": 13048.0,
         "size": [
           240.0,
           7.4,
@@ -3266,7 +3865,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 246,
+        "triangles": 246.0,
         "size": [
           0.21,
           0.32,
@@ -3293,8 +3892,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3317,7 +3916,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 366,
+        "triangles": 366.0,
         "size": [
           0.1,
           0.07,
@@ -3344,8 +3943,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3368,7 +3967,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 424,
+        "triangles": 424.0,
         "size": [
           0.13,
           0.06,
@@ -3395,8 +3994,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3419,7 +4018,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 246,
+        "triangles": 246.0,
         "size": [
           0.16,
           0.13,
@@ -3446,8 +4045,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3470,7 +4069,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 404,
+        "triangles": 404.0,
         "size": [
           0.61,
           0.19,
@@ -3497,8 +4096,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3521,7 +4120,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 518,
+        "triangles": 518.0,
         "size": [
           0.18,
           0.09,
@@ -3548,8 +4147,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3572,7 +4171,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 270,
+        "triangles": 270.0,
         "size": [
           0.12,
           0.1,
@@ -3599,8 +4198,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3623,7 +4222,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 246,
+        "triangles": 246.0,
         "size": [
           0.32,
           0.1,
@@ -3650,8 +4249,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3674,7 +4273,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 246,
+        "triangles": 246.0,
         "size": [
           0.12,
           0.09,
@@ -3701,8 +4300,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3725,7 +4324,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 286,
+        "triangles": 286.0,
         "size": [
           0.23,
           0.15,
@@ -3752,8 +4351,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3776,7 +4375,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 246,
+        "triangles": 246.0,
         "size": [
           0.25,
           0.37,
@@ -3803,8 +4402,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -3827,7 +4426,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 404,
+        "triangles": 404.0,
         "size": [
           1.33,
           0.41,
@@ -3854,102 +4453,257 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
     },
     {
       "asset_id": "anm_lib_boss_cua_bun",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_lib_boss_cua_bun",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_land",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_land",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_land",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_idle",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_idle",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_idle",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_phase_change",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_phase_change",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_phase_change",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_escape",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_escape",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_escape",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_defeat",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_defeat",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_defeat",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_telegraph_slam",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_telegraph_slam",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_telegraph_slam",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_slam",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_slam",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_slam",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_telegraph_charge",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_telegraph_charge",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_telegraph_charge",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_charge",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_charge",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_charge",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_stunned",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_stunned",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_stunned",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_telegraph_spit",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_telegraph_spit",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_telegraph_spit",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_cua_bun_spit",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_cua_bun_spit",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_cua_bun.tres",
+          "clip": "anm_boss_cua_bun_spit",
+          "bytes": 8744,
+          "sha256": "3d2408f3cd8aaf1d404eb47ebed9313e2865d47ae72a67ff3b430d088740eab6"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "mdl_cre_boss_ca_bop",
@@ -3969,7 +4723,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 318,
+        "triangles": 318.0,
         "size": [
           0.74,
           0.45,
@@ -3996,102 +4750,257 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
     },
     {
       "asset_id": "anm_lib_boss_ca_bop",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_lib_boss_ca_bop",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_land",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_land",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_land",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_idle",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_idle",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_idle",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_phase_change",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_phase_change",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_phase_change",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_escape",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_escape",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_escape",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_defeat",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_defeat",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_defeat",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_telegraph_slam",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_telegraph_slam",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_telegraph_slam",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_slam",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_slam",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_slam",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_telegraph_charge",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_telegraph_charge",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_telegraph_charge",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_charge",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_charge",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_charge",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_stunned",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_stunned",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_stunned",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_telegraph_spit",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_telegraph_spit",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_telegraph_spit",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_boss_ca_bop_spit",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_boss_ca_bop_spit",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_boss_ca_bop.tres",
+          "clip": "anm_boss_ca_bop_spit",
+          "bytes": 8712,
+          "sha256": "52859a1f034e484552496b797a530895e0420d0966b6baa1a4597e2a6784777a"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "mdl_item_rice_ball",
@@ -4111,7 +5020,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 21,
+        "triangles": 21.0,
         "size": [
           0.13,
           0.12,
@@ -4138,8 +5047,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -4162,7 +5071,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 56,
+        "triangles": 56.0,
         "size": [
           0.1,
           0.07,
@@ -4189,8 +5098,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -4213,7 +5122,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 24,
+        "triangles": 24.0,
         "size": [
           0.16,
           0.03,
@@ -4240,8 +5149,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -4264,7 +5173,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 60,
+        "triangles": 60.0,
         "size": [
           0.16,
           0.02,
@@ -4291,8 +5200,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -4315,7 +5224,7 @@
         "recorded_at": "2026-09-27"
       },
       "measure": {
-        "triangles": 496,
+        "triangles": 496.0,
         "size": [
           0.78,
           2.02,
@@ -4325,66 +5234,173 @@
     },
     {
       "asset_id": "anm_lib_player_remote",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_lib_player_remote",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_idle",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_idle",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_idle",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_walk",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_walk",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_walk",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_run",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_run",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_run",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_cast",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_cast",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_cast",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_reel",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_reel",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_reel",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_use_tool",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_use_tool",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_use_tool",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_knocked_out",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_knocked_out",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_knocked_out",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "anm_player_remote_revive",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_anm_player_remote_revive",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/anim/anm_lib_player_remote.tres",
+          "clip": "anm_player_remote_revive",
+          "bytes": 6393,
+          "sha256": "d48dde360ac08147babd7fb7fece1b079ffbf493ff55deeadb7540fa8d06991e"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/anim (procedural keyframes)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "ui_room_lobby",
@@ -4556,10 +5572,21 @@
     },
     {
       "asset_id": "vfx_lootbox_reveal",
-      "status": "planned",
-      "source_record_id": null,
-      "license": "tbd",
-      "files": []
+      "status": "in_review",
+      "source_record_id": "src_vfx_lootbox_reveal",
+      "license": "self_made",
+      "files": [
+        {
+          "path": "res://assets/vfx/vfx_lootbox_reveal.tscn",
+          "bytes": 632,
+          "sha256": "2ef28003854807af8f71b55614f91d2b039d6a8aacee17d48f1f923f0b8d1fe7"
+        }
+      ],
+      "source": {
+        "tool_or_origin": "art_src/vfx (procedural particles)",
+        "author": "Claude Code (tự tạo trong dự án)",
+        "recorded_at": "2026-09-27"
+      }
     },
     {
       "asset_id": "amb_isl02_day_loop",

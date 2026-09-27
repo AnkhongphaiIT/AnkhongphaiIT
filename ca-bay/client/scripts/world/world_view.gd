@@ -225,6 +225,10 @@ func _build_shop(L: Dictionary) -> void:
 	st.look_at_from_position(st.position, Vector3(spawn.x, st.position.y, spawn.z), Vector3.UP)
 	st.rotate_y(PI)
 	add_child(st)
+	# khói bếp nướng (asset vfx_smoke_grill) tại vị trí bếp trên sạp
+	var smoke := VfxPlayer.spawn("vfx_smoke_grill", st, st.global_transform * Vector3(-1.9, 0.8, -0.6))
+	if smoke:
+		smoke.name = "GrillSmoke"
 	var lbl := _label3d(Loc.t("shop.%s.sign" % s["shop_id"]) if Loc.has_key("shop.%s.sign" % s["shop_id"]) else Loc.name_of(s["npc_id"]), 0.9)
 	lbl.position = st.position + Vector3(0, 3.3, 0)
 	add_child(lbl)
@@ -248,8 +252,33 @@ func _build_npcs(L: Dictionary) -> void:
 		var lbl := _label3d(Loc.name_of(npc_id), 0.55)
 		lbl.position = Vector3(0, 2.35, 0)
 		node.add_child(lbl)
+		# hoạt ảnh NPC: thư viện asset anm_lib_npc_basic (thở/nói/vui/chê)
+		var ap := AnimationPlayer.new()
+		ap.name = "Anim"
+		node.add_child(ap)
+		if ResourceLoader.exists("res://assets/anim/anm_lib_npc_basic.tres"):
+			ap.add_animation_library("npc", load("res://assets/anim/anm_lib_npc_basic.tres"))
 		add_child(node)
 		npc_nodes[npc_id] = node
+		play_npc(npc_id, "anm_npc_idle")
+		ap.seek(randf() * 2.0, true)
+
+
+## Phát hoạt ảnh NPC; clip một lần (nói/vui/chê) xong tự quay về thở.
+func play_npc(npc_id: String, clip: String, seconds := 0.0) -> void:
+	var n: Node3D = npc_nodes.get(npc_id)
+	if n == null or not n.has_node("Anim"):
+		return
+	var ap: AnimationPlayer = n.get_node("Anim")
+	if not ap.has_animation("npc/" + clip):
+		return
+	ap.play("npc/" + clip, 0.15)
+	if seconds > 0.0:
+		var tw := create_tween()
+		tw.tween_interval(seconds)
+		tw.tween_callback(func():
+			if is_instance_valid(ap):
+				ap.play("npc/anm_npc_idle", 0.2))
 
 
 func _build_boss_post(L: Dictionary) -> void:
