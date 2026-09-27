@@ -103,7 +103,7 @@
   "shot": "b03_boss_arrived"
  },
  {
-  "key": "Digit3"
+  "key": "Digit2"
  },
  {
   "wait": 500
@@ -113,26 +113,42 @@
    "until": "CABAY_EV boss.phase_changed",
    "fail": "CABAY_EV boss.escaped",
    "timeout": 120000,
-   "interval": 200,
+   "interval": 250,
    "pre_key": "KeyT",
    "step_key": "KeyW",
-   "step_every": 1,
-   "step_ms": 450,
+   "step_every": 5,
+   "step_ms": 200,
    "dodge": {
     "on": "CABAY_EV boss.telegraph",
     "keys": [
      [
-      "KeyS",
       "KeyA"
      ],
      [
-      "KeyS",
       "KeyD"
      ]
     ],
-    "ms": 700
-   }
+    "ms": 650
+   },
+   "reacts": [
+    {
+     "on": "CABAY_ARENA out",
+     "tap": "KeyY",
+     "keys": [
+      [
+       "KeyW"
+      ]
+     ],
+     "ms": 1800
+    }
+   ]
   }
+ },
+ {
+  "key": "KeyT"
+ },
+ {
+  "wait": 300
  },
  {
   "shot": "b04_phase2"
@@ -142,25 +158,35 @@
    "until": "CABAY_EV boss.defeated",
    "fail": "CABAY_EV boss.escaped",
    "timeout": 200000,
-   "interval": 200,
+   "interval": 250,
    "pre_key": "KeyT",
    "step_key": "KeyW",
-   "step_every": 1,
-   "step_ms": 450,
+   "step_every": 5,
+   "step_ms": 200,
    "dodge": {
     "on": "CABAY_EV boss.telegraph",
     "keys": [
      [
-      "KeyS",
       "KeyA"
      ],
      [
-      "KeyS",
       "KeyD"
      ]
     ],
-    "ms": 700
-   }
+    "ms": 650
+   },
+   "reacts": [
+    {
+     "on": "CABAY_ARENA out",
+     "tap": "KeyY",
+     "keys": [
+      [
+       "KeyW"
+      ]
+     ],
+     "ms": 1800
+    }
+   ]
   }
  },
  {

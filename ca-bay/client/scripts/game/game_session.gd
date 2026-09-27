@@ -44,6 +44,7 @@ var _thrashing := false
 var _strain := 0.0
 var _charge_t0 := -1.0
 var _boss := {}                    # {uid, boss_id, hp, max_hp, end_t, hide_t}
+var _arena_out := false
 var _hunger_warned := false
 var _reconnecting := false
 var _closing := false
@@ -517,6 +518,10 @@ func _on_event(ev: Dictionary) -> void:
 	var p: Dictionary = ev["event_payload"]
 	var actor: Variant = ev["actor_player_id"]
 	var own: bool = actor != null and actor == my_id
+	# backend gửi thêm một boss.defeated riêng cho người nhận thưởng (không có time_s) sau sự kiện của phòng:
+	# không phát lại âm thanh/thông báo; tiền/đồ đã có sự kiện riêng
+	if name == "boss.defeated" and not p.has("time_s"):
+		return
 	AudioDirector.on_event(name, p, {"own": own, "player_pos": player.pos})
 	if Endpoints.autotest and not own and actor != null and name in ["fishing.launched", "creature.knocked_out", "item.picked_up", "room.player_joined", "player.emote", "room.ping"]:
 		print("CABAY_OTHER %s by=%s" % [name, _name_of_player(actor)])
@@ -1002,8 +1007,12 @@ func _process(_delta: float) -> void:
 			var bs := IslandLayout.boss_spot(island_id)
 			var arena := IslandLayout.v3(island_id, bs["arena"])
 			var d := Vector2(server_pos.x - arena.x, server_pos.z - arena.z).length()
-			if d > float(bs["arena_radius"]) + 2.0 and my_mode != "knocked_out":
+			var out := d > float(bs["arena_radius"]) + 2.0 and my_mode != "knocked_out"
+			if out:
 				hud.show_center(Loc.t("ui.boss.return_arena"), 0.3, UIKit.C_RED)
+			if Endpoints.autotest and out != _arena_out:
+				print("CABAY_ARENA %s" % ("out" if out else "in"))
+			_arena_out = out
 		if _boss.has("hide_t") and now > float(_boss["hide_t"]):
 			_boss = {}
 			hud.boss_bar.visible = false

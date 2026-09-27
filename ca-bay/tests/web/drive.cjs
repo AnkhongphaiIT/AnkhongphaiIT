@@ -4,7 +4,7 @@
 // Bước: {goto:url} {wait:ms} {shot:name} {click:[x,y]} {dbl:[x,y]} {move:[x,y]} {down:[x,y]} {up:[x,y]}
 //       {mdown:"left"} {mup:"left"} {type:"text"} {key:"Enter"} {keydown:"KeyW"} {keyup:"KeyW"}
 //       {hold:"KeyW", ms} {waitlog:"regex", timeout, fresh} {reel:{until, fail, timeout}, wait_for}
-//       {hunt:{until, fail, timeout, interval, pre_key, step_key, step_every, step_ms, dodge:{on, keys, ms}}}
+//       {hunt:{until, fail, timeout, interval, pre_key, step_key, step_every, step_ms, dodge:{on, keys, ms}, reacts:[{on, tap, keys, ms}]}}
 //       {walk_until:"regex", face_key, walk_key, timeout}
 //       {capture:{regex:"...(nhóm)", var:"TÊN"}} — lấy giá trị từ log để dùng lại dạng {TÊN} trong type/goto
 //       {repeat:[bước...], until:"regex", max:n} — chạy lại khối tới khi log khớp
@@ -132,16 +132,19 @@ async function runStep(ctx, s, outDir, mark) {
     const start = logs.length;
     const deadline = Date.now() + (s.hunt.timeout || 30000);
     let k = 0;
-    // dodge: {on:"regex", keys:[["KeyS","KeyA"],["KeyS","KeyD"]], ms} — mỗi lần log khớp mới (ví dụ boss.telegraph) giữ tổ hợp phím né, đổi bên luân phiên
-    const dodge = s.hunt.dodge ? { re: new RegExp(s.hunt.dodge.on), from: logs.length, side: 0 } : null;
+    // dodge / react: {on:"regex", tap?:"Key", keys:[["KeyS","KeyA"],["KeyS","KeyD"]], ms} — mỗi lần log khớp mới
+    // (ví dụ boss.telegraph, CABAY_ARENA out) bấm nhanh `tap` (quay mặt) rồi giữ tổ hợp phím, đổi tổ hợp luân phiên
+    const reacts = [s.hunt.dodge, ...(s.hunt.reacts || [])].filter(Boolean).map((r) => ({ ...r, re: new RegExp(r.on), from: logs.length, side: 0 }));
     while (!seen(until, start, n)) {
       if (Date.now() > deadline) throw new Error('hunt timeout ' + s.hunt.until);
       if (fail && seen(fail, start, n)) throw new Error('hunt thất bại: ' + s.hunt.fail);
-      if (dodge && seen(dodge.re, dodge.from, n)) {
-        dodge.from = logs.length;
-        const combo = s.hunt.dodge.keys[dodge.side++ % s.hunt.dodge.keys.length];
+      const r = reacts.find((x) => seen(x.re, x.from, n));
+      if (r) {
+        for (const x of reacts) x.from = logs.length;
+        if (r.tap) { await page.keyboard.down(r.tap); await page.waitForTimeout(80); await page.keyboard.up(r.tap); await page.waitForTimeout(150); }
+        const combo = r.keys[r.side++ % r.keys.length];
         for (const key of combo) await page.keyboard.down(key);
-        await page.waitForTimeout(s.hunt.dodge.ms || 900);
+        await page.waitForTimeout(r.ms || 900);
         for (const key of combo) await page.keyboard.up(key);
         continue;
       }

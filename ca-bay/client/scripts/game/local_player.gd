@@ -122,6 +122,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_V: _autotest_face_point(IslandLayout.npc_position(island_id, IslandLayout.shop_zone(island_id)["npc_id"]))
 			KEY_P: _autotest_face_other_player()
 			KEY_U: _autotest_face_point(IslandLayout.v3(island_id, IslandLayout.boss_spot(island_id)["post"], 1.0))
+			KEY_Y: _autotest_face_point(IslandLayout.v3(island_id, IslandLayout.boss_spot(island_id)["arena"], 1.0))
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and not Endpoints.autotest:
 		var sens := 0.0025 * float(Settings.get_value("mouse_sensitivity", 1.0))
 		yaw = wrapf(yaw - event.relative.x * sens, -PI, PI)
