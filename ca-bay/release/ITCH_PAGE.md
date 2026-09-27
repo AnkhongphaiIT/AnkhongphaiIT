@@ -51,7 +51,7 @@ A storm wrecked the village pier. With up to 4 friends, cast your line, yank fis
 
 ## Ảnh chụp đề xuất (thứ tự)
 
-`p03_arrive.png` (đảo 1, Ông Tư, bến), `p05_waiting.png` (quăng câu), `p06_flying.png` (cá bay), `p07_ko.png` (đập xỉu + trick), `p10_shop.png` (sạp Cô Ba), `p11_quest.png` (nhiệm vụ), `p09_dex.png` (Sổ Cá), `p02_lobby.png` (sảnh tạo/vào phòng), `p12_coop.png` (2 người cùng phòng), `p14_boss_fight.png` (đánh boss Lóc Già, vòng phao bãi boss).
+`p03_arrive.png` (đảo 1, Ông Tư, bến), `p05_waiting.png` (quăng câu), `p06_flying.png` (cá bay), `p07_ko.png` (đập xỉu + trick), `p10_shop.png` (sạp Cô Ba), `p11_quest.png` (nhiệm vụ), `p09_dex.png` (Sổ Cá), `p02_lobby.png` (sảnh tạo/vào phòng), `p12_coop.png` (2 người cùng phòng), `p14_boss_fight.png` (đánh boss Lóc Già, vòng phao bãi boss), `p15_isl2_boss.png` (Cua Cụ, đảo 2), `p16_isl2_pond.png` (ao nước lợ đảo 2), `p17_isl3_boss.png` (Bớp Mũi Đá, đảo 3).
 
 ## Trước khi bấm Publish (REL-01)
 
