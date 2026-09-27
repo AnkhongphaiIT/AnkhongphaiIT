@@ -257,7 +257,7 @@ ui.hud.objective_none,Explore the islet,Dạo quanh cù lao
 ui.hud.you,you,bạn
 ui.hunger.full,You are full. Keep this for later.,Bạn đang no. Để dành phần này nha.
 ui.hunger.low,Feeling hungry? Free rice is available at the stall.,Đói bụng rồi? Sạp có cơm nắm miễn phí.
-ui.keys.hint,Left click: fish/smack · E: interact · 1–4: tools · B: bait · Tab: Fish Book · Esc: menu,Chuột trái: câu/đập · E: tương tác · 1–4: công cụ · B: mồi · Tab: Sổ Cá · Esc: menu
+ui.keys.hint,Left click: fish/smack · {interact}: interact · {hotbar}: tools · {bait}: bait · {dex}: Fish Book · Esc: menu,Chuột trái: câu/đập · {interact}: tương tác · {hotbar}: công cụ · {bait}: mồi · {dex}: Sổ Cá · Esc: menu
 ui.lobby.connecting,Connecting…,Đang kết nối…
 ui.lobby.create_on,Play on {island},Chơi ở {island}
 ui.lobby.lease_elsewhere,This account is playing on another device.,Tài khoản đang chơi trên thiết bị khác.
@@ -315,7 +315,7 @@ ui.prompt.store,Store in bag,Cất vào túi
 ui.prompt.summon_boss,Call the big one with {bait} ({count}),Gọi con trùm bằng {bait} ({count})
 ui.prompt.talk,Talk,Nói chuyện
 ui.quest.accept,"Sure, I'll help","Được, để tôi giúp"
-ui.quest.boss_hint,Take {bait} ({count}) to the red post and press E.,Mang {bait} ({count}) tới cọc cờ đỏ rồi bấm E.
+ui.quest.boss_hint,Take {bait} ({count}) to the red post and press {key}.,Mang {bait} ({count}) tới cọc cờ đỏ rồi bấm {key}.
 ui.quest.claim,Claim reward,Nhận thưởng
 ui.quest.claim_at,Return to {name} for your reward,Quay lại gặp {name} nhận thưởng
 ui.quest.completed,Done: {name},Hoàn thành: {name}
@@ -372,3 +372,23 @@ zone.zone_02_bai_bun.name,Lotus Pond,Ao Sen
 zone.zone_02_ben_do.name,Coconut Pier,Bến Dừa
 zone.zone_03_bai_bun.name,Rocky Shallows,Bãi Đá
 zone.zone_03_ben_do.name,Cape Pier,Bến Mũi
+ui.settings.controls,Controls,Phím điều khiển
+ui.settings.press_key,Press a key… (Esc to cancel),Nhấn phím mới… (Esc để hủy)
+ui.settings.reset_keys,Reset keys to default,Về phím mặc định
+ui.settings.key_reserved,"""{key}"" can't be used here","Không dùng được phím ""{key}"""
+ui.input.move_forward,Move forward,Đi tới
+ui.input.move_back,Move back,Đi lùi
+ui.input.move_left,Move left,Sang trái
+ui.input.move_right,Move right,Sang phải
+ui.input.jump,Jump,Nhảy
+ui.input.interact,Interact / pick up / talk,Tương tác / nhặt / nói chuyện
+ui.input.store_item,Stash held item,Cất vật đang cầm
+ui.input.hotbar_1,Slot 1,Ô 1
+ui.input.hotbar_2,Slot 2,Ô 2
+ui.input.hotbar_3,Slot 3,Ô 3
+ui.input.hotbar_4,Slot 4,Ô 4
+ui.input.bait_cycle,Change bait,Đổi mồi
+ui.input.open_dex,Open Fish Book,Mở Sổ Cá
+ui.input.mouse_left,Left click,Chuột trái
+ui.input.mouse_right,Right click,Chuột phải
+ui.input.wheel,Mouse wheel,Con lăn chuột

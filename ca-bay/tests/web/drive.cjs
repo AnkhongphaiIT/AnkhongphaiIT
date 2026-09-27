@@ -56,6 +56,8 @@ async function runStep(ctx, s, outDir, mark) {
   if (s.goto) await page.goto(subst(s.goto), { waitUntil: 'load', timeout: 120000 });
   if (s.wait) await page.waitForTimeout(s.wait);
   if (s.click) await page.mouse.click(s.click[0], s.click[1]);
+  // {wheel:[x, y, dy, lần]} — cuộn con lăn tại (x,y); dy>0 cuộn xuống
+  if (s.wheel) { await page.mouse.move(s.wheel[0], s.wheel[1]); for (let i = 0; i < (s.wheel[3] || 1); i++) { await page.mouse.wheel(0, s.wheel[2]); await page.waitForTimeout(120); } }
   if (s.dbl) await page.mouse.dblclick(s.dbl[0], s.dbl[1]);
   if (s.move) await page.mouse.move(s.move[0], s.move[1], { steps: s.steps || 1 });
   if (s.down) { await page.mouse.move(s.down[0], s.down[1]); await page.mouse.down(); }

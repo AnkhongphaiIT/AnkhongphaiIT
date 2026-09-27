@@ -102,6 +102,9 @@ func start(c: Node, a: Node, r: Dictionary, s: Dictionary) -> void:
 	_refresh_hud()
 	Loc.locale_changed.connect(func(_l): _on_locale())
 	Settings.changed.connect(func(k):
+		if k == "keybinds":
+			hud.keys_hint.text = Hud.keys_hint_text()
+			_refresh_hud()
 		if k == "quality" and world_view.sun:
 			world_view.sun.shadow_enabled = String(Settings.get_value("quality", "low")) != "low"
 			_apply_render_scale())
@@ -139,8 +142,12 @@ func _build_island(isl: String) -> void:
 	_got_first_snapshot = false
 
 
+func _key(action: String) -> String:
+	return "[%s] " % Settings.key_label(action)
+
+
 func _on_locale() -> void:
-	hud.keys_hint.text = Loc.t("ui.keys.hint")
+	hud.keys_hint.text = Hud.keys_hint_text()
 	_refresh_hud()
 	if menu_name != "" and menu_name != "settings":
 		_render_menu()
@@ -1076,12 +1083,12 @@ func _prompt_text() -> String:
 	match String(f.get("kind", "")):
 		"pickup":
 			if f["mine"]:
-				return "[E] " + Loc.t("ui.prompt.pick_up", {"name": Loc.name_of(f["def_id"]), "value": "%d %s" % [int(f["value"]), Loc.t("ui.currency.name")]})
+				return _key("interact") + Loc.t("ui.prompt.pick_up", {"name": Loc.name_of(f["def_id"]), "value": "%d %s" % [int(f["value"]), Loc.t("ui.currency.name")]})
 			return Loc.t("ui.coop.wrong_owner")
 		"npc":
-			return "[E] %s — %s" % [Loc.t("ui.prompt.talk"), Loc.name_of(f["npc_id"])]
+			return _key("interact") + "%s — %s" % [Loc.t("ui.prompt.talk"), Loc.name_of(f["npc_id"])]
 		"boss":
-			return "[E] " + Loc.t("ui.prompt.summon_boss", {"bait": Loc.name_of(f["bait_id"]), "count": int(f["have"])})
+			return _key("interact") + Loc.t("ui.prompt.summon_boss", {"bait": Loc.name_of(f["bait_id"]), "count": int(f["have"])})
 	return _tutorial_hint()
 
 

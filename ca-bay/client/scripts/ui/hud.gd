@@ -126,7 +126,7 @@ func _ready() -> void:
 	cc2.add_child(mid)
 	charge_bar.visible = false
 	strain_bar.visible = false
-	keys_hint.text = Loc.t("ui.keys.hint")
+	keys_hint.text = keys_hint_text()
 	# asset ui_damage_vignette: viền đỏ mờ khi bị thương (shader canvas, không ảnh)
 	vignette = ColorRect.new()
 	vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -215,7 +215,7 @@ func update_save(save: Dictionary, equipped: String) -> void:
 	var bait_id: String = inv.get("selected_bait_id", "bait_bread")
 	var bait: Dictionary = ContentDB.baits.get(bait_id, {})
 	var count := "∞" if bait.get("infinite", false) else str(int(inv.get("bait_counts", {}).get(bait_id, 0)))
-	bait_label.text = "[B] " + Loc.t("ui.hotbar.bait", {"name": Loc.name_of(bait_id), "count": count})
+	bait_label.text = "[%s] " % Settings.key_label("bait_cycle") + Loc.t("ui.hotbar.bait", {"name": Loc.name_of(bait_id), "count": count})
 	bag_label.text = "   %s %d/%d" % [Loc.t("ui.hud.bag"), (inv.get("bag", []) as Array).size(), int(inv.get("capacity", 3))]
 	UIKit.clear(hotbar)
 	var slots := hotbar_items(save)
@@ -247,6 +247,16 @@ func _ammo_text(inv: Dictionary, id: String) -> Variant:
 
 
 ## Thanh công cụ riêng với túi (DEC-030): ô 1 cần câu, các ô sau công cụ đã sở hữu (tối đa 4 ô).
+## Dòng gợi ý phím cuối màn hình theo phím người chơi đang dùng (đổi phím trong Tùy chọn).
+static func keys_hint_text() -> String:
+	var hot: Array = []
+	for i in 4:
+		hot.append(Settings.key_label("hotbar_%d" % (i + 1)))
+	var hotbar := "1–4" if hot == ["1", "2", "3", "4"] else "/".join(hot)
+	return Loc.t("ui.keys.hint", {"interact": Settings.key_label("interact"), "hotbar": hotbar,
+		"bait": Settings.key_label("bait_cycle"), "dex": Settings.key_label("open_dex")})
+
+
 static func hotbar_items(save: Dictionary) -> Array:
 	var inv: Dictionary = save.get("inventory", {})
 	var out: Array = [inv.get("equipped_rod_id", "rod_bamboo")]

@@ -150,7 +150,7 @@ static func quest_npc(s, npc_id: String) -> Control:
 					s.durable("quest.deliver", {"quest_id": qid, "step_id": step["step_id"], "npc_id": npc_id, "item_uids": uids})))
 		elif step["type"] == "defeat_boss":
 			var bait: String = ContentDB.bosses[step["target_id"]]["summon"]["bait_id"]
-			v.add_child(UIKit.label(Loc.t("ui.quest.boss_hint", {"bait": Loc.name_of(bait), "count": int(save["inventory"]["bait_counts"].get(bait, 0))}), 16, UIKit.C_MUTED))
+			v.add_child(UIKit.label(Loc.t("ui.quest.boss_hint", {"bait": Loc.name_of(bait), "count": int(save["inventory"]["bait_counts"].get(bait, 0)), "key": Settings.key_label("interact")}), 16, UIKit.C_MUTED))
 	v.add_child(UIKit.button(Loc.t("ui.dialogue.skip") if s.last_dialogue.get("npc_id", "") == npc_id else Loc.t("ui.menu.close"), func(): s.close_menu()))
 	return v
 

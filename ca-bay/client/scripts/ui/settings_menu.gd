@@ -9,13 +9,16 @@ var api: Node
 var app: Node
 var _status: Label
 var _body: VBoxContainer
+var _capturing := ""                 # hành động đang chờ người chơi nhấn phím mới
+var _key_buttons: Dictionary = {}    # action -> Button
 
 
 static func open(parent: Control, a: Node, ap: Node) -> SettingsMenu:
 	var m := SettingsMenu.new()
 	m.api = a
 	m.app = ap
-	m.set_anchors_preset(Control.PRESET_FULL_RECT)
+	m.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	m.mouse_filter = Control.MOUSE_FILTER_STOP  # hộp thoại: không cho bấm xuyên xuống sảnh/màn chơi
 	parent.add_child(m)
 	m._build()
 	return m
@@ -66,6 +69,23 @@ func _build() -> void:
 		b3.disabled = Settings.get_value("quality", "low") == pair3[0]
 		q.add_child(b3)
 	_body.add_child(q)
+	# phím điều khiển (UX-01): bấm ô rồi nhấn phím mới; trùng phím thì hai hành động đổi chỗ; Esc để hủy
+	_body.add_child(UIKit.label(Loc.t("ui.settings.controls"), 20, UIKit.C_GOLD))
+	_key_buttons.clear()
+	for action in Settings.REBINDABLE:
+		var row := UIKit.hbox()
+		var l := UIKit.label(Loc.t("ui.input." + action), 16)
+		l.custom_minimum_size.x = 300
+		row.add_child(l)
+		var kb := UIKit.button("", func(): _start_capture(action), 220)
+		_key_buttons[action] = kb
+		row.add_child(kb)
+		_body.add_child(row)
+	_body.add_child(UIKit.button(Loc.t("ui.settings.reset_keys"), func():
+		_capturing = ""
+		Settings.reset_keybinds()
+		_refresh_key_buttons(), 320))
+	_refresh_key_buttons()
 	if not Settings.persisted:
 		_body.add_child(UIKit.label(Loc.t("ui.web.private_mode_warning"), 14, UIKit.C_MUTED))
 	# tài khoản
@@ -83,12 +103,62 @@ func _build() -> void:
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_body)
-	add_child(UIKit.panel(scroll))
+	add_child(_panel(scroll))
+
+
+## Khung đục (khung chung của theme hơi trong nên chữ sảnh phía sau xuyên qua).
+static func _panel(c: Control) -> PanelContainer:
+	var pnl := UIKit.panel(c)
+	var sb := (UIKit.theme().get_stylebox("panel", "PanelContainer") as StyleBoxFlat).duplicate() as StyleBoxFlat
+	sb.bg_color.a = 1.0
+	pnl.add_theme_stylebox_override("panel", sb)
+	return pnl
+
+
+func _draw() -> void:
+	# nền tối che nội dung phía sau (sảnh có bảng riêng, không che thì chữ xuyên qua)
+	draw_rect(Rect2(Vector2.ZERO, size), Color(0.02, 0.05, 0.07, 0.72))
 
 
 func _close() -> void:
 	closed.emit()
 	queue_free()
+
+
+func _start_capture(action: String) -> void:
+	_capturing = "" if _capturing == action else action
+	_refresh_key_buttons()
+
+
+func _refresh_key_buttons() -> void:
+	for action in _key_buttons:
+		var b: Button = _key_buttons[action]
+		if not is_instance_valid(b):
+			continue
+		if action == _capturing:
+			b.text = Loc.t("ui.settings.press_key")
+		else:
+			var names: Array = []
+			for k in Settings.binds_of(action):
+				names.append(Settings.key_display(String(k)))
+			b.text = " / ".join(names)
+
+
+func _input(event: InputEvent) -> void:
+	if _capturing == "" or not (event is InputEventKey) or not event.pressed or event.echo:
+		return
+	get_viewport().set_input_as_handled()
+	var action := _capturing
+	_capturing = ""
+	var k := event as InputEventKey
+	if k.physical_keycode == KEY_ESCAPE:
+		_refresh_key_buttons()
+		return
+	var name := OS.get_keycode_string(k.physical_keycode)
+	var err := Settings.rebind(action, name)
+	if _status and is_instance_valid(_status):
+		_status.text = Loc.t("ui.settings.key_reserved", {"key": name}) if err != "" else ""
+	_refresh_key_buttons()
 
 
 func _slider(label_key: String, key: String, lo: float, hi: float, step: float) -> HBoxContainer:
@@ -147,7 +217,7 @@ func _show_change_password() -> void:
 		UIKit.button(Loc.t("ui.account.change_password"), func(): _do_change_password(cur.text, pw.text, pw2.text)),
 		UIKit.button(Loc.t("ui.menu.back"), _build),
 	]))
-	add_child(UIKit.panel(v))
+	add_child(_panel(v))
 	cur.grab_focus()
 
 
@@ -184,7 +254,7 @@ func _show_delete() -> void:
 		UIKit.button(Loc.t("ui.account.delete"), func(): _do_delete(pw.text, confirm.text)),
 		UIKit.button(Loc.t("ui.menu.back"), _build),
 	]))
-	add_child(UIKit.panel(v))
+	add_child(_panel(v))
 	pw.grab_focus()
 
 

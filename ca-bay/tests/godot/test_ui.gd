@@ -81,3 +81,29 @@ func _gd_files(dir: String) -> Array:
 	for d in DirAccess.get_directories_at(dir):
 		out.append_array(_gd_files(dir + d + "/"))
 	return out
+
+
+func test_rebind_keys_swap_and_hints(t) -> void:
+	var saved: Dictionary = (Settings.get_value("keybinds", {}) as Dictionary).duplicate(true)
+	Settings.reset_keybinds()
+	t.eq(Settings.key_label("interact"), "E", "mặc định E")
+	t.eq(Settings.rebind("interact", "F"), "", "đổi tương tác sang F")
+	t.eq(Settings.binds_of("interact")[0], "F", "phím chính mới")
+	var has_f := false
+	for ev in InputMap.action_get_events("interact"):
+		if ev is InputEventKey and (ev as InputEventKey).physical_keycode == KEY_F:
+			has_f = true
+	t.ok(has_f, "InputMap cập nhật ngay")
+	# trùng phím: nhảy lấy F thì tương tác nhận lại phím cũ của nhảy (Space)
+	t.eq(Settings.rebind("jump", "F"), "", "gán F cho nhảy")
+	t.eq(Settings.binds_of("jump")[0], "F", "nhảy = F")
+	t.eq(Settings.binds_of("interact"), ["Space"], "tương tác đổi chỗ sang Space")
+	t.eq(Settings.rebind("interact", "Escape"), "reserved", "Esc dành cho menu/nhả chuột")
+	t.eq(Settings.rebind("pause", "P"), "not_rebindable", "menu không đổi được")
+	# đi tới giữ phím phụ (mũi tên) khi đổi phím chính
+	Settings.rebind("move_forward", "Z")
+	t.eq(Settings.binds_of("move_forward"), ["Z", "Up"], "giữ phím phụ Up")
+	t.ok(Hud.keys_hint_text().contains("Space"), "gợi ý cuối màn hình dùng phím mới")
+	Settings.reset_keybinds()
+	t.eq(Settings.key_label("interact"), "E", "về mặc định")
+	Settings.set_value("keybinds", saved)
