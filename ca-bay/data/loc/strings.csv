@@ -331,6 +331,7 @@ ui.settings.reel_mode,Reel button,Nút kéo dây
 ui.settings.reel_toggle,Tap to toggle,Bấm bật/tắt
 ui.settings.sensitivity,Look sensitivity,Độ nhạy nhìn
 ui.settings.sfx,Sound effects,Hiệu ứng âm thanh
+ui.settings.show_perf,Show FPS / memory / ping,Hiện FPS / bộ nhớ / độ trễ
 ui.settings.subtitles,Subtitles,Phụ đề
 ui.settings.voice,Dialogue volume,Âm lượng lời thoại
 ui.shop.buy,Buy,Mua

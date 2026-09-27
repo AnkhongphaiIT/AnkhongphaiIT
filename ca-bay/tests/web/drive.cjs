@@ -69,6 +69,28 @@ async function runStep(ctx, s, outDir, mark) {
     await page.waitForTimeout(600 + txt.length * 40);
   }
   if (s.key) await page.keyboard.press(s.key, { delay: s.delay || 120 });
+  // gõ từng ký tự bằng phím (kiểu Unikey gửi ký tự có dấu qua sự kiện phím) hoặc insertText (kiểu IME commit)
+  if (s.press_chars) { for (const ch of subst(s.press_chars)) { await page.keyboard.press(ch, { delay: 60 }); await page.waitForTimeout(120); } }
+  if (s.insert_text) { await page.keyboard.insertText(subst(s.insert_text)); await page.waitForTimeout(600); }
+  if (s.cdp_chars || s.ime_commit) {
+    const cdp = await page.context().newCDPSession(page);
+    if (s.cdp_chars) {
+      // kiểu Unikey/EVKey trên Windows: sự kiện phím VK_PACKET mang sẵn ký tự Unicode
+      for (const ch of subst(s.cdp_chars)) {
+        await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ch, text: ch, unmodifiedText: ch, windowsVirtualKeyCode: 231, nativeVirtualKeyCode: 231 });
+        await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ch, windowsVirtualKeyCode: 231, nativeVirtualKeyCode: 231 });
+        await page.waitForTimeout(150);
+      }
+    }
+    if (s.ime_commit) {
+      // kiểu bộ gõ hệ điều hành (composition): soạn rồi xác nhận
+      await cdp.send('Input.imeSetComposition', { text: subst(s.ime_commit), selectionStart: 1, selectionEnd: 1 });
+      await page.waitForTimeout(200);
+      await cdp.send('Input.insertText', { text: subst(s.ime_commit) });
+      await page.waitForTimeout(600);
+    }
+    await cdp.detach();
+  }
   if (s.keydown) await page.keyboard.down(s.keydown);
   if (s.keyup) await page.keyboard.up(s.keyup);
   if (s.hold) { await page.keyboard.down(s.hold); await page.waitForTimeout(s.ms || 500); await page.keyboard.up(s.hold); }

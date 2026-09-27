@@ -165,6 +165,8 @@ func _submit_auth(tab: String, user: String, display: String, code: String, pw: 
 		return
 	_busy = true
 	_status.text = Loc.t("ui.lobby.connecting")
+	if Endpoints.autotest:
+		print("CABAY_AUTH_SUBMIT tab=%s display=%s" % [tab, display])
 	var r: Dictionary
 	match tab:
 		"login":

@@ -52,6 +52,8 @@ var _last_view_version := -1
 var server_pos := Vector3.ZERO
 var snap_count := 0
 var _team_n := 0
+var _rtt_ms := -1
+var _next_ping := 0.0
 
 
 func start(c: Node, a: Node, r: Dictionary, s: Dictionary) -> void:
@@ -289,7 +291,7 @@ func _on_message(type: String, payload: Dictionary, _env: Dictionary) -> void:
 		"session.closed":
 			_on_session_closed(payload)
 		"session.pong":
-			pass
+			_rtt_ms = Time.get_ticks_msec() - int(payload["client_monotonic_ms"])
 
 
 func _on_snapshot(s: Dictionary) -> void:
@@ -975,6 +977,7 @@ func _process(_delta: float) -> void:
 			_pump_queue()
 			break
 	_update_cast_preview(now)
+	_update_net_perf(now)
 	# thanh nạp lực / căng dây
 	var rod: Dictionary = ContentDB.rods.get(save.get("inventory", {}).get("equipped_rod_id", "rod_bamboo"), {})
 	hud.charge_bar.visible = player.fishing_state == "CHARGING"
@@ -1191,3 +1194,16 @@ func _update_cast_preview(now: float) -> void:
 		_cast_preview = VfxPlayer.spawn("vfx_cast_preview", world, t)
 	elif is_instance_valid(_cast_preview):
 		_cast_preview.global_position = t
+
+
+## Độ trễ (session.ping/pong mỗi 2 s) + tùy chọn FPS/bộ nhớ để đo trên máy thật (M5).
+func _update_net_perf(now: float) -> void:
+	if conn == null or not conn.is_live():
+		return
+	if now >= _next_ping:
+		_next_ping = now + 2.0
+		send_cmd("session.ping", {"client_monotonic_ms": Time.get_ticks_msec()})
+	var txt := "● %d ms" % _rtt_ms if _rtt_ms >= 0 else "●"
+	if Settings.get_value("show_perf", false) or (OS.is_debug_build() and Input.is_key_pressed(KEY_F3)):
+		txt = "FPS %d · %d MB · %s" % [Engine.get_frames_per_second(), int(OS.get_static_memory_usage() / 1048576), txt]
+	hud.set_net(_rtt_ms < 250, txt)

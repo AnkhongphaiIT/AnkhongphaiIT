@@ -46,6 +46,7 @@ func defaults() -> Dictionary:
 		"reel_mode": String(d.get("reel_mode", "hold")),
 		"auto_swap_after_launch": bool(d.get("auto_swap_after_launch", true)),
 		"keybinds": {},
+		"show_perf": false,
 	}
 
 

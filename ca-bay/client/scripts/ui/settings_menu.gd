@@ -47,6 +47,7 @@ func _build() -> void:
 	_body.add_child(_slider("ui.settings.fov", "fov_deg", 60.0, 100.0, 1.0))
 	_body.add_child(_toggle("ui.settings.camera_shake", "camera_shake"))
 	_body.add_child(_toggle("ui.settings.auto_swap", "auto_swap_after_launch"))
+	_body.add_child(_toggle("ui.settings.show_perf", "show_perf"))
 	var reel := UIKit.hbox()
 	reel.add_child(UIKit.label(Loc.t("ui.settings.reel_mode"), 18))
 	for pair2 in [["hold", "ui.settings.reel_hold"], ["toggle", "ui.settings.reel_toggle"]]:
