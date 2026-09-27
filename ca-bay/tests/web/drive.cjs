@@ -61,7 +61,7 @@ async function runStep(page, s, outDir, mark) {
   if (s.waitlog) await waitLog(page, new RegExp(s.waitlog), s.fresh ? prevStart : 0, s.timeout || 60000, s.waitlog);
   if (s.reel) {
     // chờ cá cắn rồi bấm ngay (cửa sổ giật ngắn); giữ chuột kéo, thả khi cá quẫy
-    if (s.wait_for) await waitLog(page, new RegExp(s.wait_for), logs.length, 60000, s.wait_for);
+    if (s.wait_for) await waitLog(page, new RegExp(s.wait_for), prevStart, 60000, s.wait_for);
     const until = new RegExp(s.reel.until);
     const start = logs.length;
     const deadline = Date.now() + (s.reel.timeout || 60000);

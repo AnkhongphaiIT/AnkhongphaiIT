@@ -113,7 +113,7 @@ func _player_node(aid: String, p: Dictionary) -> Node3D:
 	tip.name = "Tip"
 	tip.position = Vector3(0, 0, -1.5)
 	rod.add_child(tip)
-	var lbl := WorldView._label3d(p["display_name"], 0.5)
+	var lbl := WorldView.screen_label(p["display_name"], 24.0)
 	lbl.name = "Name"
 	lbl.modulate = player_colors[slot % 4].lightened(0.4)
 	lbl.position = Vector3(0, 2.35, 0)
@@ -152,7 +152,7 @@ func _entity_node(uid: String, e: Dictionary) -> Node3D:
 			stars.position = Vector3(0, 0.55, 0)
 			stars.visible = false
 			root.add_child(stars)
-			var info := WorldView._label3d("", 0.4)
+			var info := WorldView.screen_label("", 22.0)
 			info.name = "Info"
 			info.position = Vector3(0, 0.95, 0)
 			info.visible = false
@@ -169,7 +169,9 @@ func _entity_node(uid: String, e: Dictionary) -> Node3D:
 		"prop":
 			match def_id:
 				"lure":
-					root.add_child(Models.bobber())
+					var bob := Models.bobber()
+					bob.scale = Vector3.ONE * 2.5  # dễ thấy ở xa (phao cỡ đồ chơi)
+					root.add_child(bob)
 				"boss_projectile":
 					root.add_child(Models.water_blob())
 				"thief_bird":
@@ -208,9 +210,13 @@ func _update_entity_visual(n: Node3D, uid: String, e: Dictionary, delta: float) 
 					model.rotation.x = 0.0
 			var m: Dictionary = meta.get(uid, {})
 			var owner: String = m.get("owner", "")
-			if ko and m.has("value"):
+			var cam := get_viewport().get_camera_3d()
+			var near: bool = cam != null and cam.global_position.distance_to(n.global_position) < 14.0
+			if ko and m.has("value") and near:
 				var nm: String = players_meta.get(owner, {}).get("name", "?")
-				info.text = "%s · %d %s\n%s" % [Loc.name_of(e["def_id"]), int(m["value"]), Loc.t("ui.currency.name"), Loc.t("ui.coop.loot_owner", {"name": nm})]
+				info.text = "%s · %d %s" % [Loc.name_of(e["def_id"]), int(m["value"]), Loc.t("ui.currency.name")]
+				if owner != my_account_id:
+					info.text += "\n" + Loc.t("ui.coop.loot_owner", {"name": nm})
 				info.modulate = Color("#FFF8E7") if owner == my_account_id else Color("#B8C4C8")
 				info.visible = true
 			else:

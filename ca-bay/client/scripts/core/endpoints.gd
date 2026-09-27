@@ -26,6 +26,8 @@ static func load_endpoints() -> Dictionary:
 						cfg["ws_url"] = v
 					elif kv[0] == "autotest" and v == "1":
 						cfg["autotest"] = true
+					elif kv[0] == "scale" and v.is_valid_float():
+						cfg["render_scale"] = clampf(v.to_float(), 0.25, 1.0)
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--api="):
 			cfg["api_base"] = a.substr(6)
@@ -34,7 +36,12 @@ static func load_endpoints() -> Dictionary:
 		elif a == "--autotest":
 			cfg["autotest"] = true
 	autotest = bool(cfg.get("autotest", false))
+	render_scale_override = float(cfg.get("render_scale", 0.0))
 	return cfg
+
+
+## ?scale=0.25..1 ghi đè độ phân giải 3D (chụp ảnh quảng bá ở chế độ autotest; máy yếu).
+static var render_scale_override := 0.0
 
 
 ## Chế độ kiểm thử tự động (?autotest=1): không khóa chuột (pointer lock trong Chromium headless

@@ -33,6 +33,7 @@ LICENSE_FILES = {
     "LICENSES/fonts/LICENSE-DejaVu-symbols.txt": ROOT / "assets/fonts/LICENSE-DejaVu-symbols.txt",
     "LICENSES/fonts/SOURCES.md": ROOT / "assets/fonts/SOURCES.md",
     "CREDITS.md": ROOT / "CREDITS.md",
+    "PRIVACY.md": ROOT / "PRIVACY.md",
 }
 FORBIDDEN_NAMES = re.compile(r"(\.env|\.db|\.sqlite|\.py|\.pyc|\.gd|\.log|id_rsa|\.pem|\.key)$", re.I)
 FORBIDDEN_BYTES = [b"CABAY_SERVICE_KEY", b"X-Service-Key", b"res://server/", b"res://tests/"]
@@ -66,6 +67,8 @@ def main() -> int:
     ap.add_argument("--skip-export", action="store_true", help="dùng build/web có sẵn (phải là bản --release)")
     a = ap.parse_args()
     public = bool(a.api and a.ws)
+    if public and "NEED-CONTACT" in (ROOT / "PRIVACY.md").read_text(encoding="utf-8"):
+        raise SystemExit("PRIVACY.md còn chỗ trống liên hệ (NEED-CONTACT): chủ dự án phải điền trước khi làm bản công khai")
     version = project_version()
     name = f"ca-bay-web-{version}" + ("" if public else "-local")
     if not a.skip_export:

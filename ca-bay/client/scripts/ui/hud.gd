@@ -169,7 +169,14 @@ func show_subtitle(speaker: String, text: String, seconds := 5.0) -> void:
 	_sub_until = Time.get_ticks_msec() / 1000.0 + seconds
 
 
+var _recent_popups: Dictionary = {}
+
+
 func popup(text: String, color := UIKit.C_TEXT, seconds := 3.0, size := 20) -> void:
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - float(_recent_popups.get(text, -100.0)) < 1.5 and not text.begins_with("-") and not text.begins_with("+"):
+		return  # cùng một thông báo liên tiếp: chỉ hiện một lần
+	_recent_popups[text] = now
 	var l := UIKit.label(text, size, color, HORIZONTAL_ALIGNMENT_RIGHT)
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	popups.add_child(l)

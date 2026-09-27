@@ -12,6 +12,9 @@ build/*
 release/*
 !release/.gitkeep
 !release/README.md
+!release/ITCH_PAGE.md
+!release/PLAYTEST_60MIN.md
+!release/screenshots/
 # Secrets / local config / DB thật
 .env
 *.env.local

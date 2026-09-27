@@ -8,4 +8,4 @@ if (-not $env:CABAY_DB_PATH) { New-Item -ItemType Directory -Force var | Out-Nul
 New-Item -ItemType Directory -Force backups | Out-Null
 if (-not (Test-Path .venv\Scripts\python.exe)) { py -3.11 -m venv .venv; .venv\Scripts\pip install -r backend\requirements.lock.txt }
 Set-Location backend
-& ..\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port $(if ($env:CABAY_API_PORT) { $env:CABAY_API_PORT } else { 8787 }) --proxy-headers --forwarded-allow-ips 127.0.0.1
+& ..\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port $(if ($env:CABAY_API_PORT) { $env:CABAY_API_PORT } else { 8787 }) --proxy-headers --forwarded-allow-ips 127.0.0.1 --no-access-log

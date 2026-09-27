@@ -27,6 +27,7 @@ var alive := true
 var _step_t := 0.0
 var _bob := 0.0
 var shake := 0.0
+var _tip_node: Node3D
 
 
 func _ready() -> void:
@@ -66,10 +67,15 @@ func set_equipped(id: String) -> void:
 		tint = Color(ContentDB.cosmetics[cos_id]["color_hex"])
 	var m := Models.tool_model(id, tint)
 	tool_holder.add_child(m)
+	_tip_node = null
 	if id.begins_with("rod_"):
-		m.rotation_degrees = Vector3(24, 4, -16)
-		m.position = Vector3(0.06, 0.0, 0.02)
+		m.rotation_degrees = Vector3(34, -12, 0)
+		m.position = Vector3(0.04, -0.02, 0.02)
 		m.scale = Vector3.ONE * 0.85
+		# đầu cần thật của mô hình (cần dài 1,5 m theo -Z) → dây câu xuất phát đúng chỗ
+		_tip_node = Node3D.new()
+		_tip_node.position = Vector3(0, 0, -1.5)
+		m.add_child(_tip_node)
 	elif id == "tool_broom":
 		m.rotation_degrees = Vector3(40, 0, 0)
 	else:
@@ -79,7 +85,9 @@ func set_equipped(id: String) -> void:
 
 
 func rod_tip_world() -> Vector3:
-	# đầu cần ~1.5 m trước tay theo hướng nhìn
+	if _tip_node and is_instance_valid(_tip_node) and _tip_node.is_inside_tree():
+		return _tip_node.global_position
+	# dự phòng: ~1.5 m trước tay theo hướng nhìn
 	var base := cam.global_transform * Vector3(0.28, -0.1, -0.5)
 	var fwd := -cam.global_transform.basis.z
 	return base + fwd * 1.3 + Vector3(0, 0.55, 0)

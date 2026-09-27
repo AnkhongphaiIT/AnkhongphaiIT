@@ -293,6 +293,16 @@ func _build_zone_signs(L: Dictionary) -> void:
 		add_child(lbl)
 
 
+## Nhãn cỡ cố định trên màn hình (không phình to khi đứng sát): tên người chơi, giá cá xỉu.
+static func screen_label(text: String, px := 26.0) -> Label3D:
+	var l := _label3d(text, 1.0)
+	l.fixed_size = true
+	l.pixel_size = px / 48.0 * 0.0021
+	l.no_depth_test = true
+	l.render_priority = 5
+	return l
+
+
 static func _label3d(text: String, size: float) -> Label3D:
 	var l := Label3D.new()
 	l.text = text

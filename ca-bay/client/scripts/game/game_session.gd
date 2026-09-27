@@ -104,6 +104,8 @@ func _apply_render_scale() -> void:
 	var sc := 1.0 if String(Settings.get_value("quality", "low")) == "high" else 0.75
 	if Endpoints.autotest:
 		sc = 0.5
+	if Endpoints.render_scale_override > 0.0:
+		sc = Endpoints.render_scale_override
 	get_viewport().scaling_3d_scale = sc
 
 
@@ -421,6 +423,8 @@ func _show_error(code: String, type: String) -> void:
 		"UNLOCK_REQUIRED": key = "ui.coop.travel_locked"
 	if key == "" and code in ["COOLDOWN", "PLAYER_INACTIVE"]:
 		return
+	if type == "tool.use" and code == "OUT_OF_RANGE":
+		return  # cú vung hụt đã có hoạt ảnh; không spam thông báo
 	var text: String = Loc.t(key) if key != "" else (app._err_text(code) if app else code)
 	hud.popup(text, UIKit.C_GOLD)
 	AudioDirector.play_ui("sfx_error_nope")

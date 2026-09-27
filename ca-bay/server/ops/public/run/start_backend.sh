@@ -12,4 +12,4 @@ if [ ! -x .venv/bin/python ]; then
   .venv/bin/pip install --require-virtualenv -r backend/requirements.lock.txt
 fi
 cd backend
-exec ../.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port "${CABAY_API_PORT:-8787}" --proxy-headers --forwarded-allow-ips 127.0.0.1
+exec ../.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port "${CABAY_API_PORT:-8787}" --proxy-headers --forwarded-allow-ips 127.0.0.1 --no-access-log
