@@ -440,3 +440,23 @@ def test_accept_at_giver_completes_talk_step(client, svc):
     st = r["save"]["progress"]["quests"]["quest_02_sua_ben"]
     assert st["state"] == "active" and st["step_index"] == 1
     assert any(e["name"] == "quest.step_progressed" for e in r["events"])
+
+
+def test_periodic_maintenance_refunds_orphaned_boss(client, svc, env):
+    """Room server sập giữa trận (không gửi boss.refund): vòng dọn định kỳ của backend hoàn mồi đúng một lần."""
+    from app.db import connect
+    from app.main import maintenance_once
+    u = register(client)
+    room = ready_room(client, svc, u)
+    lease = connect_player(client, svc, u, room)
+    _with_milk_tea(lease)
+    assert commit(client, svc, lease, "boss.summon", {"boss_id": "boss_ca_loc", "zone_id": "zone_01_boss_spot"})["status"] == "committed"
+    assert maintenance_once()["refunded"] == 0  # trận còn mới: chưa đụng tới
+    conn = connect()
+    conn.execute("UPDATE boss_attempts SET created_at=created_at-1000")
+    conn.commit()
+    conn.close()
+    assert maintenance_once()["refunded"] == 1
+    assert maintenance_once()["refunded"] == 0
+    save = client.get("/v1/account/save", headers=u["auth"]).json()["save"]
+    assert save["inventory"]["bait_counts"]["bait_milk_tea"] == 1

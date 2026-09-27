@@ -1,6 +1,7 @@
 """Ứng dụng FastAPI: tài khoản, phòng, lưu tiến trình. Chạy: uvicorn app.main:app --host 127.0.0.1 --port 8787"""
 from __future__ import annotations
 
+import asyncio
 import logging
 from contextlib import asynccontextmanager
 
@@ -24,17 +25,45 @@ AUTH_BODY_LIMIT = 8 * 1024
 DEFAULT_BODY_LIMIT = 64 * 1024
 
 
+SWEEP_INTERVAL_S = 300
+
+
+def maintenance_once() -> dict:
+    """Dọn định kỳ: hoàn mồi trận boss mồ côi (room server sập giữa trận), trả đồ escrow của lease đã chết,
+    xóa nội dung kết quả op quá hạn giữ. Idempotent (op_id tất định), chạy lại bao nhiêu lần cũng được."""
+    conn = connect()
+    try:
+        cat = get_catalog()
+        expired = expire_old_operations(conn, int(cat.limit("idempotency_retention_days")))
+        res = sweep_stale(conn, cat)
+        res["expired_ops"] = expired
+        return res
+    finally:
+        conn.close()
+
+
+async def _maintenance_loop() -> None:
+    while True:
+        await asyncio.sleep(SWEEP_INTERVAL_S)
+        try:
+            res = await asyncio.to_thread(maintenance_once)
+            if res.get("refunded") or res.get("escrow_returned"):
+                log.info("maintenance %s", res)
+        except Exception:  # không để vòng dọn làm sập backend; lần sau thử lại
+            log.exception("maintenance failed")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     conn = connect()
     try:
         migrate(conn)
-        cat = get_catalog()
-        expire_old_operations(conn, int(cat.limit("idempotency_retention_days")))
-        sweep_stale(conn, cat)
     finally:
         conn.close()
+    maintenance_once()
+    task = asyncio.create_task(_maintenance_loop())
     yield
+    task.cancel()
 
 
 app = FastAPI(title="CÁ BAY backend", version=settings.game_version, lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
