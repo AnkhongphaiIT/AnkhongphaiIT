@@ -30,12 +30,12 @@ from stack import Stack  # noqa: E402
 WEB_PORT = 8060
 
 
-def serve_web() -> http.server.ThreadingHTTPServer:
+def serve_web(directory: Path | None = None, port: int = WEB_PORT) -> http.server.ThreadingHTTPServer:
     class Quiet(http.server.SimpleHTTPRequestHandler):
         def log_message(self, *a, **k):  # noqa: D401 - im lặng log truy cập
             pass
-    handler = functools.partial(Quiet, directory=str(ROOT / "build/web"))
-    httpd = http.server.ThreadingHTTPServer(("127.0.0.1", WEB_PORT), handler)
+    handler = functools.partial(Quiet, directory=str(directory or ROOT / "build/web"))
+    httpd = http.server.ThreadingHTTPServer(("127.0.0.1", port), handler)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd
 
@@ -53,6 +53,7 @@ def main() -> int:
     ap.add_argument("--seed-stage", help="tạo tài khoản checkpoint ở mốc này (isl1_boss, isl2_start, …)")
     ap.add_argument("--cp-file", help="máy chủ ngoài: file checkpoint_accounts.txt do ops/seed_checkpoint.py của gói máy chủ ghi; dùng dòng --cp-stage")
     ap.add_argument("--cp-stage", default="isl1_boss")
+    ap.add_argument("--iframe", action="store_true", help="chạy game trong iframe khác site (trang cha localhost:8061) — giả lập itch.io")
     a = ap.parse_args()
     if not (ROOT / "build/web/index.pck").exists():
         print("Chưa có build/web — chạy tools/build/export.py web trước")
@@ -60,6 +61,10 @@ def main() -> int:
     steps = json.loads((ROOT / f"tests/web/scenarios/{a.scenario}.json").read_text(encoding="utf-8"))
     user = "e2e" + secrets.token_hex(4)
     text = json.dumps(steps, ensure_ascii=False).replace("{USER}", user).replace("{BASE}", f"http://127.0.0.1:{WEB_PORT}")
+    if a.iframe:
+        import urllib.parse
+        game = f"http://127.0.0.1:{WEB_PORT}/index.html?autotest=1"
+        text = text.replace(f"http://127.0.0.1:{WEB_PORT}/index.html?autotest=1", f"http://localhost:{WEB_PORT + 1}/index.html#" + urllib.parse.quote(game, safe=""), 1)
     if a.external_api and a.external_ws:
         # client đọc ?api=&ws= (chỉ nhận https/wss hoặc localhost)
         text = text.replace("index.html?autotest=1", f"index.html?autotest=1&api={a.external_api}&ws={a.external_ws}")
@@ -72,7 +77,7 @@ def main() -> int:
                 text = text.replace("{CP_USER}", parts[1]).replace("{CP_PASS}", parts[2])
     (out / "scenario.json").write_text(text, encoding="utf-8")
     st = Stack(extra_env={"CABAY_DEBUG_INPUT": "1"} if os.environ.get("CABAY_DEBUG_INPUT") == "1" else None)
-    httpd = None
+    httpd = host = None
     try:
         if not (a.external_api and a.external_ws):
             st.start_backend()
@@ -88,6 +93,8 @@ def main() -> int:
                 (out / "scenario.json").write_text(text.replace("{CP_USER}", cp_user).replace("{CP_PASS}", cp_pass), encoding="utf-8")
             st.start_room_server()
         httpd = serve_web()
+        if a.iframe:
+            host = serve_web(ROOT / "tests/web/iframe_host", WEB_PORT + 1)
         env = dict(os.environ, NODE_PATH=npm_root())
         r = subprocess.run(["node", str(ROOT / "tests/web/drive.cjs"), str(out / "scenario.json"), str(out)],
                            env=env, capture_output=True, text=True, timeout=900)
@@ -106,6 +113,8 @@ def main() -> int:
     finally:
         if httpd:
             httpd.shutdown()
+        if host:
+            host.shutdown()
         st.stop()
         for name, lp in st.logs.items():
             if lp.exists():

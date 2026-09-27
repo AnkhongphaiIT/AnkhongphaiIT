@@ -1,0 +1,22 @@
+<!doctype html>
+<!-- Trang cha giả lập itch.io: nhúng bản web vào iframe KHÁC SITE (localhost ↔ 127.0.0.1) để kiểm bối cảnh bên thứ ba
+     (lưu trữ bị phân vùng, CORS, focus bàn phím, âm thanh). Không phải bằng chứng WEB-02 trên itch.io thật. -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iframe host (giả lập itch.io)</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #1c1c1c; overflow: hidden; }
+  iframe { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; border: 0; display: block; }
+</style>
+</head>
+<body>
+<iframe id="game" allow="autoplay; fullscreen *; cross-origin-isolated; gamepad" allowfullscreen></iframe>
+<script>
+  // URL game truyền qua #hash (đã encodeURIComponent)
+  document.getElementById('game').src = decodeURIComponent(location.hash.slice(1));
+  console.log('IFRAME_HOST parent=' + location.origin + ' child=' + document.getElementById('game').src);
+</script>
+</body>
+</html>
