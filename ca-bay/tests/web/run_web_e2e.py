@@ -56,7 +56,7 @@ def main() -> int:
     out = ROOT / "tests/web/artifacts" / a.scenario
     out.mkdir(parents=True, exist_ok=True)
     (out / "scenario.json").write_text(text, encoding="utf-8")
-    st = Stack()
+    st = Stack(extra_env={"CABAY_DEBUG_INPUT": "1"} if os.environ.get("CABAY_DEBUG_INPUT") == "1" else None)
     httpd = None
     try:
         st.start_backend()
@@ -80,6 +80,9 @@ def main() -> int:
         if httpd:
             httpd.shutdown()
         st.stop()
+        for name, lp in st.logs.items():
+            if lp.exists():
+                (out / f"server-{name}.log").write_text(lp.read_text(errors="replace")[-200000:], encoding="utf-8")
 
 
 if __name__ == "__main__":

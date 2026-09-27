@@ -14,6 +14,8 @@ import signal
 import subprocess
 import sys
 import tempfile
+import threading
+import queue
 import time
 import urllib.request
 from pathlib import Path
@@ -64,19 +66,90 @@ class Stack:
         if not wait_http(f"http://127.0.0.1:{self.api_port}/healthz"):
             raise RuntimeError("backend không lên: " + self.logs["backend"].read_text()[-2000:])
 
-    def start_room_server(self):
-        self.room = self._spawn("room", [godot(), "--headless", "--path", str(ROOT), "--", "--server"], ROOT)
+    def start_room_server(self, log_name: str = "room"):
+        self.room = self._spawn(log_name, [godot(), "--headless", "--path", str(ROOT), "--", "--server"], ROOT)
+        self.room_log = log_name
         t0 = time.time()
         while time.time() - t0 < 30:
-            if "CABAY_SERVER listening" in self.logs["room"].read_text():
+            if "CABAY_SERVER listening" in self.logs[log_name].read_text():
                 return
+            if self.room.poll() is not None:
+                break
             time.sleep(0.2)
-        raise RuntimeError("room server không lên: " + self.logs["room"].read_text()[-3000:])
+        raise RuntimeError("room server không lên: " + self.logs[log_name].read_text()[-3000:])
 
     def stop_room_server(self):
         if getattr(self, "room", None) and self.room.poll() is None:
             os.killpg(self.room.pid, signal.SIGTERM)
-            self.room.wait(10)
+            try:
+                self.room.wait(10)
+            except subprocess.TimeoutExpired:
+                os.killpg(self.room.pid, signal.SIGKILL)
+                self.room.wait(5)
+
+    def restart_room_server(self, down_s: float = 2.0) -> float:
+        """Dừng room server (SIGTERM tiến trình do stack tạo), chờ, bật lại với log mới. Trả thời gian (giây)."""
+        t0 = time.time()
+        self.stop_room_server()
+        time.sleep(down_s)
+        self._room_gen = getattr(self, "_room_gen", 1) + 1
+        self.start_room_server(f"room{self._room_gen}")
+        return time.time() - t0
+
+    def bot_cmd(self, scenario: str, bots: int, extra_args=()) -> list[str]:
+        return [godot(), "--headless", "--path", str(ROOT), "res://tests/bots/bot_runner.tscn", "--",
+                f"--scenario={scenario}", f"--bots={bots}", f"--api=http://127.0.0.1:{self.api_port}",
+                f"--ws=ws://127.0.0.1:{self.ws_port}", *extra_args]
+
+    def run_bots_live(self, scenario: str, bots: int, timeout: float = 600, extra_args=(), on_line=None) -> dict:
+        """Chạy bot, đọc stdout theo dòng; "BOTSIGNAL restart_room" → khởi động lại room server.
+        on_line(line) được gọi cho mọi dòng (để in tiến độ)."""
+        cmd = self.bot_cmd(scenario, bots, extra_args)
+        p = subprocess.Popen(cmd, cwd=ROOT, env=self.env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+                             bufsize=1, start_new_session=True)
+        q: queue.Queue = queue.Queue()
+
+        def reader():
+            for ln in p.stdout:
+                q.put(ln.rstrip("\n"))
+            q.put(None)
+
+        threading.Thread(target=reader, daemon=True).start()
+        lines: list[str] = []
+        signals: list[dict] = []
+        res = None
+        deadline = time.time() + timeout
+        timed_out = False
+        while True:
+            try:
+                ln = q.get(timeout=max(0.1, min(1.0, deadline - time.time())))
+            except queue.Empty:
+                if time.time() > deadline:
+                    timed_out = True
+                    os.killpg(p.pid, signal.SIGKILL)
+                    break
+                continue
+            if ln is None:
+                break
+            lines.append(ln)
+            if on_line:
+                on_line(ln)
+            if ln.startswith("BOTRESULT "):
+                res = json.loads(ln[len("BOTRESULT "):])
+            elif ln.startswith("BOTSIGNAL "):
+                name = ln.split(" ", 1)[1].strip()
+                if name == "restart_room":
+                    took = self.restart_room_server()
+                    signals.append({"signal": name, "seconds": round(took, 2), "log": self.room_log})
+                    if on_line:
+                        on_line(f"[stack] room server đã khởi động lại sau {took:.1f}s (log {self.logs[self.room_log]})")
+        try:
+            p.wait(10)
+        except subprocess.TimeoutExpired:
+            os.killpg(p.pid, signal.SIGKILL)
+        out = "\n".join(lines)
+        (self.tmp / f"bots-{scenario}.log").write_text(out)
+        return {"exit": p.returncode, "result": res, "log": out, "signals": signals, "timed_out": timed_out}
 
     def run_bots(self, scenario: str, bots: int, timeout: float = 600) -> dict:
         cmd = [godot(), "--headless", "--path", str(ROOT), "res://tests/bots/bot_runner.tscn", "--",

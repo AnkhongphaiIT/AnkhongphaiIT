@@ -47,7 +47,7 @@ async function runStep(page, s, outDir, mark) {
   if (s.mdown) await page.mouse.down({ button: s.mdown });
   if (s.mup) await page.mouse.up({ button: s.mup });
   if (s.type !== undefined) await page.keyboard.type(s.type, { delay: 30 });
-  if (s.key) await page.keyboard.press(s.key);
+  if (s.key) await page.keyboard.press(s.key, { delay: s.delay || 120 });
   if (s.keydown) await page.keyboard.down(s.keydown);
   if (s.keyup) await page.keyboard.up(s.keyup);
   if (s.hold) { await page.keyboard.down(s.hold); await page.waitForTimeout(s.ms || 500); await page.keyboard.up(s.hold); }
@@ -89,6 +89,26 @@ async function runStep(page, s, outDir, mark) {
       if (s.hunt.step_key && n % (s.hunt.step_every || 3) === 0) {
         await page.keyboard.down(s.hunt.step_key); await page.waitForTimeout(s.hunt.step_ms || 200); await page.keyboard.up(s.hunt.step_key);
       }
+    }
+  }
+  if (s.walk_until) {
+    // giữ phím di chuyển tới khi log khớp (ví dụ CABAY_FOCUS npc …), rồi thả
+    const re = new RegExp(s.walk_until);
+    const start = logs.length;
+    const deadline = Date.now() + (s.timeout || 15000);
+    await page.keyboard.down(s.walk_key || 'KeyW');
+    let lastFace = 0;
+    try {
+      while (!seen(re, start)) {
+        if (Date.now() > deadline) throw new Error('walk_until timeout ' + s.walk_until);
+        if (s.face_key && Date.now() - lastFace > 700) {
+          lastFace = Date.now();
+          await page.keyboard.down(s.face_key); await page.waitForTimeout(60); await page.keyboard.up(s.face_key);
+        }
+        await page.waitForTimeout(100);
+      }
+    } finally {
+      await page.keyboard.up(s.walk_key || 'KeyW');
     }
   }
   if (s.shot) await page.screenshot({ path: path.join(outDir, `${s.shot}.png`) });

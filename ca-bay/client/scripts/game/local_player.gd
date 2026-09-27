@@ -92,6 +92,14 @@ func look_dir() -> Vector3:
 func _unhandled_input(event: InputEvent) -> void:
 	if not session or not session.gameplay_input_enabled():
 		return
+	if Endpoints.autotest and event is InputEventKey and event.pressed and not event.echo:
+		# Theo sự kiện (không theo trạng thái phím) để không lỡ khi FPS thấp.
+		print("CABAY_KEY %s fps=%d snaps=%d pos=%s server=%s focus=%s" % [OS.get_keycode_string(event.keycode), Engine.get_frames_per_second(), session.snap_count, str(pos), str(session.server_pos), str(session._focus())])
+		match event.physical_keycode:
+			KEY_T: _autotest_face_nearest()
+			KEY_G: _autotest_face_fishing_zone()
+			KEY_N: _autotest_face_nearest_npc()
+			KEY_V: _autotest_face_point(IslandLayout.npc_position(island_id, IslandLayout.shop_zone(island_id)["npc_id"]))
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and not Endpoints.autotest:
 		var sens := 0.0025 * float(Settings.get_value("mouse_sensitivity", 1.0))
 		yaw = wrapf(yaw - event.relative.x * sens, -PI, PI)
@@ -110,10 +118,7 @@ func _physics_process(delta: float) -> void:
 		var kp := float(Input.is_physical_key_pressed(KEY_I)) - float(Input.is_physical_key_pressed(KEY_K))
 		yaw = wrapf(yaw + ky * 1.5 * delta, -PI, PI)
 		pitch = clampf(pitch + kp * 1.0 * delta, -1.45, 1.45)
-		if Input.is_physical_key_pressed(KEY_T):
-			_autotest_face_nearest()
-		if Input.is_physical_key_pressed(KEY_G):
-			_autotest_face_fishing_zone()
+
 	if enabled:
 		mx = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		mz = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")
@@ -271,3 +276,25 @@ func _autotest_face_fishing_zone() -> void:
 		return
 	yaw = atan2(-(best.x - pos.x), -(best.y - pos.z))
 	pitch = 0.0
+
+
+## Chỉ dùng ở chế độ kiểm thử tự động: quay mặt về NPC giao nhiệm vụ (không phải người bán).
+func _autotest_face_nearest_npc() -> void:
+	var best := Vector3.INF
+	for npc_id in IslandLayout.layout(island_id)["npcs"]:
+		if ContentDB.npcs.get(npc_id, {}).has("shop_id"):
+			continue
+		var np := IslandLayout.npc_position(island_id, npc_id)
+		if best == Vector3.INF or np.distance_to(pos) < best.distance_to(pos):
+			best = np
+	if best == Vector3.INF:
+		return
+	yaw = atan2(-(best.x - pos.x), -(best.z - pos.z))
+	pitch = -0.1
+
+
+func _autotest_face_point(p: Vector3) -> void:
+	if p == Vector3.INF:
+		return
+	yaw = atan2(-(p.x - pos.x), -(p.z - pos.z))
+	pitch = -0.1

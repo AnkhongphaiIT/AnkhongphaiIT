@@ -284,6 +284,7 @@ ui.network.version_mismatch,A new game version is required. Reload this page.,C�
 ui.pause.main_menu,Main Menu,Về menu
 ui.pause.online_notice,The room keeps playing while this menu is open.,Phòng vẫn tiếp tục chơi khi menu này đang mở.
 ui.pause.resume,Resume,Tiếp tục
+ui.pause.title,Menu,Menu
 ui.ping.fish,Fish here!,Có cá!
 ui.ping.help,Help!,Giúp với!
 ui.ping.here,Over here,Ở đây

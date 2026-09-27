@@ -27,7 +27,7 @@ static func item_value(it: Dictionary) -> int:
 
 static func pause(s) -> Control:
 	var v := UIKit.vbox([], 10)
-	v.add_child(_title(Loc.t("ui.pause.resume")))
+	v.add_child(_title(Loc.t("ui.pause.title")))
 	v.add_child(UIKit.label(Loc.t("ui.pause.online_notice"), 16, UIKit.C_MUTED))
 	v.add_child(UIKit.label("%s: %s" % [Loc.t("ui.coop.room_code"), s.room.get("invite_code", "?")], 18))
 	for pair in [["ui.pause.resume", func(): s.close_menu()], ["ui.hud.bag", func(): s.open_menu("bag")],

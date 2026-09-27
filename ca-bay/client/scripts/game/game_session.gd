@@ -49,6 +49,8 @@ var _reconnecting := false
 var _closing := false
 var _pings: Array = []
 var _last_view_version := -1
+var server_pos := Vector3.ZERO
+var snap_count := 0
 
 
 func start(c: Node, a: Node, r: Dictionary, s: Dictionary) -> void:
@@ -85,6 +87,7 @@ func start(c: Node, a: Node, r: Dictionary, s: Dictionary) -> void:
 	menu_root.theme = UIKit.theme()
 	ui_layer.add_child(menu_root)
 	AudioDirector.world_root = world
+	_apply_render_scale()
 	_build_island(island_id)
 	player.set_equipped(String(save.get("inventory", {}).get("equipped_id", "rod_bamboo")) if not save.is_empty() else "rod_bamboo")
 	hud.set_net(false, Loc.t("ui.lobby.connecting"))
@@ -92,7 +95,16 @@ func start(c: Node, a: Node, r: Dictionary, s: Dictionary) -> void:
 	Loc.locale_changed.connect(func(_l): _on_locale())
 	Settings.changed.connect(func(k):
 		if k == "quality" and world_view.sun:
-			world_view.sun.shadow_enabled = String(Settings.get_value("quality", "low")) != "low")
+			world_view.sun.shadow_enabled = String(Settings.get_value("quality", "low")) != "low"
+			_apply_render_scale())
+
+
+## Độ phân giải 3D: chất lượng thấp 75 %, cao 100 %; chế độ autotest 50 % (GPU phần mềm trong CI).
+func _apply_render_scale() -> void:
+	var sc := 1.0 if String(Settings.get_value("quality", "low")) == "high" else 0.75
+	if Endpoints.autotest:
+		sc = 0.5
+	get_viewport().scaling_3d_scale = sc
 
 
 func _exit_tree() -> void:
@@ -195,6 +207,8 @@ func send_cmd(type: String, payload: Dictionary) -> String:
 	var rid: String = conn.send(type, payload)
 	if rid != "":
 		_requests[rid] = {"type": type, "payload": payload}
+	if Endpoints.autotest and type != "player.input":
+		print("CABAY_CMD %s sent=%s" % [type, rid != ""])
 	return rid
 
 
@@ -273,6 +287,7 @@ func _on_message(type: String, payload: Dictionary, _env: Dictionary) -> void:
 
 
 func _on_snapshot(s: Dictionary) -> void:
+	snap_count += 1
 	if String(s["island_id"]) != island_id:
 		_build_island(String(s["island_id"]))
 	entities.push_snapshot(s)
@@ -280,6 +295,7 @@ func _on_snapshot(s: Dictionary) -> void:
 		if p["account_id"] != my_id:
 			continue
 		var pos := Vector3(p["position"][0], p["position"][1], p["position"][2])
+		server_pos = pos
 		if not _got_first_snapshot:
 			_got_first_snapshot = true
 			player.spawn_at(pos, island_id)
@@ -489,7 +505,7 @@ func _on_event(ev: Dictionary) -> void:
 	var actor: Variant = ev["actor_player_id"]
 	var own: bool = actor != null and actor == my_id
 	AudioDirector.on_event(name, p, {"own": own, "player_pos": player.pos})
-	if own and not name.begins_with("hunger.") and name != "player.footstep":
+	if (Endpoints.autotest or OS.is_debug_build()) and own and not name.begins_with("hunger.") and name != "player.footstep":
 		print("CABAY_EV %s pos=(%.1f,%.1f,%.1f) yaw=%.2f pitch=%.2f" % [name, player.pos.x, player.pos.y, player.pos.z, player.yaw, player.pitch])  # nhật ký chẩn đoán (không chứa dữ liệu cá nhân)
 	match name:
 		# --- câu cá (trạng thái chỉ theo sự kiện server của chính mình)
@@ -864,7 +880,9 @@ func _on_primary(pressed: bool) -> void:
 func _focus() -> Dictionary:
 	if island_id == "" or not _got_first_snapshot:
 		return {}
-	var pos := player.pos
+	# Tầm tương tác do server kiểm theo vị trí của server → dùng vị trí server xác nhận gần nhất
+	# (vị trí dự đoán có thể lệch khi FPS thấp).
+	var pos := server_pos
 	var best := {}
 	var best_d := INF
 	var ents := entities.latest_entities()
@@ -904,6 +922,8 @@ func _focus() -> Dictionary:
 
 func _interact() -> void:
 	var f := _focus()
+	if Endpoints.autotest:
+		print("CABAY_INTERACT %s" % str(f.get("kind", "none")))
 	match String(f.get("kind", "")):
 		"pickup":
 			if not f["mine"]:
@@ -964,7 +984,16 @@ func _process(_delta: float) -> void:
 	hud.crosshair.visible = menu_name == ""
 
 
+var _last_focus_key := ""
+
+
 func _prompt_text() -> String:
+	if Endpoints.autotest:
+		var fk := _focus()
+		var key := "%s %s" % [fk.get("kind", "none"), fk.get("npc_id", fk.get("def_id", ""))]
+		if key != _last_focus_key:
+			_last_focus_key = key
+			print("CABAY_FOCUS %s" % key)
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED and _got_first_snapshot and not _reconnecting and not Endpoints.autotest:
 		return Loc.t("ui.hud.click_to_play")
 	if my_mode == "knocked_out":

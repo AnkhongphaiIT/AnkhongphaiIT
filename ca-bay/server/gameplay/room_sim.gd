@@ -384,8 +384,13 @@ func _reject(p: Dictionary, rid: String, op_id: Variant, code: String) -> void:
 		server.reply_result(p["peer_id"], rid, op_id, "rejected", code, int(p["save"]["save_version"]), null)
 
 
+static var _debug := OS.get_environment("CABAY_DEBUG_INPUT") == "1"
+
+
 func _on_input(p: Dictionary, pl: Dictionary, seq: int) -> void:
 	var inp: Dictionary = p["input"]
+	if _debug:
+		print("CABAY_INPUT seq=%d mode=%s menu=%s mx=%.2f mz=%.2f yaw=%.2f pos=%s" % [seq, p["mode"], p["menu"], pl["move_x"], pl["move_z"], pl["look_yaw_rad"], str(p["pos"])])
 	var meaningful: bool = absf(pl["move_x"]) > 0.05 or absf(pl["move_z"]) > 0.05 or bool(pl["jump"]) \
 		or absf(angle_difference(float(pl["look_yaw_rad"]), float(p["yaw"]))) > 0.01 or absf(float(pl["look_pitch_rad"]) - float(p["pitch"])) > 0.01
 	inp["move_x"] = float(pl["move_x"])
