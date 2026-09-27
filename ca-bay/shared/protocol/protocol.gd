@@ -60,7 +60,7 @@ static func parse_and_validate(text: String, expected_direction: String) -> Dict
 ## Đổi float có giá trị nguyên thành int ở các vị trí schema khai báo "integer" (đệ quy object/array).
 static func normalize_integers(v: Variant, schema: Dictionary) -> Variant:
 	var t: Variant = schema.get("type", null)
-	if (t == "integer" or (t is Array and "integer" in t)) and typeof(v) == TYPE_FLOAT and v == floorf(v):
+	if ((t is String and t == "integer") or (t is Array and "integer" in t)) and typeof(v) == TYPE_FLOAT and v == floorf(v):
 		return int(v)
 	if typeof(v) == TYPE_DICTIONARY and schema.has("properties"):
 		for k in (v as Dictionary).keys():
