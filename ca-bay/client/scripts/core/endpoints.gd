@@ -6,6 +6,7 @@ extends RefCounted
 
 static func load_endpoints() -> Dictionary:
 	var cfg := {"api_base": "http://127.0.0.1:8787", "ws_url": "ws://127.0.0.1:8910"}
+	var allow_autotest := OS.is_debug_build()
 	var f := FileAccess.open("res://client/config/endpoints.json", FileAccess.READ)
 	if f:
 		var d: Variant = JSON.parse_string(f.get_as_text())
@@ -13,6 +14,8 @@ static func load_endpoints() -> Dictionary:
 			for k in ["api_base", "ws_url"]:
 				if typeof(d.get(k)) == TYPE_STRING and d[k] != "":
 					cfg[k] = d[k]
+			# chỉ file ghi lúc build (không phải tham số URL) mới bật được chế độ kiểm thử trong bản xuất
+			allow_autotest = allow_autotest or d.get("allow_autotest", false) == true
 	if OS.has_feature("web"):
 		var q: Variant = JavaScriptBridge.eval("window.location.search", true)
 		if typeof(q) == TYPE_STRING and q.length() > 1:
@@ -35,7 +38,8 @@ static func load_endpoints() -> Dictionary:
 			cfg["ws_url"] = a.substr(5)
 		elif a == "--autotest":
 			cfg["autotest"] = true
-	autotest = bool(cfg.get("autotest", false))
+	# Bản phát hành (export --release) không có phím tự quay về cá/boss (tránh thành "ngắm tự động").
+	autotest = bool(cfg.get("autotest", false)) and allow_autotest
 	render_scale_override = float(cfg.get("render_scale", 0.0))
 	return cfg
 

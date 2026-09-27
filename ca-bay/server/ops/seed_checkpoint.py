@@ -204,6 +204,8 @@ def main(argv: list[str] | None = None) -> int:
     import app.db, app.security, app.deps, app.save  # noqa: E402,E401
     for m in (app.db, app.security, app.deps, app.save):
         m.settings = config.settings
+    import warnings
+    warnings.filterwarnings("ignore", category=DeprecationWarning)  # cảnh báo httpx/starlette không liên quan người vận hành
     from fastapi.testclient import TestClient  # noqa: E402
     from app.main import app as fastapi_app  # noqa: E402
 

@@ -36,7 +36,7 @@ LICENSE_FILES = {
     "PRIVACY.md": ROOT / "PRIVACY.md",
 }
 FORBIDDEN_NAMES = re.compile(r"(\.env|\.db|\.sqlite|\.py|\.pyc|\.gd|\.log|id_rsa|\.pem|\.key)$", re.I)
-FORBIDDEN_BYTES = [b"CABAY_SERVICE_KEY", b"X-Service-Key", b"res://server/", b"res://tests/"]
+FORBIDDEN_BYTES = [b"CABAY_SERVICE_KEY", b"X-Service-Key", b"res://server/", b"res://tests/", b"\"allow_autotest\": true"]
 # Khối PEM có dữ liệu thật (engine chứa sẵn chuỗi hằng "BEGIN PRIVATE KEY" của mbedTLS để đọc PEM — không phải khóa).
 PEM_KEY = re.compile(rb"-----BEGIN [A-Z ]*PRIVATE KEY-----\s*[A-Za-z0-9+/=\s]{64}")
 

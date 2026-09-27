@@ -51,6 +51,8 @@ def main() -> int:
     ap.add_argument("--external-api", help="dùng máy chủ đang chạy sẵn (ví dụ gói server đã giải nén), không tự dựng stack")
     ap.add_argument("--external-ws")
     ap.add_argument("--seed-stage", help="tạo tài khoản checkpoint ở mốc này (isl1_boss, isl2_start, …)")
+    ap.add_argument("--cp-file", help="máy chủ ngoài: file checkpoint_accounts.txt do ops/seed_checkpoint.py của gói máy chủ ghi; dùng dòng --cp-stage")
+    ap.add_argument("--cp-stage", default="isl1_boss")
     a = ap.parse_args()
     if not (ROOT / "build/web/index.pck").exists():
         print("Chưa có build/web — chạy tools/build/export.py web trước")
@@ -63,6 +65,11 @@ def main() -> int:
         text = text.replace("index.html?autotest=1", f"index.html?autotest=1&api={a.external_api}&ws={a.external_ws}")
     out = ROOT / "tests/web/artifacts" / a.scenario
     out.mkdir(parents=True, exist_ok=True)
+    if a.cp_file:
+        for line in Path(a.cp_file).read_text(encoding="utf-8").splitlines():
+            parts = line.split("\t")
+            if parts and parts[0] == a.cp_stage:
+                text = text.replace("{CP_USER}", parts[1]).replace("{CP_PASS}", parts[2])
     (out / "scenario.json").write_text(text, encoding="utf-8")
     st = Stack(extra_env={"CABAY_DEBUG_INPUT": "1"} if os.environ.get("CABAY_DEBUG_INPUT") == "1" else None)
     httpd = None

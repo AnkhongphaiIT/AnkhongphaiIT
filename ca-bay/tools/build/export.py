@@ -65,12 +65,14 @@ def export(target: str, api: str | None, ws: str | None, debug: bool, release: b
             txt = txt.replace(marker, f'exclude_filter="{RELEASE_EXCLUDE}, server/*,', 1)
             txt = txt.replace(", assets/audio/vo/*.json", "", 1)  # gói thoại JSON cũng thuộc bản tạm
             PRESETS_FILE.write_text(txt, encoding="utf-8")
-        if api or ws:
+        if target == "web":
             cfg = json.loads(original)
             if api:
                 cfg["api_base"] = _check_url(api, "https", "http")
             if ws:
                 cfg["ws_url"] = _check_url(ws, "wss", "ws")
+            # Chế độ kiểm thử tự động (?autotest=1, có phím tự quay về cá/boss) chỉ có trong bản thử local, không có trong bản phát hành.
+            cfg["allow_autotest"] = not release
             ENDPOINTS.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         g = godot_bin()
         subprocess.run([g, "--headless", "--path", str(ROOT), "--import"], check=False,
