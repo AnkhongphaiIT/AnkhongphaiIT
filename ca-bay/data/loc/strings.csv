@@ -149,7 +149,7 @@ trick_spin_360.name,Full Spin,Xoay Vòng
 tutorial.cast,Hold to charge — release to cast,Giữ để nạp lực — thả để quăng
 tutorial.pickup,Pick it up,Nhặt lên
 tutorial.reel,Hold to reel in,Giữ để kéo
-tutorial.sell,Toss it into Aunt Ba's basket,Ném vào thúng Cô Ba
+tutorial.sell,"Take it to Aunt Ba's stall: press {key}, then ""Sell bag""","Mang cá tới sạp Cô Ba: bấm {key} rồi chọn ""Bán cả túi"""
 tutorial.smack,Smack it!,Đập nó!
 tutorial.thrash,Let go when it thrashes!,Thả tay khi cá quẫy!
 tutorial.throw_air,Throw a flip-flop while it's flying,Ném dép lúc cá đang bay

@@ -1122,11 +1122,12 @@ func _tutorial_hint() -> String:
 		if e["state"] == "airborne" and "throw_air" not in done:
 			return Loc.t("tutorial.throw_air")
 		if e["state"] in ["landed", "flopping", "attacking"] and "smack" not in done:
-			return Loc.t("tutorial.smack") + ("" if not player.equipped.begins_with("rod_") else "  [2]")
+			return Loc.t("tutorial.smack") + ("" if not player.equipped.begins_with("rod_") else "  [%s]" % Settings.key_label("hotbar_2"))
 		if String(e["state"]).begins_with("stunned") and "pickup" not in done:
 			return Loc.t("tutorial.pickup")
 	if not (save.get("inventory", {}).get("bag", []) as Array).is_empty() and "sell" not in done:
-		return Loc.t("tutorial.sell")
+		# không có cơ chế ném vào thúng: bán bằng nút "Bán cả túi" ở sạp (chuỗi cũ "Ném vào thúng Cô Ba" dẫn sai)
+		return Loc.t("tutorial.sell", {"key": Settings.key_label("interact")})
 	return ""
 
 
