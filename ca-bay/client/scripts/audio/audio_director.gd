@@ -60,6 +60,21 @@ func unlock() -> void:
 	unlocked = true
 
 
+## Chẩn đoán (chế độ kiểm thử): số nguồn âm đang phát theo loại — dùng để kiểm "không âm trùng sau reconnect".
+func debug_playing() -> String:
+	var n_music := int(_music.playing)
+	var n_amb := int(_amb.playing)
+	var n_loops := 0
+	for k in _loops:
+		if is_instance_valid(_loops[k]) and _loops[k].playing:
+			n_loops += 1
+	var n_other := 0
+	for c in get_children():
+		if c != _music and c != _amb and c != _voice and (c is AudioStreamPlayer or c is AudioStreamPlayer3D) and c.playing and c not in _loops.values():
+			n_other += 1
+	return "music=%d amb=%d loops=%d oneshots=%d music_id=%s" % [n_music, n_amb, n_loops, n_other, _music_id]
+
+
 func _process(delta: float) -> void:
 	var t := Time.get_ticks_msec() / 1000.0
 	var target := _duck_db if t < _duck_until else 0.0

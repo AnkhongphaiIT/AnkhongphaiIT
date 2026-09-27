@@ -267,6 +267,7 @@ func _on_accepted(p: Dictionary) -> void:
 	print("CABAY_SESSION accepted")
 	if Endpoints.autotest:
 		print("CABAY_ROOM code=%s" % String(room.get("invite_code", "")))
+		get_tree().create_timer(3.0).timeout.connect(func(): print("CABAY_AUDIO %s" % AudioDirector.debug_playing()))
 	my_id = p["account_id"]
 	entities.my_account_id = my_id
 	_reconnecting = false

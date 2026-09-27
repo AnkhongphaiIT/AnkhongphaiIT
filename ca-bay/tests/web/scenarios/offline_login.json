@@ -1,0 +1,55 @@
+[
+ {
+  "goto": "{BASE}/index.html?autotest=1&api=http://127.0.0.1:8799&ws=ws://127.0.0.1:8998"
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   640,
+   372
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   634,
+   495
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "type": "nguoichoi"
+ },
+ {
+  "key": "Tab"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "type": "mat-khau-bat-ky-dai"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "waitlog": "CABAY_AUTH_SUBMIT",
+  "timeout": 20000
+ },
+ {
+  "wait": 6000
+ },
+ {
+  "shot": "o01_offline_login"
+ }
+]
