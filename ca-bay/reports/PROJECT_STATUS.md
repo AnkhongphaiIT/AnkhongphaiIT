@@ -9,7 +9,7 @@ Cập nhật: 27/09/2026 (phiên 1, chiều) · Nhánh: `claude/tender-allen-ofq
 | Tài liệu/dữ liệu | **Đạt** | validator 0 lỗi/0 cảnh báo, 362 khóa VI/EN |
 | Code chạy local | **Chạy được**: backend + room server Godot headless + client web thật trong Chromium | `TEST_RESULTS.md`: pytest 26, Godot 18, bot 4 người, WEB-E2E fish_loop |
 | Co-op đã thử thật | **Chưa (người thật)** — mới có 4 bot tự động qua WebSocket thật và 1 client trình duyệt; NET-01 cần người + host | NEED-HOST, NEED-DEVICES |
-| Tài nguyên cuối | **Chưa**. Có: mô hình low-poly procedural (đảo, NPC, 18 loài), font Nunito (OFL), 80/80 asset âm thanh tự tổng hợp (SFX, nhạc, ambience, gibberish). Thoại espeak-ng là **bản tạm**, giấy phép chưa chốt, loại khỏi bản phát hành | `assets/fonts/SOURCES.md`, `reports/AUDIO_REPORT.md`, `assets/audio/vo/LICENSE-VO.md` |
+| Tài nguyên cuối | **Chưa**. Có: mô hình low-poly procedural (đảo, NPC, 18 loài), font Be Vietnam Pro (OFL), 80/80 asset âm thanh tự tổng hợp (SFX, nhạc, ambience, gibberish). Thoại espeak-ng là **bản tạm**, giấy phép chưa chốt, loại khỏi bản phát hành | `assets/fonts/SOURCES.md`, `reports/AUDIO_REPORT.md`, `assets/audio/vo/LICENSE-VO.md` |
 | Public đã xác minh | **Chưa** — thiếu host (NEED-HOST) và quyền itch.io (NEED-ITCH) | — |
 
 ## Mốc

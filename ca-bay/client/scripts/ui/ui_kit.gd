@@ -82,18 +82,21 @@ static func theme() -> Theme:
 
 
 static func _load_font() -> Font:
-	# Nunito (OFL, đủ dấu tiếng Việt) + font ký hiệu dự phòng; nguồn/giấy phép: assets/fonts/SOURCES.md.
+	# Be Vietnam Pro (OFL, asset fnt_be_vietnam_pro) + font ký hiệu dự phòng; nguồn/giấy phép: assets/fonts/SOURCES.md.
 	# Đặt làm font mặc định toàn cục để cả Label3D trong thế giới cũng dùng.
-	if not ResourceLoader.exists("res://assets/fonts/ui_font.ttf"):
+	if not ResourceLoader.exists("res://assets/fonts/fnt_be_vietnam_pro.tres"):
 		return null
-	var f: FontFile = load("res://assets/fonts/ui_font.ttf")
-	if ResourceLoader.exists("res://assets/fonts/ui_symbols.ttf"):
-		f.fallbacks = [load("res://assets/fonts/ui_symbols.ttf")]
-	var fv := FontVariation.new()
-	fv.base_font = f
-	fv.variation_opentype = {TextServerManager.get_primary_interface().name_to_tag("wght"): 650}
-	ThemeDB.fallback_font = fv
-	return fv
+	var f: Font = load("res://assets/fonts/fnt_be_vietnam_pro.tres")
+	ThemeDB.fallback_font = f
+	if ResourceLoader.exists("res://assets/fonts/BeVietnamPro-Bold.ttf"):
+		var b: FontFile = load("res://assets/fonts/BeVietnamPro-Bold.ttf")
+		font_bold = FontVariation.new()
+		font_bold.base_font = b
+		font_bold.fallbacks = f.fallbacks
+	return f
+
+
+static var font_bold: FontVariation
 
 
 static func label(text: String, size: int = 20, color: Color = C_TEXT, align := HORIZONTAL_ALIGNMENT_LEFT) -> Label:
@@ -103,6 +106,8 @@ static func label(text: String, size: int = 20, color: Color = C_TEXT, align := 
 	l.add_theme_color_override("font_color", color)
 	l.add_theme_color_override("font_outline_color", C_BORDER)
 	l.add_theme_constant_override("outline_size", 4 if size >= 22 else 0)
+	if size >= 26 and font_bold:
+		l.add_theme_font_override("font", font_bold)
 	l.horizontal_alignment = align
 	# Chữ ngắn không tự xuống dòng (trong HBox nhãn tự xuống dòng bị bóp còn một ký tự mỗi dòng).
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART if text.length() > 32 else TextServer.AUTOWRAP_OFF

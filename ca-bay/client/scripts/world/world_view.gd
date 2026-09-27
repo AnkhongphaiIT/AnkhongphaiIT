@@ -306,6 +306,9 @@ static func screen_label(text: String, px := 26.0) -> Label3D:
 static func _label3d(text: String, size: float) -> Label3D:
 	var l := Label3D.new()
 	l.text = text
+	UIKit.theme()  # bảo đảm font dự án đã nạp
+	if UIKit.font_bold:
+		l.font = UIKit.font_bold
 	l.pixel_size = 0.009 * size
 	l.font_size = 48
 	l.outline_size = 12

@@ -29,7 +29,7 @@ RELEASE = ROOT / "release"
 # Chỉ những file này của bản xuất web được đưa vào gói (P-011).
 CLIENT_FILES = re.compile(r"^index\.(html|js|wasm|pck|png|icon\.png|apple-touch-icon\.png|audio\.worklet\.js|audio\.position\.worklet\.js)$")
 LICENSE_FILES = {
-    "LICENSES/fonts/OFL-Nunito.txt": ROOT / "assets/fonts/OFL-Nunito.txt",
+    "LICENSES/fonts/OFL-BeVietnamPro.txt": ROOT / "assets/fonts/OFL-BeVietnamPro.txt",
     "LICENSES/fonts/LICENSE-DejaVu-symbols.txt": ROOT / "assets/fonts/LICENSE-DejaVu-symbols.txt",
     "LICENSES/fonts/SOURCES.md": ROOT / "assets/fonts/SOURCES.md",
     "CREDITS.md": ROOT / "CREDITS.md",

@@ -9,7 +9,7 @@ Tên game là tên tạm. / The title is a working title.
 | Godot Engine 4.7.2 (web runtime) | godotengine.org | MIT + thành phần bên thứ ba, xem `LICENSES/GODOT.txt` / see `LICENSES/GODOT.txt` |
 | Mô hình 3D low-poly, địa hình, nhân vật, cá / 3D low-poly models | Tự dựng bằng mã GDScript (procedural) trong dự án / generated procedurally by project code | Của dự án / project-owned |
 | Hiệu ứng âm thanh, nhạc, âm nền, giọng "ú ớ" / SFX, music, ambience, gibberish voices | Tự tổng hợp offline bằng Python + numpy, mã hóa OGG bằng ffmpeg (chỉ dùng làm công cụ) / synthesized offline by project scripts (`tools/asset_generation/audio/`) | Của dự án / project-owned (`self_made`) |
-| Font giao diện Nunito / UI font Nunito | The Nunito Project Authors (github.com/googlefonts/nunito) | SIL Open Font License 1.1, `LICENSES/fonts/OFL-Nunito.txt` |
+| Font giao diện Be Vietnam Pro / UI font Be Vietnam Pro | The Be Vietnam Pro Project Authors (github.com/bettergui/BeVietnamPro) | SIL Open Font License 1.1, `LICENSES/fonts/OFL-BeVietnamPro.txt` |
 | Font ký hiệu "CaBay Symbols" (tập con DejaVu Sans) / symbol font (DejaVu Sans subset) | DejaVu fonts (Bitstream Vera derivative) | Bitstream Vera license + public domain, `LICENSES/fonts/LICENSE-DejaVu-symbols.txt` |
 
 Bản phát hành web **không** kèm thoại tổng hợp giọng máy (espeak-ng) vì giấy phép chưa được chốt; NPC dùng giọng "ú ớ" + phụ đề.

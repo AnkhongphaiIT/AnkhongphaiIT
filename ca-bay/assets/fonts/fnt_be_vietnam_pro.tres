@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/BeVietnamPro-SemiBold.ttf" id="1_i6dif"]
+[ext_resource type="FontFile" path="res://assets/fonts/ui_symbols.ttf" id="2_k36oy"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_k36oy")])
+base_font = ExtResource("1_i6dif")

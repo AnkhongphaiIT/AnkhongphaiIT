@@ -152,6 +152,7 @@ func open_menu(name: String, arg := "") -> void:
 	if not was_open:
 		send_cmd("menu.active", {"active": true})
 		player.fishing_state = "IDLE"
+	hud.subtitle.visible = false  # lời thoại đã hiện trong bảng menu
 	_render_menu()
 	AudioDirector.play_ui("sfx_ui_open")
 
