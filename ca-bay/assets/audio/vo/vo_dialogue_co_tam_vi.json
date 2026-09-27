@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_co_tam",
+  "locale": "vi",
+  "pack_asset_id": "vo_dialogue_co_tam_vi",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "vi+f1",
+      "-p",
+      "48",
+      "-s",
+      "150",
+      "-g",
+      "2",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Cô Tám — cô bán hàng đảo 3, ấm và chậm rãi"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_co_tam.greet": {
+      "file": "res://assets/audio/vo/npc_co_tam/vi/greet.wav",
+      "sha256": "2c14a634d743d006f5ab3b40d021d68b518eafe854851867e616aea8ff7e15b2",
+      "text": "Có mẻ cá mới hả? Thúng ở đây nè.",
+      "line_key": "greet",
+      "duration_s": 3.47
+    },
+    "npc_co_tam.no_money": {
+      "file": "res://assets/audio/vo/npc_co_tam/vi/no_money.wav",
+      "sha256": "f5a9889f0437674131f677b6ad81361e2ecf0945dfacb6a655cab437a880e269",
+      "text": "Cứ câu bằng mồi miễn phí rồi quay lại nha.",
+      "line_key": "no_money",
+      "duration_s": 3.362
+    },
+    "npc_co_tam.no_sell": {
+      "file": "res://assets/audio/vo/npc_co_tam/vi/no_sell.wav",
+      "sha256": "ab1d5d122eb74e557fb225fa095ab22632c8d9b9c61b4fa2e961e115df983e8f",
+      "text": "Giữ món đó để làm việc đã nha.",
+      "line_key": "no_sell",
+      "duration_s": 2.577
+    },
+    "npc_co_tam.thanks_bad": {
+      "file": "res://assets/audio/vo/npc_co_tam/vi/thanks_bad.wav",
+      "sha256": "7cb159777bba707fdb6c92b6a0b5bcd2dbaab85cb2796eb47a8225c1efd97453",
+      "text": "Mẻ nhỏ cũng quý mà.",
+      "line_key": "thanks_bad",
+      "duration_s": 1.899
+    },
+    "npc_co_tam.thanks_good": {
+      "file": "res://assets/audio/vo/npc_co_tam/vi/thanks_good.wav",
+      "sha256": "2ae94544e2d986746f1e5659ef7c2f099b5a4d862deaeac977eaa310a86c8295",
+      "text": "Mẻ này đẹp đó. Quỹ sửa bến lại thêm một chút.",
+      "line_key": "thanks_good",
+      "duration_s": 3.751
+    }
+  }
+}

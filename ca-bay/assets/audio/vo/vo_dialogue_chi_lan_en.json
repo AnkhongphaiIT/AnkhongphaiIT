@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_chi_lan",
+  "locale": "en",
+  "pack_asset_id": "vo_dialogue_chi_lan_en",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "en+f5",
+      "-p",
+      "68",
+      "-s",
+      "165",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Chị Lan — người tổ chức hội câu, trẻ, rõ ràng, hơi thở nhẹ"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_chi_lan.done": {
+      "file": "res://assets/audio/vo/npc_chi_lan/en/done.wav",
+      "sha256": "3226ebc95d84f9348773e20dec7724f139d3550b3023a133471eb1deda42f04c",
+      "text": "The pier is open again. The fishing spots are yours to enjoy.",
+      "line_key": "done",
+      "duration_s": 4.512
+    },
+    "npc_chi_lan.greet": {
+      "file": "res://assets/audio/vo/npc_chi_lan/en/greet.wav",
+      "sha256": "4330545f5f0029014f4e930594d7a0870cc614a5b0c6649cfcf0d7eb0d1ed582",
+      "text": "The village fishing day will help pay for the last pier repairs.",
+      "line_key": "greet",
+      "duration_s": 4.015
+    },
+    "npc_chi_lan.quest_boss": {
+      "file": "res://assets/audio/vo/npc_chi_lan/en/quest_boss.wav",
+      "sha256": "5fd208441690764a6fa8a147b48812e30dc5a12544ac029e7b32aaeb302e6515",
+      "text": "Cape Cobia is the final challenge. Take a photo and let it go afterwards.",
+      "line_key": "quest_boss",
+      "duration_s": 5.291
+    },
+    "npc_chi_lan.quest_prep": {
+      "file": "res://assets/audio/vo/npc_chi_lan/en/quest_prep.wav",
+      "sha256": "f52209c3bbf91298c7df4bc043651aeae090f41a73b3e87728cd85d3023286fc",
+      "text": "Bring four scad for the community kitchen. I will prepare your festival bait.",
+      "line_key": "quest_prep",
+      "duration_s": 4.995
+    },
+    "npc_chi_lan.refill": {
+      "file": "res://assets/audio/vo/npc_chi_lan/en/refill.wav",
+      "sha256": "3d17422576654222b218e69c4f29d026538e50df0eaaa5c744e356b787489f3d",
+      "text": "Another bait pack. The contest is about trying together.",
+      "line_key": "refill",
+      "duration_s": 3.981
+    }
+  }
+}

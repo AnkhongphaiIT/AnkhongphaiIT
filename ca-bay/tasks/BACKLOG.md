@@ -38,4 +38,8 @@ Nguồn: `docs/09_AGENT_TASKS.md` (WP-00…WP-12), `docs/10_VALIDATION.md`. Tr�
 
 ## 3. Việc thật đã giao cho agent
 
-Chỉ ghi khi đã thực sự gọi agent và nhận kết quả. (Chưa giao việc nào.)
+Chỉ ghi khi đã thực sự gọi agent và nhận kết quả.
+
+| Task | Agent | File được phép sửa | Kết quả | Claude kiểm |
+|---|---|---|---|---|
+| `tasks/WP-09-audio.md` | Claude subagent (general-purpose) | `tools/asset_generation/audio/**`, `assets/audio/**` | 166 file âm thanh + manifest + validator, tái tạo byte-giống-hệt; báo cáo `reports/AUDIO_REPORT.md` | Đã đọc báo cáo, kiểm kích thước/định dạng, sửa `AudioDirector.start_loop` giữ điểm loop gốc, loại thoại tạm khỏi bản release (P-018). **Chưa nghe duyệt bằng tai** |

@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_co_tam",
+  "locale": "en",
+  "pack_asset_id": "vo_dialogue_co_tam_en",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "en+f1",
+      "-p",
+      "50",
+      "-s",
+      "155",
+      "-g",
+      "2",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Cô Tám — cô bán hàng đảo 3, ấm và chậm rãi"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_co_tam.greet": {
+      "file": "res://assets/audio/vo/npc_co_tam/en/greet.wav",
+      "sha256": "59441a9aa5fa6efc88f3a025a1b3b23fba5111f73166508f0fc90846a4ef524b",
+      "text": "Fresh catch? The basket is here.",
+      "line_key": "greet",
+      "duration_s": 2.765
+    },
+    "npc_co_tam.no_money": {
+      "file": "res://assets/audio/vo/npc_co_tam/en/no_money.wav",
+      "sha256": "4269fca7025217797dabbac0b010499ebbafd5c1eaa868e3e2de5952ee2ba4e2",
+      "text": "You can fish with free bait and come back.",
+      "line_key": "no_money",
+      "duration_s": 2.995
+    },
+    "npc_co_tam.no_sell": {
+      "file": "res://assets/audio/vo/npc_co_tam/en/no_sell.wav",
+      "sha256": "0b06511d5dd38201c91c924e04fdcedfe738704b2a8afb96c37a63fd7fb84fc6",
+      "text": "Please keep that for your task.",
+      "line_key": "no_sell",
+      "duration_s": 2.249
+    },
+    "npc_co_tam.thanks_bad": {
+      "file": "res://assets/audio/vo/npc_co_tam/en/thanks_bad.wav",
+      "sha256": "3661048ec5b2840d54285f525bc6d1c9ec48dce7e0fa493248ed8345fe03f29a",
+      "text": "A small catch still counts.",
+      "line_key": "thanks_bad",
+      "duration_s": 2.196
+    },
+    "npc_co_tam.thanks_good": {
+      "file": "res://assets/audio/vo/npc_co_tam/en/thanks_good.wav",
+      "sha256": "e30fcf66092dd19c1aa6d3dc2059493f0846dda1c0276947d05f8dc8b9b9bed8",
+      "text": "A fine catch. That will help the pier fund.",
+      "line_key": "thanks_good",
+      "duration_s": 3.55
+    }
+  }
+}

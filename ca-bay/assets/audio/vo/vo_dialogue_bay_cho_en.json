@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_bay_cho",
+  "locale": "en",
+  "pack_asset_id": "vo_dialogue_bay_cho_en",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "en+f2",
+      "-p",
+      "66",
+      "-s",
+      "172",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Bảy Chợ — người bán ở chợ đảo 2, tươi tắn"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_bay_cho.greet": {
+      "file": "res://assets/audio/vo/npc_bay_cho/en/greet.wav",
+      "sha256": "f0bf06b38124def8b26a27e523fecaeb6783e3763454156bf6213ee0dd015121",
+      "text": "Fresh catch? The basket is here.",
+      "line_key": "greet",
+      "duration_s": 2.536
+    },
+    "npc_bay_cho.no_money": {
+      "file": "res://assets/audio/vo/npc_bay_cho/en/no_money.wav",
+      "sha256": "737b2ed6dc934aa5b9e01d147adceb26a21bab1dc3db873188d79b5357763afa",
+      "text": "You can fish with free bait and come back.",
+      "line_key": "no_money",
+      "duration_s": 2.68
+    },
+    "npc_bay_cho.no_sell": {
+      "file": "res://assets/audio/vo/npc_bay_cho/en/no_sell.wav",
+      "sha256": "8e1e4a11d4a4367918382a4813bcab5a6ba54006bef393ebdd4ad44030e1fb88",
+      "text": "Please keep that for your task.",
+      "line_key": "no_sell",
+      "duration_s": 2.06
+    },
+    "npc_bay_cho.thanks_bad": {
+      "file": "res://assets/audio/vo/npc_bay_cho/en/thanks_bad.wav",
+      "sha256": "b6c18c5592e86b7f27df9afe2b8a23cfcca11e81564e87c6371ff579c14147e0",
+      "text": "A small catch still counts.",
+      "line_key": "thanks_bad",
+      "duration_s": 1.883
+    },
+    "npc_bay_cho.thanks_good": {
+      "file": "res://assets/audio/vo/npc_bay_cho/en/thanks_good.wav",
+      "sha256": "43022d217c6d308c3be55e03dc45362fc9046bff03c386455deb435f0515a333",
+      "text": "A fine catch. That will help the pier fund.",
+      "line_key": "thanks_good",
+      "duration_s": 3.104
+    }
+  }
+}

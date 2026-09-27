@@ -24,9 +24,19 @@ static func load_endpoints() -> Dictionary:
 						cfg["api_base"] = v
 					elif kv[0] == "ws" and (v.begins_with("wss://") or v.begins_with("ws://127.0.0.1") or v.begins_with("ws://localhost")):
 						cfg["ws_url"] = v
+					elif kv[0] == "autotest" and v == "1":
+						cfg["autotest"] = true
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--api="):
 			cfg["api_base"] = a.substr(6)
 		elif a.begins_with("--ws="):
 			cfg["ws_url"] = a.substr(5)
+		elif a == "--autotest":
+			cfg["autotest"] = true
+	autotest = bool(cfg.get("autotest", false))
 	return cfg
+
+
+## Chế độ kiểm thử tự động (?autotest=1): không khóa chuột (pointer lock trong Chromium headless
+## sinh chuyển động giả), xoay nhìn bằng I/J/K/L. Chỉ đổi cách nhập ở client; server vẫn quyết định mọi thứ.
+static var autotest := false

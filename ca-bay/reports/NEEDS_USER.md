@@ -1,6 +1,6 @@
 # NEEDS_USER — những việc chỉ chủ dự án làm được
 
-Cập nhật: 27/09/2026. Chỉ liệt kê thiếu hụt **đã phát hiện thật** (xem bằng chứng ở `PREFLIGHT.md`). Không mục nào dưới đây chặn việc lập trình, nội dung, tài nguyên procedural hay build local. **Hiện chưa cần bạn làm gì ngay**; các mục chỉ cần xử lý trước mốc ghi trong cột "Chặn mốc nào".
+Cập nhật: 27/09/2026 (chiều). Chỉ liệt kê thiếu hụt **đã phát hiện thật** (xem bằng chứng ở `PREFLIGHT.md`). Không mục nào dưới đây chặn việc lập trình, nội dung, tài nguyên procedural hay build local. **Hiện chưa cần bạn làm gì ngay**; các mục chỉ cần xử lý trước mốc ghi trong cột "Chặn mốc nào".
 
 Phân loại: **chặn lập trình** (không có) · **chặn thử internet** · **chặn phát hành** · **không chặn**.
 
@@ -12,6 +12,7 @@ Phân loại: **chặn lập trình** (không có) · **chặn thử internet** 
 | NEED-CONTACT | Trang quyền riêng tư cần địa chỉ liên hệ vận hành thật (không bịa) | Chặn phát hành công khai | Claude soạn trang nháp với chỗ trống rõ ràng | Trước khi công khai: cho biết email/kênh liên hệ bạn muốn công bố | Mọi phần khác |
 | NEED-DOMAIN | Chưa sở hữu tên miền `.io` | Chặn riêng nhánh website `.io` (itch.io không bị ảnh hưởng) | Không mua (ngân sách 0) | Chỉ khi bạn đã có tên miền: cấp quyền DNS | Site tĩnh sẵn sàng deploy |
 | NEED-CHATGPT | Ảnh concept/UI/quảng bá từ ChatGPT Plus (tùy chọn) | Không chặn | Tài nguyên procedural đang dùng | Khi rảnh: mở `handoff/requests/<batch>/request.md`, gửi ChatGPT, chép file về `handoff/incoming/<batch>/` | Toàn bộ game |
+| NEED-VOICE-LICENSE | 62 file thoại VI/EN hiện tạo bằng espeak-ng (GPL-3.0-or-later; dữ liệu giọng có đoạn sóng mẫu) → giấy phép dùng thương mại chưa chắc chắn | Chặn đưa thoại vào bản phát hành (không chặn phát hành game: bản release tự loại thoại, dùng gibberish + phụ đề) | Tự tổng hợp formant thì nghe quá máy; model TTS thần kinh không tải được từ phiên | Chọn 1: (a) chấp nhận phát hành thoại espeak kèm điều khoản GPL; (b) giữ bản tạm, chờ thu giọng người thật có đồng ý; (c) bỏ thoại có giọng ở bản đầu (sẽ ghi rõ "chưa đạt") | Mọi phần khác |
 | NEED-VOICE-QA | Lời thoại đọc VI/EN: phương án 0 đồng là TTS offline `espeak-ng` (giọng máy) | Chặn nghiệm thu "âm thanh cuối" nếu bạn thấy giọng máy không đạt | espeak-ng (apt); model TTS thần kinh trên huggingface không tải được | Sau khi nghe bản thử: chấp nhận giọng TTS, hoặc thu giọng người thật (có đồng ý) theo `handoff/requests/voice/` | Mọi phần khác |
 
 ## Câu hỏi gom một lần

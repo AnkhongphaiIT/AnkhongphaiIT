@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_nam_sau",
+  "locale": "vi",
+  "pack_asset_id": "vo_dialogue_nam_sau_vi",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "vi+m2",
+      "-p",
+      "46",
+      "-s",
+      "158",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Chú Sáu — người khảo sát lạch, thực tế, giọng trung"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_nam_sau.done": {
+      "file": "res://assets/audio/vo/npc_nam_sau/vi/done.wav",
+      "sha256": "bd09d9239237f39644cad2a2ccc6dc7d6a1fba0310a0ed1ccd3dcae65da395d0",
+      "text": "Khảo sát xong. Đò ra mũi đá chạy lại được rồi.",
+      "line_key": "done",
+      "duration_s": 3.514
+    },
+    "npc_nam_sau.greet": {
+      "file": "res://assets/audio/vo/npc_nam_sau/vi/greet.wav",
+      "sha256": "194863b12f4d3e88effd0005f44b68af9f8fbdf747dfdfb6b4e18088456ed97a",
+      "text": "Triều đổi làm bãi bùn xê dịch. Mình kiểm tra lạch trước khi mở lại đò.",
+      "line_key": "greet",
+      "duration_s": 4.979
+    },
+    "npc_nam_sau.quest_boss": {
+      "file": "res://assets/audio/vo/npc_nam_sau/vi/quest_boss.wav",
+      "sha256": "3d134ec9a1d522106ce4d37c621d11e5bb5f5868539f5fc351aadcf80cdcc427",
+      "text": "Cua Cụ hay nấp cạnh cọc mốc. Thử hộp mồi cua này đi.",
+      "line_key": "quest_boss",
+      "duration_s": 4.116
+    },
+    "npc_nam_sau.quest_prep": {
+      "file": "res://assets/audio/vo/npc_nam_sau/vi/quest_prep.wav",
+      "sha256": "a29e3df925a52643ae85eba45438b14ff50db51fcaa882617226828abd76bb51",
+      "text": "Mang bốn con thòi lòi để khảo sát lạch. Ghi nhận rồi thả lại nha.",
+      "line_key": "quest_prep",
+      "duration_s": 4.92
+    },
+    "npc_nam_sau.refill": {
+      "file": "res://assets/audio/vo/npc_nam_sau/vi/refill.wav",
+      "sha256": "0248604bf99c412fe3228b7b4a67dc081d33e41587b630a26e7b65acca75571e",
+      "text": "Mồi cua mới đây. Không cần trả tiền.",
+      "line_key": "refill",
+      "duration_s": 2.874
+    }
+  }
+}

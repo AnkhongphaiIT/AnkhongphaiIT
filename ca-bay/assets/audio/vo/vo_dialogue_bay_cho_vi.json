@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_bay_cho",
+  "locale": "vi",
+  "pack_asset_id": "vo_dialogue_bay_cho_vi",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "vi+f2",
+      "-p",
+      "66",
+      "-s",
+      "168",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Bảy Chợ — người bán ở chợ đảo 2, tươi tắn"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_bay_cho.greet": {
+      "file": "res://assets/audio/vo/npc_bay_cho/vi/greet.wav",
+      "sha256": "235518218fd2f856b6c66fb581ee30943ee0593d246d4ca6ebce7154d80ee6b5",
+      "text": "Có mẻ cá mới hả? Thúng ở đây nè.",
+      "line_key": "greet",
+      "duration_s": 3.032
+    },
+    "npc_bay_cho.no_money": {
+      "file": "res://assets/audio/vo/npc_bay_cho/vi/no_money.wav",
+      "sha256": "fdc47456ebc7ca528c01a1277312c7e3853ac2b93d78b88f8bceb61bc9426c88",
+      "text": "Cứ câu bằng mồi miễn phí rồi quay lại nha.",
+      "line_key": "no_money",
+      "duration_s": 2.999
+    },
+    "npc_bay_cho.no_sell": {
+      "file": "res://assets/audio/vo/npc_bay_cho/vi/no_sell.wav",
+      "sha256": "d2f5cf6bb1b705fbc8ff34a5e50b68462dcd5f10044ac534ad6d9749230a84d6",
+      "text": "Giữ món đó để làm việc đã nha.",
+      "line_key": "no_sell",
+      "duration_s": 2.331
+    },
+    "npc_bay_cho.thanks_bad": {
+      "file": "res://assets/audio/vo/npc_bay_cho/vi/thanks_bad.wav",
+      "sha256": "a7fab783bad28c1cddccf633921594ef42c36775a4736f5555bffd60777062e8",
+      "text": "Mẻ nhỏ cũng quý mà.",
+      "line_key": "thanks_bad",
+      "duration_s": 1.771
+    },
+    "npc_bay_cho.thanks_good": {
+      "file": "res://assets/audio/vo/npc_bay_cho/vi/thanks_good.wav",
+      "sha256": "a052c6eeb1865897fcb781d0d2f507361fb79f2c9794d1b9f9693727e4a1df9f",
+      "text": "Mẻ này đẹp đó. Quỹ sửa bến lại thêm một chút.",
+      "line_key": "thanks_good",
+      "duration_s": 3.274
+    }
+  }
+}

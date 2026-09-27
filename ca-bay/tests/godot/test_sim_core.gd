@@ -157,3 +157,29 @@ func test_room_owner_transfer_and_capacity(t) -> void:
 	room.remove_player_now(owner)
 	t.ok(room.owner_account_id != owner and room.owner_account_id != "", "chủ phòng chuyển cho người vào sớm nhất")
 	t.eq(room.owner_account_id, ps[1]["account_id"], "đúng người kế tiếp")
+
+
+func test_melee_lag_compensation_bounded(t) -> void:
+	# Cá vừa rời khỏi tầm tay trong <300 ms vẫn đánh được; cá chưa từng trong tầm thì bị từ chối.
+	var rs := H.make_room()
+	var room: RefCounted = rs[0]
+	var p := H.add_player(room, 2)
+	p["pos"] = _pier_end(room.island_id)
+	p["equipped"] = "tool_hand"
+	var near: Vector3 = p["pos"] + Vector3(0, 0, -1.0)
+	Creatures.launch(room, p, "cre_tep", null, false, p["pos"] + Vector3(0, 0, 8))
+	var uid: String = room.entities.keys()[0]
+	var e: Dictionary = room.entities[uid]
+	e["flying"] = false
+	e["vel"] = Vector3.ZERO
+	e["state"] = "landed"
+	e["hist"] = []
+	for i in 5:
+		e["hist"].push_front(near)
+	e["pos"] = near + Vector3(0, 0, -2.5)  # vừa nhảy ra xa
+	p["yaw"] = 0.0   # nhìn về -z
+	p["pitch"] = -0.9
+	t.eq(Creatures.use_tool(room, p, uid), "", "vị trí trong ~150 ms trước còn trong tầm → chấp nhận")
+	p["cooldowns"] = {}
+	e["hist"] = [e["pos"]]
+	t.eq(Creatures.use_tool(room, p, uid), "OUT_OF_RANGE", "không có vị trí nào trong tầm → từ chối")

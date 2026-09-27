@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_ong_tu",
+  "locale": "vi",
+  "pack_asset_id": "vo_dialogue_ong_tu_vi",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "vi+grandpa",
+      "-p",
+      "38",
+      "-s",
+      "140",
+      "-g",
+      "2",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Ông Tư — ông lão điềm đạm, giọng trầm hơi run"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_ong_tu.done": {
+      "file": "res://assets/audio/vo/npc_ong_tu/vi/done.wav",
+      "sha256": "cdb4c86538f580308348a4c306e8c0264e779f6ffcd2a004520c4f7b73523d84",
+      "text": "Ghi nhận xong! Đò sang lạch dừa đã sẵn sàng rồi.",
+      "line_key": "done",
+      "duration_s": 4.266
+    },
+    "npc_ong_tu.greet": {
+      "file": "res://assets/audio/vo/npc_ong_tu/vi/greet.wav",
+      "sha256": "fd4158ea55acdcdba295925f195bd214a9318e671ee7700c5d2b40e9fc07eff7",
+      "text": "Đợt nước lớn làm hư bến rồi. Góp vài mẻ cá, bà con mình sửa lại thôi.",
+      "line_key": "greet",
+      "duration_s": 6.424
+    },
+    "npc_ong_tu.quest_boss": {
+      "file": "res://assets/audio/vo/npc_ong_tu/vi/quest_boss.wav",
+      "sha256": "fa3b918951b4805bc756278a8d54ec59cb300137cf8a30c53ed3d6e8a27f098d",
+      "text": "Thử câu Lóc Già ở cọc đỏ. Ghi nhận xong mình thả nó về nước.",
+      "line_key": "quest_boss",
+      "duration_s": 5.603
+    },
+    "npc_ong_tu.quest_lunch": {
+      "file": "res://assets/audio/vo/npc_ong_tu/vi/quest_lunch.wav",
+      "sha256": "95974e046f393be9c6c0e3058c2b16a4d6edc9f5db5ccea45cee6d1248c21909",
+      "text": "Mang ba con cá rô cho đội sửa bến. Tui có hộp mồi cá tạp cho bạn.",
+      "line_key": "quest_lunch",
+      "duration_s": 6.291
+    },
+    "npc_ong_tu.refill": {
+      "file": "res://assets/audio/vo/npc_ong_tu/vi/refill.wav",
+      "sha256": "9c4b9a7432324186e90e6c8e7db3d20c40132df90b83c56c641c18893af0d820",
+      "text": "Mồi thay đây. Mình thử lại được mà.",
+      "line_key": "refill",
+      "duration_s": 2.992
+    }
+  }
+}

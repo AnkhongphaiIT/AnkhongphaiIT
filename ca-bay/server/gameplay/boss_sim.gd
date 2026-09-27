@@ -30,7 +30,8 @@ static func start(room, p: Dictionary, boss_id: String, encounter_id: String) ->
 		"move": {}, "outside": {}, "projectiles": [], "hit_once": {},
 	}
 	room.entities[uid] = {"uid": uid, "kind": "boss", "def_id": boss["creature_id"], "state": "arriving", "pos": Vector3(water.x, 0.0, water.y), "yaw": 0.0, "owner": p["account_id"]}
-	room.emit("boss.summoned", p["account_id"], {"boss_id": boss_id, "creature_uid": uid, "position": [water.x, 0.0, water.y]})
+	room.emit("boss.summoned", p["account_id"], {"boss_id": boss_id, "creature_uid": uid, "position": [water.x, 0.0, water.y],
+		"hp": float(hp), "max_hp": float(hp), "end_in_s": timer})
 	room.emit("creature.spawned", p["account_id"], {"creature_uid": uid, "creature_def_id": boss["creature_id"], "variant_id": null, "is_boss": true})
 
 
@@ -39,7 +40,8 @@ static func resync_to(room, aid: String) -> void:
 	if not b.has("uid"):
 		return
 	var e: Dictionary = room.entities.get(b["uid"], {})
-	room.emit_to(aid, "boss.summoned", b["summoner"], {"boss_id": b["boss_id"], "creature_uid": b["uid"], "position": _arr(e.get("pos", b["arena"]))})
+	room.emit_to(aid, "boss.summoned", b["summoner"], {"boss_id": b["boss_id"], "creature_uid": b["uid"], "position": _arr(e.get("pos", b["arena"])),
+		"hp": float(b["hp"]), "max_hp": float(b["max_hp"]), "end_in_s": maxf(0.0, (int(b["end_tick"]) - room.tick_count) * room.dt)})
 	room.emit_to(aid, "boss.phase_changed", null, {"boss_id": b["boss_id"], "phase": b["phase"]})
 
 
@@ -282,7 +284,8 @@ static func damage(room, attacker: Dictionary, amount: float, tool_id: String) -
 		b["participants"][aid] = {"damage": 0.0, "late": true}
 	b["participants"][aid]["damage"] = float(b["participants"][aid]["damage"]) + dmg
 	var pos: Vector3 = room.entities[b["uid"]]["pos"]
-	room.emit("creature.damaged", aid, {"creature_uid": b["uid"], "amount": dmg, "tool_id": tool_id, "hit_zone": "body", "airborne": false, "position": _arr(pos)})
+	room.emit("creature.damaged", aid, {"creature_uid": b["uid"], "amount": dmg, "tool_id": tool_id, "hit_zone": "body", "airborne": false, "position": _arr(pos),
+		"hp": float(b["hp"]), "max_hp": float(b["max_hp"])})
 	if float(b["hp"]) <= 0.0:
 		_defeat(room)
 

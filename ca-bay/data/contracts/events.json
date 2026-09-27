@@ -633,6 +633,18 @@
           "required": true
         },
         {
+          "name": "hp",
+          "type": "float",
+          "required": false,
+          "desc": "CR-004: máu boss cho thanh HUD; chỉ hiển thị, không nhận từ client."
+        },
+        {
+          "name": "max_hp",
+          "type": "float",
+          "required": false,
+          "desc": "CR-004: máu boss cho thanh HUD; chỉ hiển thị, không nhận từ client."
+        },
+        {
           "name": "actor_player_id",
           "type": "string",
           "required": false,
@@ -1752,6 +1764,24 @@
           "name": "position",
           "type": "vector3",
           "required": true
+        },
+        {
+          "name": "hp",
+          "type": "float",
+          "required": false,
+          "desc": "CR-004: máu boss cho thanh HUD; chỉ hiển thị, không nhận từ client."
+        },
+        {
+          "name": "max_hp",
+          "type": "float",
+          "required": false,
+          "desc": "CR-004: máu boss cho thanh HUD; chỉ hiển thị, không nhận từ client."
+        },
+        {
+          "name": "end_in_s",
+          "type": "float",
+          "required": false,
+          "desc": "CR-004: số giây còn lại trước khi boss trốn."
         },
         {
           "name": "actor_player_id",

@@ -33,3 +33,7 @@ handoff/incoming/*
 reports/tmp/
 tests/web/artifacts/
 *.log
+
+# Tài nguyên sinh lại được (nguồn WAV dài/đầu ra thô) và venv công cụ
+tools/asset_generation/**/build/
+tools/asset_generation/**/.venv/

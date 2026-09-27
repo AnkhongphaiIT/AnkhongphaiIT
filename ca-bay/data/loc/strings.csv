@@ -153,19 +153,29 @@ tutorial.sell,Toss it into Aunt Ba's basket,Ném vào thúng Cô Ba
 tutorial.smack,Smack it!,Đập nó!
 tutorial.thrash,Let go when it thrashes!,Thả tay khi cá quẫy!
 tutorial.throw_air,Throw a flip-flop while it's flying,Ném dép lúc cá đang bay
+ui.account.change_password,Change password,Đổi mật khẩu
+ui.account.codes_saved,I saved these codes,Tôi đã lưu các mã này
 ui.account.delete,Delete account,Xóa tài khoản
 ui.account.delete_confirm,This permanently deletes your account and progress. Confirm with your password.,Thao tác này xóa vĩnh viễn tài khoản và tiến trình. Xác nhận bằng mật khẩu của bạn.
+ui.account.delete_type,Type DELETE (or XOA) to confirm,Gõ XOA (hoặc DELETE) để xác nhận
+ui.account.deleted,Account deleted. Thanks for playing!,Đã xóa tài khoản. Cảm ơn bạn đã chơi!
 ui.account.display_name,Display name,Tên hiển thị
+ui.account.download_codes,Download codes (.txt),Tải mã về (.txt)
 ui.account.invalid_credentials,Username or password is incorrect.,Tên đăng nhập hoặc mật khẩu chưa đúng.
 ui.account.login,Sign in,Đăng nhập
 ui.account.logout,Sign out,Đăng xuất
 ui.account.new_password,New password,Mật khẩu mới
 ui.account.password,Password,Mật khẩu
+ui.account.password_changed,Password changed. Please sign in again.,Đã đổi mật khẩu. Hãy đăng nhập lại.
+ui.account.password_confirm,Repeat password,Nhập lại mật khẩu
+ui.account.password_mismatch,The two passwords do not match.,Hai mật khẩu chưa khớp.
 ui.account.rate_limited,Too many attempts. Please wait and try again.,Bạn đã thử quá nhiều lần. Hãy chờ rồi thử lại.
+ui.account.reauth_required,Please enter your password again to confirm.,Hãy nhập lại mật khẩu để xác nhận.
 ui.account.recover,Recover account,Khôi phục tài khoản
 ui.account.recovery_code,Recovery code,Mã khôi phục
 ui.account.recovery_warning,"Without a recovery code, you may be unable to recover your account.","Nếu không có mã khôi phục, bạn có thể không lấy lại được tài khoản."
 ui.account.register,Create account,Tạo tài khoản
+ui.account.rules,"Username 3–24 characters (a–z, 0–9, _). Password at least 10 characters; avoid common passwords.","Tên đăng nhập 3–24 ký tự (a–z, 0–9, _). Mật khẩu tối thiểu 10 ký tự, tránh mật khẩu phổ biến."
 ui.account.save_recovery,Save these recovery codes now. They will only be shown once.,Hãy lưu các mã khôi phục ngay. Mã chỉ hiển thị một lần.
 ui.account.session_expired,Your session expired. Sign in again to continue.,Phiên đăng nhập đã hết hạn. Đăng nhập lại để tiếp tục.
 ui.account.sync_failed,Server unavailable. Try reconnecting; your confirmed progress is unchanged.,Chưa nối được máy chủ. Thử kết nối lại; tiến trình đã xác nhận vẫn được giữ.
@@ -174,12 +184,28 @@ ui.account.taken_over,Play moved to another device. Your confirmed progress is s
 ui.account.takeover,Move play session to this device,Chuyển phiên chơi sang thiết bị này
 ui.account.takeover_confirm,The other device will return to the lobby. Continue?,Thiết bị kia sẽ trở về sảnh. Bạn muốn tiếp tục?
 ui.account.username,Username,Tên đăng nhập
+ui.account.username_taken,That username is already taken.,Tên đăng nhập này đã có người dùng.
 ui.audio.enable,Click to enable sound and capture the mouse,Bấm để bật âm thanh và điều khiển chuột
+ui.bag.burnt,burnt,khét
+ui.bag.drop,Drop,Bỏ ra
+ui.bag.empty,Your bag is empty. Go catch something!,Túi trống. Đi câu thôi!
+ui.bag.inbox,Returned items,Đồ được trả lại
+ui.bag.take,Take,Lấy
+ui.boot.notice,Online co-op game: an account and internet connection are required. Progress is saved on the server.,Game co-op trực tuyến: cần tài khoản và kết nối mạng. Tiến trình được lưu trên máy chủ.
+ui.boot.subtitle,Cast. Yank. Smack. Sell. Fix up the pier with friends!,Quăng. Giật. Đập. Bán. Cùng bạn bè sửa lại bến cá!
+ui.boss.angry,It's getting angry!,Nó nổi giận rồi!
+ui.boss.arrived,The big one is here!,Con trùm tới rồi!
+ui.boss.defeated,{name} is out cold! Rewards sent.,{name} xỉu rồi! Phần thưởng đã gửi.
 ui.boss.escape,Escaping in,Sắp trốn
+ui.boss.need_bait,You need {bait} to call it here.,Cần {bait} để gọi nó ra đây.
 ui.campaign.complete,The pier is open. Keep fishing together!,Bến mở lại rồi. Cùng nhau câu tiếp thôi!
+ui.cook.level_burnt,"Oops, it burnt. Still sellable (cheap).","Ối, khét rồi. Vẫn bán được (rẻ)."
+ui.cook.level_cooked,Grilled fish ready! Added to your food.,Cá nướng xong! Đã thêm vào đồ ăn.
 ui.coop.create,Create Room,Tạo phòng
 ui.coop.join,Join Room,Vào phòng
+ui.coop.joined,A friend joined the room,Có bạn vừa vào phòng
 ui.coop.leave,Leave room,Rời phòng
+ui.coop.left,{name} left the room,{name} đã rời phòng
 ui.coop.loot_owner,Caught by {name},Người câu: {name}
 ui.coop.ping,Look here,Xem chỗ này
 ui.coop.players,{count}/4 players,{count}/4 người
@@ -193,32 +219,61 @@ ui.coop.wrong_owner,This catch belongs to another player. You can help them catc
 ui.currency.dust,Colour Dust,Bụi màu
 ui.currency.name,Scales,Vảy
 ui.currency.ticket,Festival Tickets,Vé hội câu
+ui.dex.best,best {value},cao nhất {value}
+ui.dex.boss,Boss,Trùm
+ui.dex.caught,caught {n},đã bắt {n}
+ui.dex.progress,Species found: {n}/{total},Loài đã gặp: {n}/{total}
 ui.dex.tab_species,Species,Loài
 ui.dex.tab_tricks,Tricks,Trick
 ui.dex.title,Fish Log,Sổ Cá
+ui.dex.trick_cap,Total trick multiplier is capped at ×{cap}.,Tổng hệ số trick tối đa ×{cap}.
 ui.dex.unknown,???,???
 ui.dialogue.skip,Skip line,Bỏ qua câu thoại
+ui.emote.cheer,Yay!,Hoan hô!
+ui.emote.sorry,Sorry!,Xin lỗi nha!
+ui.emote.thanks,Thanks!,Cảm ơn!
+ui.emote.wave,Hi!,Chào!
+ui.error.generic,Something went wrong ({code}). Please try again.,Có lỗi xảy ra ({code}). Hãy thử lại.
+ui.error.not_owned,You don't have that.,Bạn chưa có món này.
+ui.error.out_of_range,Too far away — get closer.,Xa quá — lại gần hơn.
+ui.fishing.bite_hint,It's biting! Click now!,Cá cắn! Bấm ngay!
+ui.fishing.perfect,Perfect hook!,Giật chuẩn!
 ui.food.free_limit,You already have {count} free meals. Eat one before taking more.,Bạn đã có {count} phần cơm miễn phí. Ăn bớt rồi hãy lấy thêm.
+ui.hotbar.bait,Bait: {name} ({count}),Mồi: {name} ({count})
 ui.hud.bag,Bag,Túi
 ui.hud.cannot_fish_carrying,Put down what you're holding to fish,Đặt đồ đang cầm xuống rồi mới câu được
+ui.hud.click_to_play,Click to play,Bấm chuột để chơi
 ui.hud.hunger,Fullness,Độ no
 ui.hud.inventory_full,Bag is full!,Túi đầy rồi!
 ui.hud.new_species,New species!,Loài mới!
 ui.hud.objective_none,Explore the islet,Dạo quanh cù lao
+ui.hud.you,you,bạn
 ui.hunger.full,You are full. Keep this for later.,Bạn đang no. Để dành phần này nha.
 ui.hunger.low,Feeling hungry? Free rice is available at the stall.,Đói bụng rồi? Sạp có cơm nắm miễn phí.
+ui.keys.hint,Left click: fish/smack · E: interact · 1–4: tools · B: bait · Tab: Fish Book · Esc: menu,Chuột trái: câu/đập · E: tương tác · 1–4: công cụ · B: mồi · Tab: Sổ Cá · Esc: menu
+ui.lobby.connecting,Connecting…,Đang kết nối…
+ui.lobby.create_on,Play on {island},Chơi ở {island}
+ui.lobby.lease_elsewhere,This account is playing on another device.,Tài khoản đang chơi trên thiết bị khác.
+ui.lobby.my_rooms,Your open rooms,Phòng đang mở của bạn
+ui.lobby.rejoin,Rejoin,Vào lại
+ui.lobby.welcome,"Hi, {name}!",Chào {name}!
 ui.lootbox.direct,Choose this colour for {count} colour dust,Chọn màu này bằng {count} bụi màu
 ui.lootbox.duplicate,Already owned: +{count} colour dust,Đã sở hữu: +{count} bụi màu
+ui.lootbox.equip,Equip,Dùng
 ui.lootbox.explain,Cosmetics only. Tickets are earned by playing and cannot be bought.,"Chỉ có đồ trang trí. Vé kiếm khi chơi, không mua bằng tiền."
 ui.lootbox.no_tickets,Earn tickets from quests or every 10 fish sold.,Làm nhiệm vụ hoặc bán mỗi 10 con cá để nhận vé.
 ui.lootbox.odds,Chance: {chance}%,Tỷ lệ: {chance}%
 ui.lootbox.open,Open for {count} festival ticket,Mở bằng {count} vé hội câu
 ui.lootbox.skip,Skip animation,Bỏ qua hiệu ứng
 ui.lootbox.version,Reward table {version},Bảng thưởng {version}
+ui.menu.back,Back,Quay lại
+ui.menu.close,Close,Đóng
 ui.menu.continue,Continue,Chơi tiếp
+ui.menu.lootbox,Festival box,Hộp quà lễ hội
 ui.menu.play,Play,Chơi
 ui.menu.quit,Quit,Thoát
 ui.menu.settings,Settings,Tùy chọn
+ui.menu.travel,Travel,Đi đảo khác
 ui.network.invite_invalid,Room code is invalid or the room has closed.,Mã phòng không hợp lệ hoặc phòng đã đóng.
 ui.network.offline,Cannot reach the server. Reconnect to keep playing.,Chưa kết nối được máy chủ. Kết nối lại để chơi tiếp.
 ui.network.pending_save,Waiting for the server to confirm this action.,Đang chờ máy chủ xác nhận thao tác.
@@ -229,6 +284,10 @@ ui.network.version_mismatch,A new game version is required. Reload this page.,C�
 ui.pause.main_menu,Main Menu,Về menu
 ui.pause.online_notice,The room keeps playing while this menu is open.,Phòng vẫn tiếp tục chơi khi menu này đang mở.
 ui.pause.resume,Resume,Tiếp tục
+ui.ping.fish,Fish here!,Có cá!
+ui.ping.help,Help!,Giúp với!
+ui.ping.here,Over here,Ở đây
+ui.ping.ready,Ready,Sẵn sàng
 ui.player.ko,You fainted!,Bạn xỉu rồi!
 ui.popup.boss_bait_wrong_place,This bait only works at the red post.,Mồi này chỉ dùng ở cọc cờ đỏ.
 ui.popup.boss_escaped,It got away! Your bait is back.,Nó trốn mất! Mồi đã được trả lại.
@@ -245,15 +304,27 @@ ui.prompt.pick_up,Pick up {name} — {value},Nhặt {name} — {value}
 ui.prompt.sell_bag,Sell bag ({count}) — {value},Bán cả túi ({count}) — {value}
 ui.prompt.sell_hint,Toss into the basket to sell,Ném vào thúng để bán
 ui.prompt.store,Store in bag,Cất vào túi
+ui.prompt.summon_boss,Call the big one with {bait} ({count}),Gọi con trùm bằng {bait} ({count})
 ui.prompt.talk,Talk,Nói chuyện
+ui.quest.accept,"Sure, I'll help","Được, để tôi giúp"
+ui.quest.boss_hint,Take {bait} ({count}) to the red post and press E.,Mang {bait} ({count}) tới cọc cờ đỏ rồi bấm E.
+ui.quest.claim,Claim reward,Nhận thưởng
+ui.quest.claim_at,Return to {name} for your reward,Quay lại gặp {name} nhận thưởng
+ui.quest.completed,Done: {name},Hoàn thành: {name}
+ui.quest.started,New task: {name},Việc mới: {name}
+ui.quest.talk_to,Talk to {name},Nói chuyện với {name}
 ui.save.saving,Saving...,Đang lưu...
+ui.settings.account,Account,Tài khoản
 ui.settings.auto_swap,Auto-swap tool after yank,Tự đổi công cụ sau khi giật
 ui.settings.camera_shake,Camera shake,Rung camera
 ui.settings.fov,Field of view,Góc nhìn
 ui.settings.invert_y,Invert Y,Đảo trục dọc
 ui.settings.language,Language,Ngôn ngữ
+ui.settings.master,Master volume,Âm lượng chung
 ui.settings.music,Music,Nhạc
 ui.settings.quality,Graphics quality,Chất lượng đồ họa
+ui.settings.quality_high,High,Cao
+ui.settings.quality_low,Low,Thấp
 ui.settings.reel_hold,Hold,Giữ
 ui.settings.reel_mode,Reel button,Nút kéo dây
 ui.settings.reel_toggle,Tap to toggle,Bấm bật/tắt
@@ -261,7 +332,19 @@ ui.settings.sensitivity,Look sensitivity,Độ nhạy nhìn
 ui.settings.sfx,Sound effects,Hiệu ứng âm thanh
 ui.settings.subtitles,Subtitles,Phụ đề
 ui.settings.voice,Dialogue volume,Âm lượng lời thoại
+ui.shop.buy,Buy,Mua
+ui.shop.collect,Take the grilled fish,Lấy cá nướng
+ui.shop.cook,Grill a fish,Nướng cá
+ui.shop.cook_hint,Bring a raw fish to grill it.,Mang cá sống tới để nướng.
+ui.shop.free,Free,Miễn phí
+ui.shop.owned,Owned,Đã có
+ui.shop.title,{name}'s stall,Sạp của {name}
 ui.slice.end_title,Island one test milestone complete,Đã xong mốc thử nghiệm đảo một
+ui.thief.stolen,A heron stole your catch! Chase it to its nest.,Cò tha mất cá của bạn! Đuổi theo tới tổ nó.
+ui.thief.warning,A heron is eyeing your catch!,Có con cò đang rình cá của bạn!
+ui.travel.explain,"Everyone in the room must agree, and everyone must have unlocked the island.",Cả phòng phải đồng ý và ai cũng đã mở đảo đó.
+ui.travel.locked,Locked,Chưa mở
+ui.travel.unlocked,New island unlocked: {name}!,Mở đảo mới: {name}!
 ui.web.private_mode_warning,Sign in again to recover your server progress after this browser session.,Đăng nhập lại để lấy tiến trình trên máy chủ sau phiên trình duyệt này.
 upg_backpack.name,Bigger Bag,Túi rộng
 upg_reel_speed.name,Fast Reel,Guồng nhanh
@@ -272,3 +355,9 @@ vfx.text.boom,POOF!,BÙM!
 vfx.text.thwack,THWACK!,CHÁT!
 vfx.text.whoosh,WHOOSH!,VÈO!
 vfx.text.zap,ZAP!,TÁCH!
+zone.zone_01_bai_bun.name,Mud Bank,Bãi Bùn
+zone.zone_01_ben_do.name,Ferry Pier,Bến Đò
+zone.zone_02_bai_bun.name,Lotus Pond,Ao Sen
+zone.zone_02_ben_do.name,Coconut Pier,Bến Dừa
+zone.zone_03_bai_bun.name,Rocky Shallows,Bãi Đá
+zone.zone_03_ben_do.name,Cape Pier,Bến Mũi

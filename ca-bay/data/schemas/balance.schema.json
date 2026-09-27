@@ -263,6 +263,11 @@
         },
         "ko_blink_before_wake_s": {
           "type": "number"
+        },
+        "landing_daze_s": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
         }
       }
     },

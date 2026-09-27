@@ -1,0 +1,68 @@
+{
+  "npc_id": "npc_co_ba",
+  "locale": "en",
+  "pack_asset_id": "vo_dialogue_co_ba_en",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "en+f4",
+      "-p",
+      "58",
+      "-s",
+      "170",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Cô Ba — bà bán cá lanh lợi, nói nhanh"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_co_ba.gift_slipper": {
+      "file": "res://assets/audio/vo/npc_co_ba/en/gift_slipper.wav",
+      "sha256": "024bbb0d78a23fa254fb1e3fa54114f50e5e760aa78e321e70df47f97fce737b",
+      "text": "Here, my spare flip-flops. Aim for the head.",
+      "line_key": "gift_slipper",
+      "duration_s": 3.432
+    },
+    "npc_co_ba.greet": {
+      "file": "res://assets/audio/vo/npc_co_ba/en/greet.wav",
+      "sha256": "255398258582ffaaa5d3072e5ef1ec17030edfb7616e2529df9612015fd34b22",
+      "text": "Fresh fish? Toss it in the basket.",
+      "line_key": "greet",
+      "duration_s": 2.525
+    },
+    "npc_co_ba.no_money": {
+      "file": "res://assets/audio/vo/npc_co_ba/en/no_money.wav",
+      "sha256": "8cacacc92b43331c71660335358cef9f8456f8698639a8dd7b82f549baf97bd2",
+      "text": "Money first, dear customer!",
+      "line_key": "no_money",
+      "duration_s": 2.087
+    },
+    "npc_co_ba.no_sell": {
+      "file": "res://assets/audio/vo/npc_co_ba/en/no_sell.wav",
+      "sha256": "46c02749e5d57365c306fe4c108e264d8bdde1203fd2a1a719dad6eea2b2e67b",
+      "text": "That's not something I buy.",
+      "line_key": "no_sell",
+      "duration_s": 1.924
+    },
+    "npc_co_ba.thanks_bad": {
+      "file": "res://assets/audio/vo/npc_co_ba/en/thanks_bad.wav",
+      "sha256": "d2118b990a1bcac4b3deda43cdb56a78b5468dd0120e9b999e84a7a899ca367d",
+      "text": "...I'll take it. Barely.",
+      "line_key": "thanks_bad",
+      "duration_s": 1.834
+    },
+    "npc_co_ba.thanks_good": {
+      "file": "res://assets/audio/vo/npc_co_ba/en/thanks_good.wav",
+      "sha256": "88fecd65d438b6a37bdf483f1b9a25ef9492fe1b2fc26d3387e915a6ebc8df48",
+      "text": "Ooh, premium stuff!",
+      "line_key": "thanks_good",
+      "duration_s": 1.562
+    }
+  }
+}

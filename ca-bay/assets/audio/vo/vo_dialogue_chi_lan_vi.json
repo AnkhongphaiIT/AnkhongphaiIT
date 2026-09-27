@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_chi_lan",
+  "locale": "vi",
+  "pack_asset_id": "vo_dialogue_chi_lan_vi",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "vi+f5",
+      "-p",
+      "70",
+      "-s",
+      "160",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Chị Lan — người tổ chức hội câu, trẻ, rõ ràng, hơi thở nhẹ"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_chi_lan.done": {
+      "file": "res://assets/audio/vo/npc_chi_lan/vi/done.wav",
+      "sha256": "6d874cdac8ee660246b1fefef5909f24d5e6a75116ac78b92e746434351adef8",
+      "text": "Bến mở lại rồi. Các điểm câu vẫn mở, cứ thong thả chơi nha.",
+      "line_key": "done",
+      "duration_s": 5.026
+    },
+    "npc_chi_lan.greet": {
+      "file": "res://assets/audio/vo/npc_chi_lan/vi/greet.wav",
+      "sha256": "7524c89a9a9853c873a52d3247390128d2aaefc4f05741852651ba6f08ea485c",
+      "text": "Hội câu của xã góp nốt kinh phí sửa bến đó.",
+      "line_key": "greet",
+      "duration_s": 3.253
+    },
+    "npc_chi_lan.quest_boss": {
+      "file": "res://assets/audio/vo/npc_chi_lan/vi/quest_boss.wav",
+      "sha256": "5e862bf587d475775113902e6ad3f2ec05d80e36cb54b5062e94246288005550",
+      "text": "Bớp Mũi Đá là thử thách cuối. Chụp ảnh xong mình thả nó đi nha.",
+      "line_key": "quest_boss",
+      "duration_s": 4.778
+    },
+    "npc_chi_lan.quest_prep": {
+      "file": "res://assets/audio/vo/npc_chi_lan/vi/quest_prep.wav",
+      "sha256": "8e370462701dd1d0811c9fe7b8a99fd8d1fd0ceb29de2bf38f8436356c797204",
+      "text": "Mang bốn con cá nục cho bếp chung. Chị chuẩn bị mồi hội câu cho.",
+      "line_key": "quest_prep",
+      "duration_s": 4.751
+    },
+    "npc_chi_lan.refill": {
+      "file": "res://assets/audio/vo/npc_chi_lan/vi/refill.wav",
+      "sha256": "059553647cc5c7de9cbe3c3a6b285f340b450aaad8a6a3055de1c0664416f728",
+      "text": "Thêm hộp mồi đây. Hội câu là để cùng nhau thử mà.",
+      "line_key": "refill",
+      "duration_s": 3.717
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_ong_tu",
+  "locale": "en",
+  "pack_asset_id": "vo_dialogue_ong_tu_en",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "en+grandpa",
+      "-p",
+      "36",
+      "-s",
+      "145",
+      "-g",
+      "2",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Ông Tư — ông lão điềm đạm, giọng trầm hơi run"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_ong_tu.done": {
+      "file": "res://assets/audio/vo/npc_ong_tu/en/done.wav",
+      "sha256": "bc98cf18ebd21f83eaf3f3194e20e9be39d5eb0e77f6ee63a6f3fb9164f3bac3",
+      "text": "Catch recorded! The ferry to the coconut creek is ready.",
+      "line_key": "done",
+      "duration_s": 4.599
+    },
+    "npc_ong_tu.greet": {
+      "file": "res://assets/audio/vo/npc_ong_tu/en/greet.wav",
+      "sha256": "6b5fe0c94d2a83db4f72c5dd7c468fb7b7979ab87de667ecc9c0b23d2853cca1",
+      "text": "The flood damaged our pier. A few good catches will get the village moving again.",
+      "line_key": "greet",
+      "duration_s": 6.022
+    },
+    "npc_ong_tu.quest_boss": {
+      "file": "res://assets/audio/vo/npc_ong_tu/en/quest_boss.wav",
+      "sha256": "a9d52b6f33315535bb81bfe2af93bf9df98832b2c5ce2dc1558174902a7aca69",
+      "text": "Try the red post for Old Snakehead. We will record the catch and release it.",
+      "line_key": "quest_boss",
+      "duration_s": 6.156
+    },
+    "npc_ong_tu.quest_lunch": {
+      "file": "res://assets/audio/vo/npc_ong_tu/en/quest_lunch.wav",
+      "sha256": "08d236780e7e8a43155d79617ff66a71bf9b74c484b7f98b108c76e93fe46543",
+      "text": "Bring three perch for the repair crew. I have some chopped bait for you.",
+      "line_key": "quest_lunch",
+      "duration_s": 5.197
+    },
+    "npc_ong_tu.refill": {
+      "file": "res://assets/audio/vo/npc_ong_tu/en/refill.wav",
+      "sha256": "3817304bff10920a111af2c96f0872822f796ce163096847e40f7a599a5bc185",
+      "text": "Here is replacement bait. We can try again.",
+      "line_key": "refill",
+      "duration_s": 3.814
+    }
+  }
+}

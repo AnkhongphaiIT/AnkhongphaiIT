@@ -1,0 +1,61 @@
+{
+  "npc_id": "npc_nam_sau",
+  "locale": "en",
+  "pack_asset_id": "vo_dialogue_nam_sau_en",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "en+m2",
+      "-p",
+      "44",
+      "-s",
+      "162",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Chú Sáu — người khảo sát lạch, thực tế, giọng trung"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_nam_sau.done": {
+      "file": "res://assets/audio/vo/npc_nam_sau/en/done.wav",
+      "sha256": "3b0cb1b94822a8cf7818286e473ade94e056689b752134be6c093e0480fe1820",
+      "text": "Survey finished. The ferry can reach the cape again.",
+      "line_key": "done",
+      "duration_s": 3.714
+    },
+    "npc_nam_sau.greet": {
+      "file": "res://assets/audio/vo/npc_nam_sau/en/greet.wav",
+      "sha256": "712eb0d6afc04efe1ba399b236d93b9002e42a41c7f894015b296d19b5a48daf",
+      "text": "The tide shifted the mud bank. We are checking the creek before reopening the ferry.",
+      "line_key": "greet",
+      "duration_s": 5.507
+    },
+    "npc_nam_sau.quest_boss": {
+      "file": "res://assets/audio/vo/npc_nam_sau/en/quest_boss.wav",
+      "sha256": "fc197a8a67f64dcf0be073b8f19b4b2cdef8bd9b1afe65457b58e911db373b20",
+      "text": "Old Mud Crab keeps sheltering beside the marker. Try this crab mix.",
+      "line_key": "quest_boss",
+      "duration_s": 5.137
+    },
+    "npc_nam_sau.quest_prep": {
+      "file": "res://assets/audio/vo/npc_nam_sau/en/quest_prep.wav",
+      "sha256": "136a0a4b173af3f3587f9bbfeacefe18c02b139e2b1e35dc50e856e6cd6bb121",
+      "text": "Bring four mudskippers for the creek survey. Then we will release them.",
+      "line_key": "quest_prep",
+      "duration_s": 4.622
+    },
+    "npc_nam_sau.refill": {
+      "file": "res://assets/audio/vo/npc_nam_sau/en/refill.wav",
+      "sha256": "90879c72d0fa2c503f40a49642592b52a2fd096feb00450d35b30b48f2aed588",
+      "text": "Fresh crab mix. No need to pay.",
+      "line_key": "refill",
+      "duration_s": 2.911
+    }
+  }
+}

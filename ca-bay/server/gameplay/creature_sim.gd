@@ -59,10 +59,23 @@ static func tick_all(room) -> void:
 		if not room.entities.has(uid):
 			continue
 		var e: Dictionary = room.entities[uid]
+		if e["kind"] in ["fish", "boss"]:
+			_record_history(e)
 		if e["kind"] == "fish":
 			_tick_fish(room, e, now, dt)
 		elif e["kind"] == "item":
 			_settle(room, e, dt)
+
+
+const LAG_COMP_TICKS := 9  # ≈300 ms ở 30 Hz
+
+
+static func _record_history(e: Dictionary) -> void:
+	var h: Array = e.get("hist", [])
+	h.push_front(e["pos"])
+	if h.size() > LAG_COMP_TICKS:
+		h.pop_back()
+	e["hist"] = h
 
 
 static func _settle(room, e: Dictionary, dt: float) -> void:
@@ -99,7 +112,7 @@ static func _tick_fish(room, e: Dictionary, now: int, dt: float) -> void:
 			if not ko:
 				e["state"] = "landed"
 				if not e.has("idle_until"):
-					e["idle_until"] = now + room.secs(1.5)  # choáng khi vừa rơi xuống lần đầu
+					e["idle_until"] = now + room.secs(float(ContentDB.balance["creature"].get("landing_daze_s", 1.5)))  # choáng khi vừa rơi xuống lần đầu
 			room.emit("creature.landed", e["owner"], {"creature_uid": e["uid"], "surface": "ground", "position": [np.x, np.y, np.z]})
 		else:
 			e["vel"] = v
@@ -237,16 +250,24 @@ static func use_tool(room, p: Dictionary, target_uid: String) -> String:
 	elif target["kind"] != "fish":
 		return "INVALID_PAYLOAD"
 	var eye: Vector3 = Movement.eye(p["pos"])
-	var tpos: Vector3 = target["pos"] + Vector3(0, 0.15, 0)
-	var dist := eye.distance_to(tpos)
 	var reach := float(tool["range_m"]) + (1.4 if is_boss else 0.5) + 0.6
-	if dist > reach:
-		return "OUT_OF_RANGE"
 	var look := Movement.look_dir(p["yaw"], p["pitch"])
-	var ang := rad_to_deg(look.angle_to((tpos - eye).normalized()))
 	var kind: String = tool["kind"]
 	var allowed := (float(tool.get("arc_deg", 60)) * 0.5 + 25.0) if kind == "melee" else (float(ContentDB.balance["aim_assist"]["cone_deg"]) + 14.0)
-	if dist > 1.2 and ang > allowed:
+	# Bù trễ có giới hạn: client thấy thực thể trễ (nội suy 100 ms + mạng), nên chấp nhận vị trí
+	# hiện tại hoặc một vị trí trong LAG_COMP_TICKS tick gần nhất; server vẫn là nơi quyết định.
+	var dist := INF
+	var cands: Array = [target["pos"]]
+	cands.append_array(target.get("hist", []))
+	for c in cands:
+		var tp: Vector3 = c + Vector3(0, 0.15, 0)
+		var d := eye.distance_to(tp)
+		if d > reach:
+			continue
+		if d > 1.2 and rad_to_deg(look.angle_to((tp - eye).normalized())) > allowed:
+			continue
+		dist = minf(dist, d)
+	if dist == INF:
 		return "OUT_OF_RANGE"
 	# đạn/ammo
 	if tool.has("ammo"):

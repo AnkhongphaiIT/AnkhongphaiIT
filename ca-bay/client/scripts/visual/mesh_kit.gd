@@ -46,7 +46,8 @@ func tri(a: Vector3, b: Vector3, c: Vector3, col: Color) -> void:
 	var pb := xf * b
 	var pc := xf * c
 	var n := (pb - pa).cross(pc - pa).normalized()
-	for p in [pa, pb, pc]:
+	# Godot coi mặt trước theo chiều kim đồng hồ: phát đỉnh đảo thứ tự so với pháp tuyến tay phải.
+	for p in [pa, pc, pb]:
 		st.set_color(col)
 		st.set_normal(n)
 		st.add_vertex(p)

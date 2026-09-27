@@ -1,0 +1,68 @@
+{
+  "npc_id": "npc_co_ba",
+  "locale": "vi",
+  "pack_asset_id": "vo_dialogue_co_ba_vi",
+  "voice": {
+    "engine": "espeak-ng",
+    "args": [
+      "-v",
+      "vi+f4",
+      "-p",
+      "56",
+      "-s",
+      "165",
+      "-g",
+      "1",
+      "-a",
+      "100",
+      "-b",
+      "1"
+    ],
+    "desc": "Cô Ba — bà bán cá lanh lợi, nói nhanh"
+  },
+  "license": "tbd",
+  "lines": {
+    "npc_co_ba.gift_slipper": {
+      "file": "res://assets/audio/vo/npc_co_ba/vi/gift_slipper.wav",
+      "sha256": "e157e60db5caae9b7540eaee87505f2d58be197e3f3608ba77d192c5cfa79777",
+      "text": "Nè, đôi dép dự phòng của cô. Nhắm đầu mà chọi.",
+      "line_key": "gift_slipper",
+      "duration_s": 4.11
+    },
+    "npc_co_ba.greet": {
+      "file": "res://assets/audio/vo/npc_co_ba/vi/greet.wav",
+      "sha256": "7bef3c2b86c783a1ee9eb38283405f712f5c88c2c1c9b1f1d198fbccd49b35ab",
+      "text": "Cá tươi hả? Quăng vô thúng đi con.",
+      "line_key": "greet",
+      "duration_s": 3.082
+    },
+    "npc_co_ba.no_money": {
+      "file": "res://assets/audio/vo/npc_co_ba/vi/no_money.wav",
+      "sha256": "422a47dba58b0593300f82dc356cc058c54d5b5d10166a66e15569e25c569b40",
+      "text": "Tiền trước, khách ơi!",
+      "line_key": "no_money",
+      "duration_s": 1.803
+    },
+    "npc_co_ba.no_sell": {
+      "file": "res://assets/audio/vo/npc_co_ba/vi/no_sell.wav",
+      "sha256": "ca1c5e6c5b07cc43536d5cb90ddf9ca2e09ca7d39c8c286c07ddf7521208a34a",
+      "text": "Cái này cô không mua đâu.",
+      "line_key": "no_sell",
+      "duration_s": 1.746
+    },
+    "npc_co_ba.thanks_bad": {
+      "file": "res://assets/audio/vo/npc_co_ba/vi/thanks_bad.wav",
+      "sha256": "2d6da9fffd4a01de4665507b2c4b76bba05663c9f369948860e310cd27821424",
+      "text": "...Thôi cô lấy. Miễn cưỡng.",
+      "line_key": "thanks_bad",
+      "duration_s": 2.181
+    },
+    "npc_co_ba.thanks_good": {
+      "file": "res://assets/audio/vo/npc_co_ba/vi/thanks_good.wav",
+      "sha256": "37e5c47e331f3be5d02dc16d3bc04319d71c17608160fb74e6a4946f043cb8c0",
+      "text": "Ui, hàng ngon nha!",
+      "line_key": "thanks_good",
+      "duration_s": 1.989
+    }
+  }
+}

@@ -17,6 +17,7 @@ run/max_fps=0
 ContentDB="*res://shared/content/content_db.gd"
 Loc="*res://client/scripts/core/loc.gd"
 Settings="*res://client/scripts/core/settings.gd"
+AudioDirector="*res://client/scripts/audio/audio_director.gd"
 
 [display]
 

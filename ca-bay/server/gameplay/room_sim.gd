@@ -107,6 +107,7 @@ func attach_player(peer_id: int, s: Dictionary) -> void:
 	if not boss_state.is_empty():
 		Boss.resync_to(self, aid)
 	send_snapshot_to(aid)
+	_push_view(p)
 	if resumed:
 		print("CABAY_RESUME %s" % aid)
 
@@ -701,6 +702,31 @@ func emit(name: String, actor: Variant, payload: Dictionary) -> void:
 	for aid in players:
 		if players[aid]["peer_id"]:
 			server.send(players[aid]["peer_id"], "domain.event", ev)
+	if actor != null and TUTORIAL_EVENTS.has(name):
+		var step: String = TUTORIAL_EVENTS[name]
+		if name != "creature.damaged" or payload.get("airborne", false):
+			_tutorial(actor, step)
+
+
+## Sự kiện đầu tiên của mỗi bước hướng dẫn → ghi vào save (server op, một lần/bước).
+const TUTORIAL_EVENTS := {
+	"fishing.cast_released": "cast", "fishing.hook_set": "reel", "fishing.thrash_ended": "thrash",
+	"creature.knocked_out": "smack", "creature.damaged": "throw_air", "item.picked_up": "pickup",
+	"economy.item_sold": "sell",
+}
+
+
+func _tutorial(account_id: String, step: String) -> void:
+	var p: Dictionary = players.get(account_id, {})
+	if p.is_empty() or step in p["save"]["progress"]["tutorial_done"]:
+		return
+	var pend: Dictionary = p.get("tut_pending", {})
+	if pend.has(step):
+		return
+	pend[step] = true
+	p["tut_pending"] = pend
+	await server_op(p, "tutorial.done", {"step_id": step})
+	pend.erase(step)
 
 
 func emit_to(account_id: String, name: String, actor: Variant, payload: Dictionary) -> void:

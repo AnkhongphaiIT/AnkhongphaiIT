@@ -47,7 +47,8 @@ func connect_to(url: String, ticket: String, root: Node) -> void:
 		closed.emit("connect_failed", true)
 		return
 	mp.multiplayer_peer = peer
-	get_tree().set_multiplayer(mp, root.get_path())
+	# Gốc là cây chính: dùng multiplayer mặc định; gốc riêng (bot trong một tiến trình): đường dẫn riêng.
+	get_tree().set_multiplayer(mp, NodePath() if root == get_tree().root else root.get_path())
 	mp.peer_authenticating.connect(_on_authenticating)
 	mp.peer_authentication_failed.connect(func(_id): _fail("auth_timeout"))
 	mp.connected_to_server.connect(func(): state = "live")
