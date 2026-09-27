@@ -1,0 +1,8 @@
+# Dependency trực tiếp của backend CÁ BAY. Khóa bản cụ thể ở requirements.lock.txt.
+fastapi
+uvicorn
+jsonschema
+referencing
+# chỉ dùng cho test
+pytest
+httpx

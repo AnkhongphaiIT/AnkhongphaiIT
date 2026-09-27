@@ -235,6 +235,20 @@
             "maximum": 2147483647
           },
           "maxProperties": 256
+        },
+        "tool_ammo": {
+          "type": "object",
+          "description": "CR-001: số lượt còn lại của công cụ có ammo mua được (vd tool_coconut_bomb). Tùy chọn, tương thích ngược.",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^tool_[a-z0-9_]+$",
+            "maxLength": 80
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999
+          }
         }
       }
     },

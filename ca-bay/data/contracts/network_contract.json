@@ -216,6 +216,24 @@
       "path": "/v1/auth/password",
       "auth": "access_token",
       "purpose": "Require current password and new password validation; change slow hash and revoke all sessions/tickets/leases. User signs in again."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/reauth",
+      "auth": "access_token",
+      "purpose": "CR-002: xác thực lại bằng mật khẩu để mở cửa sổ 5 phút cho thao tác nhạy cảm (xóa tài khoản)."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/rooms/lookup",
+      "auth": "access_token",
+      "purpose": "CR-002: tra room_id từ mã mời (người chơi chỉ biết mã); rate limit như join."
+    },
+    {
+      "method": "POST",
+      "path": "/internal/leases/release-via-room-status",
+      "auth": "private_service",
+      "purpose": "CR-002: room server gửi danh sách lease hết cửa sổ nối lại trong /internal/room-status.released; backend vô hiệu lease và trả escrow về recovery inbox đúng một lần."
     }
   ],
   "messages": [
@@ -1656,7 +1674,13 @@
     "ALREADY_OWNED",
     "PLAYER_INACTIVE",
     "SERVER_BUSY",
-    "PERSISTENCE_UNAVAILABLE"
+    "PERSISTENCE_UNAVAILABLE",
+    "INVALID_CREDENTIALS",
+    "USERNAME_TAKEN",
+    "WEAK_PASSWORD",
+    "REAUTH_REQUIRED",
+    "LEASE_ACTIVE_ELSEWHERE",
+    "ROOM_NOT_READY"
   ],
   "invariants": [
     "Client never chooses damage, prices, rewards, RNG result or account authority.",
