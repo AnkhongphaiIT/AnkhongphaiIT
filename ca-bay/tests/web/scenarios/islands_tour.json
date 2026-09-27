@@ -1,0 +1,175 @@
+[
+ {
+  "goto": "{BASE}/index.html?autotest=1&scale=0.8"
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   640,
+   372
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   634,
+   495
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "b00_login"
+ },
+ {
+  "type": "{CP_USER}"
+ },
+ {
+  "key": "Tab"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "type": "{CP_PASS}"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "waitlog": "CABAY_AUTH_SUBMIT",
+  "timeout": 20000
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "click": [
+   441,
+   292
+  ]
+ },
+ {
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 30000
+ },
+ {
+  "wait": 4000
+ },
+ {
+  "shot": "t1_arrive"
+ },
+ {
+  "hold": "KeyJ",
+  "ms": 1400
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "t1_side"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "click": [
+   640,
+   470
+  ]
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "click": [
+   400,
+   368
+  ]
+ },
+ {
+  "waitlog": "CABAY_ISLAND isl_02_rung_dua",
+  "timeout": 20000
+ },
+ {
+  "wait": 4500
+ },
+ {
+  "key": "KeyG"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "t2_arrive"
+ },
+ {
+  "hold": "KeyJ",
+  "ms": 1400
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "t2_side"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "click": [
+   640,
+   470
+  ]
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "click": [
+   400,
+   422
+  ]
+ },
+ {
+  "waitlog": "CABAY_ISLAND isl_03_mui_da",
+  "timeout": 20000
+ },
+ {
+  "wait": 4500
+ },
+ {
+  "key": "KeyG"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "t3_arrive"
+ },
+ {
+  "hold": "KeyJ",
+  "ms": 1400
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "t3_side"
+ }
+]

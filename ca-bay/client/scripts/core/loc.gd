@@ -57,8 +57,15 @@ func t(key: String, args: Dictionary = {}) -> String:
 		missing_keys[key] = true
 		s = key
 	for k in args:
-		s = s.replace("{" + String(k) + "}", str(args[k]))
+		s = s.replace("{" + String(k) + "}", _fmt_arg(args[k]))
 	return s
+
+
+## JSON của Godot trả mọi số dạng float: 3.0 phải hiện "3" (lỗi cũ: "0.0/4 người").
+static func _fmt_arg(v: Variant) -> String:
+	if typeof(v) == TYPE_FLOAT and is_finite(v) and v == floorf(v) and absf(v) < 1e15:
+		return str(int(v))
+	return str(v)
 
 
 func name_of(id: String) -> String:

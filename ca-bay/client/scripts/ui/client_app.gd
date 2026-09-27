@@ -294,7 +294,7 @@ func _fill_rooms(box: VBoxContainer) -> void:
 	box.add_child(UIKit.label(Loc.t("ui.lobby.my_rooms"), 18))
 	for room in rooms:
 		box.add_child(UIKit.hbox([
-			UIKit.label("%s · %s · %s" % [room["invite_code"], Loc.name_of(room["island_id"]), Loc.t("ui.coop.players", {"count": room["players"]})], 16),
+			UIKit.label("%s · %s · %s" % [room["invite_code"], Loc.name_of(room["island_id"]), Loc.t("ui.coop.players", {"count": int(room["players"])})], 16),
 			UIKit.button(Loc.t("ui.lobby.rejoin"), func(): _enter_room(room)),
 		]))
 

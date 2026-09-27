@@ -820,8 +820,8 @@
       "files": [
         {
           "path": "res://assets/env/env_isl01_day.tres",
-          "bytes": 734,
-          "sha256": "3a38a57110cf683d40924925e2e3490ffda549155330d45a425f553abc24807c"
+          "bytes": 735,
+          "sha256": "7d40f46e2bf750aba6dea1305248bdadd5b325abf0a3f7aaa45cae22d7c7b5f7"
         }
       ],
       "source": {
@@ -5225,8 +5225,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5250,8 +5250,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5275,8 +5275,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5300,8 +5300,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5325,8 +5325,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5350,8 +5350,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5375,8 +5375,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5400,8 +5400,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5425,8 +5425,8 @@
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -5857,8 +5857,8 @@
       "files": [
         {
           "path": "res://assets/env/env_isl02_day.tres",
-          "bytes": 734,
-          "sha256": "eb5f3126b24ccd9ed73f27b99b7bff2674343b10906caf03ff350c4b193aa42c"
+          "bytes": 732,
+          "sha256": "16bbded1c2e31b85751cef77b8781aec8a22f3f3036d3bbd2b97235c70ebe8f2"
         }
       ],
       "source": {
@@ -5875,8 +5875,8 @@
       "files": [
         {
           "path": "res://assets/env/env_isl03_day.tres",
-          "bytes": 734,
-          "sha256": "0ee26f39100792e7da815690e67531f5dcd3854aabc98e3ffe6d7913b418fa0f"
+          "bytes": 725,
+          "sha256": "cbe87d8cfced3dded3a58dbbb61d15083babddd9644f9bd12ea56afa61c5c22b"
         }
       ],
       "source": {

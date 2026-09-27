@@ -107,3 +107,13 @@ func test_rebind_keys_swap_and_hints(t) -> void:
 	Settings.reset_keybinds()
 	t.eq(Settings.key_label("interact"), "E", "về mặc định")
 	Settings.set_value("keybinds", saved)
+
+
+func test_loc_whole_floats_render_as_int(t) -> void:
+	# JSON của Godot trả số dạng float; chuỗi dịch không được hiện "0.0/4 người"
+	var old := Loc.locale
+	Loc.locale = "vi"
+	t.eq(Loc.t("ui.coop.players", {"count": 0.0}), "0/4 người", "0.0 → 0")
+	t.eq(Loc.t("ui.coop.players", {"count": 3.0}), "3/4 người", "3.0 → 3")
+	t.ok(Loc.t("ui.coop.players", {"count": 2.5}).begins_with("2.5"), "số lẻ giữ nguyên")
+	Loc.locale = old

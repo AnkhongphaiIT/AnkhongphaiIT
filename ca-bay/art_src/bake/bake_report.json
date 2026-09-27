@@ -19,28 +19,28 @@
       "alpha": true,
       "path": "res://assets/icons/ico_bait_crab_mix.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        32,
-        67,
-        192,
-        147
+        32.0,
+        67.0,
+        192.0,
+        147.0
       ]
     },
     "ico_bait_fish_strip": {
       "alpha": true,
       "path": "res://assets/icons/ico_bait_fish_strip.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        73,
-        91,
-        140,
-        71
+        73.0,
+        91.0,
+        140.0,
+        71.0
       ]
     },
     "ico_bait_milk_tea": {
@@ -61,14 +61,14 @@
       "alpha": true,
       "path": "res://assets/icons/ico_bait_shrimp_paste.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        52,
-        63,
-        152,
-        131
+        52.0,
+        63.0,
+        152.0,
+        131.0
       ]
     },
     "ico_bait_worm": {
@@ -453,14 +453,14 @@
       "alpha": true,
       "path": "res://assets/icons/ico_rod_carbon.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        20,
-        109,
-        216,
-        37
+        20.0,
+        109.0,
+        216.0,
+        37.0
       ]
     },
     "ico_tool_broom": {
@@ -481,14 +481,14 @@
       "alpha": true,
       "path": "res://assets/icons/ico_tool_coconut_bomb.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        71,
-        51,
-        114,
-        155
+        71.0,
+        51.0,
+        114.0,
+        155.0
       ]
     },
     "ico_tool_hand": {
@@ -509,14 +509,14 @@
       "alpha": true,
       "path": "res://assets/icons/ico_tool_slingshot.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        76,
-        28,
-        107,
-        193
+        76.0,
+        28.0,
+        107.0,
+        193.0
       ]
     },
     "ico_tool_slipper": {
@@ -537,42 +537,42 @@
       "alpha": true,
       "path": "res://assets/icons/ico_tool_swatter.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        62,
-        95,
-        154,
-        62
+        62.0,
+        95.0,
+        154.0,
+        62.0
       ]
     },
     "ico_upg_backpack": {
       "alpha": true,
       "path": "res://assets/icons/ico_upg_backpack.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        57,
-        30,
-        144,
-        197
+        57.0,
+        30.0,
+        144.0,
+        197.0
       ]
     },
     "ico_upg_reel_speed": {
       "alpha": true,
       "path": "res://assets/icons/ico_upg_reel_speed.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        58,
-        51,
-        126,
-        155
+        58.0,
+        51.0,
+        126.0,
+        155.0
       ]
     }
   },

@@ -14,10 +14,17 @@ var water: MeshInstance3D
 
 static var _water_shader: Shader
 
+# Art Bible (05): đảo 1 ấm và có phù sa, đảo 2 xanh lá và bùn, đảo 3 xanh biển lạnh.
 const PALETTES := {
-	"cu_lao": {"sand": Color("#E9C98B"), "grass": Color("#7CC24A"), "grass2": Color("#8FCB55"), "mud": Color("#9C8455"), "shallow": Color("#56B6A6"), "deep": Color("#2A7F86"), "bed": Color("#9C8455")},
-	"rung_dua": {"sand": Color("#C9B07A"), "grass": Color("#5FAE45"), "grass2": Color("#4E9A3A"), "mud": Color("#8D6A4A"), "shallow": Color("#4FA88C"), "deep": Color("#26766E"), "bed": Color("#6B5A3A")},
-	"mui_da": {"sand": Color("#E6D3A3"), "grass": Color("#86B85A"), "grass2": Color("#9AA890"), "mud": Color("#8E8E86"), "shallow": Color("#3FB8C4"), "deep": Color("#1F6F9C"), "bed": Color("#7A8A8E")},
+	"cu_lao": {"sand": Color("#E6C07F"), "grass": Color("#8CC44B"), "grass2": Color("#A6C455"), "mud": Color("#9C7F4E"), "shallow": Color("#5DB3A0"), "deep": Color("#2E7F80"), "bed": Color("#9C7F4E")},
+	"rung_dua": {"sand": Color("#B79B68"), "shore": Color("#86683F"), "grass": Color("#4FA243"), "grass2": Color("#3C8C3A"), "mud": Color("#7C5C3C"), "shallow": Color("#4E9F84"), "deep": Color("#276F66"), "bed": Color("#5E4E32")},
+	"mui_da": {"sand": Color("#EDE0BC"), "grass": Color("#7FAE6C"), "grass2": Color("#9AA58F"), "mud": Color("#8E8E86"), "rock": Color("#8F979B"), "rock_h": 2.1, "shallow": Color("#3DB4CC"), "deep": Color("#1B5F9E"), "bed": Color("#6E7F88")},
+}
+# trời/sương/nắng từng đảo
+const ENVS := {
+	"cu_lao": {"top": Color("#5EC8F2"), "horizon": Color("#F4E6C6"), "fog": Color("#F1E3C3"), "fog_density": 0.0014, "sun": Color("#FFE0AC"), "sun_energy": 1.2, "ambient": 0.55, "sun_rot": Vector3(-48, -35, 0)},
+	"rung_dua": {"top": Color("#62B9CF"), "horizon": Color("#D2EBD0"), "fog": Color("#CDE5C9"), "fog_density": 0.0026, "sun": Color("#FFF3DA"), "sun_energy": 1.0, "ambient": 0.62, "sun_rot": Vector3(-60, -20, 0)},
+	"mui_da": {"top": Color("#3A98E2"), "horizon": Color("#D3E9F8"), "fog": Color("#D6EBF9"), "fog_density": 0.0010, "sun": Color("#EEF4FF"), "sun_energy": 1.25, "ambient": 0.5, "sun_rot": Vector3(-40, -60, 0)},
 }
 
 
@@ -49,31 +56,32 @@ func build(isl: String) -> void:
 
 
 func _build_environment(L: Dictionary) -> void:
+	var E: Dictionary = ENVS.get(L.get("palette", "cu_lao"), ENVS["cu_lao"])
 	env = WorldEnvironment.new()
 	var e := Environment.new()
 	var sky := Sky.new()
 	var mat := ProceduralSkyMaterial.new()
-	mat.sky_top_color = Color("#5EC8F2")
-	mat.sky_horizon_color = Color("#CDEFF7")
-	mat.ground_horizon_color = Color("#CDEFF7")
-	mat.ground_bottom_color = Color("#3FB8AF")
+	mat.sky_top_color = E["top"]
+	mat.sky_horizon_color = E["horizon"]
+	mat.ground_horizon_color = E["horizon"]
+	mat.ground_bottom_color = (E["top"] as Color).lerp(Color("#3FB8AF"), 0.6)
 	mat.sun_angle_max = 20.0
 	sky.sky_material = mat
 	e.background_mode = Environment.BG_SKY
 	e.sky = sky
 	e.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	e.ambient_light_energy = 0.55
+	e.ambient_light_energy = E["ambient"]
 	e.tonemap_mode = Environment.TONE_MAPPER_LINEAR
 	e.fog_enabled = true
-	e.fog_light_color = Color("#CDEFF7")
-	e.fog_density = 0.0012
+	e.fog_light_color = E["fog"]
+	e.fog_density = E["fog_density"]
 	e.fog_sky_affect = 0.0
 	env.environment = e
 	add_child(env)
 	sun = DirectionalLight3D.new()
-	sun.light_color = Color("#FFF1D6")
-	sun.light_energy = 1.15
-	sun.rotation_degrees = Vector3(-52, -35, 0)
+	sun.light_color = E["sun"]
+	sun.light_energy = E["sun_energy"]
+	sun.rotation_degrees = E["sun_rot"]
 	sun.shadow_enabled = String(Settings.get_value("quality", "low")) != "low"
 	sun.directional_shadow_max_distance = 45.0
 	add_child(sun)
@@ -82,11 +90,17 @@ func _build_environment(L: Dictionary) -> void:
 func _color_at(pal: Dictionary, x: float, z: float, h: float) -> Color:
 	if h < -0.4:
 		return (pal["bed"] as Color).darkened(clampf(-h / 6.0, 0.0, 0.4))
-	if h < 0.35:
-		return pal["sand"]
 	var n := sin(x * 0.37) * cos(z * 0.29)
+	if h < 0.35:
+		# đảo 2: bờ bùn lẫn cát thay vì bãi cát
+		if pal.has("shore") and n > -0.35:
+			return (pal["shore"] as Color).lerp(pal["sand"], 0.25 + 0.2 * n)
+		return pal["sand"]
 	if L_is_mud(x, z):
 		return pal["mud"]
+	# đảo 3: đá lộ trên chỗ cao, loang theo nhiễu
+	if pal.has("rock") and h > float(pal["rock_h"]) - 0.6 * n:
+		return (pal["rock"] as Color).lerp(pal["grass2"], clampf(0.35 - 0.3 * n, 0.0, 0.5))
 	return (pal["grass"] as Color).lerp(pal["grass2"], 0.5 + 0.5 * n)
 
 
@@ -210,6 +224,14 @@ func _build_props(L: Dictionary) -> void:
 		r.position = IslandLayout.v3(island_id, Vector2(p[0], p[1]), -0.3)
 		r.rotation.y = i
 		add_child(r)
+		i += 1
+	# mỏm đá biển (đảo 3): khối đá lớn đứng trong nước quanh bến, nhìn thấy ngay khi vào đảo
+	for p in props.get("stack", []):
+		var st := Models.rock(float(p[2]))
+		st.position = IslandLayout.v3(island_id, Vector2(p[0], p[1]), -0.6)
+		st.rotation.y = i * 0.9
+		st.scale = Vector3(1.0, 1.9, 1.0)
+		add_child(st)
 		i += 1
 	for p in props.get("lighthouse", []):
 		var lh := Models.lighthouse()
