@@ -32,6 +32,8 @@ Cập nhật: 28/09/2026 (phiên 2, rạng sáng) · Nhánh: `claude/tender-alle
 
 - Phiên 3 (28/09): chủ dự án hỏi link game → chưa có link công khai (NEED-HOST/NEED-ITCH). Làm đường tự host **một cổng** (P-035: backend phục vụ trang + chuyển tiếp `/ws`; client `@origin`), gói máy chủ **Windows** có sẵn Python 3.11.9 + room server `.exe` + `CHOI_THU.bat` và gói **Linux** `run/choi_thu.sh` (P-038). Sửa 3 lỗi bảo mật/vận hành: `?api=` đổi được máy chủ ở bản công khai (P-034), giả IP qua `X-Forwarded-For` để lách giới hạn thử sai (P-036), script PowerShell lỗi cú pháp trên PS 5.1 (P-037). Kiểm: E2E một cổng (full_loop, room_crash), gói Linux qua `choi_thu.sh`, backend Windows dưới Wine; room server `.exe` **chưa chạy được thử** (Wine 9 không chạy Godot 4.7) → chờ chủ dự án thử trên Windows thật.
 
+- Phiên 3 (tiếp): hồi quy 15 kịch bản bot PASS sau P-039/P-040; NET-06/AUTH-02 bổ sung PASS; tab ẩn 20 s PASS; chữ luật mật khẩu sửa khớp server (12 ký tự). Theo yêu cầu chủ dự án làm **"Chơi ngay"** (P-041): màn đầu gõ tên + một nút là vào, lần sau "Chơi tiếp", đặt mật khẩu tùy chọn để chơi máy khác — vẫn giữ bảo vệ ẩn (khóa ngẫu nhiên băm, giới hạn tạo/IP). Gói Windows mới (31789c6) đã gửi. Cổng `/ws` thêm ≈1,6 ms RTT.
+
 ## Tài nguyên còn tạm
 
 - Thoại VI/EN: espeak-ng (giọng máy, GPL/tbd) — **chưa đạt** yêu cầu giọng đọc; bản phát hành loại thoại tạm, chỉ phụ đề + âm "lẩm bẩm".

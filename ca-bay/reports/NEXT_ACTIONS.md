@@ -1,11 +1,11 @@
 # NEXT_ACTIONS (tối đa 5, theo thứ tự)
 
-0. **Chờ chủ dự án chạy gói Windows** (`ca-bay-server-0.1.0-windows.zip` → `CHOI_THU.bat`, hoặc 3 phần `.001–.003` + `GHEP_FILE.bat`) và báo kết quả: room server `.exe` chưa chạy thử được trên Windows thật (Wine 9 không chạy Godot 4.7). Nếu lỗi: dự phòng `GODOT_EXE` trong runbook. Khi có link cloudflared: buổi thử 60 phút (`release/PLAYTEST_60MIN.md`) → NET-01, WEB-02, UX thật.
-1. **Hoàn tất WP-12**: chạy xong bộ bot hồi quy sau P-039/P-040, bổ sung NET-06/AUTH-02 vào bot `negative` (NaN/vô cực, gói quá lớn, lệch content/protocol, socket không xác thực 5 s), E2E tab ẩn 20 s (`tab_hidden_long`), đo độ trễ thêm của cổng chuyển tiếp `/ws`, commit, đóng gói lại, gửi lại gói Windows nếu có sửa ở room server.
-2. **Mục MỘT PHẦN trong `reports/VALIDATION_MATRIX.md`**: WEB-01 (thử tay khóa chuột/Esc/toàn màn hình khi có máy thật; Firefox), PERF-01 (FPS máy thật).
+0. **Chờ chủ dự án chạy gói Windows mới** (gửi 28/09 10:25, commit 31789c6: 3 phần `.001–.003` + `GHEP_FILE.bat` → giải nén → `CHOI_THU.bat` → **Chơi ngay**) và báo kết quả; room server `.exe` chưa chạy thử được trên Windows thật (Wine 9 không chạy Godot 4.7). Nếu lỗi: xem ảnh cửa sổ đen (đã có lời báo lỗi tiếng Việt), dự phòng `GODOT_EXE`. Khi có link cloudflared: buổi thử 60 phút (`release/PLAYTEST_60MIN.md`) → NET-01, WEB-02, UX thật.
+1. **Nếu chủ dự án vẫn muốn bỏ hẳn bảo mật** (vào bằng tên, không khóa): xác nhận rõ rủi ro trước (ai gõ đúng tên là vào tài khoản người khác), đổi docs 07/08, P-041.
+2. **Mục MỘT PHẦN trong `reports/VALIDATION_MATRIX.md`**: WEB-01 (thử tay khóa chuột/Esc/toàn màn hình, Firefox), PERF-01 (FPS máy thật) — cần máy thật.
 3. **Làm đẹp còn thô**: tay góc nhìn thứ nhất, NPC, icon mảnh (cần carbon, vỉ ruồi).
-4. **Chờ chủ dự án** (không chặn việc khác): NEED-HOST (đã có đường một link), NEED-ITCH, NEED-CONTACT, NEED-VOICE-LICENSE/voice_v1, NEED-DEVICES (buổi thử có máy Firefox), relay batch ChatGPT b01/b02.
-5. Sau mỗi mốc: cập nhật `reports/*` (kể cả `VALIDATION_MATRIX.md`), đóng gói lại web/server, commit + push.
+4. **Chờ chủ dự án** (không chặn việc khác): NEED-HOST (đường một link đã sẵn), NEED-ITCH, NEED-CONTACT, NEED-VOICE-LICENSE/voice_v1, NEED-DEVICES, relay batch ChatGPT b01/b02.
+5. Sau mỗi mốc: cập nhật `reports/*` (kể cả `VALIDATION_MATRIX.md`), đóng gói lại, chia phần (`split_parts.py`), commit + push.
 
 ## Lệnh tiếp tục đã kiểm chứng
 

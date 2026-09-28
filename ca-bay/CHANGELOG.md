@@ -20,6 +20,8 @@
 
 **Chơi thử trên máy mình / một link cho bạn bè (P-035, P-038):** gói máy chủ bản Windows có sẵn Python và room server — giải nén, bấm `CHOI_THU.bat` là chơi ở `http://127.0.0.1:8787`; máy chủ phục vụ luôn trang game và chuyển tiếp kết nối phòng chơi trên cùng một cổng, nên một đường hầm HTTPS (ví dụ `cloudflared tunnel --url http://127.0.0.1:8787`) cho ra **một link** gửi bạn bè. Gói Linux: `run/choi_thu.sh`.
 
+**Vào game một bước (P-041):** màn đầu có ô tên + nút **Chơi ngay** — không phải chọn tên đăng nhập, mật khẩu hay lưu mã khôi phục; lần sau trên cùng máy bấm **Chơi tiếp**. Muốn chơi trên máy khác: Tùy chọn → Đặt mật khẩu. Đăng nhập/tạo tài khoản bằng mật khẩu vẫn còn ở nút phụ.
+
 **Mạng (từ kiểm thử bot WP-12):** mất Wi-Fi/máy ngủ mà không có gói đóng kết nối giờ được máy chủ nhận ra sau ~15 s (trước đây người chơi "ma" giữ chỗ mãi và máy chủ dồn dữ liệu vào kết nối chết) — người chơi được giữ chỗ 90 s và tự nối lại; cá đã thả xuống đất lúc room server sập giờ về hộp thư đồ khi vào lại (trước đây kẹt, không thấy để nhặt); tên boss chỉ hiện trên thanh máu HUD (nhãn 3D trên đầu boss chồng lên thanh này đã bỏ).
 
 **Bảo mật:** bản công khai không cho tham số `?api=&ws=` đổi máy chủ (chống link lừa gửi mật khẩu đi nơi khác, P-034); giới hạn thử sai theo IP sau đường hầm không còn lách được bằng header giả (P-036); script PowerShell của gói Windows trước đây lỗi cú pháp trên PowerShell 5.1 vì thiếu BOM — đã sửa và thêm bước kiểm khi đóng gói (P-037).
