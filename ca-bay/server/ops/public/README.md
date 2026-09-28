@@ -10,7 +10,7 @@ Máy chủ phục vụ luôn trang game: mở `http://127.0.0.1:8787` là chơi;
 
 **Windows 10/11**
 1. Chuột phải file zip → Properties → tick **Unblock** → OK (để Windows không chặn script tải về), rồi giải nén (Extract All).
-2. Mở thư mục vừa giải nén, bấm đúp **`CHOI_THU.bat`**. Lần đầu tự tạo `.env` (khóa ngẫu nhiên), mở hai cửa sổ máy chủ (đừng đóng) và mở trình duyệt vào `http://127.0.0.1:8787`. Nếu Windows hiện "Windows đã bảo vệ PC": bấm "Thông tin thêm" → "Vẫn chạy".
+2. Mở thư mục vừa giải nén, bấm đúp **`CHOI_THU.bat`**. Trong game: gõ tên → **Chơi ngay** (không cần mật khẩu; lần sau bấm **Chơi tiếp**). Muốn chơi cùng tài khoản trên máy khác: Tùy chọn → Đặt mật khẩu. Lần đầu tự tạo `.env` (khóa ngẫu nhiên), mở hai cửa sổ máy chủ (đừng đóng) và mở trình duyệt vào `http://127.0.0.1:8787`. Nếu Windows hiện "Windows đã bảo vệ PC": bấm "Thông tin thêm" → "Vẫn chạy".
 3. Mời bạn bè qua Internet: tải `cloudflared` (bản Windows, miễn phí, không cần tài khoản) từ trang của Cloudflare, mở PowerShell và chạy
    `cloudflared tunnel --url http://127.0.0.1:8787` → gửi link `https://….trycloudflare.com` nó in ra. Link đổi mỗi lần chạy lại lệnh; tắt máy/đóng cửa sổ là link chết.
 

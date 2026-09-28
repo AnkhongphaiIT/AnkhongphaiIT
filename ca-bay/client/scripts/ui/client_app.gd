@@ -208,6 +208,10 @@ func show_auth(tab: String) -> void:
 	var p := UIKit.panel(v)
 	p.custom_minimum_size = Vector2(520, 0)
 	_set_screen("auth", p)
+	# lỡ bấm vào đăng nhập: quay lại "Chơi ngay" (nút góc trên trái, không đẩy lệch khung giữa)
+	var back := UIKit.button("← " + Loc.t("ui.quick.play"), show_boot)
+	back.position = Vector2(16, 16)
+	root_ui.add_child(back)
 	user.grab_focus()
 
 

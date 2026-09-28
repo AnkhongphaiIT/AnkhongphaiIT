@@ -224,7 +224,7 @@ func _show_change_password() -> void:
 	_status = UIKit.label("", 16, UIKit.C_GOLD)
 	v.add_child(_status)
 	v.add_child(UIKit.hbox([
-		UIKit.button(Loc.t("ui.account.change_password"), func(): _do_change_password(cur.text, pw.text, pw2.text)),
+		UIKit.button(Loc.t("ui.quick.set_password") if guest_secret != "" else Loc.t("ui.account.change_password"), func(): _do_change_password(cur.text, pw.text, pw2.text)),
 		UIKit.button(Loc.t("ui.menu.back"), _build),
 	]))
 	add_child(_panel(v))
