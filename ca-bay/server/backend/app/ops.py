@@ -370,6 +370,9 @@ def op_recover_escrow(ctx: OpContext, p: dict) -> None:
         ctx.save["inventory"]["recovery_inbox"].append(it)
         _set_state(ctx, it["uid"], "inbox")
         moved.append(it["uid"])
+    if not moved:
+        # không có gì để trả: không ghi save mới (không làm lệch expected_save_version của lệnh client đang gửi lại)
+        raise OpError("ALREADY_CLAIMED", "không có đồ escrow ở phòng này")
     ctx.receipt = {"moved": moved}
 
 

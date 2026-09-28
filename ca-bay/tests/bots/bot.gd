@@ -39,6 +39,29 @@ var last_snapshot_ms := 0
 var keepalive := true            # rung nhẹ góc nhìn định kỳ để không bị AFK khi đứng chờ
 var _keep_t := 0.0
 var _keep_sign := 1.0
+# --- WP-12: mạng xấu / mất mạng
+var conn_root: Node = null       # gốc multiplayer của kết nối hiện tại (mặc định chính bot)
+var conn_gen := 0                # tăng mỗi lần session.accepted (kết nối mới đã xác thực)
+var accepted_log: Array = []     # [{connection_id, lease_epoch, t_ms}] mọi phiên đã được chấp nhận
+var ping_interval := 0.0         # >0: gửi session.ping định kỳ như client thật, đo RTT ứng dụng
+var _ping_t := 0.0
+var rtt_ms: Array = []
+var auto_reconnect := false      # như client thật: mất kết nối (cho phép nối lại) → tự nối lại, gửi lại lệnh bền vững cùng op_id
+var _auto_busy := false
+var reconnect_log: Array = []    # [{down_ms, ok, reason}]
+var resent_ops := 0              # số lần gửi lại lệnh bền vững (cùng op_id + expected_save_version) sau khi nối lại
+var room_changed: Array = []     # mọi room.changed đã nhận (chủ phòng, thành viên)
+var old_conn: Node = null        # kết nối cũ giữ lại (bị proxy đóng băng) khi mở kết nối mới
+var old_results: Dictionary = {}
+var old_session_closed: Array = []
+var old_closed_reason := ""
+var old_messages := 0
+var _alt_n := 0
+# điều khiển trận boss (kịch bản boss_coop)
+var boss_hold_fire := false      # đứng trong bãi, né nhưng không ném
+var boss_tank := false           # đứng sát boss, không né (để bị KO)
+var boss_stop := false           # yêu cầu fight_boss dừng ngay
+var boss_max_throws := -1        # >=0: ném tối đa N lần rồi thôi
 
 
 func _init(i: int, ep: Dictionary) -> void:
@@ -57,13 +80,31 @@ func _init(i: int, ep: Dictionary) -> void:
 	add_child(api)
 	conn = GameConnection.new()
 	add_child(conn)
-	conn.message.connect(_on_message)
-	conn.closed.connect(func(r, _a):
-		closed_reason = r
-		say("kết nối đóng: %s (session.closed=%s, bị từ chối=%s)" % [r, str(session_closed), str(rejected_counts)]))
-	conn.auth_failed.connect(func(c):
-		closed_reason = c
-		say("auth thất bại: %s" % c))
+	conn_root = self
+	_wire(conn)
+
+
+func _wire(c: Node) -> void:
+	c.message.connect(_on_message)
+	c.closed.connect(_on_conn_closed.bind(c))
+	c.auth_failed.connect(_on_auth_failed.bind(c))
+
+
+func _on_conn_closed(r: String, allowed: bool, c: Node) -> void:
+	if c != conn:
+		old_closed_reason = r
+		return
+	closed_reason = r
+	say("kết nối đóng: %s (session.closed=%s, bị từ chối=%s)" % [r, str(session_closed), str(rejected_counts)])
+	if auto_reconnect and allowed and not _auto_busy:
+		_auto_reconnect(r)
+
+
+func _on_auth_failed(code: String, c: Node) -> void:
+	if c != conn:
+		return
+	closed_reason = code
+	say("auth thất bại: %s" % code)
 
 
 func say(msg: String) -> void:
@@ -102,7 +143,12 @@ func _on_message(type: String, payload: Dictionary, env: Dictionary) -> void:
 			session_closed.append(payload["reason"])
 			say("session.closed %s" % payload["reason"])
 		"session.accepted":
-			pass
+			conn_gen += 1
+			accepted_log.append({"connection_id": payload["connection_id"], "lease_epoch": int(payload["lease_epoch"]), "t_ms": Time.get_ticks_msec()})
+		"session.pong":
+			rtt_ms.append(Time.get_ticks_msec() - int(payload["client_monotonic_ms"]))
+		"room.changed":
+			room_changed.append(payload)
 
 
 func _process(delta: float) -> void:
@@ -114,6 +160,11 @@ func _process(delta: float) -> void:
 		_keep_t = 0.0
 		_keep_sign = -_keep_sign
 		yaw += 0.03 * _keep_sign
+	if ping_interval > 0.0:
+		_ping_t += delta
+		if _ping_t >= ping_interval:
+			_ping_t = 0.0
+			command("session.ping", {"client_monotonic_ms": Time.get_ticks_msec()})
 	if _input_t >= 0.05:
 		_input_t = 0.0
 		# schema: move_x/move_z ∈ [-1, 1]; phép tính hướng có thể ra 1.0000001 → server coi là INVALID_PAYLOAD
@@ -168,7 +219,7 @@ func connect_room() -> bool:
 	for attempt in 30:
 		var t: Dictionary = await api.ticket(room_id)
 		if t["ok"]:
-			conn.connect_to(endpoints["ws_url"], t["data"]["ticket"], self)
+			conn.connect_to(endpoints["ws_url"], t["data"]["ticket"], conn_root)
 			var ok: bool = await wait_until(func(): return conn.is_live() or conn.state == "closed" or closed_reason != "", 10.0)
 			if ok and conn.is_live():
 				await wait_until(func(): return not snapshot.is_empty(), 5.0)
@@ -221,6 +272,11 @@ func look_at_point(target: Vector3) -> void:
 
 ## Gửi lệnh bền vững và chờ command.result.
 func durable(type: String, payload: Dictionary, timeout_s: float = 10.0) -> Dictionary:
+	if auto_reconnect:
+		var ra: Dictionary = await durable_raw(type, payload, Protocol.uuid4(), save_version, timeout_s)
+		if ra.get("status", "") == "rejected" and ra.get("error_code", "") == "SAVE_CONFLICT":
+			await refresh_save()
+		return ra
 	payload["op_id"] = Protocol.uuid4()
 	payload["expected_save_version"] = save_version
 	var rid: String = conn.send(type, payload)
@@ -254,6 +310,85 @@ func entity(uid: String) -> Dictionary:
 		if e["uid"] == uid:
 			return e
 	return {}
+
+
+# ------------------------------------------------------------------ WP-12: mạng
+
+## Như client thật (game_session._reconnect_loop): chờ rồi nối lại tới khi được (tối đa ~85 s).
+func _auto_reconnect(reason: String) -> void:
+	_auto_busy = true
+	var t0 := Time.get_ticks_msec()
+	await sleep(0.5)
+	var ok: bool = await reconnect(85.0)
+	reconnect_log.append({"reason": reason, "down_ms": Time.get_ticks_msec() - t0, "ok": ok})
+	say("tự nối lại sau %d ms: %s" % [Time.get_ticks_msec() - t0, str(ok)])
+	_auto_busy = false
+
+
+## Giữ kết nối hiện tại làm "kết nối cũ" (ví dụ đang bị proxy đóng băng: phía client vẫn tưởng còn sống) và
+## chuẩn bị một GameConnection mới dưới gốc multiplayer riêng (anh em với bot, không lồng nhau).
+func swap_connection() -> void:
+	_alt_n += 1
+	var alt := Node.new()
+	alt.name = "%sAlt%d" % [name, _alt_n]
+	get_parent().add_child(alt)
+	var game := Node.new()
+	game.name = "Game"
+	alt.add_child(game)
+	var net := Node.new()
+	net.name = "Network"
+	net.set_script(NetworkNode)
+	game.add_child(net)
+	var c: Node = GameConnection.new()
+	add_child(c)
+	old_conn = conn
+	old_conn.message.disconnect(_on_message)
+	old_conn.message.connect(_on_old_message)
+	conn = c
+	conn_root = alt
+	_wire(c)
+	snapshot = {}
+	closed_reason = ""
+
+
+func _on_old_message(type: String, payload: Dictionary, _env: Dictionary) -> void:
+	old_messages += 1
+	match type:
+		"command.result":
+			old_results[payload["request_id"]] = payload
+		"session.closed":
+			old_session_closed.append(payload["reason"])
+			say("kết nối CŨ nhận session.closed %s" % payload["reason"])
+
+
+func player_of(aid: String) -> Dictionary:
+	for pl in snapshot.get("players", []):
+		if pl["account_id"] == aid:
+			return pl
+	return {}
+
+
+func rtt_stats() -> Dictionary:
+	if rtt_ms.is_empty():
+		return {"n": 0}
+	var s: Array = rtt_ms.duplicate()
+	s.sort()
+	var sum := 0.0
+	for x in s:
+		sum += float(x)
+	return {"n": s.size(), "mean": snappedf(sum / s.size(), 0.1), "p50": s[int(0.5 * (s.size() - 1))], "p95": s[int(round(0.95 * (s.size() - 1)))],
+		"min": s[0], "max": s[s.size() - 1]}
+
+
+## Rời phòng đúng luồng sản phẩm (room.leave): server gỡ người chơi, trả lease, đóng phiên.
+func leave_room() -> bool:
+	var rid: String = command("room.leave", {})
+	if rid == "":
+		return false
+	await wait_until(func(): return "room_closed" in session_closed or not conn.is_live(), 5.0)
+	await wait_until(func(): return conn.state == "closed", 3.0)
+	conn.disconnect_now()
+	return "room_closed" in session_closed
 
 
 # ------------------------------------------------------------------ phiên / lưu
@@ -337,13 +472,51 @@ func durable_raw(type: String, payload: Dictionary, op_id: String, esv: int, tim
 	pl["op_id"] = op_id
 	pl["expected_save_version"] = esv
 	var rid: String = conn.send(type, pl)
-	if rid == "":
+	if rid == "" and not auto_reconnect:
 		return {"status": "not_sent", "error_code": "NOT_CONNECTED"}
-	sent_types[rid] = type
-	var ok: bool = await wait_until(func(): return results.has(rid), timeout_s)
-	if not ok:
-		return {"status": "timeout", "error_code": "TIMEOUT"}
-	return results[rid]
+	if rid != "":
+		sent_types[rid] = type
+	if not auto_reconnect:
+		var ok: bool = await wait_until(func(): return results.has(rid), timeout_s)
+		if not ok:
+			return {"status": "timeout", "error_code": "TIMEOUT"}
+		return results[rid]
+	# Như client thật: mất kết nối khi đang chờ → nối lại xong gửi lại ĐÚNG lệnh cũ (cùng op_id + expected_save_version).
+	var gen := conn_gen
+	var sends := 1 if rid != "" else 0
+	var live_wait := 0.0
+	var t_last := Time.get_ticks_msec()
+	var down_since := -1
+	while true:
+		if rid != "" and results.has(rid):
+			var r: Dictionary = results[rid]
+			if sends > 1:
+				r = r.duplicate()
+				r["resends"] = sends - 1
+			return r
+		if conn.is_live() and (rid == "" or conn_gen != gen):
+			rid = conn.send(type, pl)
+			if rid != "":
+				sent_types[rid] = type
+				sends += 1
+				gen = conn_gen
+				if sends > 1:
+					resent_ops += 1
+					say("gửi lại %s op=%s (cùng expected_save_version=%d) sau khi nối lại" % [type, op_id.substr(0, 8), esv])
+		var now := Time.get_ticks_msec()
+		if conn.is_live():
+			live_wait += (now - t_last) / 1000.0
+			down_since = -1
+		else:
+			if down_since < 0:
+				down_since = now
+			if (not _auto_busy and now - down_since > 5000) or now - down_since > 120000:
+				return {"status": "not_connected", "error_code": "NOT_CONNECTED", "resends": maxi(0, sends - 1)}
+		t_last = now
+		if live_wait > timeout_s:
+			return {"status": "timeout", "error_code": "TIMEOUT", "resends": maxi(0, sends - 1)}
+		await get_tree().process_frame
+	return {}
 
 
 ## Gửi lệnh bền vững; SAVE_CONFLICT (server op chen vào) → tải lại save và thử lại bằng op mới.
@@ -439,9 +612,17 @@ func goto_shop() -> bool:
 ## npc.interact và chờ command.result (server làm xong quà/bước nói chuyện rồi mới trả).
 func talk(npc_id: String) -> Dictionary:
 	var rid: String = command("npc.interact", {"npc_id": npc_id})
-	if rid == "":
+	if rid == "" and not auto_reconnect:
 		return {"status": "not_sent"}
-	await wait_until(func(): return results.has(rid), 10.0)
+	var gen := conn_gen
+	for i in 3:
+		await wait_until(func(): return (rid != "" and results.has(rid)) or (auto_reconnect and conn_gen != gen and conn.is_live()), 10.0)
+		if rid != "" and results.has(rid):
+			return results[rid]
+		if not auto_reconnect or not conn.is_live():
+			break
+		gen = conn_gen
+		rid = command("npc.interact", {"npc_id": npc_id})
 	return results.get(rid, {"status": "timeout"})
 
 
@@ -625,9 +806,13 @@ func fight_boss(boss_uid: String, ev_from: int, timeout_s: float = 230.0) -> Dic
 	var pending: Array = []
 	var aid: String = api.account_id
 	var t0 := Time.get_ticks_msec()
+	var missing_since := -1
 	while Time.get_ticks_msec() - t0 < timeout_s * 1000.0:
 		await get_tree().process_frame
 		var now := Time.get_ticks_msec()
+		if boss_stop:
+			out["result"] = "stopped"
+			break
 		# kết quả các lần ném (chỉ bị từ chối mới có command.result)
 		for rid in pending.duplicate():
 			if results.has(rid):
@@ -650,7 +835,7 @@ func fight_boss(boss_uid: String, ev_from: int, timeout_s: float = 230.0) -> Dic
 				out["hits"] += 1
 			elif nm == "player.knocked_out" and ev["actor_player_id"] == aid:
 				out["ko"] += 1
-			elif nm == "boss.telegraph":
+			elif nm == "boss.telegraph" and not boss_tank:
 				var tp := Vector3(pl["position"][0], pl["position"][1], pl["position"][2])
 				var mp := my_pos()
 				if mp != Vector3.INF and Vector2(tp.x - mp.x, tp.z - mp.z).length() < 2.5:
@@ -674,7 +859,15 @@ func fight_boss(boss_uid: String, ev_from: int, timeout_s: float = 230.0) -> Dic
 		var e: Dictionary = entity(boss_uid)
 		if e.is_empty():
 			move = Vector2.ZERO
+			# lỡ sự kiện kết thúc (mất kết nối đúng lúc): boss vắng khỏi snapshot quá 4 s khi đang nối → coi như đã xong
+			if conn.is_live() and not snapshot.is_empty():
+				if missing_since < 0:
+					missing_since = now
+				elif now - missing_since > 4000:
+					out["result"] = "gone"
+					break
 			continue
+		missing_since = -1
 		var bpos := Vector3(e["position"][0], e["position"][1], e["position"][2])
 		var mpos := my_pos()
 		if mpos == Vector3.INF:
@@ -683,6 +876,13 @@ func fight_boss(boss_uid: String, ev_from: int, timeout_s: float = 230.0) -> Dic
 		var to_boss := Vector2(bpos.x - mpos.x, bpos.z - mpos.z)
 		var d := to_boss.length()
 		var from_center := Vector2(mpos.x, mpos.z).distance_to(arena2)
+		if boss_tank:
+			# đứng sát boss, không né, không ném (kịch bản KO giữa trận)
+			if d > 1.2:
+				move_world(to_boss)
+			else:
+				move = Vector2.ZERO
+			continue
 		if now < dodge_until:
 			move_world(dodge_dir)
 		elif from_center > 13.0:
@@ -694,6 +894,8 @@ func fight_boss(boss_uid: String, ev_from: int, timeout_s: float = 230.0) -> Dic
 		else:
 			move = Vector2.ZERO
 		var st: String = String(e["state"])
+		if boss_hold_fire or (boss_max_throws >= 0 and int(out["throws"]) >= boss_max_throws):
+			continue
 		if now - last_throw >= 450 and st not in ["arriving", "defeated", "escaping"] and d <= 24.0:
 			last_throw = now
 			var rid: String = command("tool.use", {"target_uid": boss_uid})

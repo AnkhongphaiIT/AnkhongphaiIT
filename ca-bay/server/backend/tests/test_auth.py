@@ -146,3 +146,57 @@ def test_save_view_has_no_secrets(client):
     text = str(s)
     for bad in ("password", "token", "recovery_code", u["refresh_token"], u["access_token"]):
         assert bad not in text
+
+
+def test_unknown_origin_blocked_by_cors(env, monkeypatch):
+    # AUTH-04: trình duyệt ở origin lạ không gọi được API (preflight bị từ chối, không có Access-Control-Allow-Origin);
+    # origin đã khai (trang itch.io) thì được.
+    import importlib
+    from fastapi.testclient import TestClient
+    from app import config
+    import app.main
+    monkeypatch.setenv("CABAY_ALLOWED_ORIGINS", "https://html-classic.itch.zone")
+    config.reload_settings()
+    try:
+        with TestClient(importlib.reload(app.main).app) as c:
+            pre = {"Access-Control-Request-Method": "POST", "Access-Control-Request-Headers": "content-type"}
+            bad = c.options("/v1/auth/login", headers={"Origin": "https://evil.example", **pre})
+            assert bad.status_code == 400 and "access-control-allow-origin" not in bad.headers
+            good = c.options("/v1/auth/login", headers={"Origin": "https://html-classic.itch.zone", **pre})
+            assert good.status_code == 200 and good.headers["access-control-allow-origin"] == "https://html-classic.itch.zone"
+            # yêu cầu thường từ origin lạ: phản hồi không kèm quyền đọc cho trình duyệt
+            r = c.post("/v1/auth/login", json={"username": "khongco", "password": "x" * 12}, headers={"Origin": "https://evil.example"})
+            assert "access-control-allow-origin" not in r.headers
+    finally:
+        monkeypatch.delenv("CABAY_ALLOWED_ORIGINS")
+        config.reload_settings()
+        importlib.reload(app.main)
+
+
+def test_password_hashing_limited_to_two_concurrent_jobs(env, monkeypatch):
+    # AUTH-04: nhiều yêu cầu đăng nhập/đăng ký cùng lúc không làm chạy song song quá 2 phép băm scrypt (chống dồn CPU/RAM)
+    import threading
+    import time
+    import app.security as sec
+    active = {"now": 0, "max": 0}
+    lock = threading.Lock()
+    real = sec.hashlib.scrypt
+
+    def slow_scrypt(*a, **k):
+        with lock:
+            active["now"] += 1
+            active["max"] = max(active["max"], active["now"])
+        time.sleep(0.05)
+        try:
+            return real(*a, **k)
+        finally:
+            with lock:
+                active["now"] -= 1
+
+    monkeypatch.setattr(sec.hashlib, "scrypt", slow_scrypt)
+    threads = [threading.Thread(target=sec.hash_password, args=("mat khau dai du %d" % i,)) for i in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(10)
+    assert active["max"] == 2

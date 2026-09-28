@@ -29,6 +29,9 @@ var votes: Dictionary = {}       # {"island_id": .., "approve": {account: bool},
 var pending_hits: Array = []    # cú ném/bắn đang bay
 var empty_since_tick: int = -1
 var closed := false
+# Phòng dựng lại từ vé sau khi room server khởi động lại (tiến trình cũ sập): đồ đã thả ở tiến trình cũ không còn
+# trên mặt đất của tiến trình này → mỗi người vào lần đầu được trả đồ escrow của phòng về hộp thư đồ (P-039).
+var restored := false
 var _snapshot_counter := 0
 
 
@@ -101,6 +104,8 @@ func attach_player(peer_id: int, s: Dictionary) -> void:
 	if not resumed:
 		# cá còn nằm trên bếp từ phiên trước (tải lại trang, đổi máy): backend trả/nướng xong theo thời gian (P-025)
 		server_op(p, "cooking.recover", {})
+		if restored:
+			server_op(p, "inventory.recover_escrow", {"room_id": room_id})
 	# Người mới vào: gửi metadata các thực thể đang sống (chủ cá, giá trị) để hiển thị đúng.
 	for uid in entities:
 		var e: Dictionary = entities[uid]

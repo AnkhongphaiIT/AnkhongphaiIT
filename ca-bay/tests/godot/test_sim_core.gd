@@ -265,3 +265,24 @@ func test_stale_input_stops_movement(t) -> void:
 	room._on_input(p, {"move_x": 0.0, "move_z": -1.0, "look_yaw_rad": PI, "look_pitch_rad": 0.0, "jump": false}, 2)
 	H.run(room, 0.5)
 	t.ok(Vector2(p["pos"].x - mid.x, p["pos"].z - mid.z).length() > 0.5, "có input mới thì đi tiếp")
+
+
+func test_restored_room_returns_old_escrow_once_per_player(t) -> void:
+	# P-039: room server sập rồi bật lại, phòng dựng lại từ vé → đồ đã thả ở tiến trình cũ không còn trên đất;
+	# người chơi vào lần đầu được trả escrow của phòng về hộp thư đồ. Vào lại trong lúc giữ chỗ (resumed) thì không gọi lại.
+	var rs := H.make_room()
+	var room: RefCounted = rs[0]
+	var srv = rs[1]
+	room.restored = true
+	var p := H.add_player(room, 2)
+	var rec: Array = srv.backend.commits.filter(func(c): return c["op_type"] == "inventory.recover_escrow")
+	t.eq(rec.size(), 1, "vào phòng dựng lại: trả escrow đúng một lần")
+	t.eq(rec[0]["payload"].get("room_id"), room.room_id, "đúng phòng")
+	t.eq(rec[0]["account_id"], p["account_id"], "đúng người")
+	room.detach_player(p["account_id"], 2)
+	room.attach_player(3, {"account_id": p["account_id"], "display_name": "P", "connection_id": Protocol.uuid4(), "lease_epoch": 2, "save": H.make_save(p["account_id"])})
+	rec = srv.backend.commits.filter(func(c): return c["op_type"] == "inventory.recover_escrow")
+	t.eq(rec.size(), 1, "nối lại trong lúc giữ chỗ: đồ đang nằm trên đất của phòng này, không trả về hộp thư")
+	var rs2 := H.make_room()
+	H.add_player(rs2[0], 2)
+	t.eq(rs2[1].backend.commits.filter(func(c): return c["op_type"] == "inventory.recover_escrow").size(), 0, "phòng bình thường: không đụng tới escrow")

@@ -173,6 +173,25 @@ def test_drop_escrow_recover_once(client, svc):
     assert save["inventory"]["bag"] == []
 
 
+def test_recover_escrow_nothing_to_move_keeps_save_version(client, svc):
+    # P-039: phòng dựng lại sau khi room server sập gọi recover_escrow cho mỗi người vào lần đầu; không có đồ thì
+    # không được tăng save_version (lệnh bán đang gửi lại với expected_save_version cũ sẽ bị SAVE_CONFLICT oan).
+    u = register(client)
+    room = ready_room(client, svc, u)
+    lease = connect_player(client, svc, u, room)
+    v0 = client.get("/v1/account/save", headers=u["auth"]).json()["save"]["save_version"]
+    r = commit(client, svc, lease, "inventory.recover_escrow", {"room_id": lease["room_id"]})
+    assert r["status"] == "rejected" and r["error_code"] == "ALREADY_CLAIMED"
+    assert client.get("/v1/account/save", headers=u["auth"]).json()["save"]["save_version"] == v0
+    # có đồ thì trả đúng một lần
+    uid = str(uuid.uuid4())
+    commit(client, svc, lease, "inventory.pickup", {"item_uid": uid, "fresh_item": fresh_fish()})
+    commit(client, svc, lease, "inventory.drop", {"item_uid": uid})
+    r = commit(client, svc, lease, "inventory.recover_escrow", {"room_id": lease["room_id"]})
+    assert r["status"] == "committed" and r["receipt"]["moved"] == [uid]
+    assert commit(client, svc, lease, "inventory.recover_escrow", {"room_id": lease["room_id"]})["status"] == "rejected"
+
+
 def test_shop_buy_rules_and_food(client, svc):
     u = register(client)
     room = ready_room(client, svc, u)

@@ -22,7 +22,8 @@ var _control_busy := false
 var _status_busy := false
 var _control_t := 0.0
 var _status_t := 0.0
-var stats := {"invalid": 0, "rate_limited": 0, "messages": 0}
+var _heartbeat_t := 0.0
+var stats := {"invalid": 0, "rate_limited": 0, "messages": 0, "heartbeat_timeouts": 0}
 
 
 func _ready() -> void:
@@ -95,6 +96,7 @@ func _on_auth_data(peer_id: int, data: PackedByteArray) -> void:
 	if room == null:
 		# Room server khởi động lại: dựng lại phòng từ thông tin backend (tiến trình đã commit không mất).
 		room = _create_room(d["room_id"], String(d.get("island_id", d["save"]["player"]["safe_island_id"])), d["account_id"])
+		room.restored = true
 	if room.is_full_for(d["account_id"]):
 		_reject_auth(peer_id, "ROOM_FULL")
 		return
@@ -131,6 +133,7 @@ func _on_peer_connected(peer_id: int) -> void:
 			_close_session(other, sessions[other], "takeover", false)
 			sessions.erase(other)
 	s["live"] = true
+	s["last_rx_ms"] = Time.get_ticks_msec()
 	var room: RefCounted = rooms[s["room_id"]]
 	room.attach_player(peer_id, s)
 
@@ -173,6 +176,7 @@ func _on_client_message(peer_id: int, text: String) -> void:
 	var s: Dictionary = sessions.get(peer_id, {})
 	if s.is_empty() or not s["live"] or s.get("closing", false):
 		return
+	s["last_rx_ms"] = Time.get_ticks_msec()
 	# bộ đếm vi phạm tính theo cửa sổ 60 s: phiên chơi dài không bị ngắt oan vì vài lỗi rải rác
 	var now_ms := Time.get_ticks_msec()
 	if now_ms - int(s.get("invalid_window_ms", 0)) > 60000:
@@ -295,12 +299,33 @@ func _physics_process(delta: float) -> void:
 			rooms.erase(room_id)
 	_control_t += delta
 	_status_t += delta
+	_heartbeat_t += delta
+	if _heartbeat_t >= 1.0:
+		_heartbeat_t = 0.0
+		_check_heartbeats()
 	if _control_t >= 1.0 and not _control_busy:
 		_control_t = 0.0
 		_poll_controls()
 	if _status_t >= 2.0 and not _status_busy:
 		_status_t = 0.0
 		_post_status()
+
+
+## Kết nối chết im lặng (mất Wi-Fi, máy ngủ, NAT/đường hầm cắt mà không có gói đóng TCP): client thật gửi input
+## ≤ 0,25 s và ping 2 s một lần, nên không nhận được gì quá heartbeat_timeout_s (15 s) nghĩa là mất mạng. Đóng phiên
+## ("timeout", cho nối lại): người chơi chuyển "disconnected" giữ chỗ reconnect_grace_s như rớt mạng thường, server
+## ngừng dồn snapshot cho kết nối chết. Tab trình duyệt bị ẩn quá 15 s cũng vậy — quay lại thì client tự nối lại.
+func _check_heartbeats() -> void:
+	var limit_ms := int(float(ContentDB.limit("heartbeat_timeout_s", 15)) * 1000.0)
+	var now := Time.get_ticks_msec()
+	for peer_id in sessions.keys():
+		var s: Dictionary = sessions[peer_id]
+		if not s.get("live", false) or s.get("closing", false):
+			continue
+		if now - int(s.get("last_rx_ms", now)) > limit_ms:
+			stats["heartbeat_timeouts"] += 1
+			print("CABAY_SERVER heartbeat_timeout peer=%d after_ms=%d" % [peer_id, now - int(s["last_rx_ms"])])
+			_close_session(peer_id, s, "timeout", true)
 
 
 func _create_room(room_id: String, island_id: String, owner: String) -> RefCounted:
