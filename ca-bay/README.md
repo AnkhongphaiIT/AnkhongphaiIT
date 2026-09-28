@@ -26,7 +26,7 @@ python3 tests/integration/stack.py --serve
 # 2) bản web trỏ localhost
 python3 tools/build/export.py web
 python3 -m http.server 8060 --bind 127.0.0.1 --directory build/web
-# 3) mở http://127.0.0.1:8060  (mở nhiều tab/nhiều trình duyệt để thử co-op, mỗi tab một tài khoản)
+# 3) mở http://127.0.0.1:8060 → Chơi ngay (thử co-op: tab khác bấm "Người chơi khác trên máy này", rồi nhập mã phòng)
 ```
 
 ## Kiểm thử

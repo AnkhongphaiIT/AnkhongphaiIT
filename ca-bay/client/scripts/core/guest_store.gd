@@ -6,6 +6,13 @@ extends RefCounted
 
 const PATH := "user://guest.json"
 
+# khách "Người chơi khác" của tab này (chơi chung nhiều tab trên một máy): chỉ trong bộ nhớ, không ghi đè khách đã lưu
+static var _session: Dictionary = {}
+
+
+static func remember_session(username: String, secret: String) -> void:
+	_session = {"username": username, "secret": secret}
+
 
 static func load_guest() -> Dictionary:
 	if not FileAccess.file_exists(PATH):
@@ -29,15 +36,20 @@ static func save_guest(username: String, secret: String, display_name: String) -
 
 
 static func is_current(api_username: String) -> bool:
-	var g := load_guest()
-	return not g.is_empty() and String(g["username"]) == api_username
+	return secret_for(api_username) != ""
 
 
 static func secret_for(api_username: String) -> String:
+	if String(_session.get("username", "")) == api_username:
+		return String(_session["secret"])
 	var g := load_guest()
 	return String(g["secret"]) if not g.is_empty() and String(g["username"]) == api_username else ""
 
 
-static func clear() -> void:
-	if FileAccess.file_exists(PATH):
+## Quên đúng tài khoản khách này (khách của tab và/hoặc khách đã lưu của máy) — không đụng tài khoản khách của người khác.
+static func forget(username: String) -> void:
+	if String(_session.get("username", "")) == username:
+		_session = {}
+	var g := load_guest()
+	if not g.is_empty() and String(g["username"]) == username and FileAccess.file_exists(PATH):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(PATH))

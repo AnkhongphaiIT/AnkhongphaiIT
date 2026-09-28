@@ -51,7 +51,8 @@ async function runStep(ctx, s, outDir, mark) {
     }
     throw new Error(`repeat không đạt ${s.until} sau ${s.max || 3} lần`);
   }
-  if (!ctx.pages[n]) ctx.pages[n] = await ctx.newPage(n);
+  // {share_ctx: m}: trang mới mở trong CÙNG bối cảnh trình duyệt với trang m (hai tab một trình duyệt: chung bộ nhớ/IndexedDB)
+  if (!ctx.pages[n]) ctx.pages[n] = await ctx.newPage(n, s.share_ctx);
   const page = ctx.pages[n];
   if (s.goto) await page.goto(subst(s.goto), { waitUntil: 'load', timeout: 120000 });
   if (s.wait) await page.waitForTimeout(s.wait);
@@ -250,9 +251,19 @@ async function runStep(ctx, s, outDir, mark) {
   });
   const ctx = {
     pages: {},
-    async newPage(n) {
+    contexts: {},
+    async newPage(n, share) {
+      if (share !== undefined && ctx.contexts[share]) {
+        const c0 = ctx.contexts[share];
+        ctx.contexts[n] = c0;
+        const p0 = await c0.newPage();
+        p0.on('console', (m) => logs.push(`[p${n}] [${m.type()}] ${m.text()}`));
+        p0.on('pageerror', (e) => logs.push(`[p${n}] [pageerror] ${e.message}`));
+        return p0;
+      }
       // mỗi người chơi một context riêng (không chia sẻ bộ nhớ trình duyệt/cài đặt)
       const c = await browser.newContext({ viewport: { width: 1280, height: 720 } });
+      ctx.contexts[n] = c;
       // đo bộ nhớ WebAssembly: ghi lại Memory do module xuất/nhập (chỉ đọc kích thước, không đổi hành vi)
       await c.addInitScript(() => {
         window.__wasmMems = [];

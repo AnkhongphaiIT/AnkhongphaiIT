@@ -23,7 +23,7 @@
  {"waitlog": "CABAY_BOOT", "fresh": true, "timeout": 120000},
  {"wait": 2000},
  {"shot": "q04_boot_continue"},
- {"click": [640, 340]},
+ {"click": [640, 310]},
  {"waitlog": "CABAY_GUEST resumed", "fresh": true, "timeout": 30000},
  {"waitlog": "CABAY_LOBBY", "fresh": true, "timeout": 30000},
  {"wait": 1500},

@@ -189,6 +189,7 @@ ui.quick.play,Play now,Chơi ngay
 ui.quick.name_hint,Your in-game name,Tên của bạn trong game
 ui.quick.default_name,Angler {n},Người câu {n}
 ui.quick.continue,Continue — {name},Chơi tiếp — {name}
+ui.quick.another_player,Another player on this computer,Người chơi khác trên máy này
 ui.quick.with_password,Sign in / account with a password,Đăng nhập / tài khoản có mật khẩu
 ui.quick.guest_gone,This device's guest account is no longer on the server. Press Play now to start a new one.,Máy chủ không còn tài khoản khách của máy này. Bấm Chơi ngay để tạo mới.
 "ui.quick.guest_note","Guest account: only this browser signs in automatically. To play on another device (or keep it if browser data is cleared), set a password. Username: {user}","Tài khoản khách: chỉ trình duyệt này tự vào được. Muốn chơi trên máy khác (hoặc không mất khi xóa dữ liệu trình duyệt), hãy đặt mật khẩu. Tên đăng nhập: {user}"

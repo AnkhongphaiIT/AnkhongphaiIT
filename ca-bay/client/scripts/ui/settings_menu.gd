@@ -245,7 +245,7 @@ func _do_change_password(cur: String, pw: String, pw2: String) -> void:
 	# đổi mật khẩu thu hồi mọi phiên: đăng nhập lại. Tài khoản khách: khóa trên máy hết hiệu lực → quên khóa, báo tên đăng nhập.
 	var msg := Loc.t("ui.account.password_changed")
 	if GuestStore.is_current(api.username):
-		GuestStore.clear()
+		GuestStore.forget(api.username)
 		msg = Loc.t("ui.quick.password_set", {"user": api.username})
 	_status.text = msg
 	await get_tree().create_timer(1.5).timeout
@@ -291,7 +291,7 @@ func _do_delete(pw: String, confirm: String) -> void:
 		return
 	_status.text = Loc.t("ui.account.deleted")
 	if GuestStore.is_current(api.username):
-		GuestStore.clear()
+		GuestStore.forget(api.username)
 	await get_tree().create_timer(1.5).timeout
 	if app and is_instance_valid(app):
 		app.force_relogin(Loc.t("ui.account.deleted"))

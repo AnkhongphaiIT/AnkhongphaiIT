@@ -78,6 +78,7 @@ func _lang_switch() -> HBoxContainer:
 # ------------------------------------------------------------------ khởi động
 
 var _quick_name := ""
+var _extra_player := false  # "Người chơi khác": khách mới chỉ cho phiên/tab này, không lưu đè khách của máy
 
 
 ## Màn đầu: "Chơi ngay" (P-041) — gõ tên (có sẵn tên gợi ý) là vào, không chọn tên đăng nhập/mật khẩu; máy này đã có tài khoản
@@ -87,7 +88,7 @@ func show_boot() -> void:
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.add_child(UIKit.label("CÁ BAY", 64, UIKit.C_GOLD, HORIZONTAL_ALIGNMENT_CENTER))
 	v.add_child(UIKit.label(Loc.t("ui.boot.subtitle"), 22, UIKit.C_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
-	var g := GuestStore.load_guest()
+	var g := {} if _extra_player else GuestStore.load_guest()
 	if g.is_empty():
 		if _quick_name == "":
 			_quick_name = Loc.t("ui.quick.default_name", {"n": randi_range(100, 999)})
@@ -103,6 +104,10 @@ func show_boot() -> void:
 		var cont := UIKit.button(Loc.t("ui.quick.continue", {"name": String(g.get("display_name", ""))}), func(): _on_quick_resume(g), 420)
 		cont.custom_minimum_size.y = 64
 		v.add_child(cont)
+		# người thứ hai trên cùng máy/trình duyệt (tab khác để chơi chung): tài khoản khách riêng, KHÔNG ghi đè khách đã lưu
+		v.add_child(UIKit.button(Loc.t("ui.quick.another_player"), func():
+			_extra_player = true
+			show_boot(), 420))
 	_status = UIKit.label("", 16, UIKit.C_GOLD, HORIZONTAL_ALIGNMENT_CENTER)
 	v.add_child(_status)
 	v.add_child(UIKit.button(Loc.t("ui.quick.with_password"), _on_boot_click, 420))
@@ -133,8 +138,13 @@ func _on_quick_play(display: String) -> void:
 		_status.text = _err_text(r["error_code"])
 		AudioDirector.play_ui("sfx_error_nope")
 		return
-	# không lưu được (cửa sổ riêng tư, bộ nhớ trình duyệt bị chặn): vẫn chơi được phiên này, lần sau là tài khoản khách mới
-	var kept := GuestStore.save_guest(api.username, String(r["data"]["guest_secret"]), api.display_name)
+	# không lưu được (cửa sổ riêng tư, bộ nhớ trình duyệt bị chặn): vẫn chơi được phiên này, lần sau là tài khoản khách mới.
+	# "Người chơi khác": không lưu (máy đã có khách của người kia) — muốn giữ tài khoản này thì Tùy chọn → Đặt mật khẩu.
+	var kept := false
+	if not _extra_player:
+		kept = GuestStore.save_guest(api.username, String(r["data"]["guest_secret"]), api.display_name)
+	else:
+		GuestStore.remember_session(api.username, String(r["data"]["guest_secret"]))
 	print("CABAY_GUEST created kept=%s" % str(kept))
 	await enter_lobby()
 
@@ -151,7 +161,7 @@ func _on_quick_resume(g: Dictionary) -> void:
 	if not r["ok"]:
 		if r["error_code"] == "INVALID_CREDENTIALS":
 			# máy chủ không còn tài khoản khách này (máy chủ mới, đã xóa, đã đặt mật khẩu ở máy khác): quên khóa, cho tạo mới
-			GuestStore.clear()
+			GuestStore.forget(String(g["username"]))
 			show_boot()
 			_status.text = Loc.t("ui.quick.guest_gone")
 		else:
@@ -474,6 +484,10 @@ func _on_takeover() -> void:
 
 func _logout() -> void:
 	var was_guest := GuestStore.is_current(api.username)
+	if _extra_player:
+		# khách "Người chơi khác" không được lưu: đăng xuất là thôi; màn đầu quay về khách của máy
+		GuestStore.forget(api.username)
+		_extra_player = false
 	await api.logout()
 	save = {}
 	# tài khoản khách: về màn đầu (nút "Chơi tiếp" vẫn còn trên máy này)
