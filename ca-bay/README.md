@@ -55,4 +55,5 @@ python3 -m http.server 8060 --bind 127.0.0.1 --directory build/web
 
 - Bản web: `python3 tools/build/package_web.py --api https://… --ws wss://…` → `release/ca-bay-web-<version>.zip` (chỉ chép file release sang thư mục mới rồi nén — P-011). Thiếu endpoint công khai thì tạo bản `-local` chỉ để thử.
 - Máy chủ: `python3 tools/build/package_server.py` → `release/ca-bay-server-<version>-windows.zip` (có sẵn Python 3.11.9 + room server .exe; bấm `CHOI_THU.bat`) và `…-linux.zip` (`run/choi_thu.sh`). Cả hai phục vụ luôn trang game ở một cổng (P-035): một đường hầm HTTPS = một link chơi. Vận hành theo `server/ops/public/README.md`. Tài khoản checkpoint cho buổi chơi thử: `ops/seed_checkpoint.py` trong gói (xem `release/PLAYTEST_60MIN.md`).
+- Gửi gói lớn qua kênh giới hạn dung lượng: `python3 tools/build/split_parts.py release/<gói>.zip --mb 25` → các phần `.001…` + `GHEP_FILE.bat` (Windows tự ghép bằng `copy /b` và kiểm SHA-256; 7-Zip mở thẳng `.001`).
 - Trang itch.io nháp: `release/ITCH_PAGE.md`; buổi chơi thử: `release/PLAYTEST_60MIN.md`; ghi công: `CREDITS.md`; quyền riêng tư: `PRIVACY.md`.
