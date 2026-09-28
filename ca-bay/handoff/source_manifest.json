@@ -17,7 +17,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 12764.0,
@@ -43,7 +43,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 816.0,
@@ -69,7 +69,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 148.0,
@@ -95,7 +95,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 163.0,
@@ -121,7 +121,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 208.0,
@@ -147,7 +147,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 18.0,
@@ -173,7 +173,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 198.0,
@@ -199,7 +199,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 84.0,
@@ -225,7 +225,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 36.0,
@@ -251,7 +251,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 496.0,
@@ -277,7 +277,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 520.0,
@@ -303,10 +303,10 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
-        "triangles": 364,
+        "triangles": 364.0,
         "size": [
           0.14,
           0.14,
@@ -329,7 +329,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 152.0,
@@ -355,7 +355,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 72.0,
@@ -381,7 +381,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 44.0,
@@ -407,7 +407,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 66.0,
@@ -433,7 +433,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 458.0,
@@ -459,7 +459,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 246.0,
@@ -485,7 +485,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 326.0,
@@ -511,7 +511,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 404.0,
@@ -537,7 +537,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 414.0,
@@ -563,7 +563,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 36.0,
@@ -589,7 +589,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 40.0,
@@ -615,7 +615,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 110.0,
@@ -641,7 +641,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 64.0,
@@ -667,7 +667,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 60.0,
@@ -693,7 +693,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 108.0,
@@ -719,7 +719,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← mesh_kit.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -737,7 +737,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← mesh_kit.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -755,7 +755,7 @@
       "source": {
         "tool_or_origin": "viết tay trong dự án",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -773,7 +773,7 @@
       "source": {
         "tool_or_origin": "viết tay trong dự án",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -791,7 +791,7 @@
       "source": {
         "tool_or_origin": "viết tay trong dự án",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -809,7 +809,7 @@
       "source": {
         "tool_or_origin": "viết tay trong dự án",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -827,7 +827,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← world_view.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -845,7 +845,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (bảng màu Art Bible)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -863,7 +863,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -881,7 +881,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -899,7 +899,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -917,7 +917,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -935,7 +935,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -953,7 +953,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -971,7 +971,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -989,7 +989,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1007,7 +1007,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1025,7 +1025,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1043,7 +1043,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1061,7 +1061,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1079,7 +1079,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1097,7 +1097,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1115,7 +1115,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1133,7 +1133,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← ui_kit.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1166,7 +1166,7 @@
       "source": {
         "tool_or_origin": "Be Vietnam Pro (OFL 1.1), assets/fonts/SOURCES.md",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1178,7 +1178,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1190,7 +1190,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1202,7 +1202,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/menus.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1214,7 +1214,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1226,7 +1226,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1238,7 +1238,7 @@
       "source": {
         "tool_or_origin": "client/scripts/game/game_session.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1250,7 +1250,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1269,7 +1269,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1281,7 +1281,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1293,7 +1293,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1305,7 +1305,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1317,7 +1317,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/menus.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1329,7 +1329,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/menus.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1341,7 +1341,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/settings_menu.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1353,7 +1353,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/client_app.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1365,7 +1365,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1377,7 +1377,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/client_app.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1395,12 +1395,12 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
-          256,
-          256
+          256.0,
+          256.0
         ],
         "alpha": true
       }
@@ -1420,7 +1420,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1438,19 +1438,19 @@
       "files": [
         {
           "path": "res://assets/icons/ico_tool_broom.png",
-          "bytes": 3610,
-          "sha256": "17d6219cf13adfd2cfdf1d9eefb59d6064a7ae00046df43e7624e418deb17897"
+          "bytes": 5577,
+          "sha256": "f8cb00a1c832dce989596ca380dc45440254cf03867239b84964f26b55c92d3c"
         }
       ],
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
-          256.0,
-          256.0
+          256,
+          256
         ],
         "alpha": true
       }
@@ -1463,19 +1463,19 @@
       "files": [
         {
           "path": "res://assets/icons/ico_rod_bamboo.png",
-          "bytes": 1557,
-          "sha256": "fdf66204ea9bd77d4fe3cf00f455be082077db6654065842e043d088799ece24"
+          "bytes": 6931,
+          "sha256": "c1da399d7680fa1b18d95f469d6213f08444e9660cbeec28e1e584feec8dddba"
         }
       ],
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
-          256.0,
-          256.0
+          256,
+          256
         ],
         "alpha": true
       }
@@ -1495,7 +1495,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1520,7 +1520,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1545,7 +1545,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1570,7 +1570,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1595,7 +1595,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1620,7 +1620,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1645,7 +1645,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1670,7 +1670,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1695,7 +1695,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1720,7 +1720,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1745,7 +1745,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -1770,7 +1770,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1788,7 +1788,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1806,7 +1806,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1825,7 +1825,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1844,7 +1844,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1863,7 +1863,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1882,7 +1882,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1901,7 +1901,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1920,7 +1920,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1939,7 +1939,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1958,7 +1958,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1977,7 +1977,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -1996,7 +1996,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2015,7 +2015,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2034,7 +2034,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2053,7 +2053,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2072,7 +2072,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2091,7 +2091,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2110,7 +2110,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2129,7 +2129,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2148,7 +2148,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2167,7 +2167,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2186,7 +2186,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2205,7 +2205,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2224,7 +2224,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2243,7 +2243,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2262,7 +2262,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2281,7 +2281,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2300,7 +2300,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2318,7 +2318,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2336,7 +2336,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2354,7 +2354,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2372,7 +2372,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2390,7 +2390,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2408,7 +2408,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2426,7 +2426,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2444,7 +2444,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2462,7 +2462,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2480,7 +2480,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2498,7 +2498,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2516,7 +2516,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2544,7 +2544,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2562,7 +2562,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2580,7 +2580,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2598,7 +2598,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2616,7 +2616,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2634,7 +2634,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2652,7 +2652,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2670,7 +2670,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2688,7 +2688,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2706,7 +2706,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2724,7 +2724,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2742,7 +2742,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2760,7 +2760,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2778,7 +2778,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2796,7 +2796,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2824,7 +2824,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2852,7 +2852,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2870,7 +2870,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2888,7 +2888,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2906,7 +2906,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2924,7 +2924,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2942,7 +2942,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2960,7 +2960,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2978,7 +2978,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -2996,7 +2996,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3014,7 +3014,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3032,7 +3032,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3050,7 +3050,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3068,7 +3068,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3086,7 +3086,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3104,7 +3104,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3122,7 +3122,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3185,7 +3185,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3248,7 +3248,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3266,7 +3266,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3284,7 +3284,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3302,7 +3302,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3320,7 +3320,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 116.0,
@@ -3346,7 +3346,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3364,7 +3364,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3382,7 +3382,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3400,7 +3400,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3418,7 +3418,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 288.0,
@@ -3444,7 +3444,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3463,7 +3463,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3482,7 +3482,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3500,7 +3500,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3518,7 +3518,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3536,7 +3536,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 60.0,
@@ -3562,7 +3562,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3580,7 +3580,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3598,7 +3598,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 44.0,
@@ -3624,7 +3624,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 22.0,
@@ -3650,7 +3650,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 70.0,
@@ -3676,7 +3676,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3694,7 +3694,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3712,7 +3712,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3730,7 +3730,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3748,7 +3748,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 152.0,
@@ -3774,7 +3774,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 13346.0,
@@ -3800,7 +3800,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 13048.0,
@@ -3826,7 +3826,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3844,7 +3844,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -3862,7 +3862,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 246.0,
@@ -3888,7 +3888,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -3913,7 +3913,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 366.0,
@@ -3939,7 +3939,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -3964,7 +3964,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 424.0,
@@ -3990,7 +3990,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4015,7 +4015,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 246.0,
@@ -4041,7 +4041,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4066,7 +4066,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 404.0,
@@ -4092,7 +4092,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4117,7 +4117,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 518.0,
@@ -4143,7 +4143,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4168,7 +4168,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 270.0,
@@ -4194,7 +4194,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4219,7 +4219,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 246.0,
@@ -4245,7 +4245,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4270,7 +4270,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 246.0,
@@ -4296,7 +4296,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4321,7 +4321,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 286.0,
@@ -4347,7 +4347,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4372,7 +4372,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 246.0,
@@ -4398,7 +4398,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4423,7 +4423,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 404.0,
@@ -4449,7 +4449,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4474,7 +4474,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4493,7 +4493,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4512,7 +4512,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4531,7 +4531,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4550,7 +4550,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4569,7 +4569,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4588,7 +4588,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4607,7 +4607,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4626,7 +4626,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4645,7 +4645,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4664,7 +4664,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4683,7 +4683,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4702,7 +4702,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4720,7 +4720,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 318.0,
@@ -4746,7 +4746,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -4771,7 +4771,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4790,7 +4790,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4809,7 +4809,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4828,7 +4828,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4847,7 +4847,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4866,7 +4866,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4885,7 +4885,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4904,7 +4904,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4923,7 +4923,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4942,7 +4942,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4961,7 +4961,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4980,7 +4980,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -4999,7 +4999,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5017,7 +5017,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 21.0,
@@ -5043,7 +5043,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5068,7 +5068,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 56.0,
@@ -5094,7 +5094,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5119,7 +5119,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 24.0,
@@ -5145,7 +5145,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5170,7 +5170,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 60.0,
@@ -5196,7 +5196,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5214,19 +5214,19 @@
       "files": [
         {
           "path": "res://assets/icons/ico_tool_swatter.png",
-          "bytes": 1598,
-          "sha256": "418e39458b3cd0cbe5c91ec69fc6bbac8e700154632f36f4fd3d5ba3cfb8ad5b"
+          "bytes": 6318,
+          "sha256": "481bc19ef0936d6e793c6b68cbbdb247040e459bd7aee0890c1cbe38af357ce1"
         }
       ],
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
-          256.0,
-          256.0
+          256,
+          256
         ],
         "alpha": true
       }
@@ -5246,7 +5246,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5271,7 +5271,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5289,19 +5289,19 @@
       "files": [
         {
           "path": "res://assets/icons/ico_rod_carbon.png",
-          "bytes": 1449,
-          "sha256": "99e908e3e38f91be9326964f3b698c444d7c0c4c9b5556c7e6c45b9fc5e55253"
+          "bytes": 6848,
+          "sha256": "b47bfb297b0b96610ed2318aaf7b604d22197285828d70e5833d820191ce0fda"
         }
       ],
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
-          256.0,
-          256.0
+          256,
+          256
         ],
         "alpha": true
       }
@@ -5321,7 +5321,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5346,7 +5346,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5371,7 +5371,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5396,7 +5396,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5421,7 +5421,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd (render 256×256 từ mô hình)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "size": [
@@ -5446,7 +5446,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← client/scripts/visual/models.gd (procedural)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       },
       "measure": {
         "triangles": 496.0,
@@ -5472,7 +5472,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5491,7 +5491,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5510,7 +5510,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5529,7 +5529,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5548,7 +5548,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5567,7 +5567,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5586,7 +5586,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5605,7 +5605,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5624,7 +5624,7 @@
       "source": {
         "tool_or_origin": "art_src/anim (procedural keyframes)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5636,7 +5636,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/client_app.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5648,7 +5648,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5660,7 +5660,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/hud.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5672,7 +5672,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/menus.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5684,7 +5684,7 @@
       "source": {
         "tool_or_origin": "client/scripts/ui/menus.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5702,7 +5702,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5720,7 +5720,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5738,7 +5738,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5756,7 +5756,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5774,7 +5774,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5792,7 +5792,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5810,7 +5810,7 @@
       "source": {
         "tool_or_origin": "art_src/vfx (procedural particles)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5828,7 +5828,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5846,7 +5846,7 @@
       "source": {
         "tool_or_origin": "tools/asset_generation/audio/generate_all.py (numpy/ffmpeg offline)",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5864,7 +5864,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← world_view.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5882,7 +5882,7 @@
       "source": {
         "tool_or_origin": "art_src/bake/bake.gd ← world_view.gd",
         "author": "Claude Code (tự tạo trong dự án)",
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5930,7 +5930,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -5978,7 +5978,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6021,7 +6021,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6064,7 +6064,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6107,7 +6107,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6150,7 +6150,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6193,7 +6193,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6236,7 +6236,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6279,7 +6279,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6322,7 +6322,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6365,7 +6365,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     },
     {
@@ -6408,7 +6408,7 @@
       "source": {
         "tool_or_origin": "espeak-ng 1.51 (GPL-3.0-or-later) — bản tạm, không phát hành",
         "author": null,
-        "recorded_at": "2026-09-27"
+        "recorded_at": "2026-09-28"
       }
     }
   ]

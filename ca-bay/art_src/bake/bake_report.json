@@ -439,42 +439,42 @@
       "alpha": true,
       "path": "res://assets/icons/ico_rod_bamboo.png",
       "size": [
-        256.0,
-        256.0
+        256,
+        256
       ],
       "used_rect": [
-        20.0,
-        109.0,
-        216.0,
-        37.0
+        9,
+        14,
+        238,
+        227
       ]
     },
     "ico_rod_carbon": {
       "alpha": true,
       "path": "res://assets/icons/ico_rod_carbon.png",
       "size": [
-        256.0,
-        256.0
+        256,
+        256
       ],
       "used_rect": [
-        20.0,
-        109.0,
-        216.0,
-        37.0
+        9,
+        14,
+        238,
+        227
       ]
     },
     "ico_tool_broom": {
       "alpha": true,
       "path": "res://assets/icons/ico_tool_broom.png",
       "size": [
-        256.0,
-        256.0
+        256,
+        256
       ],
       "used_rect": [
-        30.0,
-        88.0,
-        196.0,
-        87.0
+        35,
+        11,
+        210,
+        210
       ]
     },
     "ico_tool_coconut_bomb": {
@@ -495,14 +495,14 @@
       "alpha": true,
       "path": "res://assets/icons/ico_tool_hand.png",
       "size": [
-        256,
-        256
+        256.0,
+        256.0
       ],
       "used_rect": [
-        57,
-        90,
-        146,
-        80
+        57.0,
+        90.0,
+        146.0,
+        80.0
       ]
     },
     "ico_tool_slingshot": {
@@ -537,14 +537,14 @@
       "alpha": true,
       "path": "res://assets/icons/ico_tool_swatter.png",
       "size": [
-        256.0,
-        256.0
+        256,
+        256
       ],
       "used_rect": [
-        62.0,
-        95.0,
-        154.0,
-        62.0
+        12,
+        11,
+        233,
+        233
       ]
     },
     "ico_upg_backpack": {
@@ -922,7 +922,7 @@
         0.14,
         0.39
       ],
-      "triangles": 364
+      "triangles": 364.0
     },
     "mdl_item_backpack_display": {
       "path": "res://assets/models/items/mdl_item_backpack_display.tscn",

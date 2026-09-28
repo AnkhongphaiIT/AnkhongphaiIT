@@ -318,6 +318,69 @@ static func tool_model(tool_id: String, tint: Variant = null) -> MeshInstance3D:
 		return k.commit_mesh())
 
 
+## Icon cần câu (chỉ dùng khi bake icon — P-042): mô hình thật dài 1,5 m mà thân chỉ 1–2 cm, thu về 48 px chỉ còn một vạch.
+## Icon dựng riêng trên mặt phẳng XY (camera nhìn thẳng -Z): thân dày chéo khung, cán, máy câu to, dây + phao đỏ trắng.
+## Cần carbon dùng xám xanh + khoen cam để nổi trên nền tối (bản thật màu than chìm hẳn).
+static func rod_icon(kind: String) -> MeshInstance3D:
+	return mesh_instance("rod_icon_" + kind, func():
+		var k := MeshKit.new()
+		var carbon := kind == "rod_carbon"
+		var body: Color = Color("#5B7282") if carbon else C_BAMBOO
+		var band: Color = Color("#F2A23A") if carbon else C_BAMBOO.darkened(0.4)
+		var a := Vector3(-0.6, -0.6, 0)
+		var b := Vector3(0.6, 0.6, 0)
+		var dir := (b - a).normalized()
+		var n := 6
+		for i in n:
+			var p0 := a.lerp(b, float(i) / n)
+			var p1 := a.lerp(b, float(i + 1) / n)
+			var r0 := lerpf(0.05, 0.022, float(i) / n)
+			var r1 := lerpf(0.05, 0.022, float(i + 1) / n)
+			k.cylinder(p0, p1, r0, r1, 8, body if i % 2 == 0 else body.darkened(0.1), false)
+			if i < n - 1:  # đốt tre / khoen dẫn dây
+				k.cylinder(p1 - dir * 0.014, p1 + dir * 0.014, r1 + 0.014, r1 + 0.014, 8, band, false)
+		k.cylinder(b - dir * 0.01, b + dir * 0.03, 0.026, 0.012, 6, band)  # ngọn
+		k.cylinder(a - dir * 0.06, a.lerp(b, 0.2), 0.064, 0.058, 8, Color("#2E3338") if carbon else Color("#C9A26B"))  # cán
+		# máy câu: đĩa bạc to lệch xuống dưới thân + tay quay
+		var side := Vector3(dir.y, -dir.x, 0)
+		var reel := a.lerp(b, 0.13) + side * 0.1 + Vector3(0, 0, 0.03)
+		k.cylinder(reel - Vector3(0, 0, 0.05), reel + Vector3(0, 0, 0.05), 0.11, 0.11, 14, Color("#D0D7DC"))
+		k.cylinder(reel + Vector3(0, 0, 0.05), reel + Vector3(0, 0, 0.07), 0.05, 0.05, 10, Color("#8A949B"))
+		k.cylinder(reel + Vector3(0, 0, 0.07), reel + side * 0.08 + Vector3(0, 0, 0.1), 0.014, 0.014, 5, Color("#2E3338"), false)
+		# dây từ ngọn thả thẳng xuống phao
+		var bob := Vector3(b.x + 0.02, 0.0, 0.02)
+		k.cylinder(b + dir * 0.03, bob + Vector3(0, 0.09, 0), 0.007, 0.007, 4, Color("#F4F1DE"), false)
+		k.ellipsoid(bob + Vector3(0, 0.035, 0), Vector3(0.07, 0.05, 0.07), 10, 4, C_RED, C_RED)
+		k.ellipsoid(bob - Vector3(0, 0.012, 0), Vector3(0.07, 0.045, 0.07), 10, 4, Color("#F4F1DE"), Color("#F4F1DE"))
+		k.cylinder(bob + Vector3(0, 0.08, 0), bob + Vector3(0, 0.13, 0), 0.01, 0.006, 4, C_RED, false)
+		return k.commit_mesh())
+
+
+## Icon vỉ ruồi (P-042): cán dày chéo khung + mặt vỉ lưới to có viền, dựng trên mặt phẳng XY.
+static func swatter_icon() -> MeshInstance3D:
+	return mesh_instance("swatter_icon", func():
+		var k := MeshKit.new()
+		var a := Vector3(-0.55, -0.55, 0)
+		var h := Vector3(0.02, 0.02, 0)
+		var dir := (h - a).normalized()
+		var side := Vector3(-dir.y, dir.x, 0)
+		var basis := Basis(dir, side, Vector3.BACK)
+		k.cylinder(a, h, 0.038, 0.03, 8, Color("#E4473C"))
+		k.cylinder(a - dir * 0.02, a + dir * 0.16, 0.05, 0.048, 8, Color("#B8352C"))  # tay cầm
+		var c := h + dir * 0.3
+		var half := Vector2(0.28, 0.26)  # nửa dài theo thân / theo ngang
+		k.box(c, Vector3(half.x * 2.0, half.y * 2.0, 0.02), Color("#FFC93C"), basis)  # mặt vỉ
+		var rim := Color("#E0A21C")
+		for s in [-1.0, 1.0]:  # viền
+			k.box(c + dir * s * half.x, Vector3(0.035, half.y * 2.0 + 0.035, 0.04), rim, basis)
+			k.box(c + side * s * half.y, Vector3(half.x * 2.0 + 0.035, 0.035, 0.04), rim, basis)
+		for i in range(1, 6):  # lưới
+			var t := -1.0 + i / 3.0
+			k.box(c + dir * t * half.x + Vector3(0, 0, 0.018), Vector3(0.012, half.y * 2.0, 0.012), rim.darkened(0.15), basis)
+			k.box(c + side * t * half.y + Vector3(0, 0, 0.018), Vector3(half.x * 2.0, 0.012, 0.012), rim.darkened(0.15), basis)
+		return k.commit_mesh())
+
+
 static func bobber() -> MeshInstance3D:
 	return mesh_instance("bobber", func():
 		var k := MeshKit.new()

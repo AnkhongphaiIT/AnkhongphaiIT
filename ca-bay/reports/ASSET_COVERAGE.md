@@ -1,6 +1,6 @@
 # ASSET_COVERAGE — độ phủ tài nguyên (sinh tự động từ file thật)
 
-Cập nhật: 2026-09-27 bằng `tools/asset_generation/sync_asset_status.py`. Tổng asset ID: 296; file thật đã băm: 362.
+Cập nhật: 2026-09-28 bằng `tools/asset_generation/sync_asset_status.py`. Tổng asset ID: 296; file thật đã băm: 362.
 `in_review` = file thật do dự án tự tạo, đã kiểm tự động, **chưa có người duyệt bằng mắt/tai**; `placeholder` = bản tạm không phát hành; `planned` = chưa có file.
 
 | Loại | planned | placeholder | in_review | approved | deprecated | Tổng |

@@ -182,7 +182,8 @@ func icon_model(id: String) -> Node3D:
 	match id:
 		"ico_money": return _wrap(Models.coin())
 		"ico_health": return _wrap(Models.heart())
-		"ico_rod_bamboo": return _wrap(Models.tool_model("rod_bamboo"))
+		"ico_rod_bamboo", "ico_rod_carbon": return _wrap(Models.rod_icon(rest))
+		"ico_tool_swatter": return _wrap(Models.swatter_icon())
 		"ico_bait_milk_tea": return _wrap(Models.bait("bait_milk_tea"))
 		"ico_tool_hand": return _wrap(Models.fp_hand(Models.SKINS[0], Color("#2F6FA8")))
 		"ico_upg_backpack": return _wrap(Models.backpack_display())
@@ -196,6 +197,9 @@ func icon_model(id: String) -> Node3D:
 	if rest.begins_with("cre_"):
 		return Models.creature(rest)
 	return null
+
+
+const FLAT_ICONS := ["ico_rod_bamboo", "ico_rod_carbon", "ico_tool_broom", "ico_tool_swatter"]
 
 
 func _bake_icon(id: String, path: String) -> void:
@@ -230,22 +234,24 @@ func _bake_icon(id: String, path: String) -> void:
 	holder.rotation_degrees = Vector3(0, -125 if id.begins_with("ico_cre_") else -35, 0)
 	if id == "ico_tool_hand":
 		holder.rotation_degrees = Vector3(18, 150, 0)  # nắm tay hướng về camera, cổ tay áo ra sau
-	if id in ["ico_rod_bamboo", "ico_rod_carbon", "ico_tool_broom"]:
-		# vật dài mảnh: đặt chéo khung và làm dày để còn đọc được ở 64 px
-		holder.rotation_degrees = Vector3(0, 0, 0)
-		m.rotation_degrees = Vector3(0, 90, 45)
-		m.scale = Vector3(3.5, 3.5, 1.0)
+	var flat := id in FLAT_ICONS
+	if flat:
+		# vật dài mảnh (P-042): cần câu/vỉ ruồi có mô hình icon riêng dựng chéo trên mặt phẳng XY; chổi: xoay trục dài (-Z)
+		# thành đường chéo màn hình và làm dày tiết diện. Camera nhìn thẳng để đường chéo đúng 45°, còn đọc được ở 48 px.
+		holder.rotation_degrees = Vector3.ZERO
+		if id == "ico_tool_broom":
+			m.basis = Basis(Vector3.BACK, deg_to_rad(-45.0)) * Basis(Vector3.RIGHT, deg_to_rad(90.0)) * Basis.from_scale(Vector3(2.2, 2.2, 1.0))
 	var st := stats(holder)
 	var sz: Array = st["size"]
 	var radius := maxf(0.05, Vector3(sz[0], sz[1], sz[2]).length() * 0.5)
 	var center := _center(holder)
 	var cam := Camera3D.new()
 	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
-	cam.size = radius * 2.25
+	cam.size = radius * (1.55 if flat else 2.25)
 	cam.near = 0.01
 	cam.far = 100.0
 	vp.add_child(cam)
-	cam.global_position = center + Vector3(0, radius * 0.9, radius * 3.0)
+	cam.global_position = center + (Vector3(0, radius * 0.15, radius * 3.0) if flat else Vector3(0, radius * 0.9, radius * 3.0))
 	cam.look_at(center, Vector3.UP)
 	cam.current = true
 	await RenderingServer.frame_post_draw
