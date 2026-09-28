@@ -1,0 +1,21 @@
+[
+ {"goto": "{BASE}/index.html?autotest=1"},
+ {"waitlog": "CABAY_BOOT", "timeout": 120000},
+ {"wait": 1500},
+ {"click": [640, 300]},
+ {"key": "Control+A"},
+ {"type": "Ban Nhanh"},
+ {"wait": 300},
+ {"shot": "q01_boot"},
+ {"click": [640, 368]},
+ {"waitlog": "CABAY_GUEST created kept=true", "timeout": 30000},
+ {"waitlog": "CABAY_LOBBY", "timeout": 30000},
+ {"wait": 1500},
+ {"shot": "q02_lobby"},
+ {"click": [333, 491]},
+ {"wait": 1500},
+ {"shot": "u01_settings"},
+ {"wheel": [640, 400, 400, 12]},
+ {"wait": 800},
+ {"shot": "u02_settings_bottom"}
+]

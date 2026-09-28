@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import secrets
 import sqlite3
 import unicodedata
 import uuid
@@ -13,7 +14,7 @@ from pydantic import BaseModel
 from ..content import Catalog
 from ..db import immediate, iso_now, now_s
 from ..deps import AuthSession, api_error, client_ip, get_cat, get_db, require_access
-from ..ratelimit import limiter
+from ..ratelimit import guest_limiter, limiter
 from ..save import new_save
 from .. import security
 
@@ -140,6 +141,41 @@ def register(body: RegisterBody, request: Request, conn=Depends(get_db), cat: Ca
         conn.execute("INSERT INTO gameplay_leases(account_id, epoch, active, updated_at) VALUES (?,0,0,?)", (account_id, now_s()))
         tokens = issue_session(conn, cat, account_id)
     return {"account_id": account_id, "display_name": display, "recovery_codes": codes, **tokens}
+
+
+class GuestBody(BaseModel):
+    display_name: str = ""
+
+
+@router.post("/v1/auth/guest")
+def guest(body: GuestBody, request: Request, conn=Depends(get_db), cat: Catalog = Depends(get_cat)):
+    """"Chơi ngay" (P-041): tài khoản khách không phải chọn tên đăng nhập/mật khẩu. Server tự đặt tên `khach_xxxxxxxx` và một
+    khóa ngẫu nhiên 192 bit làm mật khẩu (băm scrypt như mật khẩu thường, không lưu bản rõ); client giữ khóa trên máy đó để lần
+    sau tự vào lại. Tiến trình vẫn lưu ở server. Muốn chơi trên máy khác: đặt mật khẩu (đổi mật khẩu bằng khóa làm mật khẩu cũ).
+    Mỗi IP chỉ tạo được một số tài khoản khách mỗi giờ (chống tạo hàng loạt)."""
+    ip = client_ip(request)
+    if limiter.blocked(None, ip) or not guest_limiter.allow(ip):
+        raise api_error(429, "RATE_LIMITED")
+    display = valid_display_name(body.display_name or f"Người câu {secrets.randbelow(900) + 100}")
+    secret = secrets.token_urlsafe(24)
+    cred = security.hash_password(secret)
+    account_id = str(uuid.uuid4())
+    with immediate(conn):
+        for _ in range(8):
+            uname = "khach_" + secrets.token_hex(4)
+            if not conn.execute("SELECT 1 FROM accounts WHERE username=?", (uname,)).fetchone():
+                break
+        else:
+            raise api_error(503, "SERVER_BUSY")
+        conn.execute("INSERT INTO accounts(account_id, username, display_name, created_at) VALUES (?,?,?,?)", (account_id, uname, display, iso_now()))
+        conn.execute("INSERT INTO credentials(account_id, algo, params, salt, digest, updated_at) VALUES (?,?,?,?,?,?)",
+                     (account_id, cred["algo"], cred["params"], cred["salt"], cred["digest"], iso_now()))
+        sv = new_save(cat, account_id, display)
+        conn.execute("INSERT INTO account_saves(account_id, schema_version, save_version, state_json, updated_at) VALUES (?,?,?,?,?)",
+                     (account_id, sv["schema_version"], sv["save_version"], json.dumps(sv, ensure_ascii=False), sv["updated_at"]))
+        conn.execute("INSERT INTO gameplay_leases(account_id, epoch, active, updated_at) VALUES (?,0,0,?)", (account_id, now_s()))
+        tokens = issue_session(conn, cat, account_id)
+    return {"account_id": account_id, "display_name": display, "username": uname, "guest_secret": secret, **tokens}
 
 
 @router.post("/v1/auth/login")

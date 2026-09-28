@@ -90,9 +90,13 @@ func _build() -> void:
 		_body.add_child(UIKit.label(Loc.t("ui.web.private_mode_warning"), 14, UIKit.C_MUTED))
 	# tài khoản
 	if api and api.is_logged_in():
+		var guest := GuestStore.is_current(api.username)
 		_body.add_child(UIKit.label(Loc.t("ui.settings.account") + ": " + String(api.display_name), 20, UIKit.C_GOLD))
+		if guest:
+			# tài khoản "Chơi ngay": chỉ máy này tự vào được; đặt mật khẩu để chơi máy khác / không mất khi xóa dữ liệu trình duyệt
+			_body.add_child(UIKit.label(Loc.t("ui.quick.guest_note", {"user": api.username}), 15, UIKit.C_MUTED))
 		var acc := UIKit.hbox()
-		acc.add_child(UIKit.button(Loc.t("ui.account.change_password"), _show_change_password))
+		acc.add_child(UIKit.button(Loc.t("ui.quick.set_password") if guest else Loc.t("ui.account.change_password"), _show_change_password))
 		acc.add_child(UIKit.button(Loc.t("ui.account.delete"), _show_delete))
 		_body.add_child(acc)
 	_status = UIKit.label("", 16, UIKit.C_GOLD)
@@ -203,12 +207,18 @@ func _toggle(label_key: String, key: String) -> CheckButton:
 
 func _show_change_password() -> void:
 	UIKit.clear(self)
+	var guest_secret := GuestStore.secret_for(api.username) if api else ""
 	var v := UIKit.vbox([], 10)
-	v.add_child(UIKit.label(Loc.t("ui.account.change_password"), 26, UIKit.C_GOLD))
+	v.add_child(UIKit.label(Loc.t("ui.quick.set_password") if guest_secret != "" else Loc.t("ui.account.change_password"), 26, UIKit.C_GOLD))
 	var cur := UIKit.line_edit(Loc.t("ui.account.password"), true)
 	var pw := UIKit.line_edit(Loc.t("ui.account.new_password"), true)
 	var pw2 := UIKit.line_edit(Loc.t("ui.account.password_confirm"), true)
-	for e in [cur, pw, pw2]:
+	if guest_secret != "":
+		cur.text = guest_secret  # khóa khách giữ trên máy làm "mật khẩu cũ": người chơi không phải nhập
+		v.add_child(UIKit.label(Loc.t("ui.account.username") + ": " + api.username, 18))
+	else:
+		v.add_child(cur)
+	for e in [pw, pw2]:
 		v.add_child(e)
 	v.add_child(UIKit.label(Loc.t("ui.account.rules"), 14, UIKit.C_MUTED))
 	_status = UIKit.label("", 16, UIKit.C_GOLD)
@@ -218,7 +228,7 @@ func _show_change_password() -> void:
 		UIKit.button(Loc.t("ui.menu.back"), _build),
 	]))
 	add_child(_panel(v))
-	cur.grab_focus()
+	(pw if guest_secret != "" else cur).grab_focus()
 
 
 func _do_change_password(cur: String, pw: String, pw2: String) -> void:
@@ -232,11 +242,15 @@ func _do_change_password(cur: String, pw: String, pw2: String) -> void:
 	if not r["ok"]:
 		_status.text = app._err_text(r["error_code"]) if app else r["error_code"]
 		return
-	# đổi mật khẩu thu hồi mọi phiên: đăng nhập lại
-	_status.text = Loc.t("ui.account.password_changed")
+	# đổi mật khẩu thu hồi mọi phiên: đăng nhập lại. Tài khoản khách: khóa trên máy hết hiệu lực → quên khóa, báo tên đăng nhập.
+	var msg := Loc.t("ui.account.password_changed")
+	if GuestStore.is_current(api.username):
+		GuestStore.clear()
+		msg = Loc.t("ui.quick.password_set", {"user": api.username})
+	_status.text = msg
 	await get_tree().create_timer(1.5).timeout
 	if app and is_instance_valid(app):
-		app.force_relogin(Loc.t("ui.account.password_changed"))
+		app.force_relogin(msg)
 
 
 func _show_delete() -> void:
@@ -245,7 +259,11 @@ func _show_delete() -> void:
 	v.add_child(UIKit.label(Loc.t("ui.account.delete"), 26, UIKit.C_RED))
 	v.add_child(UIKit.label(Loc.t("ui.account.delete_confirm"), 17))
 	var pw := UIKit.line_edit(Loc.t("ui.account.password"), true)
-	v.add_child(pw)
+	var guest_secret := GuestStore.secret_for(api.username) if api else ""
+	if guest_secret != "":
+		pw.text = guest_secret  # tài khoản khách: khóa trên máy thay mật khẩu
+	else:
+		v.add_child(pw)
 	var confirm := UIKit.line_edit(Loc.t("ui.account.delete_type"), false, 16)
 	v.add_child(confirm)
 	_status = UIKit.label("", 16, UIKit.C_GOLD)
@@ -255,7 +273,7 @@ func _show_delete() -> void:
 		UIKit.button(Loc.t("ui.menu.back"), _build),
 	]))
 	add_child(_panel(v))
-	pw.grab_focus()
+	(confirm if guest_secret != "" else pw).grab_focus()
 
 
 func _do_delete(pw: String, confirm: String) -> void:
@@ -272,6 +290,8 @@ func _do_delete(pw: String, confirm: String) -> void:
 		_status.text = app._err_text(r["error_code"]) if app else r["error_code"]
 		return
 	_status.text = Loc.t("ui.account.deleted")
+	if GuestStore.is_current(api.username):
+		GuestStore.clear()
 	await get_tree().create_timer(1.5).timeout
 	if app and is_instance_valid(app):
 		app.force_relogin(Loc.t("ui.account.deleted"))

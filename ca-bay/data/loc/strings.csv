@@ -185,6 +185,15 @@ ui.account.takeover,Move play session to this device,Chuyển phiên chơi sang 
 ui.account.takeover_confirm,The other device will return to the lobby. Continue?,Thiết bị kia sẽ trở về sảnh. Bạn muốn tiếp tục?
 ui.account.username,Username,Tên đăng nhập
 ui.account.username_taken,That username is already taken.,Tên đăng nhập này đã có người dùng.
+ui.quick.play,Play now,Chơi ngay
+ui.quick.name_hint,Your in-game name,Tên của bạn trong game
+ui.quick.default_name,Angler {n},Người câu {n}
+ui.quick.continue,Continue — {name},Chơi tiếp — {name}
+ui.quick.with_password,Sign in / account with a password,Đăng nhập / tài khoản có mật khẩu
+ui.quick.guest_gone,This device's guest account is no longer on the server. Press Play now to start a new one.,Máy chủ không còn tài khoản khách của máy này. Bấm Chơi ngay để tạo mới.
+"ui.quick.guest_note","Guest account: only this browser signs in automatically. To play on another device (or keep it if browser data is cleared), set a password. Username: {user}","Tài khoản khách: chỉ trình duyệt này tự vào được. Muốn chơi trên máy khác (hoặc không mất khi xóa dữ liệu trình duyệt), hãy đặt mật khẩu. Tên đăng nhập: {user}"
+ui.quick.set_password,Set a password,Đặt mật khẩu
+ui.quick.password_set,Password set. Sign in with username {user} and your new password.,Đã đặt mật khẩu. Đăng nhập bằng tên {user} và mật khẩu vừa đặt.
 ui.audio.enable,Click to enable sound and capture the mouse,Bấm để bật âm thanh và điều khiển chuột
 ui.bag.burnt,burnt,khét
 ui.bag.drop,Drop,Bỏ ra

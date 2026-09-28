@@ -28,8 +28,9 @@ def env(tmp_path, monkeypatch):
     for m in (app.db, app.security, app.deps, app.save):
         m.settings = config.settings
     app.save._validator.cache_clear()
-    from app.ratelimit import limiter
+    from app.ratelimit import guest_limiter, limiter
     limiter.reset()
+    guest_limiter.reset()
     yield tmp_path
 
 

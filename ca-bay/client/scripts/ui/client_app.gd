@@ -77,14 +77,35 @@ func _lang_switch() -> HBoxContainer:
 
 # ------------------------------------------------------------------ khởi động
 
+var _quick_name := ""
+
+
+## Màn đầu: "Chơi ngay" (P-041) — gõ tên (có sẵn tên gợi ý) là vào, không chọn tên đăng nhập/mật khẩu; máy này đã có tài khoản
+## khách thì một nút "Chơi tiếp". Đăng nhập/tạo tài khoản có mật khẩu vẫn còn ở nút phụ.
 func show_boot() -> void:
-	var v := UIKit.vbox([], 16)
+	var v := UIKit.vbox([], 14)
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.add_child(UIKit.label("CÁ BAY", 64, UIKit.C_GOLD, HORIZONTAL_ALIGNMENT_CENTER))
 	v.add_child(UIKit.label(Loc.t("ui.boot.subtitle"), 22, UIKit.C_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
-	var start := UIKit.button(Loc.t("ui.audio.enable"), _on_boot_click, 420)
-	start.custom_minimum_size.y = 64
-	v.add_child(start)
+	var g := GuestStore.load_guest()
+	if g.is_empty():
+		if _quick_name == "":
+			_quick_name = Loc.t("ui.quick.default_name", {"n": randi_range(100, 999)})
+		var name_edit := UIKit.line_edit(Loc.t("ui.quick.name_hint"), false, 32)
+		name_edit.text = _quick_name
+		name_edit.text_changed.connect(func(t): _quick_name = t)
+		v.add_child(name_edit)
+		var play := UIKit.button(Loc.t("ui.quick.play"), func(): _on_quick_play(name_edit.text), 420)
+		play.custom_minimum_size.y = 64
+		v.add_child(play)
+		name_edit.text_submitted.connect(func(_t): play.pressed.emit())
+	else:
+		var cont := UIKit.button(Loc.t("ui.quick.continue", {"name": String(g.get("display_name", ""))}), func(): _on_quick_resume(g), 420)
+		cont.custom_minimum_size.y = 64
+		v.add_child(cont)
+	_status = UIKit.label("", 16, UIKit.C_GOLD, HORIZONTAL_ALIGNMENT_CENTER)
+	v.add_child(_status)
+	v.add_child(UIKit.button(Loc.t("ui.quick.with_password"), _on_boot_click, 420))
 	v.add_child(_lang_switch())
 	v.add_child(UIKit.label(Loc.t("ui.boot.notice"), 14, UIKit.C_MUTED, HORIZONTAL_ALIGNMENT_CENTER))
 	var p := UIKit.panel(v)
@@ -99,9 +120,52 @@ func _on_boot_click() -> void:
 	show_auth("login")
 
 
+func _on_quick_play(display: String) -> void:
+	if _busy:
+		return
+	AudioDirector.unlock()
+	AudioDirector.play_ui("sfx_ui_click")
+	_busy = true
+	_status.text = Loc.t("ui.lobby.connecting")
+	var r: Dictionary = await api.guest(display.strip_edges())
+	_busy = false
+	if not r["ok"]:
+		_status.text = _err_text(r["error_code"])
+		AudioDirector.play_ui("sfx_error_nope")
+		return
+	# không lưu được (cửa sổ riêng tư, bộ nhớ trình duyệt bị chặn): vẫn chơi được phiên này, lần sau là tài khoản khách mới
+	var kept := GuestStore.save_guest(api.username, String(r["data"]["guest_secret"]), api.display_name)
+	print("CABAY_GUEST created kept=%s" % str(kept))
+	await enter_lobby()
+
+
+func _on_quick_resume(g: Dictionary) -> void:
+	if _busy:
+		return
+	AudioDirector.unlock()
+	AudioDirector.play_ui("sfx_ui_click")
+	_busy = true
+	_status.text = Loc.t("ui.lobby.connecting")
+	var r: Dictionary = await api.login(String(g["username"]), String(g["secret"]))
+	_busy = false
+	if not r["ok"]:
+		if r["error_code"] == "INVALID_CREDENTIALS":
+			# máy chủ không còn tài khoản khách này (máy chủ mới, đã xóa, đã đặt mật khẩu ở máy khác): quên khóa, cho tạo mới
+			GuestStore.clear()
+			show_boot()
+			_status.text = Loc.t("ui.quick.guest_gone")
+		else:
+			_status.text = _err_text(r["error_code"])
+		AudioDirector.play_ui("sfx_error_nope")
+		return
+	print("CABAY_GUEST resumed")
+	await enter_lobby()
+
+
 # ------------------------------------------------------------------ tài khoản
 
 var _auth_tab := "login"
+var _prefill_user := ""  # sau khi đặt/đổi mật khẩu: điền sẵn tên đăng nhập (tài khoản khách khach_…)
 
 
 func show_auth(tab: String) -> void:
@@ -114,6 +178,8 @@ func show_auth(tab: String) -> void:
 		tabs.add_child(b)
 	v.add_child(tabs)
 	var user := UIKit.line_edit(Loc.t("ui.account.username"), false, 24)
+	user.text = _prefill_user
+	_prefill_user = ""
 	v.add_child(user)
 	var display := UIKit.line_edit(Loc.t("ui.account.display_name"), false, 32)
 	var code := UIKit.line_edit(Loc.t("ui.account.recovery_code"), false, 32)
@@ -390,6 +456,7 @@ func force_relogin(message: String) -> void:
 	api.access_token = ""
 	api.refresh_token = ""
 	save = {}
+	_prefill_user = api.username
 	show_auth("login")
 	if _status:
 		_status.text = message
@@ -402,6 +469,11 @@ func _on_takeover() -> void:
 
 
 func _logout() -> void:
+	var was_guest := GuestStore.is_current(api.username)
 	await api.logout()
 	save = {}
-	show_auth("login")
+	# tài khoản khách: về màn đầu (nút "Chơi tiếp" vẫn còn trên máy này)
+	if was_guest:
+		show_boot()
+	else:
+		show_auth("login")

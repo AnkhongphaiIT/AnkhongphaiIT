@@ -48,3 +48,31 @@ class FailureLimiter:
 
 
 limiter = FailureLimiter()
+
+
+class CreationLimiter:
+    """Giới hạn số lần TẠO (không phải thử sai) theo IP trong một cửa sổ trượt — dùng cho tài khoản khách "Chơi ngay"."""
+
+    def __init__(self, limit: int, window_s: int) -> None:
+        self.limit, self.window_s = limit, window_s
+        self._lock = threading.Lock()
+        self._ip: dict[str, deque] = defaultdict(deque)
+
+    def allow(self, ip: str) -> bool:
+        now = time.monotonic()
+        with self._lock:
+            q = self._ip[ip]
+            while q and now - q[0] > self.window_s:
+                q.popleft()
+            if len(q) >= self.limit:
+                return False
+            q.append(now)
+            return True
+
+    def reset(self) -> None:
+        with self._lock:
+            self._ip.clear()
+
+
+# 30 tài khoản khách/IP/giờ: đủ cho một nhóm bạn chung mạng (cùng IP sau NAT/đường hầm), chặn tạo hàng loạt.
+guest_limiter = CreationLimiter(limit=30, window_s=3600)

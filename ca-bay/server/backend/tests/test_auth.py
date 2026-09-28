@@ -217,3 +217,35 @@ def test_password_hashing_limited_to_two_concurrent_jobs(env, monkeypatch):
     for t in threads:
         t.join(10)
     assert active["max"] == 2
+
+
+def test_guest_play_now_server_save_and_upgrade(client, env):
+    # P-041 "Chơi ngay": không chọn tên đăng nhập/mật khẩu; server cấp tên khach_… + khóa ngẫu nhiên (băm, không lưu bản rõ)
+    r = client.post("/v1/auth/guest", json={"display_name": "Bạn Cá Rô"})
+    assert r.status_code == 200, r.text
+    g = r.json()
+    assert g["username"].startswith("khach_") and len(g["guest_secret"]) >= 32 and g["display_name"] == "Bạn Cá Rô"
+    assert "recovery_codes" not in g
+    auth = {"Authorization": f"Bearer {g['access_token']}"}
+    assert client.get("/v1/account/save", headers=auth).json()["save"]["profile"]["display_name"] == "Bạn Cá Rô"
+    conn = sqlite3.connect(env / "test.db")
+    blob = b"".join(bytes(str(row), "utf-8") for row in conn.execute("SELECT * FROM credentials"))
+    assert g["guest_secret"].encode() not in blob
+    # lần sau trên cùng máy: client đăng nhập lại bằng khóa đã giữ
+    again = client.post("/v1/auth/login", json={"username": g["username"], "password": g["guest_secret"]})
+    assert again.status_code == 200
+    # muốn chơi trên máy khác: đặt mật khẩu (mật khẩu cũ = khóa khách); khóa cũ hết hiệu lực
+    h = {"Authorization": f"Bearer {again.json()['access_token']}"}
+    ch = client.post("/v1/auth/password", json={"current_password": g["guest_secret"], "new_password": "mat khau moi du dai"}, headers=h)
+    assert ch.status_code == 200, ch.text
+    assert client.post("/v1/auth/login", json={"username": g["username"], "password": "mat khau moi du dai"}).status_code == 200
+    assert client.post("/v1/auth/login", json={"username": g["username"], "password": g["guest_secret"]}).status_code == 401
+    # tên hiển thị trống → tên gợi ý; tên có ký tự điều khiển → từ chối
+    assert client.post("/v1/auth/guest", json={}).json()["display_name"].startswith("Người câu ")
+    assert client.post("/v1/auth/guest", json={"display_name": "a\u0000b"}).status_code == 400
+
+
+def test_guest_creation_limited_per_ip(client):
+    from app.ratelimit import guest_limiter
+    codes = [client.post("/v1/auth/guest", json={}).status_code for _ in range(guest_limiter.limit + 1)]
+    assert codes[:guest_limiter.limit] == [200] * guest_limiter.limit and codes[-1] == 429

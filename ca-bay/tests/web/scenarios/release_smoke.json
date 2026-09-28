@@ -1,31 +1,122 @@
 [
- {"goto": "{BASE}/index.html?autotest=1"},
- {"waitlog": "CABAY_BOOT", "timeout": 120000},
- {"wait": 1500},
- {"click": [640, 372]},
- {"wait": 800},
- {"click": [634, 495]},
- {"wait": 600},
- {"click": [566, 224]},
- {"wait": 600},
- {"click": [640, 198]},
- {"type": "{USER}"},
- {"click": [640, 255]},
- {"type": "Ban Web"},
- {"click": [640, 312]},
- {"type": "songnuoc-2026-xanh"},
- {"click": [640, 369]},
- {"type": "songnuoc-2026-xanh"},
- {"click": [640, 518]},
- {"wait": 2500},
- {"wait": 2000},
- {"click": [640, 611]},
- {"wait": 2500},
- {"click": [441, 290]},
- {"waitlog": "CABAY_SESSION accepted", "timeout": 60000},
- {"wait": 3000},
- {"shot": "s01_in_world"},
- {"hold": "KeyW", "ms": 1200},
- {"wait": 1500},
- {"shot": "s02_walked"}
+ {
+  "goto": "{BASE}/index.html?autotest=1"
+ },
+ {
+  "waitlog": "CABAY_BOOT",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "click": [
+   640,
+   472
+  ]
+ },
+ {
+  "wait": 800
+ },
+ {
+  "click": [
+   634,
+   495
+  ]
+ },
+ {
+  "wait": 600
+ },
+ {
+  "click": [
+   566,
+   224
+  ]
+ },
+ {
+  "wait": 600
+ },
+ {
+  "click": [
+   640,
+   198
+  ]
+ },
+ {
+  "type": "{USER}"
+ },
+ {
+  "click": [
+   640,
+   255
+  ]
+ },
+ {
+  "type": "Ban Web"
+ },
+ {
+  "click": [
+   640,
+   312
+  ]
+ },
+ {
+  "type": "songnuoc-2026-xanh"
+ },
+ {
+  "click": [
+   640,
+   369
+  ]
+ },
+ {
+  "type": "songnuoc-2026-xanh"
+ },
+ {
+  "click": [
+   640,
+   518
+  ]
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "click": [
+   640,
+   611
+  ]
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "click": [
+   441,
+   290
+  ]
+ },
+ {
+  "waitlog": "CABAY_SESSION accepted",
+  "timeout": 60000
+ },
+ {
+  "wait": 3000
+ },
+ {
+  "shot": "s01_in_world"
+ },
+ {
+  "hold": "KeyW",
+  "ms": 1200
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "s02_walked"
+ }
 ]

@@ -60,6 +60,15 @@ func register(user: String, display: String, password: String) -> Dictionary:
 	return r
 
 
+## "Chơi ngay" (P-041): server cấp tên khach_… + khóa ngẫu nhiên; client giữ khóa trên máy (GuestStore) để lần sau tự vào lại.
+func guest(display: String) -> Dictionary:
+	var r := await request(HTTPClient.METHOD_POST, "/v1/auth/guest", {"display_name": display}, false)
+	if r["ok"]:
+		username = String(r["data"]["username"])
+		_take_tokens(r["data"])
+	return r
+
+
 func login(user: String, password: String) -> Dictionary:
 	var r := await request(HTTPClient.METHOD_POST, "/v1/auth/login", {"username": user, "password": password}, false)
 	if r["ok"]:
