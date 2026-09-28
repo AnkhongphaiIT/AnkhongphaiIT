@@ -119,6 +119,25 @@ func test_loc_whole_floats_render_as_int(t) -> void:
 	Loc.locale = old
 
 
+func test_url_cannot_redirect_public_build_endpoints(t) -> void:
+	# P-034: link lạ `index.html?api=https://máy-khác&ws=wss://máy-khác` không được đổi máy chủ của bản công khai
+	# (sẽ gửi mật khẩu người chơi đi nơi khác). Bản thử local vẫn đổi được để chạy qua đường hầm.
+	var q := "?api=https%3A%2F%2Fevil.example&ws=wss%3A%2F%2Fevil.example%2Fws&scale=0.5"
+	var locked := {"api_base": "https://api.cabay.example", "ws_url": "wss://ws.cabay.example"}
+	Endpoints.apply_query(locked, q, false)
+	t.eq(locked["api_base"], "https://api.cabay.example", "bản công khai: bỏ qua ?api=")
+	t.eq(locked["ws_url"], "wss://ws.cabay.example", "bản công khai: bỏ qua ?ws=")
+	t.eq(locked.get("render_scale"), 0.5, "tham số vô hại (?scale=) vẫn nhận")
+	var local := {"api_base": "http://127.0.0.1:8787", "ws_url": "ws://127.0.0.1:8910"}
+	Endpoints.apply_query(local, q, true)
+	t.eq(local["api_base"], "https://evil.example", "bản local: đổi được sang https")
+	t.eq(local["ws_url"], "wss://evil.example/ws", "bản local: đổi được sang wss")
+	var plain := {"api_base": "http://127.0.0.1:8787", "ws_url": "ws://127.0.0.1:8910"}
+	Endpoints.apply_query(plain, "?api=http%3A%2F%2Fevil.example&ws=ws%3A%2F%2Fevil.example", true)
+	t.eq(plain["api_base"], "http://127.0.0.1:8787", "http thường (không mã hóa) ngoài localhost bị từ chối")
+	t.eq(plain["ws_url"], "ws://127.0.0.1:8910", "ws thường ngoài localhost bị từ chối")
+
+
 func test_world_labels_follow_locale(t) -> Signal:
 	# Lỗi cũ: đổi VI→EN giữa trận, HUD sang tiếng Anh nhưng bảng tên NPC/biển sạp 3D vẫn tiếng Việt.
 	var old := Loc.locale

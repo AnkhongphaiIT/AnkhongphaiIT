@@ -73,6 +73,8 @@ def export(target: str, api: str | None, ws: str | None, debug: bool, release: b
                 cfg["ws_url"] = _check_url(ws, "wss", "ws")
             # Chế độ kiểm thử tự động (?autotest=1, có phím tự quay về cá/boss) chỉ có trong bản thử local, không có trong bản phát hành.
             cfg["allow_autotest"] = not release
+            # ?api=&ws= trên URL chỉ dùng được ở bản trỏ localhost; bản có endpoint công khai khóa cứng (P-034).
+            cfg["allow_endpoint_override"] = not (api or ws)
             ENDPOINTS.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         g = godot_bin()
         subprocess.run([g, "--headless", "--path", str(ROOT), "--import"], check=False,

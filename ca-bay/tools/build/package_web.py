@@ -111,7 +111,7 @@ def main() -> int:
         if FORBIDDEN_NAMES.search(p.name):
             problems.append(f"tên file cấm: {p.relative_to(out)}")
         data = p.read_bytes()
-        for b in FORBIDDEN_BYTES:
+        for b in FORBIDDEN_BYTES + ([b"\"allow_endpoint_override\": true"] if public else []):
             if b in data:
                 problems.append(f"{p.relative_to(out)} chứa {b.decode()}")
         if PEM_KEY.search(data):

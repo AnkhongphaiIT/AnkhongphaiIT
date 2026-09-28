@@ -1,12 +1,13 @@
 class_name Endpoints
 extends RefCounted
-## Địa chỉ backend/room server cho client. Thứ tự: tham số URL trang web (?api=&ws=) → file
-## res://client/config/endpoints.json (ghi lúc build) → mặc định localhost. Không có secret.
+## Địa chỉ backend/room server cho client. Thứ tự: tham số URL trang web (?api=&ws=, chỉ bản thử local)
+## → file res://client/config/endpoints.json (ghi lúc build) → mặc định localhost. Không có secret.
 
 
 static func load_endpoints() -> Dictionary:
 	var cfg := {"api_base": "http://127.0.0.1:8787", "ws_url": "ws://127.0.0.1:8910"}
 	var allow_autotest := OS.is_debug_build()
+	var allow_override := OS.is_debug_build()
 	var f := FileAccess.open("res://client/config/endpoints.json", FileAccess.READ)
 	if f:
 		var d: Variant = JSON.parse_string(f.get_as_text())
@@ -16,21 +17,11 @@ static func load_endpoints() -> Dictionary:
 					cfg[k] = d[k]
 			# chỉ file ghi lúc build (không phải tham số URL) mới bật được chế độ kiểm thử trong bản xuất
 			allow_autotest = allow_autotest or d.get("allow_autotest", false) == true
+			allow_override = allow_override or d.get("allow_endpoint_override", false) == true
 	if OS.has_feature("web"):
 		var q: Variant = JavaScriptBridge.eval("window.location.search", true)
-		if typeof(q) == TYPE_STRING and q.length() > 1:
-			for part in String(q).substr(1).split("&"):
-				var kv := part.split("=")
-				if kv.size() == 2:
-					var v := kv[1].uri_decode()
-					if kv[0] == "api" and (v.begins_with("https://") or v.begins_with("http://127.0.0.1") or v.begins_with("http://localhost")):
-						cfg["api_base"] = v
-					elif kv[0] == "ws" and (v.begins_with("wss://") or v.begins_with("ws://127.0.0.1") or v.begins_with("ws://localhost")):
-						cfg["ws_url"] = v
-					elif kv[0] == "autotest" and v == "1":
-						cfg["autotest"] = true
-					elif kv[0] == "scale" and v.is_valid_float():
-						cfg["render_scale"] = clampf(v.to_float(), 0.25, 1.0)
+		if typeof(q) == TYPE_STRING:
+			apply_query(cfg, String(q), allow_override)
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--api="):
 			cfg["api_base"] = a.substr(6)
@@ -42,6 +33,27 @@ static func load_endpoints() -> Dictionary:
 	autotest = bool(cfg.get("autotest", false)) and allow_autotest
 	render_scale_override = float(cfg.get("render_scale", 0.0))
 	return cfg
+
+
+## Tham số trang web: ?api=&ws= (đổi máy chủ), ?autotest=1, ?scale=. Đổi máy chủ chỉ khi bản build cho phép
+## (bản thử local, P-034): bản công khai khóa endpoint lúc build, để một đường link lạ kiểu
+## `…/index.html?api=https://máy-khác` không thể khiến trang game thật gửi mật khẩu người chơi sang máy khác.
+static func apply_query(cfg: Dictionary, query: String, allow_override: bool) -> void:
+	if query.length() <= 1:
+		return
+	for part in query.substr(1).split("&"):
+		var kv := part.split("=")
+		if kv.size() != 2:
+			continue
+		var v := kv[1].uri_decode()
+		if kv[0] == "api" and allow_override and (v.begins_with("https://") or v.begins_with("http://127.0.0.1") or v.begins_with("http://localhost")):
+			cfg["api_base"] = v
+		elif kv[0] == "ws" and allow_override and (v.begins_with("wss://") or v.begins_with("ws://127.0.0.1") or v.begins_with("ws://localhost")):
+			cfg["ws_url"] = v
+		elif kv[0] == "autotest" and v == "1":
+			cfg["autotest"] = true
+		elif kv[0] == "scale" and v.is_valid_float():
+			cfg["render_scale"] = clampf(v.to_float(), 0.25, 1.0)
 
 
 ## ?scale=0.25..1 ghi đè độ phân giải 3D (chụp ảnh quảng bá ở chế độ autotest; máy yếu).
