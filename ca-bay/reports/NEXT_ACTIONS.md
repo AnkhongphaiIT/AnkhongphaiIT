@@ -1,6 +1,6 @@
 # NEXT_ACTIONS (tối đa 5, theo thứ tự)
 
-0. **Chờ chủ dự án chạy gói Windows mới** (gửi 28/09 10:25, commit 31789c6: 3 phần `.001–.003` + `GHEP_FILE.bat` → giải nén → `CHOI_THU.bat` → **Chơi ngay**) và báo kết quả; room server `.exe` chưa chạy thử được trên Windows thật (Wine 9 không chạy Godot 4.7). Nếu lỗi: xem ảnh cửa sổ đen (đã có lời báo lỗi tiếng Việt), dự phòng `GODOT_EXE`. Khi có link cloudflared: buổi thử 60 phút (`release/PLAYTEST_60MIN.md`) → NET-01, WEB-02, UX thật.
+0. **Chờ chủ dự án chạy gói Windows mới** (gửi lại 28/09 sau 10:42, commit 3b1de93 — thay bản 31789c6: 3 phần `.001–.003` + `GHEP_FILE.bat` → giải nén → `CHOI_THU.bat` → **Chơi ngay**; có thêm nút "Người chơi khác trên máy này" và biểu tượng cần câu/vợt mới; SHA-256 zip `0428ebba…`) và báo kết quả; room server `.exe` chưa chạy thử được trên Windows thật (Wine 9 không chạy Godot 4.7). Nếu lỗi: xem ảnh cửa sổ đen (đã có lời báo lỗi tiếng Việt), dự phòng `GODOT_EXE`. Khi có link cloudflared: buổi thử 60 phút (`release/PLAYTEST_60MIN.md`) → NET-01, WEB-02, UX thật.
 1. **Nếu chủ dự án vẫn muốn bỏ hẳn bảo mật** (vào bằng tên, không khóa): xác nhận rõ rủi ro trước (ai gõ đúng tên là vào tài khoản người khác), đổi docs 07/08, P-041.
 2. **Mục MỘT PHẦN trong `reports/VALIDATION_MATRIX.md`**: WEB-01 (thử tay khóa chuột/Esc/toàn màn hình, Firefox), PERF-01 (FPS máy thật) — cần máy thật.
 3. **Làm đẹp còn thô**: tay góc nhìn thứ nhất, NPC, icon mảnh (cần carbon, vỉ ruồi).
