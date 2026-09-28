@@ -447,8 +447,69 @@ func sc_negative() -> bool:
 	base_ok = check("forged_pickup_rejected", pk.get("status", "") == "rejected", pk.get("error_code")) and base_ok
 	var sl: Dictionary = await b.durable("inventory.sell", {"item_uids": [Protocol.uuid4()], "shop_id": "shop_co_ba"})
 	base_ok = check("forged_sell_rejected", sl.get("status", "") == "rejected", sl.get("error_code")) and base_ok
+	# NET-06: NaN / vô cực trong input không được lọt vào mô phỏng (vị trí phải còn là số hữu hạn)
+	var env5 := Protocol.make_envelope("player.input", {"move_x": 0.5, "move_z": 0, "look_yaw_rad": 0.25, "look_pitch_rad": 0, "jump": false}, b.conn.connection_id, b.conn.room_id, b.conn.seq + 1)
+	b.conn.seq += 1
+	var nan_text := JSON.stringify(env5).replace("\"move_x\":0.5", "\"move_x\":NaN")
+	b.conn.send_raw(nan_text)
+	var env6 := Protocol.make_envelope("player.input", {"move_x": 0.5, "move_z": 0, "look_yaw_rad": 0.25, "look_pitch_rad": 0, "jump": false}, b.conn.connection_id, b.conn.room_id, b.conn.seq + 1)
+	b.conn.seq += 1
+	var inf_text := JSON.stringify(env6).replace("\"move_x\":0.5", "\"move_x\":1e999").replace("\"look_yaw_rad\":0.25", "\"look_yaw_rad\":-1e999")
+	b.conn.send_raw(inf_text)
+	await b.get_tree().create_timer(1.0).timeout
+	var me: Dictionary = b.player_of(b.api.account_id)
+	var pos: Array = me.get("position", [])
+	var finite := pos.size() == 3 and pos.all(func(v): return is_finite(float(v))) and is_finite(float(me.get("yaw_rad", 0.0)))
+	# không bắt buộc có phản hồi (input không có kết quả riêng; NaN không phải JSON hợp lệ nên server không đọc được request_id)
+	base_ok = check("nan_inf_input_not_in_simulation", nan_text.contains("NaN") and inf_text.contains("1e999") and finite and b.conn.is_live(),
+		{"position": pos, "inf_reply": b.results.get(env6["request_id"], {}).get("error_code", "no_reply"), "nan_reply": b.results.get(env5["request_id"], {}).get("error_code", "no_reply")}) and base_ok
+	# gói quá lớn (> max_client_payload_bytes) bị bỏ, không làm sập server và không ngắt người chơi
+	var env7 := Protocol.make_envelope("tool.use", {"target_uid": "x".repeat(9000)}, b.conn.connection_id, b.conn.room_id, b.conn.seq + 1)
+	b.conn.seq += 1
+	b.conn.send_raw(JSON.stringify(env7))
+	var after_big: Dictionary = await b.durable("inventory.pickup", {"item_uid": Protocol.uuid4()})
+	base_ok = check("oversized_packet_dropped_session_kept", b.conn.is_live() and after_big.get("status", "") == "rejected" and not b.results.has(env7["request_id"]),
+		{"live": b.conn.is_live(), "next_command": after_big.get("status"), "big_reply": b.results.get(env7["request_id"], {}).get("error_code", "no_reply")}) and base_ok
 	# vẫn chơi tiếp được sau khi bị từ chối
 	base_ok = check("still_connected", b.conn.is_live()) and base_ok
+	# AUTH-02: socket mở nhưng không xác thực bị server ngắt sau websocket_auth_timeout_s (5 s)
+	var raw := WebSocketPeer.new()
+	var ws_url: String = String(opts["direct_ws"]) if String(opts["direct_ws"]) != "" else String(endpoints["ws_url"])
+	raw.connect_to_url(ws_url)
+	var t0 := Time.get_ticks_msec()
+	var opened_ms := -1
+	var closed_ms := -1
+	while Time.get_ticks_msec() - t0 < 15000:
+		raw.poll()
+		var rs := raw.get_ready_state()
+		if rs == WebSocketPeer.STATE_OPEN and opened_ms < 0:
+			opened_ms = Time.get_ticks_msec() - t0
+		if rs == WebSocketPeer.STATE_CLOSED:
+			closed_ms = Time.get_ticks_msec() - t0
+			break
+		await b.get_tree().process_frame
+	var auth_limit_ms := int(float(ContentDB.limit("websocket_auth_timeout_s", 5)) * 1000.0)
+	base_ok = check("unauthenticated_socket_closed_after_auth_timeout", opened_ms >= 0 and closed_ms > 0
+		and closed_ms - opened_ms >= auth_limit_ms - 1000 and closed_ms - opened_ms <= auth_limit_ms + 2500,
+		{"opened_ms": opened_ms, "closed_ms": closed_ms, "limit_ms": auth_limit_ms}) and base_ok
+	# NET-06: bản client lệch nội dung / giao thức bị từ chối với mã rõ ràng (client hiện "Cần phiên bản game mới")
+	var real_hash: String = ContentDB.content_hash
+	b.conn.disconnect_now()
+	ContentDB.content_hash = "0".repeat(64)
+	var ok_bad_hash: bool = await b.reconnect(8.0)
+	var reason_hash: String = b.closed_reason
+	ContentDB.content_hash = real_hash
+	var real_proto: String = String(ContentDB.network["protocol_version"])
+	b.conn.disconnect_now()
+	ContentDB.network["protocol_version"] = "0.0.1"
+	var ok_bad_proto: bool = await b.reconnect(8.0)
+	var reason_proto: String = b.closed_reason
+	ContentDB.network["protocol_version"] = real_proto
+	b.conn.disconnect_now()
+	var ok_back: bool = await b.reconnect(15.0)
+	base_ok = check("content_and_protocol_mismatch_rejected", not ok_bad_hash and reason_hash == "CONTENT_MISMATCH" and not ok_bad_proto
+		and reason_proto in ["PROTOCOL_MISMATCH", "BAD_TICKET"] and ok_back,
+		{"content": reason_hash, "protocol": reason_proto, "reconnect_with_real_build": ok_back}) and base_ok
 	return base_ok
 
 

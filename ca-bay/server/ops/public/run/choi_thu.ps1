@@ -1,8 +1,15 @@
-﻿
-# Chơi thử trên máy Windows này bằng MỘT cổng (P-035): http://127.0.0.1:8787 là trang game + tài khoản + phòng chơi.
-# Bạn bè vào qua Internet: mở PowerShell khác và chạy đường hầm (README mục 4), ví dụ
+﻿# Chơi thử trên máy Windows này bằng MỘT cổng (P-035): http://127.0.0.1:8787 là trang game + tài khoản + phòng chơi.
+# Bạn bè vào qua Internet: mở PowerShell khác và chạy đường hầm (README mục 0), ví dụ
 #   cloudflared tunnel --url http://127.0.0.1:8787      → gửi link https://….trycloudflare.com cho bạn bè
+# Bấm lại khi máy chủ đang chạy: chỉ mở lại trình duyệt; cửa sổ máy chủ nào đã bị đóng thì mở lại cửa sổ đó.
 $ErrorActionPreference = "Stop"
+$Host.UI.RawUI.WindowTitle = "CA BAY - khoi dong"
+
+function Test-Port([int]$p) {
+  $c = New-Object Net.Sockets.TcpClient
+  try { $c.Connect("127.0.0.1", $p); return $true } catch { return $false } finally { $c.Close() }
+}
+
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 if (-not (Test-Path .env)) {
@@ -18,10 +25,15 @@ if (-not (Test-Path .env)) {
 if (-not (Select-String -Path .env -Pattern '^CABAY_SELFHOST=1' -Quiet)) { throw "Trong .env hãy đặt CABAY_SELFHOST=1 để chạy một cổng" }
 $m = Select-String -Path .env -Pattern '^CABAY_API_PORT=(\d+)' | Select-Object -First 1
 $port = if ($m) { $m.Matches[0].Groups[1].Value } else { "8787" }
-foreach ($s in @("start_room.ps1", "start_backend.ps1")) {
-  Start-Process powershell -WorkingDirectory $root -ArgumentList @("-NoExit", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "`"$PSScriptRoot\$s`"")
+$m = Select-String -Path .env -Pattern '^CABAY_WS_PORT=(\d+)' | Select-Object -First 1
+$wsPort = if ($m) { $m.Matches[0].Groups[1].Value } else { "8910" }
+$started = @()
+foreach ($pair in @(@("start_room.ps1", $wsPort), @("start_backend.ps1", $port))) {
+  if (Test-Port $pair[1]) { continue }  # đang chạy sẵn: không mở cửa sổ thứ hai
+  Start-Process powershell -WorkingDirectory $root -ArgumentList @("-NoExit", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "`"$PSScriptRoot\$($pair[0])`"")
+  $started += $pair[0]
 }
-Write-Host "Đang khởi động máy chủ (lần đầu có thể mất vài phút)..."
+if ($started.Count -gt 0) { Write-Host "Đang khởi động máy chủ (lần đầu có thể mất 1-2 phút)... Hai cửa sổ đen vừa mở là máy chủ: đừng đóng." }
 $ok = $false
 for ($i = 0; $i -lt 300; $i++) {
   try {
@@ -30,7 +42,7 @@ for ($i = 0; $i -lt 300; $i++) {
   } catch { }
   Start-Sleep -Seconds 1
 }
-if (-not $ok) { throw "Backend chưa chạy sau 5 phút — xem cửa sổ start_backend" }
+if (-not $ok) { throw "Máy chủ tài khoản chưa chạy sau 5 phút — xem cửa sổ 'CA BAY - may chu tai khoan', chụp màn hình gửi người hỗ trợ" }
 Start-Process "http://127.0.0.1:$port/"
-Write-Host "Đã mở http://127.0.0.1:$port/ . Đóng hai cửa sổ máy chủ để dừng."
+Write-Host "Đã mở http://127.0.0.1:$port/ trong trình duyệt. Cửa sổ này có thể đóng; muốn tắt game thì đóng hai cửa sổ máy chủ."
 Write-Host "Mời bạn bè qua Internet: cloudflared tunnel --url http://127.0.0.1:$port"

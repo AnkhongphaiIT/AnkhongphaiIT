@@ -14,7 +14,7 @@ Cập nhật: 28/09/2026 (phiên 3).
 | WEB-01 | Trình duyệt | MỘT PHẦN | Chromium: E2E đầy đủ vòng chơi, đổi cỡ cửa sổ, tab ẩn, iframe khác site, gõ tiếng Việt, đổi phím | Firefox (BLOCKED: tải bị chặn), khóa chuột/Esc/toàn màn hình cần thử tay |
 | WEB-02 | Trong iframe itch.io | PASS\* | `run_web_e2e.py --iframe` (trang cha khác site, CORS, không cookie bên thứ ba) | itch.io thật (BLOCKED: NEED-ITCH, NEED-HOST) |
 | AUTH-01 | Đăng ký/đăng nhập | PASS | pytest `test_register_login_and_hash_not_plaintext`, `test_duplicate_username_and_bad_inputs`, `test_login_generic_error_does_not_leak`; giới hạn body 8/64 KB | — |
-| AUTH-02 | Token, vé, hết giờ xác thực socket | MỘT PHẦN | pytest `test_tokens_refresh_rotation_reuse_logout`, `test_expired_access_token`, `test_ticket_single_use_ttl_and_room_limits`; ngắt socket chưa xác thực sau 5 s đã cài (`SceneMultiplayer.auth_timeout`) | bot kiểm ngắt sau 5 s (đang thêm vào `negative`) |
+| AUTH-02 | Token, vé, hết giờ xác thực socket | PASS | pytest `test_tokens_refresh_rotation_reuse_logout`, `test_expired_access_token`, `test_ticket_single_use_ttl_and_room_limits`; bot `negative`: socket mở mà không xác thực bị ngắt sau 5,04 s | — |
 | AUTH-03 | Khôi phục | PASS | pytest `test_recovery_one_time_and_revokes_sessions`, `test_recovery_without_code_fails`, `test_save_view_has_no_secrets` | — |
 | AUTH-04 | Chống lạm dụng | PASS | giới hạn sai theo tài khoản/IP (`test_rate_limit_account`, `test_rate_limit_ip_behind_proxy_not_spoofable` — P-036), tối đa 2 phép băm scrypt song song (`test_password_hashing_limited_to_two_concurrent_jobs`), origin lạ bị chặn (`test_unknown_origin_blocked_by_cors`), giới hạn body 8/64 KB, API nội bộ cần khóa (`test_internal_api_requires_service_key`), backend/room chỉ nghe 127.0.0.1 | — |
 | AUTH-05 | Xóa tài khoản | PASS | pytest `test_delete_account_requires_recent_auth_and_only_self`; chính sách bản sao lưu ghi ở runbook §7 | — |
@@ -23,7 +23,7 @@ Cập nhật: 28/09/2026 (phiên 3).
 | NET-03 | Mất mạng 10/60/100 s | PASS | bot `net_outage` 44/44, `net_halfopen` (sau sửa P-040) | — |
 | NET-04 | Chủ phòng rời/AFK/menu | PASS | bot `owner_leave`; Godot `test_room_owner_transfer_and_capacity`, `test_afk_after_timeout` | — |
 | NET-05 | Mạng xấu | PASS | proxy `netem_proxy.py` (RTT ≈155 ms ± jitter, 0 đảo thứ tự, hàng đợi giới hạn): `fish_loop` 4 bot, `quest_boss` (+ cắt kết nối), `fish_net` cắt ngẫu nhiên | — |
-| NET-06 | Lệch phiên bản / gói bẩn | MỘT PHẦN | bot `negative` (trường thừa, UUID sai, seq cũ, tiền giả, sai phòng); Godot `test_protocol.gd`; client báo "Cần phiên bản game mới" | bot: sai content_hash, gói quá lớn, NaN (đang thêm) |
+| NET-06 | Lệch phiên bản / gói bẩn | PASS | bot `negative`: trường thừa, UUID sai, seq cũ, tiền giả, sai phòng, NaN/vô cực, gói > 8 KB, lệch content_hash (`CONTENT_MISMATCH`) và protocol (`PROTOCOL_MISMATCH`); client hiện "Cần phiên bản game mới"; Godot `test_protocol.gd` | — |
 | CORE-01 | Vòng câu đầy đủ | PASS | E2E `full_loop`; bot `fish_loop` 4 dây độc lập | — |
 | CORE-02 | Sở hữu, không nhân đôi | PASS | pytest `test_bag_full_and_concurrent_pickup_same_uid`, `test_pickup_sell_idempotent_and_conflicts`; bot `room_kill_boss` (bán/thả lúc sập), `net_outage` (thả rồi mất mạng) | — |
 | CORE-03 | Chống giả lệnh | PASS | pytest `test_forged_values_rejected`; bot `negative`, `kick_cleanup` (spam); Godot `test_melee_lag_compensation_bounded`; di chuyển do server tính từ input | — |
@@ -41,4 +41,4 @@ Cập nhật: 28/09/2026 (phiên 3).
 | PERF-01 | Máy 8 GB | MỘT PHẦN | bộ nhớ wasm/JS, dung lượng tải, bộ nhớ server đo trong Chromium headless (trong ngân sách) | FPS/frame time trên máy thật (NEED-DEVICES) |
 | REL-01 | Phát hành công khai | BLOCKED | gói web/server, runbook, CHANGELOG, CREDITS, PRIVACY nháp, trang itch nháp | NEED-HOST, NEED-ITCH, NEED-CONTACT |
 
-**Kết luận:** chưa đủ điều kiện phát hành công khai (REL-01, NET-01, AV-01 bị chặn bởi việc chỉ chủ dự án làm được). Mọi mục kiểm được trong container đã chạy; các mục MỘT PHẦN đang được bổ sung test.
+**Kết luận:** chưa đủ điều kiện phát hành công khai (REL-01, NET-01, AV-01 bị chặn bởi việc chỉ chủ dự án làm được). Mọi mục kiểm được trong container đã chạy; các mục MỘT PHẦN còn lại (WEB-01, PERF-01) cần máy/thiết bị thật.

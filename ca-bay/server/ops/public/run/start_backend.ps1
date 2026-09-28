@@ -1,11 +1,30 @@
-﻿
-# Windows: chạy backend tài khoản/lưu (FastAPI + SQLite), chỉ nghe localhost. Chạy trong PowerShell tại thư mục gói server.
+﻿# Windows: chạy backend tài khoản/lưu (FastAPI + SQLite) + trang game, chỉ nghe localhost. Chạy trong PowerShell tại thư mục gói.
 # Gói bản Windows có sẵn Python trong python\ (không cần cài). Nếu không có: cần Python 3.11 từ python.org
 # (tick "Add to PATH"); lần đầu tạo .venv và tải thư viện (cần Internet).
 $ErrorActionPreference = "Stop"
+$Host.UI.RawUI.WindowTitle = "CA BAY - may chu tai khoan + trang game (DUNG DONG khi dang choi)"
+trap {
+  Write-Host ""
+  Write-Host "LỖI: $_" -ForegroundColor Red
+  Write-Host "Máy chủ tài khoản chưa chạy được. Chụp màn hình cửa sổ này gửi người hỗ trợ." -ForegroundColor Yellow
+  break
+}
+
+function Test-Port([int]$p) {
+  $c = New-Object Net.Sockets.TcpClient
+  try { $c.Connect("127.0.0.1", $p); return $true } catch { return $false } finally { $c.Close() }
+}
+
 Set-Location (Split-Path $PSScriptRoot -Parent)
+Write-Host "CÁ BAY — máy chủ tài khoản + trang game." -ForegroundColor Cyan
+Write-Host "ĐỪNG ĐÓNG cửa sổ này khi đang chơi (đóng cửa sổ = tắt game)." -ForegroundColor Yellow
 if (-not (Test-Path .env)) { throw "Thiếu .env — chạy CHOI_THU.bat, hoặc sao chép run\env.example thành .env và điền giá trị" }
 Get-Content .env -Encoding UTF8 | Where-Object { $_ -match '^[A-Z_]+=' } | ForEach-Object { $k, $v = $_ -split '=', 2; Set-Item -Path "env:$k" -Value $v }
+$port = if ($env:CABAY_API_PORT) { $env:CABAY_API_PORT } else { "8787" }
+if (Test-Port $port) {
+  Write-Host "Cổng $port đang có chương trình khác dùng (thường là máy chủ CÁ BAY đã chạy ở một cửa sổ khác). Cửa sổ này không cần nữa, có thể đóng." -ForegroundColor Yellow
+  return
+}
 $env:CABAY_DATA_DIR = (Resolve-Path data).Path
 New-Item -ItemType Directory -Force var | Out-Null
 if (-not $env:CABAY_DB_PATH) { $env:CABAY_DB_PATH = (Join-Path (Resolve-Path var).Path "cabay.db") }
@@ -26,7 +45,6 @@ if (Test-Path python\python.exe) {
   }
   $py = (Resolve-Path .venv\Scripts\python.exe).Path
 }
-$port = if ($env:CABAY_API_PORT) { $env:CABAY_API_PORT } else { "8787" }
 $extra = @()
 if ($env:CABAY_SELFHOST -eq "1") {
   # một cổng (P-035): phục vụ luôn trang game + chuyển tiếp /ws tới room server trên máy này
@@ -36,3 +54,6 @@ if ($env:CABAY_SELFHOST -eq "1") {
 }
 Set-Location backend
 & $py -m uvicorn app.main:app --host 127.0.0.1 --port $port --proxy-headers --forwarded-allow-ips 127.0.0.1 --no-access-log @extra
+Write-Host ""
+Write-Host "Máy chủ tài khoản đã dừng (mã thoát $LASTEXITCODE)." -ForegroundColor Red
+Write-Host "Nếu bạn không tự tắt: chụp màn hình cửa sổ này gửi người hỗ trợ. Chạy lại: bấm đúp CHOI_THU.bat." -ForegroundColor Yellow
