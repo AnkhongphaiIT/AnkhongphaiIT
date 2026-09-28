@@ -252,8 +252,9 @@ func _update_entity_visual(n: Node3D, uid: String, e: Dictionary, delta: float) 
 		"boss":
 			var info2: Label3D = n.get_node("Info")
 			var bm: Node3D = n.get_node("Model")
-			# máu boss đã có thanh HUD cho cả phòng; thanh ký tự █/░ trên đầu hiện thành tấm trắng trống → chỉ giữ tên
+			# tên + máu boss đã có thanh HUD cho cả phòng; nhãn 3D trên đầu boss chồng lên thanh đó khi boss vừa tới → ẩn
 			info2.text = Loc.name_of(e["def_id"])
+			info2.visible = false
 			var bap2: AnimationPlayer = bm.get_node_or_null("Anim")
 			if bap2:
 				var clip: String = BOSS_CLIPS.get(state, "idle")
