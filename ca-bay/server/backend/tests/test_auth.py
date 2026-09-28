@@ -22,6 +22,23 @@ def test_register_login_and_hash_not_plaintext(client, env):
             assert th != u["access_token"] and th != u["refresh_token"]
 
 
+def test_password_rule_shown_to_player_matches_server(client):
+    # Màn hình tạo tài khoản từng ghi "tối thiểu 10 ký tự" trong khi server đòi 12 → người chơi đặt 10–11 ký tự bị báo lỗi
+    # với đúng dòng hướng dẫn sai. Lấy con số từ chính chuỗi hiển thị (VI và EN) rồi thử đăng ký ở ranh giới.
+    import csv
+    import re
+    from pathlib import Path
+    rows = {r[0]: r for r in csv.reader((Path(__file__).resolve().parents[3] / "data/loc/strings.csv").open(encoding="utf-8"))}
+    en, vi = rows["ui.account.rules"][1], rows["ui.account.rules"][2]
+    n_en = int(re.search(r"at least (\d+) characters", en).group(1))
+    n_vi = int(re.search(r"tối thiểu (\d+) ký tự", vi).group(1))
+    assert n_en == n_vi
+    short = client.post("/v1/auth/register", json={"username": "ranh_gioi_a", "display_name": "x", "password": "m" * (n_en - 1)})
+    assert short.status_code == 400 and short.json()["error_code"] == "WEAK_PASSWORD"
+    ok = client.post("/v1/auth/register", json={"username": "ranh_gioi_b", "display_name": "x", "password": "m" * n_en})
+    assert ok.status_code == 200
+
+
 def test_duplicate_username_and_bad_inputs(client):
     register(client, username="trung_ten")
     r = client.post("/v1/auth/register", json={"username": "TRUNG_TEN", "display_name": "x", "password": "x" * 12})

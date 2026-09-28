@@ -175,7 +175,7 @@ ui.account.recover,Recover account,Khôi phục tài khoản
 ui.account.recovery_code,Recovery code,Mã khôi phục
 ui.account.recovery_warning,"Without a recovery code, you may be unable to recover your account.","Nếu không có mã khôi phục, bạn có thể không lấy lại được tài khoản."
 ui.account.register,Create account,Tạo tài khoản
-ui.account.rules,"Username 3–24 characters (a–z, 0–9, _). Password at least 10 characters; avoid common passwords.","Tên đăng nhập 3–24 ký tự (a–z, 0–9, _). Mật khẩu tối thiểu 10 ký tự, tránh mật khẩu phổ biến."
+ui.account.rules,"Username 3–24 characters (a–z, 0–9, _). Password at least 12 characters; avoid common passwords.","Tên đăng nhập 3–24 ký tự (a–z, 0–9, _). Mật khẩu tối thiểu 12 ký tự, tránh mật khẩu phổ biến."
 ui.account.save_recovery,Save these recovery codes now. They will only be shown once.,Hãy lưu các mã khôi phục ngay. Mã chỉ hiển thị một lần.
 ui.account.session_expired,Your session expired. Sign in again to continue.,Phiên đăng nhập đã hết hạn. Đăng nhập lại để tiếp tục.
 ui.account.sync_failed,Server unavailable. Try reconnecting; your confirmed progress is unchanged.,Chưa nối được máy chủ. Thử kết nối lại; tiến trình đã xác nhận vẫn được giữ.
