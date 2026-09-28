@@ -30,7 +30,7 @@ Bão vừa qua, bến cá của làng tan hoang. Cùng tối đa 4 người bạ
 
 **Điều khiển:** WASD di chuyển · chuột nhìn · chuột trái: giữ nạp lực / thả quăng / giữ kéo cá / đập · chuột phải: thu dây · E: nói chuyện, nhặt · 1–4: đổi công cụ · B: đổi mồi · Tab: Sổ Cá · Esc: menu
 
-**Lưu ý:** cần kết nối Internet và tạo tài khoản (không cần email). Lưu mã khôi phục khi đăng ký. Chơi tốt nhất trên Chrome/Edge/Firefox máy tính. Quyền riêng tư: xem `PRIVACY.md` đi kèm.
+**Lưu ý:** cần kết nối Internet. Vào game chỉ cần gõ tên và bấm **Chơi ngay** (không email, không mật khẩu); muốn chơi tiếp trên máy khác thì vào Tùy chọn → Đặt mật khẩu. Chơi tốt nhất trên Chrome/Edge/Firefox máy tính. Quyền riêng tư: xem `PRIVACY.md` đi kèm.
 
 ## English
 
@@ -47,7 +47,7 @@ A storm wrecked the village pier. With up to 4 friends, cast your line, yank fis
 
 **Controls:** WASD move · mouse look · left click: hold to charge / release to cast / hold to reel / smack · right click: reel in · E: talk, pick up · 1–4: tools · B: bait · Tab: Fish Book · Esc: menu
 
-**Note:** requires an Internet connection and an account (no email needed). Save your recovery codes. Best on desktop Chrome/Edge/Firefox. Privacy: see the included `PRIVACY.md`.
+**Note:** requires an Internet connection. Just type a name and press **Play now** (no email, no password); to continue on another computer, set a password in Settings. Best on desktop Chrome/Edge/Firefox. Privacy: see the included `PRIVACY.md`.
 
 ## Ảnh chụp đề xuất (thứ tự)
 
@@ -56,6 +56,6 @@ A storm wrecked the village pier. With up to 4 friends, cast your line, yank fis
 ## Trước khi bấm Publish (REL-01)
 
 1. Máy chủ công khai chạy theo `server/ops/public/README.md`, `/healthz` qua HTTPS trả đúng content_hash.
-2. Bản web xuất với endpoint công khai; tải lên trang ở chế độ **Draft/Restricted**; mở bằng trình duyệt ẩn danh: đăng ký, vào phòng, câu, pointer lock, âm thanh, Esc, toàn màn hình.
+2. Bản web xuất với endpoint công khai; tải lên trang ở chế độ **Draft/Restricted**; mở bằng trình duyệt ẩn danh: Chơi ngay, vào phòng, câu, pointer lock, âm thanh, Esc, toàn màn hình.
 3. 4 người thật trên ≥2 thiết bị (NET-01), thử đổi thiết bị giữa chừng, tắt/mở room server.
 4. Ghi URL, phiên bản, sha256 ZIP vào `reports/TEST_RESULTS.md`; chỉ khi đạt mới chuyển trang sang Public.
