@@ -18,6 +18,10 @@
 
 - Tùy chọn → Phím điều khiển: đổi phím cho di chuyển, nhảy, tương tác, ô công cụ, đổi mồi, Sổ Cá (trùng phím tự đổi chỗ, nút về mặc định); mọi gợi ý trên màn hình hiện đúng phím đang dùng.
 
+**Chơi thử trên máy mình / một link cho bạn bè (P-035, P-038):** gói máy chủ bản Windows có sẵn Python và room server — giải nén, bấm `CHOI_THU.bat` là chơi ở `http://127.0.0.1:8787`; máy chủ phục vụ luôn trang game và chuyển tiếp kết nối phòng chơi trên cùng một cổng, nên một đường hầm HTTPS (ví dụ `cloudflared tunnel --url http://127.0.0.1:8787`) cho ra **một link** gửi bạn bè. Gói Linux: `run/choi_thu.sh`.
+
+**Bảo mật:** bản công khai không cho tham số `?api=&ws=` đổi máy chủ (chống link lừa gửi mật khẩu đi nơi khác, P-034); giới hạn thử sai theo IP sau đường hầm không còn lách được bằng header giả (P-036); script PowerShell của gói Windows trước đây lỗi cú pháp trên PowerShell 5.1 vì thiếu BOM — đã sửa và thêm bước kiểm khi đóng gói (P-037).
+
 **Sửa lỗi an toàn giao dịch (từ kiểm thử bot):** gửi lại lệnh gọi boss cũ không còn mở thêm trận miễn phí; chuyển thiết bị không đá nhầm máy mới; bị server ngắt thì được dọn khỏi phòng đúng cách; gửi lại lệnh nhặt sau khi máy chủ phòng khởi động lại nhận đúng kết quả cũ; nhặt được cá đang nhấp nháy sắp tỉnh.
 
 **Vận hành:** `server/ops/seed_checkpoint.py` tạo tài khoản checkpoint cho buổi chơi thử. Gói web (`tools/build/package_web.py`) và gói máy chủ (`tools/build/package_server.py`) với runbook, sao lưu/khôi phục; bản công khai bị chặn tới khi có host HTTPS/WSS, quyền itch.io và kênh liên hệ.

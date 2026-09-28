@@ -55,18 +55,27 @@ def main() -> int:
     ap.add_argument("--cp-file", help="máy chủ ngoài: file checkpoint_accounts.txt do ops/seed_checkpoint.py của gói máy chủ ghi; dùng dòng --cp-stage")
     ap.add_argument("--cp-stage", default="isl1_boss")
     ap.add_argument("--iframe", action="store_true", help="chạy game trong iframe khác site (trang cha localhost:8061) — giả lập itch.io")
+    ap.add_argument("--selfhost", action="store_true",
+                    help="một cổng (P-035): backend phục vụ build/web và chuyển tiếp /ws tới room server; cần export.py web --selfhost")
     a = ap.parse_args()
     if not (ROOT / "build/web/index.pck").exists():
         print("Chưa có build/web — chạy tools/build/export.py web trước")
         return 2
+    selfhost_build = b'"api_base": "@origin"' in (ROOT / "build/web/index.pck").read_bytes()
+    if a.selfhost and a.external_api:
+        pass  # gói máy chủ đã giải nén tự phục vụ trang (web/ của gói), không dùng build/web
+    elif a.selfhost != selfhost_build:
+        print("build/web không khớp chế độ: " + ("cần tools/build/export.py web --selfhost" if a.selfhost else "đây là bản --selfhost, xuất lại tools/build/export.py web"))
+        return 2
     steps = json.loads((ROOT / f"tests/web/scenarios/{a.scenario}.json").read_text(encoding="utf-8"))
     user = "e2e" + secrets.token_hex(4)
-    text = json.dumps(steps, ensure_ascii=False).replace("{USER}", user).replace("{BASE}", f"http://127.0.0.1:{WEB_PORT}")
+    base = (a.external_api or "http://127.0.0.1:8787") if a.selfhost else f"http://127.0.0.1:{WEB_PORT}"
+    text = json.dumps(steps, ensure_ascii=False).replace("{USER}", user).replace("{BASE}", base)
     if a.iframe:
         import urllib.parse
         game = f"http://127.0.0.1:{WEB_PORT}/index.html?autotest=1"
         text = text.replace(f"http://127.0.0.1:{WEB_PORT}/index.html?autotest=1", f"http://localhost:{WEB_PORT + 1}/index.html#" + urllib.parse.quote(game, safe=""), 1)
-    if a.external_api and a.external_ws:
+    if a.external_api and a.external_ws and not a.selfhost:
         # client đọc ?api=&ws= (chỉ nhận https/wss hoặc localhost)
         text = text.replace("index.html?autotest=1", f"index.html?autotest=1&api={a.external_api}&ws={a.external_ws}")
     out = ROOT / "tests/web/artifacts" / a.scenario
@@ -77,10 +86,14 @@ def main() -> int:
             if parts and parts[0] == a.cp_stage:
                 text = text.replace("{CP_USER}", parts[1]).replace("{CP_PASS}", parts[2])
     (out / "scenario.json").write_text(text, encoding="utf-8")
-    st = Stack(extra_env={"CABAY_DEBUG_INPUT": "1"} if os.environ.get("CABAY_DEBUG_INPUT") == "1" else None)
+    extra = {"CABAY_DEBUG_INPUT": "1"} if os.environ.get("CABAY_DEBUG_INPUT") == "1" else {}
+    if a.selfhost:
+        # cùng origin: không cần CORS; trình duyệt chỉ thấy cổng 8787
+        extra.update({"CABAY_WEB_DIR": str(ROOT / "build/web"), "CABAY_WS_UPSTREAM": "ws://127.0.0.1:8910", "CABAY_ALLOWED_ORIGINS": ""})
+    st = Stack(extra_env=extra or None)
     httpd = host = None
     try:
-        if not (a.external_api and a.external_ws):
+        if not (a.external_api and (a.external_ws or a.selfhost)):
             st.start_backend()
             if a.seed_stage:
                 cp_file = st.tmp / "checkpoint_accounts.txt"
@@ -93,7 +106,8 @@ def main() -> int:
                 stage, cp_user, cp_pass = cp_file.read_text(encoding="utf-8").strip().split("\t")[:3]
                 (out / "scenario.json").write_text(text.replace("{CP_USER}", cp_user).replace("{CP_PASS}", cp_pass), encoding="utf-8")
             st.start_room_server()
-        httpd = serve_web()
+        if not a.selfhost:
+            httpd = serve_web()
         if a.iframe:
             host = serve_web(ROOT / "tests/web/iframe_host", WEB_PORT + 1)
         env = dict(os.environ, NODE_PATH=npm_root())
@@ -150,6 +164,11 @@ def main() -> int:
                    "other_pages": sorted({l.split()[2] for l in log.splitlines() if l.startswith("[p1] [log] CABAY_EV") or l.startswith("[p1] [log] CABAY_OTHER")}),
                    "perf": [l.split("CABAY_PERF ", 1)[1] for l in log.splitlines() if "CABAY_PERF " in l],
                    "server_mem": server_mem}
+        endpoints = sorted({l.split("CABAY_ENDPOINTS ", 1)[1] for l in log.splitlines() if "CABAY_ENDPOINTS " in l})
+        summary["endpoints"] = endpoints
+        want = base.replace("http://", "ws://") + "/ws"
+        if a.selfhost and endpoints != [f"api={base} ws={want}"]:
+            summary["ok"] = False  # client phải đi đúng một cổng (trang, API, /ws), không nối thẳng room server
         (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
         print(json.dumps(summary, ensure_ascii=False))
         if a.keep:

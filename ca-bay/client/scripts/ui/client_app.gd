@@ -19,6 +19,8 @@ var _status: Label
 
 func _ready() -> void:
 	endpoints = Endpoints.load_endpoints()
+	# địa chỉ máy chủ đang dùng (không có secret) — người chơi/chủ máy chủ xem được trong Console khi báo lỗi kết nối
+	print("CABAY_ENDPOINTS api=%s ws=%s" % [endpoints["api_base"], endpoints["ws_url"]])
 	api = ApiClient.new()
 	api.base_url = endpoints["api_base"]
 	add_child(api)

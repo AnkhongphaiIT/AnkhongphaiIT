@@ -18,6 +18,7 @@ from .db import connect, migrate
 from .ops import expire_old_operations
 from .persistence.internal_routes import router as internal_router, sweep_stale
 from .rooms.routes import router as rooms_router
+from .selfhost import install as install_selfhost
 
 log = logging.getLogger("cabay")
 
@@ -107,3 +108,5 @@ def healthz():
 app.include_router(auth_router)
 app.include_router(rooms_router)
 app.include_router(internal_router)
+# Sau cùng: /ws và file tĩnh "/" chỉ nhận đường chưa có route API (P-035; tắt khi không đặt biến môi trường).
+install_selfhost(app, settings.web_dir, settings.ws_upstream)

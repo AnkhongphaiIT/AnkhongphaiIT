@@ -60,6 +60,53 @@ def git_commit() -> str:
     return r.stdout.strip() + ("-dirty" if dirty else "")
 
 
+def godot_license(dest: Path) -> None:
+    """Giấy phép Godot sinh từ chính engine đang dùng (không chép tay)."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    r = subprocess.run([exporter.godot_bin(), "--headless", "--script", str(ROOT / "tools/build/godot_license.gd"), "--", str(dest)],
+                       capture_output=True, text=True, timeout=120)
+    if "GODOT_LICENSE_OK" not in r.stdout or not dest.exists():
+        raise SystemExit("Không sinh được LICENSES/GODOT.txt:\n" + (r.stdout + r.stderr)[-2000:])
+
+
+def assemble_web(out: Path, locked_endpoints: bool) -> list[Path]:
+    """Chép bản xuất build/web (CHỈ file release — P-011) + giấy phép sang out/, quét an toàn. Trả danh sách file.
+    locked_endpoints: bản công khai / tự host — không được còn cờ cho đổi máy chủ qua ?api=&ws= (P-034)."""
+    if out.exists():
+        shutil.rmtree(out)
+    out.mkdir(parents=True)
+    copied = []
+    for f in sorted(BUILD.iterdir()):
+        if f.is_file() and CLIENT_FILES.match(f.name):
+            shutil.copy2(f, out / f.name)
+            copied.append(f.name)
+    if "index.html" not in copied or "index.pck" not in copied or "index.wasm" not in copied:
+        raise SystemExit(f"Thiếu file bắt buộc trong build/web: {copied}")
+    godot_license(out / "LICENSES/GODOT.txt")
+    for rel, src in LICENSE_FILES.items():
+        if not src.exists():
+            raise SystemExit(f"Thiếu file giấy phép/credits: {src.relative_to(ROOT)}")
+        dst = out / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dst)
+
+    # kiểm an toàn
+    problems = []
+    files = sorted(p for p in out.rglob("*") if p.is_file())
+    for p in files:
+        if FORBIDDEN_NAMES.search(p.name):
+            problems.append(f"tên file cấm: {p.relative_to(out)}")
+        data = p.read_bytes()
+        for b in FORBIDDEN_BYTES + ([b"\"allow_endpoint_override\": true"] if locked_endpoints else []):
+            if b in data:
+                problems.append(f"{p.relative_to(out)} chứa {b.decode()}")
+        if PEM_KEY.search(data):
+            problems.append(f"{p.relative_to(out)} chứa khối khóa riêng PEM")
+    if problems:
+        raise SystemExit("Gói không an toàn:\n" + "\n".join(problems))
+    return files
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--api")
@@ -80,44 +127,7 @@ def main() -> int:
         endpoints["ws_url"] = a.ws
 
     out = RELEASE / name
-    if out.exists():
-        shutil.rmtree(out)
-    out.mkdir(parents=True)
-    copied = []
-    for f in sorted(BUILD.iterdir()):
-        if f.is_file() and CLIENT_FILES.match(f.name):
-            shutil.copy2(f, out / f.name)
-            copied.append(f.name)
-    if "index.html" not in copied or "index.pck" not in copied or "index.wasm" not in copied:
-        raise SystemExit(f"Thiếu file bắt buộc trong build/web: {copied}")
-    # Giấy phép Godot sinh từ chính engine đang dùng (không chép tay).
-    lic = out / "LICENSES/GODOT.txt"
-    lic.parent.mkdir(parents=True, exist_ok=True)
-    r = subprocess.run([exporter.godot_bin(), "--headless", "--script", str(ROOT / "tools/build/godot_license.gd"), "--", str(lic)],
-                       capture_output=True, text=True, timeout=120)
-    if "GODOT_LICENSE_OK" not in r.stdout or not lic.exists():
-        raise SystemExit("Không sinh được LICENSES/GODOT.txt:\n" + (r.stdout + r.stderr)[-2000:])
-    for rel, src in LICENSE_FILES.items():
-        if not src.exists():
-            raise SystemExit(f"Thiếu file giấy phép/credits: {src.relative_to(ROOT)}")
-        dst = out / rel
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, dst)
-
-    # kiểm an toàn
-    problems = []
-    files = sorted(p for p in out.rglob("*") if p.is_file())
-    for p in files:
-        if FORBIDDEN_NAMES.search(p.name):
-            problems.append(f"tên file cấm: {p.relative_to(out)}")
-        data = p.read_bytes()
-        for b in FORBIDDEN_BYTES + ([b"\"allow_endpoint_override\": true"] if public else []):
-            if b in data:
-                problems.append(f"{p.relative_to(out)} chứa {b.decode()}")
-        if PEM_KEY.search(data):
-            problems.append(f"{p.relative_to(out)} chứa khối khóa riêng PEM")
-    if problems:
-        raise SystemExit("Gói không an toàn:\n" + "\n".join(problems))
+    files = assemble_web(out, locked_endpoints=public)
 
     zpath = RELEASE / f"{name}.zip"
     with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:

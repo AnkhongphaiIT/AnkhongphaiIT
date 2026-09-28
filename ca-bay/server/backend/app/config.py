@@ -23,6 +23,9 @@ class Settings:
     service_key: str | None = field(default_factory=lambda: _env("CABAY_SERVICE_KEY"))
     allowed_origins: list[str] = field(default_factory=lambda: [o.strip() for o in (_env("CABAY_ALLOWED_ORIGINS", "") or "").split(",") if o.strip()])
     trust_proxy_headers: bool = field(default_factory=lambda: _env("CABAY_TRUST_PROXY", "0") == "1")
+    # Tự host một cổng (P-035, app/selfhost.py): phục vụ bản web + chuyển tiếp /ws tới room server cùng máy.
+    web_dir: Path | None = field(default_factory=lambda: Path(v) if (v := _env("CABAY_WEB_DIR")) else None)
+    ws_upstream: str | None = field(default_factory=lambda: _env("CABAY_WS_UPSTREAM"))
     game_version: str = "0.1.0"
     # Số phòng đồng thời; mặc định theo network_contract (initial_concurrent_rooms). Đổi khi đã đo tải.
     max_rooms: int | None = field(default_factory=lambda: int(_env("CABAY_MAX_ROOMS")) if _env("CABAY_MAX_ROOMS") else None)

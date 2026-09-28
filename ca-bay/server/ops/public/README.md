@@ -1,15 +1,29 @@
 # CÁ BAY — Hướng dẫn vận hành máy chủ (runbook)
 
-Gói này chạy phần **tài khoản + lưu tiến trình** (backend Python/FastAPI + SQLite) và **phòng chơi** (room server Godot headless, WebSocket). Bản web (itch.io) chỉ là file tĩnh; người chơi cần máy chủ này online để đăng nhập và chơi.
+Gói này chạy phần **tài khoản + lưu tiến trình** (backend Python/FastAPI + SQLite), **phòng chơi** (room server Godot headless, WebSocket) và **trang game** (thư mục `web/`). Có hai gói: `ca-bay-server-<version>-windows.zip` (có sẵn Python và room server `.exe`, không phải cài gì) và `ca-bay-server-<version>-linux.zip`.
 
-> Trạng thái: đã chạy thử **trên máy local / container** (xem `reports/TEST_RESULTS.md` trong repo). Chưa chạy trên Internet công khai. Các dịch vụ đường hầm bên dưới **chưa được xác minh điều khoản/giới hạn** từ phiên phát triển — kiểm tra trước khi dùng.
+> Trạng thái: gói Linux đã chạy thử trong container (trình duyệt thật: đăng ký → vào phòng → vào đảo). Gói Windows: backend (Python đóng kèm) đã chạy thử dưới Wine 9 trên Linux; room server `.exe` **chưa chạy thử trên Windows thật** (Wine 9 không chạy được bản Godot 4.7 này). Các dịch vụ đường hầm ở mục 4 **chưa được xác minh điều khoản/giới hạn** từ phiên phát triển — kiểm tra trước khi dùng.
+
+## 0. Chơi thử nhanh: một cổng, một link (P-035)
+
+Máy chủ phục vụ luôn trang game: mở `http://127.0.0.1:8787` là chơi; một đường hầm HTTPS vào cổng này là ra **một link** gửi cho bạn bè (trang game, đăng nhập và phòng chơi đi chung link đó).
+
+**Windows 10/11**
+1. Chuột phải file zip → Properties → tick **Unblock** → OK (để Windows không chặn script tải về), rồi giải nén (Extract All).
+2. Mở thư mục vừa giải nén, bấm đúp **`CHOI_THU.bat`**. Lần đầu tự tạo `.env` (khóa ngẫu nhiên), mở hai cửa sổ máy chủ (đừng đóng) và mở trình duyệt vào `http://127.0.0.1:8787`. Nếu Windows hiện "Windows đã bảo vệ PC": bấm "Thông tin thêm" → "Vẫn chạy".
+3. Mời bạn bè qua Internet: tải `cloudflared` (bản Windows, miễn phí, không cần tài khoản) từ trang của Cloudflare, mở PowerShell và chạy
+   `cloudflared tunnel --url http://127.0.0.1:8787` → gửi link `https://….trycloudflare.com` nó in ra. Link đổi mỗi lần chạy lại lệnh; tắt máy/đóng cửa sổ là link chết.
+
+**Linux / macOS (có Python 3.11)**: `unzip ca-bay-server-<version>-linux.zip && ca-bay-server-<version>-linux/run/choi_thu.sh`, mở `http://127.0.0.1:8787`, rồi `cloudflared tunnel --url http://127.0.0.1:8787` như trên. Dừng: Ctrl+C.
+
+Máy bạn phải bật suốt buổi chơi; dữ liệu nằm ở `var/cabay.db` trên máy bạn (sao lưu: mục 5). Muốn đưa bản web lên itch.io với 2 địa chỉ API/WS riêng: làm theo mục 1–4 và đặt `CABAY_SELFHOST=0`.
 
 ## 1. Cần có
 
 | Thứ | Linux | Windows |
 |---|---|---|
-| Python | 3.11 | 3.11 (python.org, tick "Add to PATH") |
-| Godot để chạy room server | có sẵn `room/ca-bay-room-server.x86_64` | tải **Godot 4.7.2 stable** bản `win64_console.exe` từ godotengine.org (đúng 4.7.2) |
+| Python | 3.11 | có sẵn trong `python\` (gói Windows) |
+| Godot để chạy room server | có sẵn `room/ca-bay-room-server.x86_64` | có sẵn `room\ca-bay-room-server.console.exe` (gói Windows) |
 | Đĩa bền | thư mục `var/` (DB) và `backups/` phải nằm trên ổ không bị xóa | như Linux |
 | RAM/CPU | ~300 MB backend + ~150 MB room server mỗi tiến trình; 4 phòng × 4 người chạy trên 2 nhân (chưa đo trên máy thật) | như Linux |
 | HTTPS + WSS công khai | đường hầm hoặc reverse proxy (mục 4) | như Linux |
@@ -17,9 +31,9 @@ Gói này chạy phần **tài khoản + lưu tiến trình** (backend Python/Fa
 ## 2. Cài lần đầu
 
 ```bash
-unzip ca-bay-server-<version>.zip && cd ca-bay-server-<version>
+unzip ca-bay-server-<version>-linux.zip && cd ca-bay-server-<version>-linux
 cp run/env.example .env          # Windows: copy run\env.example .env
-python3 -c "import secrets;print(secrets.token_urlsafe(32))"   # dán kết quả vào CABAY_SERVICE_KEY trong .env
+python3 -c "import secrets;print(secrets.token_urlsafe(32))"   # Windows: python\python.exe -c "…"; dán vào CABAY_SERVICE_KEY
 ```
 
 Không gửi `.env` cho ai, không đưa vào Git, không dán vào chat. Khóa này chỉ dùng giữa backend và room server trên cùng máy.
@@ -31,7 +45,7 @@ Mở 2 cửa sổ dòng lệnh:
 | | Linux | Windows (PowerShell) |
 |---|---|---|
 | Backend | `run/start_backend.sh` | `powershell -ExecutionPolicy Bypass -File run\start_backend.ps1` |
-| Room server | `run/start_room.sh` | `powershell -ExecutionPolicy Bypass -File run\start_room.ps1` (cần `GODOT_EXE` trong `.env`) |
+| Room server | `run/start_room.sh` | `powershell -ExecutionPolicy Bypass -File run\start_room.ps1` (gói Windows có sẵn room server) |
 
 Kiểm tra: `curl http://127.0.0.1:8787/healthz` → `{"ok":true,...,"content_hash":"…"}`. Cửa sổ room server in `CABAY_SERVER listening ws://127.0.0.1:8910 content_hash=…` — **hai content_hash phải giống nhau** và giống bản web (nếu khác: client báo "Cần phiên bản game mới").
 

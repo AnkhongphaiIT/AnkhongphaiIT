@@ -27,9 +27,12 @@ def get_cat() -> Catalog:
 
 def client_ip(request: Request) -> str:
     if settings.trust_proxy_headers:
+        # Proxy/đường hầm (cloudflared, Tailscale, nginx) NỐI IP thật vào CUỐI X-Forwarded-For; các mục phía trước do
+        # trình duyệt tự gửi được. Lấy mục cuối — lấy mục đầu thì kẻ dò mật khẩu đổi IP giả mỗi lần để lách giới hạn/IP.
         fwd = request.headers.get("x-forwarded-for", "")
-        if fwd:
-            return fwd.split(",")[0].strip()
+        last = fwd.split(",")[-1].strip()
+        if last:
+            return last
     return request.client.host if request.client else "unknown"
 
 

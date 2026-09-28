@@ -30,6 +30,8 @@ Cập nhật: 28/09/2026 (phiên 2, rạng sáng) · Nhánh: `claude/tender-alle
 - Phiên 1: client web đầy đủ luồng (khởi động → tài khoản → sảnh → trong game → menu → tự nối lại), room server + backend, công cụ build/đóng gói/E2E, âm thanh (subagent WP-09), bot CONTENT-01 (subagent WP-11a).
 - Phiên 2: sửa 7 lỗi bot QA tìm (P0 gọi boss lặp miễn phí, takeover đá nhầm, …; P-023/P-024); trận boss hồi sinh trong bãi + vòng phao + tầm đánh khớp (CR-006); bếp không khóa (P-025); nhận việc tại người giao (P-026); dọn định kỳ backend (P-027); tắt autotest ở bản phát hành (P-028); đổi phím (P-029); bỏ input cũ khi tab ẩn (P-030); bản sắc 3 đảo (P-031); tỉ lệ hộp quà hiển thị đúng; công cụ tài khoản checkpoint (P-022); 9 icon mới (CR-007).
 
+- Phiên 3 (28/09): chủ dự án hỏi link game → chưa có link công khai (NEED-HOST/NEED-ITCH). Làm đường tự host **một cổng** (P-035: backend phục vụ trang + chuyển tiếp `/ws`; client `@origin`), gói máy chủ **Windows** có sẵn Python 3.11.9 + room server `.exe` + `CHOI_THU.bat` và gói **Linux** `run/choi_thu.sh` (P-038). Sửa 3 lỗi bảo mật/vận hành: `?api=` đổi được máy chủ ở bản công khai (P-034), giả IP qua `X-Forwarded-For` để lách giới hạn thử sai (P-036), script PowerShell lỗi cú pháp trên PS 5.1 (P-037). Kiểm: E2E một cổng (full_loop, room_crash), gói Linux qua `choi_thu.sh`, backend Windows dưới Wine; room server `.exe` **chưa chạy được thử** (Wine 9 không chạy Godot 4.7) → chờ chủ dự án thử trên Windows thật.
+
 ## Tài nguyên còn tạm
 
 - Thoại VI/EN: espeak-ng (giọng máy, GPL/tbd) — **chưa đạt** yêu cầu giọng đọc; bản phát hành loại thoại tạm, chỉ phụ đề + âm "lẩm bẩm".

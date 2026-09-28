@@ -1,11 +1,38 @@
-# Windows: chạy backend (cần Python 3.11 cài từ python.org). Chạy trong PowerShell tại thư mục gói server.
+﻿
+# Windows: chạy backend tài khoản/lưu (FastAPI + SQLite), chỉ nghe localhost. Chạy trong PowerShell tại thư mục gói server.
+# Gói bản Windows có sẵn Python trong python\ (không cần cài). Nếu không có: cần Python 3.11 từ python.org
+# (tick "Add to PATH"); lần đầu tạo .venv và tải thư viện (cần Internet).
 $ErrorActionPreference = "Stop"
 Set-Location (Split-Path $PSScriptRoot -Parent)
-if (-not (Test-Path .env)) { throw "Thiếu .env — sao chép run\env.example thành .env và điền giá trị" }
-Get-Content .env | Where-Object { $_ -match '^[A-Z_]+=' } | ForEach-Object { $k, $v = $_ -split '=', 2; Set-Item -Path "env:$k" -Value $v }
+if (-not (Test-Path .env)) { throw "Thiếu .env — chạy CHOI_THU.bat, hoặc sao chép run\env.example thành .env và điền giá trị" }
+Get-Content .env -Encoding UTF8 | Where-Object { $_ -match '^[A-Z_]+=' } | ForEach-Object { $k, $v = $_ -split '=', 2; Set-Item -Path "env:$k" -Value $v }
 $env:CABAY_DATA_DIR = (Resolve-Path data).Path
-if (-not $env:CABAY_DB_PATH) { New-Item -ItemType Directory -Force var | Out-Null; $env:CABAY_DB_PATH = (Join-Path (Resolve-Path var).Path "cabay.db") }
+New-Item -ItemType Directory -Force var | Out-Null
+if (-not $env:CABAY_DB_PATH) { $env:CABAY_DB_PATH = (Join-Path (Resolve-Path var).Path "cabay.db") }
 New-Item -ItemType Directory -Force backups | Out-Null
-if (-not (Test-Path .venv\Scripts\python.exe)) { py -3.11 -m venv .venv; .venv\Scripts\pip install -r backend\requirements.lock.txt }
+if (Test-Path python\python.exe) {
+  $py = (Resolve-Path python\python.exe).Path
+} else {
+  $req = (Get-FileHash backend\requirements.lock.txt -Algorithm SHA256).Hash
+  $stamp = if (Test-Path .venv\.req.sha256) { (Get-Content .venv\.req.sha256 -Raw).Trim() } else { "" }
+  if (-not (Test-Path .venv\Scripts\python.exe) -or $stamp -ne $req) {
+    if (-not (Test-Path .venv\Scripts\python.exe)) {
+      try { & py -3.11 -m venv .venv } catch { throw "Không tìm thấy Python 3.11 (lệnh 'py'). Cài từ python.org, tick 'Add to PATH', rồi chạy lại." }
+      if ($LASTEXITCODE -ne 0) { throw "Không tạo được .venv bằng Python 3.11" }
+    }
+    & .venv\Scripts\python.exe -m pip install -r backend\requirements.lock.txt
+    if ($LASTEXITCODE -ne 0) { throw "Cài thư viện Python thất bại (cần Internet lần đầu)" }
+    Set-Content -Path .venv\.req.sha256 -Value $req
+  }
+  $py = (Resolve-Path .venv\Scripts\python.exe).Path
+}
+$port = if ($env:CABAY_API_PORT) { $env:CABAY_API_PORT } else { "8787" }
+$extra = @()
+if ($env:CABAY_SELFHOST -eq "1") {
+  # một cổng (P-035): phục vụ luôn trang game + chuyển tiếp /ws tới room server trên máy này
+  $env:CABAY_WEB_DIR = (Resolve-Path web).Path
+  $env:CABAY_WS_UPSTREAM = "ws://127.0.0.1:$(if ($env:CABAY_WS_PORT) { $env:CABAY_WS_PORT } else { 8910 })"
+  $extra = @("--ws-max-size", "65536")
+}
 Set-Location backend
-& ..\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port $(if ($env:CABAY_API_PORT) { $env:CABAY_API_PORT } else { 8787 }) --proxy-headers --forwarded-allow-ips 127.0.0.1 --no-access-log
+& $py -m uvicorn app.main:app --host 127.0.0.1 --port $port --proxy-headers --forwarded-allow-ips 127.0.0.1 --no-access-log @extra

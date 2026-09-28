@@ -1,10 +1,12 @@
-"""Cài Godot 4.7.2 + export templates (web, linux x86_64) cho môi trường không tới được godotengine.org.
+"""Cài Godot 4.7.2 + export templates (web, linux x86_64; thêm windows x86_64 với --windows) cho môi trường
+không tới được godotengine.org.
 
 Nguồn: layer image Docker Hub barichello/godot-ci:4.7.2 (layer này tự tải từ
 github.com/godotengine/godot-builds). Digest layer được ghim và kiểm tra trước khi giải nén.
 Chỉ dùng thư viện chuẩn. Không cần Docker daemon.
 
     python3 tools/build/install_godot.py [--prefix /opt/godot/4.7.2]
+    python3 tools/build/install_godot.py --windows     # thêm template Windows (room server .exe cho gói Windows)
 """
 from __future__ import annotations
 
@@ -29,6 +31,7 @@ WANTED_TEMPLATES = {
     "web_nothreads_release.zip", "web_nothreads_debug.zip", "web_release.zip", "web_debug.zip",
     "linux_release.x86_64", "linux_debug.x86_64",
 }
+WINDOWS_TEMPLATES = {"windows_release_x86_64.exe", "windows_release_x86_64_console.exe"}
 BINARY_IN_LAYER = "usr/local/bin/godot"
 
 
@@ -59,11 +62,13 @@ def main() -> int:
     ap.add_argument("--prefix", default="/opt/godot/4.7.2")
     ap.add_argument("--templates", default=str(Path.home() / ".local/share/godot/export_templates/4.7.2.stable"))
     ap.add_argument("--link", default="/usr/local/bin/godot", help="symlink tới binary; để trống để bỏ qua")
+    ap.add_argument("--windows", action="store_true", help="thêm export template Windows x86_64")
     args = ap.parse_args()
 
     prefix, tdir = Path(args.prefix), Path(args.templates)
     binary = prefix / "godot"
-    if binary.exists() and (tdir / "version.txt").exists():
+    wanted = WANTED_TEMPLATES | (WINDOWS_TEMPLATES if args.windows else set())
+    if binary.exists() and all((tdir / n).exists() for n in wanted):
         print(f"Đã có {binary} và {tdir}; bỏ qua tải.")
     else:
         with tempfile.TemporaryDirectory() as tmp:
@@ -81,7 +86,7 @@ def main() -> int:
                         continue
                     if name == BINARY_IN_LAYER:
                         target = binary
-                    elif name.startswith(TEMPLATE_DIR_IN_LAYER) and name[len(TEMPLATE_DIR_IN_LAYER):] in WANTED_TEMPLATES:
+                    elif name.startswith(TEMPLATE_DIR_IN_LAYER) and name[len(TEMPLATE_DIR_IN_LAYER):] in wanted:
                         target = tdir / name[len(TEMPLATE_DIR_IN_LAYER):]
                     else:
                         continue

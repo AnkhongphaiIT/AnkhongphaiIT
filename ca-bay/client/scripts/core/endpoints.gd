@@ -19,9 +19,17 @@ static func load_endpoints() -> Dictionary:
 			allow_autotest = allow_autotest or d.get("allow_autotest", false) == true
 			allow_override = allow_override or d.get("allow_endpoint_override", false) == true
 	if OS.has_feature("web"):
+		var origin: Variant = JavaScriptBridge.eval("window.location.origin", true)
+		if typeof(origin) == TYPE_STRING:
+			resolve_origin(cfg, String(origin))
 		var q: Variant = JavaScriptBridge.eval("window.location.search", true)
 		if typeof(q) == TYPE_STRING:
 			apply_query(cfg, String(q), allow_override)
+	# bản tự host mở ngoài trình duyệt/ngoài http(s): về mặc định localhost
+	if String(cfg["api_base"]).begins_with("@origin"):
+		cfg["api_base"] = "http://127.0.0.1:8787"
+	if String(cfg["ws_url"]).begins_with("@origin"):
+		cfg["ws_url"] = "ws://127.0.0.1:8910"
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--api="):
 			cfg["api_base"] = a.substr(6)
@@ -33,6 +41,19 @@ static func load_endpoints() -> Dictionary:
 	autotest = bool(cfg.get("autotest", false)) and allow_autotest
 	render_scale_override = float(cfg.get("render_scale", 0.0))
 	return cfg
+
+
+## Bản tự host (P-035, máy chủ phục vụ luôn trang game): "@origin" = đúng địa chỉ trang đang mở; kết nối phòng chơi
+## đi qua "/ws" của cùng cổng (https → wss). Một đường hầm = một link chơi được, không phải xuất lại bản web.
+static func resolve_origin(cfg: Dictionary, origin: String) -> void:
+	var secure := origin.begins_with("https://")
+	if not (secure or origin.begins_with("http://")):
+		return
+	if String(cfg.get("api_base", "")) == "@origin":
+		cfg["api_base"] = origin
+	var ws := String(cfg.get("ws_url", ""))
+	if ws.begins_with("@origin"):
+		cfg["ws_url"] = ("wss://" + origin.substr(8) if secure else "ws://" + origin.substr(7)) + ws.substr(7)
 
 
 ## Tham số trang web: ?api=&ws= (đổi máy chủ), ?autotest=1, ?scale=. Đổi máy chủ chỉ khi bản build cho phép

@@ -138,6 +138,23 @@ func test_url_cannot_redirect_public_build_endpoints(t) -> void:
 	t.eq(plain["ws_url"], "ws://127.0.0.1:8910", "ws thường ngoài localhost bị từ chối")
 
 
+func test_selfhost_endpoints_follow_page_origin(t) -> void:
+	# P-035: bản tự host dùng đúng địa chỉ trang (qua đường hầm https → wss, cùng cổng /ws)
+	var a := {"api_base": "@origin", "ws_url": "@origin/ws"}
+	Endpoints.resolve_origin(a, "https://ca-bay-thu.trycloudflare.com")
+	t.eq(a["api_base"], "https://ca-bay-thu.trycloudflare.com", "API cùng origin")
+	t.eq(a["ws_url"], "wss://ca-bay-thu.trycloudflare.com/ws", "https → wss, đường /ws")
+	var b := {"api_base": "@origin", "ws_url": "@origin/ws"}
+	Endpoints.resolve_origin(b, "http://127.0.0.1:8787")
+	t.eq(b["ws_url"], "ws://127.0.0.1:8787/ws", "máy mình: http → ws cùng cổng")
+	var c := {"api_base": "https://api.cabay.example", "ws_url": "wss://ws.cabay.example"}
+	Endpoints.resolve_origin(c, "https://html-classic.itch.zone")
+	t.eq(c["api_base"], "https://api.cabay.example", "bản công khai (itch.io) không đổi theo trang")
+	var d := {"api_base": "@origin", "ws_url": "@origin/ws"}
+	Endpoints.resolve_origin(d, "null")
+	t.eq(d["api_base"], "@origin", "mở file:// (origin null) không đoán bừa")
+
+
 func test_world_labels_follow_locale(t) -> Signal:
 	# Lỗi cũ: đổi VI→EN giữa trận, HUD sang tiếng Anh nhưng bảng tên NPC/biển sạp 3D vẫn tiếng Việt.
 	var old := Loc.locale

@@ -3,6 +3,7 @@
 
   python3 tools/build/export.py web                       # endpoint localhost (thử local)
   python3 tools/build/export.py web --api https://api.example --ws wss://ws.example
+  python3 tools/build/export.py web --selfhost            # máy chủ phục vụ luôn trang (P-035): endpoint = origin trang
   python3 tools/build/export.py server
 
 Endpoint công khai chỉ nhận https/wss (localhost được http/ws). File client/config/endpoints.json
@@ -24,7 +25,8 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[2]
 ENDPOINTS = ROOT / "client/config/endpoints.json"
 PRESETS = {"web": ("Web", ROOT / "build/web/index.html"),
-           "server": ("Linux Room Server", ROOT / "build/server/ca-bay-room-server.x86_64")}
+           "server": ("Linux Room Server", ROOT / "build/server/ca-bay-room-server.x86_64"),
+           "server-win": ("Windows Room Server", ROOT / "build/server-win/ca-bay-room-server.exe")}
 # Không được xuất hiện trong gói web.
 FORBIDDEN_IN_WEB = [b"res://server/", b"res://tests/", b"res://tools/", b"res://docs/", b"CABAY_SERVICE_KEY",
                     b"X-Service-Key", b"res://data/schemas/", b"BEGIN PRIVATE KEY-----\n"]
@@ -49,7 +51,9 @@ RELEASE_EXCLUDE = "assets/audio/vo/*"
 PRESETS_FILE = ROOT / "export_presets.cfg"
 
 
-def export(target: str, api: str | None, ws: str | None, debug: bool, release: bool = False) -> Path:
+def export(target: str, api: str | None, ws: str | None, debug: bool, release: bool = False, selfhost: bool = False) -> Path:
+    if selfhost and (api or ws):
+        raise SystemExit("--selfhost dùng địa chỉ của chính trang; không kèm --api/--ws")
     preset, out = PRESETS[target]
     out.parent.mkdir(parents=True, exist_ok=True)
     for f in out.parent.iterdir():
@@ -74,7 +78,9 @@ def export(target: str, api: str | None, ws: str | None, debug: bool, release: b
             # Chế độ kiểm thử tự động (?autotest=1, có phím tự quay về cá/boss) chỉ có trong bản thử local, không có trong bản phát hành.
             cfg["allow_autotest"] = not release
             # ?api=&ws= trên URL chỉ dùng được ở bản trỏ localhost; bản có endpoint công khai khóa cứng (P-034).
-            cfg["allow_endpoint_override"] = not (api or ws)
+            cfg["allow_endpoint_override"] = not (api or ws or selfhost)
+            if selfhost:
+                cfg["api_base"], cfg["ws_url"] = "@origin", "@origin/ws"
             ENDPOINTS.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         g = godot_bin()
         subprocess.run([g, "--headless", "--path", str(ROOT), "--import"], check=False,
@@ -115,8 +121,9 @@ def main() -> None:
     ap.add_argument("--ws", help="Room server công khai (wss://...)")
     ap.add_argument("--debug", action="store_true")
     ap.add_argument("--release", action="store_true", help="bản phát hành: loại tài nguyên chưa rõ giấy phép")
+    ap.add_argument("--selfhost", action="store_true", help="bản cho máy chủ tự phục vụ trang (backend CABAY_WEB_DIR)")
     a = ap.parse_args()
-    out = export(a.target, a.api, a.ws, a.debug, a.release)
+    out = export(a.target, a.api, a.ws, a.debug, a.release, a.selfhost)
     print(f"EXPORT_OK {a.target} {out.relative_to(ROOT)}")
 
 

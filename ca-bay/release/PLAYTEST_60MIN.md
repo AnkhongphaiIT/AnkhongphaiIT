@@ -4,7 +4,7 @@ Dành cho chủ dự án + tối đa 3 người bạn, **sau khi** máy chủ đ
 
 ## Chuẩn bị (Claude/người vận hành làm trước)
 
-- [ ] Máy chủ chạy theo `server/ops/public/README.md`, `/healthz` đạt; bản web cùng content_hash.
+- [ ] Máy chủ chạy theo `server/ops/public/README.md` — nhanh nhất là mục 0: gói Windows → `CHOI_THU.bat`, rồi `cloudflared tunnel --url http://127.0.0.1:8787` và gửi **một link** `https://….trycloudflare.com` cho cả nhóm; `/healthz` qua link đó đạt.
 - [ ] 4 tài khoản sạch cho 4 người (người chơi tự tạo trong buổi thử để kiểm luồng đăng ký).
 - [ ] Trình duyệt: ít nhất **1 máy Firefox** và 1 máy Chrome hoặc Edge (ghi phiên bản vào bảng ghi chép). Trên mỗi máy thử: bấm vào màn chơi để khóa chuột, Esc nhả chuột/mở menu, phóng to toàn màn hình (F11 của trình duyệt), đổi kích thước cửa sổ, chuyển tab rồi quay lại.
 - [ ] Tài khoản checkpoint (đã tới boss đảo 1, đảo 2, đảo 3, cuối game) để xem nội dung sau mà không phải cày. Trong thư mục gói máy chủ, lúc **chưa có người chơi**:
@@ -12,6 +12,11 @@ Dành cho chủ dự án + tối đa 3 người bạn, **sau khi** máy chủ đ
   set -a; . ./.env; set +a
   CABAY_DATA_DIR=$PWD/data CABAY_DB_PATH=$PWD/var/cabay.db .venv/bin/python ops/seed_checkpoint.py \
       --stage isl1_boss --stage isl2_start --stage isl3_start --stage endgame --yes-this-is-an-operator-db
+  ```
+  Gói Windows (PowerShell, trong thư mục gói, đã chạy `CHOI_THU.bat` một lần để có `.env`):
+  ```
+  $env:CABAY_DATA_DIR="$PWD\data"; $env:CABAY_DB_PATH="$PWD\var\cabay.db"
+  python\python.exe ops\seed_checkpoint.py --stage isl1_boss --stage isl2_start --stage isl3_start --stage endgame --yes-this-is-an-operator-db
   ```
   Tên đăng nhập `checkpoint_…` in ra màn hình; mật khẩu nằm trong `var/checkpoint_accounts.txt` (quyền 600) — xóa file sau buổi thử. Công cụ đi đúng pipeline op của server (không sửa save bằng tay); tiến trình này **không** tính là bằng chứng đã chơi hết 3 đảo.
 - [ ] Sao lưu DB trước buổi thử (`run/backup.sh`).

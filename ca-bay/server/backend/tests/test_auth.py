@@ -53,6 +53,20 @@ def test_rate_limit_account(client):
     assert client.post("/v1/auth/login", json={"username": "bi_do", "password": "correct horse battery"}).status_code == 429
 
 
+def test_rate_limit_ip_behind_proxy_not_spoofable(client, monkeypatch):
+    # Sau đường hầm/proxy, IP thật nằm CUỐI X-Forwarded-For; mục đầu do người gửi tự điền. Đổi mục đầu mỗi lần
+    # (thử mật khẩu trên nhiều tài khoản) không được lách giới hạn 20 lần sai/IP.
+    import app.deps
+    from app.ratelimit import IP_LIMIT
+    monkeypatch.setattr(app.deps.settings, "trust_proxy_headers", True)
+    codes = [client.post("/v1/auth/login", json={"username": f"nguoi_{i}", "password": "sai" * 5},
+                         headers={"X-Forwarded-For": f"10.9.{i}.1, 203.0.113.7"}).status_code for i in range(IP_LIMIT + 1)]
+    assert codes[:IP_LIMIT] == [401] * IP_LIMIT and codes[IP_LIMIT] == 429
+    # IP thật khác (người chơi khác sau cùng proxy) không bị vạ lây
+    assert client.post("/v1/auth/login", json={"username": "nguoi_khac", "password": "sai" * 5},
+                       headers={"X-Forwarded-For": "198.51.100.4"}).status_code == 401
+
+
 def test_tokens_refresh_rotation_reuse_logout(client):
     u = register(client)
     r = client.post("/v1/auth/refresh", json={"refresh_token": u["refresh_token"]})

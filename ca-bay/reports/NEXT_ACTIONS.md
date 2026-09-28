@@ -1,5 +1,6 @@
 # NEXT_ACTIONS (tối đa 5, theo thứ tự)
 
+0. **Chờ chủ dự án chạy gói Windows** (`ca-bay-server-0.1.0-windows.zip` → `CHOI_THU.bat`) và báo kết quả: room server `.exe` chưa chạy thử được trên Windows thật (Wine 9 không chạy Godot 4.7). Nếu lỗi: hướng dẫn dự phòng `GODOT_EXE` trong runbook. Khi có link cloudflared: chạy buổi thử 60 phút (`release/PLAYTEST_60MIN.md`).
 1. **Nhận kết quả agent QA WP-12** (mất mạng 10/60/100 s, mạng xấu qua proxy, boss co-op nâng cao, giết room giữa trận boss): đọc diff `tests/bots/**`, `tests/integration/**`, chạy lại, sửa lỗi sản phẩm được báo, commit.
 2. **Làm đẹp còn thô**: tay góc nhìn thứ nhất, NPC, icon mảnh (cần carbon, vỉ ruồi); nhãn 3D tên boss trùng thanh máu HUD khi boss vừa tới.
 3. **PERF-01 phần làm được**: ghi bộ nhớ JS/wasm và thời gian tải trong Chromium; chuẩn bị bảng đo cho máy thật (F3/"Hiện FPS" trong Tùy chọn).
