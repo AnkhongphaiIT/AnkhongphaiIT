@@ -38,7 +38,7 @@ Cập nhật: 28/09/2026 (phiên 3).
 | SAVE-04 | Sao lưu/khôi phục | PASS | pytest `test_backup_while_writing_and_restore`; chạy `backup.sh` + restore trên gói máy chủ | — |
 | AV-01 | Âm thanh/giọng/hình thật | BLOCKED | 65 SFX, 4 nhạc, 3 âm nền, giọng "ú ớ" + phụ đề VI/EN có trong bản web | lời thoại có giọng: bản espeak-ng bị loại khỏi bản phát hành (NEED-VOICE-LICENSE) |
 | UX-01 | Dễ chơi | PASS\* | E2E: hướng dẫn, HUD, đổi phím, độ nhạy, âm lượng riêng, phụ đề, đổi ngôn ngữ giữa trận, báo máy chủ ngoại tuyến | cảm nhận người thật (buổi thử) |
-| PERF-01 | Máy 8 GB | MỘT PHẦN | bộ nhớ wasm/JS, dung lượng tải, bộ nhớ server (trong ngân sách); **FPS máy thật 29/09** (i5-1135G7 + Iris Xe, 8 GB, Edge GPU 1280×720): sảnh 60, trong đảo 50–54 FPS, khung p95 33 ms → đạt ngưỡng 30, chưa đạt mục tiêu 60 | 10 phút mỗi đảo + boss 4 người; tối ưu để đạt 60 |
+| PERF-01 | Máy 8 GB | MỘT PHẦN | bộ nhớ wasm 79,8 MB/JS < 80 MB, tải 44 MB, bộ nhớ server (trong ngân sách); **FPS máy thật 29/09** (i5-1135G7 + Iris Xe, 8 GB, Edge GPU 1280×720) sau P-047: sảnh 60, **trong đảo 59,2–59,8 FPS, khung p95 16,9 ms, CPU ≈3 ms/khung** (trước vá: 45–56 FPS) | 10 phút mỗi đảo + boss 4 người trên máy thật; Firefox |
 | REL-01 | Phát hành công khai | BLOCKED | gói web/server, runbook, CHANGELOG, CREDITS, PRIVACY nháp, trang itch nháp | NEED-HOST, NEED-ITCH, NEED-CONTACT |
 
 **Kết luận:** chưa đủ điều kiện phát hành công khai (REL-01, NET-01, AV-01 bị chặn bởi việc chỉ chủ dự án làm được). Mọi mục kiểm được trong container đã chạy; các mục MỘT PHẦN còn lại (WEB-01, PERF-01) cần máy/thiết bị thật.
