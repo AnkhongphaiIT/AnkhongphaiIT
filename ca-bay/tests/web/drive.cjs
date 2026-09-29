@@ -107,21 +107,52 @@ async function runStep(ctx, s, outDir, mark) {
   // trong ms, tùy chọn giữ một phím suốt lúc đo; ghi CABAY_FPS kèm GPU mà WebGL dùng (SwiftShader = vẽ bằng CPU)
   if (s.fps) {
     const measure = page.evaluate((ms) => new Promise((res) => {
+      const rq = window.__rawRaf || requestAnimationFrame;
+      if (window.__rafCost) window.__rafCost.length = 0;
       const gaps = []; let last = performance.now(); const t0 = last;
-      const tick = (t) => { gaps.push(t - last); last = t; if (t - t0 < ms) requestAnimationFrame(tick); else done(); };
+      const tick = (t) => { gaps.push(t - last); last = t; if (t - t0 < ms) rq(tick); else done(); };
       const done = () => {
         const gl = document.createElement('canvas').getContext('webgl2');
         const ext = gl && gl.getExtension('WEBGL_debug_renderer_info');
         const s = gaps.slice(1).sort((a, b) => a - b);
+        const cpu = (window.__rafCost || []).slice().sort((a, b) => a - b);
         res({ n: s.length, span: last - t0, p50: s[Math.floor(s.length * 0.5)] || 0, p95: s[Math.floor(s.length * 0.95)] || 0,
-          max: s[s.length - 1] || 0, gpu: ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : (gl ? gl.getParameter(gl.RENDERER) : 'no-webgl2') });
+          max: s[s.length - 1] || 0, cpu50: cpu[Math.floor(cpu.length * 0.5)] || 0, cpu95: cpu[Math.floor(cpu.length * 0.95)] || 0, dpr: window.devicePixelRatio, cv: (() => { const c = document.querySelector('canvas'); return c ? `${c.width}x${c.height}` : '?'; })(), gpu: ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : (gl ? gl.getParameter(gl.RENDERER) : 'no-webgl2') });
       };
-      requestAnimationFrame(tick);
+      rq(tick);
     }), s.ms || 5000);
     if (s.hold) await page.keyboard.down(s.hold);
     const f = await measure;
     if (s.hold) await page.keyboard.up(s.hold);
-    logs.push(`[p${n}] [log] CABAY_FPS ${s.fps} fps=${(f.n * 1000 / f.span).toFixed(1)} frame_p50_ms=${f.p50.toFixed(1)} frame_p95_ms=${f.p95.toFixed(1)} frame_max_ms=${f.max.toFixed(1)} gpu="${f.gpu}"`);
+    logs.push(`[p${n}] [log] CABAY_FPS ${s.fps} fps=${(f.n * 1000 / f.span).toFixed(1)} frame_p50_ms=${f.p50.toFixed(1)} frame_p95_ms=${f.p95.toFixed(1)} frame_max_ms=${f.max.toFixed(1)} cpu_p50_ms=${f.cpu50.toFixed(1)} cpu_p95_ms=${f.cpu95.toFixed(1)} dpr=${f.dpr} canvas=${f.cv} gpu="${f.gpu}"`);
+  }
+  // {cpuprofile:"nhãn", ms:5000, hold:"w"} — lấy mẫu CPU luồng chính (CDP Profiler, 250 µs) trong ms; ghi <nhãn>.cpuprofile
+  // (mở bằng DevTools) và CABAY_CPUPROF: 20 hàm tốn thời gian tự thân nhất (tên hàm wasm nếu bản build còn giữ tên)
+  if (s.cpuprofile) {
+    const cdp = await page.context().newCDPSession(page);
+    await cdp.send('Profiler.enable');
+    await cdp.send('Profiler.setSamplingInterval', { interval: 250 });
+    await cdp.send('Profiler.start');
+    if (s.hold) await page.keyboard.down(s.hold);
+    await page.waitForTimeout(s.ms || 5000);
+    if (s.hold) await page.keyboard.up(s.hold);
+    const { profile } = await cdp.send('Profiler.stop');
+    await cdp.detach();
+    fs.writeFileSync(path.join(outDir, `${s.cpuprofile}.cpuprofile`), JSON.stringify(profile));
+    const byId = new Map(profile.nodes.map((nd) => [nd.id, nd]));
+    const dt = profile.timeDeltas || [];
+    const self = new Map();
+    let total = 0;
+    (profile.samples || []).forEach((id, i) => {
+      const cf = byId.get(id).callFrame;
+      const key = cf.functionName || `(anonymous ${cf.url.split('/').pop()}:${cf.lineNumber})`;
+      const d = dt[i] || 0;
+      total += d;
+      self.set(key, (self.get(key) || 0) + d);
+    });
+    const top = [...self.entries()].sort((a, b) => b[1] - a[1]).slice(0, 20);
+    logs.push(`[p${n}] [log] CABAY_CPUPROF ${s.cpuprofile} total_ms=${(total / 1000).toFixed(0)} ` +
+      top.map(([k, v]) => `${k}=${(100 * v / total).toFixed(1)}%`).join(' | '));
   }
   // {assert_near:{a:"BIẾN1", b:"BIẾN2", max:m}} — hai vị trí "x, y, z" đã capture cách nhau (mặt phẳng xz) không quá m
   if (s.assert_near) {
@@ -296,10 +327,23 @@ async function runStep(ctx, s, outDir, mark) {
         WebAssembly.instantiate = async function (...a) { const r = await oi.apply(this, a); keep(r.instance || r); return r; };
         const os = WebAssembly.instantiateStreaming;
         if (os) WebAssembly.instantiateStreaming = async function (...a) { const r = await os.apply(this, a); keep(r.instance); return r; };
+        // thời gian CPU luồng chính của mỗi callback khung hình (vòng lặp Godot chạy trong đó) cho bước {fps}
+        const raf = window.requestAnimationFrame.bind(window);
+        window.__rawRaf = raf;
+        window.__rafCost = [];
+        window.requestAnimationFrame = (cb) => raf((ts) => {
+          const s0 = performance.now();
+          try { cb(ts); } finally { const c = window.__rafCost; c.push(performance.now() - s0); if (c.length > 4000) c.splice(0, 2000); }
+        });
       });
       const p = await c.newPage();
       p.on('console', (m) => logs.push(`[p${n}] [${m.type()}] ${m.text()}`));
       p.on('pageerror', (e) => logs.push(`[p${n}] [pageerror] ${e.message}`));
+      // CABAY_E2E_NETLOG=1: ghi các yêu cầu HTTP tới API (/v1/…) để chẩn đoán luồng tài khoản
+      if (process.env.CABAY_E2E_NETLOG === '1') {
+        p.on('response', (r) => { if (r.url().includes('/v1/')) logs.push(`[p${n}] [net] ${r.request().method()} ${r.url().replace(/^https?:\/\/[^/]+/, '')} ${r.status()}`); });
+        p.on('requestfailed', (r) => { if (r.url().includes('/v1/')) logs.push(`[p${n}] [net] FAIL ${r.request ? r.method() : ''} ${r.url()} ${(r.failure() || {}).errorText}`); });
+      }
       return p;
     },
   };

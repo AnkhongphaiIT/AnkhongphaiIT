@@ -288,6 +288,7 @@ func show_recovery_codes(codes: Array, after_recover: bool) -> void:
 	var p := UIKit.panel(v)
 	p.custom_minimum_size = Vector2(520, 0)
 	_set_screen("codes", p)
+	print("CABAY_RECOVERY_CODES shown")  # mốc cho E2E (không in mã); đăng ký có thể > 4 s trên máy yếu
 
 
 func _on_session_expired() -> void:

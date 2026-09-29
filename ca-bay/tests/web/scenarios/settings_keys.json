@@ -1,224 +1,58 @@
 [
- {
-  "goto": "{BASE}/index.html?autotest=1"
- },
- {
-  "waitlog": "CABAY_BOOT",
-  "timeout": 120000
- },
- {
-  "wait": 1500
- },
- {
-  "click": [
-   640,
-   472
-  ]
- },
- {
-  "wait": 800
- },
- {
-  "click": [
-   634,
-   495
-  ]
- },
- {
-  "wait": 600
- },
- {
-  "click": [
-   566,
-   224
-  ]
- },
- {
-  "wait": 600
- },
- {
-  "click": [
-   640,
-   198
-  ]
- },
- {
-  "type": "{USER}"
- },
- {
-  "click": [
-   640,
-   255
-  ]
- },
- {
-  "type": "Ban Web"
- },
- {
-  "click": [
-   640,
-   312
-  ]
- },
- {
-  "type": "songnuoc-2026-xanh"
- },
- {
-  "click": [
-   640,
-   369
-  ]
- },
- {
-  "type": "songnuoc-2026-xanh"
- },
- {
-  "click": [
-   640,
-   518
-  ]
- },
- {
-  "wait": 2500
- },
- {
-  "wait": 2000
- },
- {
-  "click": [
-   640,
-   611
-  ]
- },
- {
-  "wait": 2500
- },
- {
-  "wait": 1500
- },
- {
-  "shot": "k01_lobby"
- },
- {
-  "click": [
-   359,
-   492
-  ]
- },
- {
-  "wait": 1500
- },
- {
-  "shot": "k02_settings"
- },
- {
-  "wheel": [
-   640,
-   400,
-   300,
-   4
-  ]
- },
- {
-  "wait": 800
- },
- {
-  "shot": "k03_controls"
- },
- {
-  "wheel": [
-   640,
-   400,
-   -120,
-   1
-  ]
- },
- {
-  "wait": 600
- },
- {
-  "shot": "k04_up"
- },
- {
-  "click": [
-   709,
-   266
-  ]
- },
- {
-  "wait": 700
- },
- {
-  "shot": "k05_capture"
- },
- {
-  "key": "KeyF"
- },
- {
-  "wait": 700
- },
- {
-  "shot": "k06_rebound"
- },
- {
-  "wheel": [
-   640,
-   400,
-   300,
-   6
-  ]
- },
- {
-  "wait": 600
- },
- {
-  "click": [
-   636,
-   617
-  ]
- },
- {
-  "wait": 1200
- },
- {
-  "click": [
-   441,
-   290
-  ]
- },
- {
-  "waitlog": "CABAY_SESSION accepted",
-  "timeout": 30000
- },
- {
-  "wait": 1500
- },
- {
-  "key": "KeyV"
- },
- {
-  "walk_until": "CABAY_FOCUS npc npc_co_ba",
-  "face_key": "KeyV",
-  "timeout": 30000
- },
- {
-  "wait": 800
- },
- {
-  "shot": "k07_prompt_F"
- },
- {
-  "key": "KeyF"
- },
- {
-  "waitlog": "CABAY_EV dialogue.line_started",
-  "fresh": true,
-  "timeout": 10000
- },
- {
-  "wait": 1200
- },
- {
-  "shot": "k08_talk_with_F"
- }
+ {"goto": "{BASE}/index.html?autotest=1"},
+ {"waitlog": "CABAY_BOOT", "timeout": 120000},
+ {"wait": 1500},
+ {"click": [640, 472]},
+ {"wait": 800},
+ {"click": [634, 495]},
+ {"wait": 600},
+ {"click": [566, 224]},
+ {"wait": 600},
+ {"click": [640, 198]},
+ {"type": "{USER}"},
+ {"click": [640, 255]},
+ {"type": "Ban Web"},
+ {"click": [640, 312]},
+ {"type": "songnuoc-2026-xanh"},
+ {"click": [640, 369]},
+ {"type": "songnuoc-2026-xanh"},
+ {"click": [640, 518]},
+ {"wait": 2500},
+ {"wait": 2000},
+ {"waitlog": "CABAY_RECOVERY_CODES shown", "timeout": 60000, "fresh": true},
+ {"wait": 800},
+ {"click": [640, 594]},
+ {"wait": 2500},
+ {"wait": 1500},
+ {"shot": "k01_lobby"},
+ {"click": [359, 492]},
+ {"wait": 1500},
+ {"shot": "k02_settings"},
+ {"wheel": [640, 400, 300, 4]},
+ {"wait": 800},
+ {"shot": "k03_controls"},
+ {"wheel": [640, 400, -120, 1]},
+ {"wait": 600},
+ {"shot": "k04_up"},
+ {"click": [709, 266]},
+ {"wait": 700},
+ {"shot": "k05_capture"},
+ {"key": "KeyF"},
+ {"wait": 700},
+ {"shot": "k06_rebound"},
+ {"wheel": [640, 400, 300, 6]},
+ {"wait": 600},
+ {"click": [636, 617]},
+ {"wait": 1200},
+ {"click": [441, 290]},
+ {"waitlog": "CABAY_SESSION accepted", "timeout": 30000},
+ {"wait": 1500},
+ {"key": "KeyV"},
+ {"walk_until": "CABAY_FOCUS npc npc_co_ba", "face_key": "KeyV", "timeout": 30000},
+ {"wait": 800},
+ {"shot": "k07_prompt_F"},
+ {"key": "KeyF"},
+ {"waitlog": "CABAY_EV dialogue.line_started", "fresh": true, "timeout": 10000},
+ {"wait": 1200},
+ {"shot": "k08_talk_with_F"}
 ]

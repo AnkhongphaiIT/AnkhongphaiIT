@@ -82,6 +82,8 @@ def assemble_web(out: Path, locked_endpoints: bool) -> list[Path]:
             copied.append(f.name)
     if "index.html" not in copied or "index.pck" not in copied or "index.wasm" not in copied:
         raise SystemExit(f"Thiếu file bắt buộc trong build/web: {copied}")
+    if b"var prevScissorTest=gl.isEnabled(3089);" not in (out / "index.js").read_bytes():
+        raise SystemExit("index.js chưa có bản vá hiệu năng P-047 — xuất lại bằng tools/build/export.py")
     godot_license(out / "LICENSES/GODOT.txt")
     for rel, src in LICENSE_FILES.items():
         if not src.exists():

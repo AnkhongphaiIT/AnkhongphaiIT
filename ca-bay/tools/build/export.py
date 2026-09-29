@@ -51,6 +51,23 @@ RELEASE_EXCLUDE = "assets/audio/vo/*"
 PRESETS_FILE = ROOT / "export_presets.cfg"
 
 
+# P-047: glue Emscripten của template web chép bộ đệm ẩn ra canvas mỗi khung (blitOffscreenFramebuffer) và đọc trạng thái
+# scissor bằng gl.getParameter — lệnh đồng bộ, luồng chính chờ tiến trình GPU xử lý xong cả khung (máy Iris Xe: 64 % CPU,
+# 16,8 ms/khung → ~50 FPS). gl.isEnabled trả cùng giá trị từ trạng thái trình duyệt giữ sẵn (3,4 ms/khung, 60 FPS).
+WEB_JS_PATCHES = [("var prevScissorTest=gl.getParameter(3089);", "var prevScissorTest=gl.isEnabled(3089);")]
+
+
+def patch_web_js(js: Path) -> None:
+    txt = js.read_text(encoding="utf-8")
+    for old, new in WEB_JS_PATCHES:
+        n = txt.count(old)
+        if n != 1:
+            raise SystemExit(f"{js.name}: mẫu vá P-047 xuất hiện {n} lần (cần đúng 1) — template web đã đổi, kiểm tra lại bản vá")
+        txt = txt.replace(old, new)
+    js.write_text(txt, encoding="utf-8", newline="")
+    print(f"  vá {js.name}: {len(WEB_JS_PATCHES)} chỗ (P-047)")
+
+
 def export(target: str, api: str | None, ws: str | None, debug: bool, release: bool = False, selfhost: bool = False) -> Path:
     if selfhost and (api or ws):
         raise SystemExit("--selfhost dùng địa chỉ của chính trang; không kèm --api/--ws")
@@ -104,6 +121,7 @@ def export(target: str, api: str | None, ws: str | None, debug: bool, release: b
         print(f"  {f.name:40s} {f.stat().st_size / 1e6:8.2f} MB")
     print(f"  tổng {total / 1e6:.2f} MB")
     if target == "web":
+        patch_web_js(out.with_suffix(".js"))
         pck = out.with_suffix(".pck")
         data = pck.read_bytes()
         forbidden = FORBIDDEN_IN_WEB + ([b"assets/audio/vo/npc_"] if release else [])

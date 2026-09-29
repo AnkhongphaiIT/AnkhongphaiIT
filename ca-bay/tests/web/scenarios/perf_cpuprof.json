@@ -1,0 +1,15 @@
+[
+ {"goto": "{BASE}/index.html?autotest=1"},
+ {"waitlog": "CABAY_BOOT", "timeout": 120000},
+ {"wait": 1500},
+ {"click": [640, 368]},
+ {"waitlog": "CABAY_GUEST created kept=true", "timeout": 30000},
+ {"wait": 2500},
+ {"click": [441, 290]},
+ {"waitlog": "CABAY_SESSION accepted", "timeout": 60000},
+ {"wait": 5000},
+ {"click": [640, 450]},
+ {"wait": 1000},
+ {"fps": "world_idle", "ms": 5000},
+ {"cpuprofile": "world_idle", "ms": 6000}
+]

@@ -1,237 +1,46 @@
 [
- {
-  "goto": "{BASE}/index.html?autotest=1&scale=0.6"
- },
- {
-  "waitlog": "CABAY_BOOT",
-  "timeout": 120000
- },
- {
-  "wait": 1500
- },
- {
-  "click": [
-   640,
-   472
-  ]
- },
- {
-  "wait": 800
- },
- {
-  "click": [
-   634,
-   495
-  ]
- },
- {
-  "wait": 600
- },
- {
-  "shot": "p01_auth_vi"
- },
- {
-  "click": [
-   566,
-   224
-  ]
- },
- {
-  "wait": 600
- },
- {
-  "click": [
-   640,
-   198
-  ]
- },
- {
-  "type": "{USER}"
- },
- {
-  "click": [
-   640,
-   255
-  ]
- },
- {
-  "type": "Ban Web"
- },
- {
-  "click": [
-   640,
-   312
-  ]
- },
- {
-  "type": "songnuoc-2026-xanh"
- },
- {
-  "click": [
-   640,
-   369
-  ]
- },
- {
-  "type": "songnuoc-2026-xanh"
- },
- {
-  "click": [
-   640,
-   518
-  ]
- },
- {
-  "wait": 2500
- },
- {
-  "wait": 2000
- },
- {
-  "click": [
-   640,
-   611
-  ]
- },
- {
-  "wait": 2500
- },
- {
-  "shot": "p02_lobby"
- },
- {
-  "click": [
-   441,
-   290
-  ]
- },
- {
-  "waitlog": "CABAY_SESSION accepted",
-  "timeout": 30000
- },
- {
-  "wait": 2500
- },
- {
-  "shot": "p03_arrive"
- },
- {
-  "key": "KeyN"
- },
- {
-  "wait": 1500
- },
- {
-  "shot": "p04_npc"
- },
- {
-  "key": "KeyG"
- },
- {
-  "hold": "KeyW",
-  "ms": 6500
- },
- {
-  "wait": 400
- },
- {
-  "repeat": [
-   {
-    "key": "Digit1"
-   },
-   {
-    "wait": 700
-   },
-   {
-    "key": "KeyG"
-   },
-   {
-    "wait": 300
-   },
-   {
-    "mdown": "left"
-   },
-   {
-    "wait": 1100
-   },
-   {
-    "mup": "left"
-   },
-   {
-    "waitlog": "CABAY_EV fishing.lure_landed",
-    "fresh": true,
-    "timeout": 8000
-   },
-   {
-    "wait": 900
-   },
-   {
-    "shot": "p05_waiting"
-   },
-   {
-    "reel": {
-     "until": "CABAY_EV fishing.(launched|escaped|cancelled)",
-     "fail": "CABAY_EV fishing.(escaped|cancelled)",
-     "timeout": 90000
-    },
-    "wait_for": "CABAY_EV fishing.bite"
-   },
-   {
-    "shot": "p06_flying"
-   },
-   {
-    "hunt": {
-     "until": "CABAY_EV creature.knocked_out",
-     "fail": "CABAY_EV creature.returned_to_water",
-     "timeout": 30000,
-     "interval": 250,
-     "pre_key": "KeyT",
-     "step_key": "KeyW",
-     "step_every": 2,
-     "step_ms": 150
-    }
-   },
-   {
-    "shot": "p07_ko"
-   },
-   {
-    "key": "KeyT"
-   },
-   {
-    "hold": "KeyW",
-    "ms": 150
-   },
-   {
-    "key": "KeyE"
-   },
-   {
-    "waitlog": "CABAY_EV item.picked_up",
-    "fresh": true,
-    "timeout": 6000
-   }
-  ],
-  "until": "CABAY_EV item.picked_up",
-  "max": 6
- },
- {
-  "wait": 900
- },
- {
-  "shot": "p08_picked"
- },
- {
-  "key": "Tab"
- },
- {
-  "wait": 1500
- },
- {
-  "shot": "p09_dex"
- },
- {
-  "key": "Tab"
- },
- {
-  "wait": 600
- }
+ {"goto": "{BASE}/index.html?autotest=1&scale=0.6"},
+ {"waitlog": "CABAY_BOOT", "timeout": 120000},
+ {"wait": 1500},
+ {"click": [640, 472]},
+ {"wait": 800},
+ {"click": [634, 495]},
+ {"wait": 600},
+ {"shot": "p01_auth_vi"},
+ {"click": [566, 224]},
+ {"wait": 600},
+ {"click": [640, 198]},
+ {"type": "{USER}"},
+ {"click": [640, 255]},
+ {"type": "Ban Web"},
+ {"click": [640, 312]},
+ {"type": "songnuoc-2026-xanh"},
+ {"click": [640, 369]},
+ {"type": "songnuoc-2026-xanh"},
+ {"click": [640, 518]},
+ {"wait": 2500},
+ {"wait": 2000},
+ {"waitlog": "CABAY_RECOVERY_CODES shown", "timeout": 60000, "fresh": true},
+ {"wait": 800},
+ {"click": [640, 594]},
+ {"wait": 2500},
+ {"shot": "p02_lobby"},
+ {"click": [441, 290]},
+ {"waitlog": "CABAY_SESSION accepted", "timeout": 30000},
+ {"wait": 2500},
+ {"shot": "p03_arrive"},
+ {"key": "KeyN"},
+ {"wait": 1500},
+ {"shot": "p04_npc"},
+ {"key": "KeyG"},
+ {"hold": "KeyW", "ms": 6500},
+ {"wait": 400},
+ {"repeat": [{"key": "Digit1"}, {"wait": 700}, {"key": "KeyG"}, {"wait": 300}, {"mdown": "left"}, {"wait": 1100}, {"mup": "left"}, {"waitlog": "CABAY_EV fishing.lure_landed", "fresh": true, "timeout": 8000}, {"wait": 900}, {"shot": "p05_waiting"}, {"reel": {"until": "CABAY_EV fishing.(launched|escaped|cancelled)", "fail": "CABAY_EV fishing.(escaped|cancelled)", "timeout": 90000}, "wait_for": "CABAY_EV fishing.bite"}, {"shot": "p06_flying"}, {"hunt": {"until": "CABAY_EV creature.knocked_out", "fail": "CABAY_EV creature.returned_to_water", "timeout": 30000, "interval": 250, "pre_key": "KeyT", "step_key": "KeyW", "step_every": 2, "step_ms": 150}}, {"shot": "p07_ko"}, {"key": "KeyT"}, {"hold": "KeyW", "ms": 150}, {"key": "KeyE"}, {"waitlog": "CABAY_EV item.picked_up", "fresh": true, "timeout": 6000}], "until": "CABAY_EV item.picked_up", "max": 6},
+ {"wait": 900},
+ {"shot": "p08_picked"},
+ {"key": "Tab"},
+ {"wait": 1500},
+ {"shot": "p09_dex"},
+ {"key": "Tab"},
+ {"wait": 600}
 ]

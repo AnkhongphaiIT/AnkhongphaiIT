@@ -15,6 +15,13 @@
  {"fps": "world_idle", "ms": 8000},
  {"fps": "world_walk", "ms": 8000, "hold": "w"},
  {"fps": "world_turn", "ms": 6000, "hold": "a"},
+ {"fps": "world_after_move_720p", "ms": 8000},
+ {"shot": "pf_after_move"},
+ {"viewport": [640, 360]},
+ {"wait": 1500},
+ {"fps": "world_idle_360p", "ms": 8000},
+ {"viewport": [1280, 720]},
+ {"wait": 1500},
  {"perf": "in_world"},
  {"shot": "pf_world"}
 ]
