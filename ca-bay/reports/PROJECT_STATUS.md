@@ -1,13 +1,13 @@
 # PROJECT_STATUS — CÁ BAY
 
-Cập nhật: 28/09/2026 (phiên 2, rạng sáng) · Nhánh: `claude/tender-allen-ofqkn5` · Toolchain: Godot 4.7.2.stable (xem `toolchain.lock.json`)
+Cập nhật: 29/09/2026 (phiên 4, máy Windows của chủ dự án) · Nhánh: `claude/tender-allen-ofqkn5` · Toolchain: Godot 4.7.2.stable (xem `toolchain.lock.json`)
 
 ## Tóm tắt trung thực theo lớp
 
 | Lớp | Trạng thái | Bằng chứng |
 |---|---|---|
 | Tài liệu/dữ liệu | **Đạt** | validator 0 lỗi/0 cảnh báo, 393 khóa VI/EN, 296 asset ID |
-| Code chạy local | **Chạy được**: backend + room server Godot headless + client web thật trong Chromium; cả **gói máy chủ phát hành** (giải nén thư mục mới, chạy bằng script vận hành) | `TEST_RESULTS.md`: pytest 37, Godot 28, bot 1–4 người (quest/boss, **CONTENT-01 3 đảo + 15/15 loài**, takeover, restart, 2 phòng, gửi lại lệnh, crash backend SIGKILL ×6), WEB-E2E trình duyệt: câu→bán→mua, **thắng cả 3 boss**, nướng cá, hộp quà, đi đảo, **đổi máy khác origin (SAVE-01)**, đổi phím, tab ẩn, co-op 2 trình duyệt, chạy trong iframe khác site |
+| Code chạy local | **Chạy được** (cả **gói Windows trên Windows thật**, 29/09): backend + room server Godot headless + client web thật trong Chromium; cả **gói máy chủ phát hành** (giải nén thư mục mới, chạy bằng script vận hành) | `TEST_RESULTS.md`: pytest 37, Godot 28, bot 1–4 người (quest/boss, **CONTENT-01 3 đảo + 15/15 loài**, takeover, restart, 2 phòng, gửi lại lệnh, crash backend SIGKILL ×6), WEB-E2E trình duyệt: câu→bán→mua, **thắng cả 3 boss**, nướng cá, hộp quà, đi đảo, **đổi máy khác origin (SAVE-01)**, đổi phím, tab ẩn, co-op 2 trình duyệt, chạy trong iframe khác site |
 | Co-op đã thử thật | **Chưa với người thật**. Đã có: 4 bot qua WebSocket thật; **2 trình duyệt thật cùng phòng** thấy nhau và nhận sự kiện của nhau. NET-01 (4 người, ≥2 máy, Internet) cần host + người; Firefox chưa thử (mạng chặn tải) | NEED-HOST, NEED-DEVICES |
 | Tài nguyên | **Đủ file cho 295/296 asset ID (thêm 9 icon CR-007)** (1 ngoài phạm vi: điều khiển cảm ứng). 282 `in_review` (tự tạo, đã kiểm tự động, **chưa có người duyệt**), 12 `placeholder` (thoại espeak-ng, không phát hành), font `approved`. Yêu cầu **giọng đọc VI/EN chưa đạt** | `reports/ASSET_COVERAGE.md`, `handoff/source_manifest.json`, `reports/AUDIO_REPORT.md` |
 | Public đã xác minh | **Chưa** — thiếu host (NEED-HOST) và quyền itch.io (NEED-ITCH) | — |
@@ -33,6 +33,8 @@ Cập nhật: 28/09/2026 (phiên 2, rạng sáng) · Nhánh: `claude/tender-alle
 - Phiên 3 (28/09): chủ dự án hỏi link game → chưa có link công khai (NEED-HOST/NEED-ITCH). Làm đường tự host **một cổng** (P-035: backend phục vụ trang + chuyển tiếp `/ws`; client `@origin`), gói máy chủ **Windows** có sẵn Python 3.11.9 + room server `.exe` + `CHOI_THU.bat` và gói **Linux** `run/choi_thu.sh` (P-038). Sửa 3 lỗi bảo mật/vận hành: `?api=` đổi được máy chủ ở bản công khai (P-034), giả IP qua `X-Forwarded-For` để lách giới hạn thử sai (P-036), script PowerShell lỗi cú pháp trên PS 5.1 (P-037). Kiểm: E2E một cổng (full_loop, room_crash), gói Linux qua `choi_thu.sh`, backend Windows dưới Wine; room server `.exe` **chưa chạy được thử** (Wine 9 không chạy Godot 4.7) → chờ chủ dự án thử trên Windows thật.
 
 - Phiên 3 (tiếp): hồi quy 15 kịch bản bot PASS sau P-039/P-040; NET-06/AUTH-02 bổ sung PASS; tab ẩn 20 s PASS; chữ luật mật khẩu sửa khớp server (12 ký tự). Theo yêu cầu chủ dự án làm **"Chơi ngay"** (P-041): màn đầu gõ tên + một nút là vào, lần sau "Chơi tiếp", đặt mật khẩu tùy chọn để chơi máy khác — vẫn giữ bảo vệ ẩn (khóa ngẫu nhiên băm, giới hạn tạo/IP). Gói Windows mới đã gửi (31789c6, rồi thay bằng 3b1de93 có "Người chơi khác trên máy này" + biểu tượng mới). Cổng `/ws` thêm ≈1,6 ms RTT.
+
+- Phiên 4 (29/09, **máy Windows của chủ dự án**, Claude Code cục bộ): Godot 4.7.2 win64 chính thức (khớp SHA512-SUMS), Python 3.12 venv (P-043). Validator 0 lỗi, pytest 48/48, Godot 32/32 trên Windows. Sửa `.gitattributes` (P-044: clone `autocrlf` làm hỏng `.sh` của gói Linux). **Đóng gói Windows ngay trên Windows và chạy thật `CHOI_THU.bat`: room server `.exe` chạy được** (lần đầu trên Windows thật); qua gói đó: trình duyệt Chơi ngay → vào đảo, bot 4 người câu→bán (RTT p95 ≈35 ms), nhiệm vụ + boss 4 người, gọi boss gửi lại, tiếp quản, room `.exe` sập + mở lại ×2 — đều PASS (`win_package_check.py`, P-045).
 
 ## Tài nguyên còn tạm
 

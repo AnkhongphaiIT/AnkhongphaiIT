@@ -18,6 +18,7 @@ import http.server
 import json
 import os
 import secrets
+import shutil
 import subprocess
 import sys
 import threading
@@ -42,7 +43,12 @@ def serve_web(directory: Path | None = None, port: int = WEB_PORT) -> http.serve
 
 
 def npm_root() -> str:
-    return subprocess.run(["npm", "root", "-g"], capture_output=True, text=True, check=True).stdout.strip()
+    # Ưu tiên playwright cài trong dự án (`npm install --prefix build/node playwright@1.56.1`, máy Windows — P-045).
+    local = ROOT / "build/node/node_modules"
+    if (local / "playwright").is_dir():
+        return str(local)
+    npm = shutil.which("npm") or "npm"  # Windows: npm.cmd
+    return subprocess.run([npm, "root", "-g"], capture_output=True, text=True, check=True).stdout.strip()
 
 
 def main() -> int:

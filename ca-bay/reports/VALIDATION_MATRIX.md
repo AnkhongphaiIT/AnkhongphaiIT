@@ -18,7 +18,7 @@ Cập nhật: 28/09/2026 (phiên 3).
 | AUTH-03 | Khôi phục | PASS | pytest `test_recovery_one_time_and_revokes_sessions`, `test_recovery_without_code_fails`, `test_save_view_has_no_secrets` | — |
 | AUTH-04 | Chống lạm dụng | PASS | giới hạn sai theo tài khoản/IP (`test_rate_limit_account`, `test_rate_limit_ip_behind_proxy_not_spoofable` — P-036), tối đa 2 phép băm scrypt song song (`test_password_hashing_limited_to_two_concurrent_jobs`), origin lạ bị chặn (`test_unknown_origin_blocked_by_cors`), tối đa 30 tài khoản khách/IP/giờ (`test_guest_creation_limited_per_ip`), giới hạn body 8/64 KB, API nội bộ cần khóa (`test_internal_api_requires_service_key`), backend/room chỉ nghe 127.0.0.1 | — |
 | AUTH-05 | Xóa tài khoản | PASS | pytest `test_delete_account_requires_recent_auth_and_only_self`; chính sách bản sao lưu ghi ở runbook §7 | — |
-| NET-01 | 4 người thật, ≥2 máy | BLOCKED | công cụ sẵn: gói Windows `CHOI_THU.bat` + đường hầm = một link (P-035/P-038); bot 4 người qua mạng thật PASS | NEED-HOST, NEED-DEVICES |
+| NET-01 | 4 người thật, ≥2 máy | BLOCKED | công cụ sẵn: gói Windows `CHOI_THU.bat` + đường hầm = một link (P-035/P-038), **gói Windows đã chạy thật trên Windows 29/09** (room `.exe`, bot 4 người/boss/restart/takeover qua gói PASS, P-045); bot 4 người qua mạng thật PASS | NEED-HOST, NEED-DEVICES |
 | NET-02 | Cách ly phòng | PASS | bot `two_rooms`; Godot `test_rooms_isolated_same_coordinates` | — |
 | NET-03 | Mất mạng 10/60/100 s | PASS | bot `net_outage` 44/44, `net_halfopen` (sau sửa P-040) | — |
 | NET-04 | Chủ phòng rời/AFK/menu | PASS | bot `owner_leave`; Godot `test_room_owner_transfer_and_capacity`, `test_afk_after_timeout` | — |
