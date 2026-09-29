@@ -37,8 +37,20 @@ Quét license tài nguyên trước phát hành thương mại. Tự tạo hoặ
 
 ## Phụ lục dự án (Claude thêm khi khởi tạo `ca-bay/`, 27/09/2026)
 
-- Môi trường triển khai: container Ubuntu đám mây của phiên Claude Code (ephemeral). Commit + push mọi tiến độ lên nhánh `claude/tender-allen-ofqkn5`.
+- Môi trường triển khai: container Ubuntu đám mây của phiên Claude Code (ephemeral) **hoặc** máy Windows 8 GB của chủ dự án (Claude Code cục bộ, từ 29/09/2026 — xem mục dưới). Xác định mình đang ở đâu trước khi chạy lệnh. Commit + push mọi tiến độ lên nhánh `claude/tender-allen-ofqkn5`.
 - Đọc trạng thái trước khi làm: `reports/PROJECT_STATUS.md`, `reports/NEXT_ACTIONS.md`, `reports/DECISIONS.md` (quyết định kỹ thuật P-xxx), `reports/NEEDS_USER.md`.
 - Toolchain ghim: `toolchain.lock.json`. Container mới thiếu Godot → `python3 tools/build/install_godot.py`.
 - Kiểm dữ liệu: `.venv/bin/python tools/validate/check_docs.py` (phải 0 lỗi) — chỉ là kiểm tài liệu/dữ liệu.
 - Release: chỉ chép file của bản release sang thư mục mới rồi mới nén (P-011).
+
+### Khi chạy trên máy Windows của chủ dự án
+
+- Bản clone: thư mục `AnkhongphaiIT\ca-bay` trong hồ sơ người dùng. Chủ dự án chuyển phiên bằng `claude --teleport <session-id>` hoặc mở phiên mới; phiên mới đọc `reports/` để nối tiếp.
+- Máy 8 GB RAM: build/import/xuất Godot chạy tuần tự, tối đa 2 việc song song; không để nhiều trình duyệt thử cùng lúc.
+- Công cụ chưa có sẵn trên máy (cài từ nguồn chính thức, miễn phí, kiểm hash; hỏi trước khi cài):
+  - Python 3.11 (`winget install -e --id Python.Python.3.11`); venv: `.venv\Scripts\python.exe` (không phải `.venv/bin/python`).
+  - Godot 4.7.2 bản Windows + export templates: `godotengine/godot-builds` release `4.7.2-stable` (`Godot_v4.7.2-stable_win64.exe.zip`, `Godot_v4.7.2-stable_export_templates.tpz`), đối chiếu `SHA512-SUMS.txt` cùng release; templates đặt ở `%APPDATA%\Godot\export_templates\4.7.2.stable\`; đặt `GODOT_BIN` tới bản `_console.exe` để thấy log.
+  - Node 22 chỉ cần cho test trình duyệt (`tests/web`).
+- Công cụ viết cho Linux (`tests/integration/*.py` dùng `os.killpg`/`start_new_session`, bake ảnh qua `xvfb-run`, `install_godot.py`): chạy trong WSL2 Ubuntu hoặc sửa cho chạy được trên Windows rồi ghi vào `reports/DECISIONS.md`; không báo PASS khi chưa chạy.
+- Việc làm được ở đây mà container không làm được: chạy thật gói Windows (`CHOI_THU.bat`, room server `.exe`) và ghi kết quả vào `reports/TEST_RESULTS.md`; chụp ảnh game để so sánh đồ họa.
+- ChatGPT/Codex/Gemini/Antigravity: chỉ dùng khi đã kiểm tra công cụ + đăng nhập thật trên máy này (mục 6 ở trên); ảnh ChatGPT ghi nguồn vào `CREDITS` trước khi đưa vào game.
