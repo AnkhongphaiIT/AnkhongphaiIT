@@ -103,6 +103,26 @@ async function runStep(ctx, s, outDir, mark) {
     const mb = (x) => (x / 1048576).toFixed(1);
     logs.push(`[p${n}] [log] CABAY_PERF ${s.perf} wasm_mb=${mb(m.wasm)} js_used_mb=${mb(m.js)} js_total_mb=${mb(m.jsTotal)} downloaded_mb=${mb(m.res)} load_ms=${Math.round(m.load)}`);
   }
+  // {fps:"nhãn", ms:5000, hold:"w"} — đếm khung hình thật (requestAnimationFrame, vòng lặp Godot web chạy theo nhịp này)
+  // trong ms, tùy chọn giữ một phím suốt lúc đo; ghi CABAY_FPS kèm GPU mà WebGL dùng (SwiftShader = vẽ bằng CPU)
+  if (s.fps) {
+    const measure = page.evaluate((ms) => new Promise((res) => {
+      const gaps = []; let last = performance.now(); const t0 = last;
+      const tick = (t) => { gaps.push(t - last); last = t; if (t - t0 < ms) requestAnimationFrame(tick); else done(); };
+      const done = () => {
+        const gl = document.createElement('canvas').getContext('webgl2');
+        const ext = gl && gl.getExtension('WEBGL_debug_renderer_info');
+        const s = gaps.slice(1).sort((a, b) => a - b);
+        res({ n: s.length, span: last - t0, p50: s[Math.floor(s.length * 0.5)] || 0, p95: s[Math.floor(s.length * 0.95)] || 0,
+          max: s[s.length - 1] || 0, gpu: ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : (gl ? gl.getParameter(gl.RENDERER) : 'no-webgl2') });
+      };
+      requestAnimationFrame(tick);
+    }), s.ms || 5000);
+    if (s.hold) await page.keyboard.down(s.hold);
+    const f = await measure;
+    if (s.hold) await page.keyboard.up(s.hold);
+    logs.push(`[p${n}] [log] CABAY_FPS ${s.fps} fps=${(f.n * 1000 / f.span).toFixed(1)} frame_p50_ms=${f.p50.toFixed(1)} frame_p95_ms=${f.p95.toFixed(1)} frame_max_ms=${f.max.toFixed(1)} gpu="${f.gpu}"`);
+  }
   // {assert_near:{a:"BIẾN1", b:"BIẾN2", max:m}} — hai vị trí "x, y, z" đã capture cách nhau (mặt phẳng xz) không quá m
   if (s.assert_near) {
     const pa = String(vars[s.assert_near.a] || '').split(',').map(Number);
@@ -245,9 +265,13 @@ async function runStep(ctx, s, outDir, mark) {
   const [scenarioPath, outDir] = process.argv.slice(2);
   const steps = JSON.parse(fs.readFileSync(scenarioPath, 'utf8'));
   fs.mkdirSync(outDir, { recursive: true });
+  // CABAY_E2E_GPU=1: cửa sổ trình duyệt thật + GPU của máy (đo FPS máy thật, PERF-01); mặc định headless SwiftShader.
+  const gpu = process.env.CABAY_E2E_GPU === '1';
   const browser = await chromium.launch({
     executablePath: process.env.CHROME_PATH || undefined,
-    args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--autoplay-policy=no-user-gesture-required'],
+    headless: !gpu,
+    args: gpu ? ['--ignore-gpu-blocklist', '--autoplay-policy=no-user-gesture-required']
+      : ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--autoplay-policy=no-user-gesture-required'],
   });
   const ctx = {
     pages: {},

@@ -168,7 +168,8 @@ def main() -> int:
                    "rejections": [l[6:] for l in log.splitlines() if l.startswith("[log] CABAY_REJ")],
                    "page_errors": [l for l in log.splitlines() if "[pageerror]" in l],
                    "other_pages": sorted({l.split()[2] for l in log.splitlines() if l.startswith("[p1] [log] CABAY_EV") or l.startswith("[p1] [log] CABAY_OTHER")}),
-                   "perf": [l.split("CABAY_PERF ", 1)[1] for l in log.splitlines() if "CABAY_PERF " in l],
+                   "perf": [l.split("CABAY_PERF ", 1)[1] for l in log.splitlines() if "CABAY_PERF " in l]
+                   + [l.split("CABAY_FPS ", 1)[1] for l in log.splitlines() if "CABAY_FPS " in l],
                    "server_mem": server_mem}
         endpoints = sorted({l.split("CABAY_ENDPOINTS ", 1)[1] for l in log.splitlines() if "CABAY_ENDPOINTS " in l})
         summary["endpoints"] = endpoints
