@@ -65,4 +65,5 @@ def test_main_requires_confirmation_and_writes_private_file(client, env, capsys)
     line = out.read_text(encoding="utf-8").strip().split("\t")
     assert line[0] == "isl2_start" and line[1].startswith("checkpoint_")
     assert line[2] not in printed  # mật khẩu không in ra màn hình
-    assert stat.S_IMODE(os.stat(out).st_mode) == 0o600
+    if os.name == "posix":  # Windows không có mode POSIX; file nằm trong hồ sơ người dùng (ACL riêng) — P-043
+        assert stat.S_IMODE(os.stat(out).st_mode) == 0o600

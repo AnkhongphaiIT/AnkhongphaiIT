@@ -1,0 +1,6 @@
+# P-044: làm việc trên Windows (core.autocrlf=true) không được đổi dòng của file đang lưu LF trong repo:
+# script .sh của gói Linux phải giữ LF; Godot ghi .import/.tscn bằng LF.
+# File đã lưu CRLF (tài liệu gốc có SHA-256, .ps1 BOM+CRLF theo P-037, .bat) giữ nguyên từng byte.
+* text=auto eol=lf
+*.ps1 -text
+*.bat -text
